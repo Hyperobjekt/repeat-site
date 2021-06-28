@@ -76,6 +76,7 @@ module.exports = {
           DEFAULT: "#ED6D0B",
           primary: "#4059ad",
           burnt: "#D2801E",
+          "light-blue": "#EDF1F2",
           "table-1": "#926868",
           "table-2": "#7F7353",
           "table-3": "#607C5C",
@@ -94,6 +95,7 @@ module.exports = {
         DEFAULT: "#ED6D0B",
         primary: "#4059ad",
         burnt: "#D2801E",
+        "light-blue": "#EDF1F2",
       },
       rotate: {
         60: "60deg",

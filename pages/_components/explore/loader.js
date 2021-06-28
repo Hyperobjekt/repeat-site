@@ -1,10 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { loadFilters } from "../../../redux/actions/filters.actions";
-import ExploreFilter from "./filter";
 import ExploreBenchmark from "./benchmark";
 
 function classNames(...classes) {
@@ -13,11 +12,72 @@ function classNames(...classes) {
 
 const ExploreLoader = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  let routerQuery = { ...router.query };
+  delete routerQuery.policy;
   const [activeState, setActiveState] = useState("National");
-  const filters = useSelector((state) => state.filters);
+  const [params, setParams] = useState(routerQuery);
+  let filters = useSelector((state) => state.filters);
+
+  const setFilterClasses = (i) => {
+    let index = (i + 1) % 6;
+    index = index ? index : 6 - index;
+    return `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 bg-repeat-table-${index} text-white`;
+  };
+
+  const assembleCategories = (filters) => {
+    let categories = [...filters.levelOneFilters]
+      .map((cat, i) => {
+        return { ...cat, class: setFilterClasses(i) };
+      })
+      .filter((cat) => cat.label !== "IMPACTS");
+    let subcategories = [...filters.levelTwoFilters]
+      .filter((sub) => sub.levelOneSlug !== "impacts")
+      .map((sub, i) => {
+        sub.class = categories.filter((e) => e.slug === sub.levelOneSlug)[0].class;
+        return sub;
+      });
+    return (
+      <>
+        <div className="py-2">Category</div>
+        <div className="block pt-3 px-3">
+          {categories.map((category) => (
+            <div
+              key={category.slug}
+              className={classNames(category.class, "cursor-pointer")}
+              onClick={() => {
+                toggleCategory(category);
+              }}
+            >
+              {category.label}
+            </div>
+          ))}
+        </div>
+        <div className="py-2">Subcategory</div>
+        <div className="block pt-3 px-3">
+          {subcategories.map((subcategory, i) => (
+            <div key={i} className={subcategory.class}>
+              {subcategory.label}
+            </div>
+          ))}
+        </div>
+      </>
+    );
+  };
+
   useEffect(() => {
     dispatch(loadFilters());
   }, []);
+
+  const toggleCategory = (category) => {
+    console.log(category, filters);
+    // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
+    // setParams({
+    //   categories,
+    // });
+    // router.push(`?counter=10`, undefined, { shallow: true });
+  };
+
   const loadScopeMenu = () => {
     return (
       <Menu as="div" className="relative inline-block text-left">
@@ -65,7 +125,8 @@ const ExploreLoader = () => {
       </div>
 
       <div className="py-8">
-        <ExploreFilter />
+        <div className="py-2">Filter by</div>
+        <>{assembleCategories(filters)}</>
       </div>
       <div className="">
         <ExploreBenchmark />
