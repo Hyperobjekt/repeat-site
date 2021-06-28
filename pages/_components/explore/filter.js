@@ -12,25 +12,43 @@ function classNames(...classes) {
 const ExploreFilter = () => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
-  useEffect(() => {}, []);
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+
+  const setFilterClasses = (i) => {
+    let index = (i + 1) % 6;
+    index = index ? index : 6 - index;
+    return `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 bg-repeat-table-${index} text-white`;
+  };
+
+  useEffect(() => {
+    console.log(filters);
+    let l1 = filters.levelOneFilters.map((cat, i) => ({ ...cat, class: setFilterClasses(i) }));
+    let l2 = filters.levelTwoFilters.map((sub, i) => {
+      sub.class = l1.filter((e) => e.slug === sub.levelOneSlug)[0].class;
+      return sub;
+    });
+    setCategories(l1);
+    setSubcategories(l2);
+  }, [filters]);
 
   return (
     <div className="">
       <div className="py-2">Filter by</div>
       <div className="py-2">Category</div>
       <div className="block pt-3 px-3">
-        {filters.levelOneFilters
+        {categories
           .filter((cat) => cat.label !== "IMPACTS")
-          .map((category) => (
-            <div key={category.slug} className="inline-block rounded text-sm mb-3 mr-3 px-3 py-1 bg-repeat-burnt text-white">
+          .map((category, i) => (
+            <div key={category.slug} className={category.class}>
               {category.label}
             </div>
           ))}
       </div>
       <div className="py-2">Subcategory</div>
       <div className="block pt-3 px-3">
-        {filters.levelTwoFilters.map((subcategory, i) => (
-          <div key={i} className="inline-block rounded text-sm mb-3 mr-3 px-3 py-1 bg-repeat-burnt text-white">
+        {subcategories.map((subcategory, i) => (
+          <div key={i} className={subcategory.class}>
             {subcategory.label}
           </div>
         ))}

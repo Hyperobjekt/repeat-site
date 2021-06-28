@@ -24,7 +24,7 @@ const ExploreLoader = () => {
         {({ open }) => (
           <>
             <div>
-              <Menu.Button className="inline-flex justify-center w-full rounded-md border  px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
+              <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
                 {activeState}
                 <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
               </Menu.Button>

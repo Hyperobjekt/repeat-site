@@ -2,8 +2,7 @@
 import { Fragment } from "react";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
-import { BookmarkAltIcon, CalendarIcon, ChartBarIcon, CursorClickIcon, MenuIcon, PhoneIcon, PlayIcon, RefreshIcon, ShieldCheckIcon, SupportIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { ChartBarIcon, CursorClickIcon, MenuIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
 
 const pages = [
   {
