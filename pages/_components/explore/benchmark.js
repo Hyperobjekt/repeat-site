@@ -9,6 +9,363 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+const handleVsChange = (position) => {
+  const toPos = position;
+  const fromPos = position === "left" ? "right" : "left";
+
+  let highlight = document.getElementById("highlight");
+  let vsFrom = document.getElementsByClassName(`vs--${fromPos}`)[0];
+  let vsTo = document.getElementsByClassName(`vs--${toPos}`)[0];
+
+  highlight.classList.remove(`highlight--${fromPos}`);
+  highlight.classList.add(`highlight--${toPos}`);
+
+  vsFrom.classList.remove("vs-active");
+  vsFrom.classList.add("vs-inactive");
+
+  vsTo.classList.add("vs-active");
+  vsTo.classList.remove("vs-inactive");
+};
+
+// $('.vs--left').click((e) => handleVsChange("left"))
+// $('.vs--right').click((e) => handleVsChange("right"))
+
+export const BenchmarkTable = () => {
+  return (
+    <div className="container mt-4 relative m-auto w-full pt-8 pb-4">
+      <div id="highlight" className="absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--left"></div>
+
+      <button className="border border-gray-500 px-2 py-1 text-sm rounded-md absolute z-10 vs--left bg-black text-white" onClick={() => handleVsChange("left")}>
+        ← VS.
+      </button>
+      <button className="border border-gray-500 px-2 py-1 text-sm rounded-md absolute z-10 vs--right bg-white text-black" onClick={() => handleVsChange("right")}>
+        VS. →
+      </button>
+
+      <table className="table-fixed w-full relative border-collapse">
+        <thead className="text-left">
+          <tr className="table w-full table-fixed">
+            <th className="p-2" colSpan="2">
+              Category
+            </th>
+            <th className="p-2" colSpan="3">
+              Current Policy
+            </th>
+            <th className="p-2" colSpan="3">
+              Repeat Scenario
+            </th>
+            <th className="p-2" colSpan="2">
+              Net Zero
+            </th>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <th className="p-2"></th>
+            <th className="p-2">2019</th>
+            <th className="p-2">2030</th>
+            <th className="p-2" colSpan="2">
+              2050
+            </th>
+            <th className="p-2">2030</th>
+            <th className="p-2" colSpan="2">
+              2050
+            </th>
+            <th className="p-2">2030</th>
+            <th className="p-2">2050</th>
+          </tr>
+        </thead>
+        <tbody className="w-full max-h-96 overflow-auto block">
+          <tr className="bg-black text-white rounded-md table w-full table-fixed">
+            <td className="p-2" colSpan="10">
+              Pillar 3: Clean Fuels
+            </td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+
+          <tr className="bg-black text-white rounded-md table w-full table-fixed">
+            <td className="p-2" colSpan="10">
+              Pillar 3: Clean Fuels
+            </td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+
+          <tr className="bg-black text-white rounded-md table w-full table-fixed">
+            <td className="p-2" colSpan="10">
+              Pillar 3: Clean Fuels
+            </td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+          <tr className="table w-full table-fixed">
+            <td className="p-2">Tellus</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2" colSpan="2">
+              12.34
+            </td>
+            <td className="p-2">12.34</td>
+            <td className="p-2">12.34</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export const tableRow = (scenario, i) => {
+  return (
+    <div key={i}>
+      <div className="col-span-2">{scenario.variable_name}</div>
+      <div className="col-span-2">{scenario.value}</div>
+      <div className="">{scenario.value}</div>
+      <div className="">{scenario.value}</div>
+      <div className="col-span-2"></div>
+      <div className="">{scenario.value}</div>
+      <div className="">{scenario.value}</div>
+      <div className="col-span-2"></div>
+      <div className="">{scenario.value}</div>
+      <div className="">{scenario.value}</div>
+    </div>
+  );
+};
+
 const ExploreFilter = () => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
@@ -17,55 +374,9 @@ const ExploreFilter = () => {
     dispatch(loadScenarios(filters.url));
   }, []);
 
-  // const tableHeader = () => {
-  //   return (
-  //     <div className="grid grid-cols-14 sticky top-0 bg-white">
-  //       <div className="col-start-5 col-span-2">Current Policy</div>
-  //       <div className="col-span-2 text-center">vs</div>
-  //       <div className="col-span-2 bg-repeat-light-blue">Repeat Scenario</div>
-  //       <div className="col-span-2 text-center bg-repeat-light-blue">vs</div>
-  //       <div className="col-span-2 bg-repeat-light-blue">Net Zero</div>
-  //       <div className="col-span-2 ">Categories/Subcategories</div>
-  //       <div className="col-start-9 col-span-2 bg-repeat-light-blue"></div>
-  //       <div className="col-span-2 text-center bg-repeat-light-blue">Show differences as</div>
-  //       <div className="bg-repeat-light-blue"></div>
-  //       <div className="bg-repeat-light-blue"></div>
-  //       <div className="col-span-2">
-  //         <input className="w-full border-none bg-transparent h-7 text-xs" placeholder="Search for an output" type="text" />
-  //       </div>
-  //       <div className="col-span-2">2019</div>
-  //       <div className="">2030</div>
-  //       <div className="">2050</div>
-  //       <div className="col-span-2"></div>
-  //       <div className="">2030</div>
-  //       <div className="">2050</div>
-  //       <div className="">Absolute</div>
-  //       <div className="">Percent</div>
-  //       <div className="">2030</div>
-  //       <div className="">2050</div>
-  //     </div>
-  //   );
-  // };
-
-  // const tableRow = (scenario, i) => {
-  //   return (
-  //     <div key={i}>
-  //       <div className="col-span-2">{scenario.variable_name}</div>
-  //       <div className="col-span-2">{scenario.value}</div>
-  //       <div className="">{scenario.value}</div>
-  //       <div className="">{scenario.value}</div>
-  //       <div className="col-span-2"></div>
-  //       <div className="">{scenario.value}</div>
-  //       <div className="">{scenario.value}</div>
-  //       <div className="col-span-2"></div>
-  //       <div className="">{scenario.value}</div>
-  //       <div className="">{scenario.value}</div>
-  //     </div>
-  //   );
-  // };
-
   return (
-    <div className="relative overflow-auto h-96 text-xs">
+    <div className="relative text-xs">
+      <BenchmarkTable />
       {/* {tableHeader()}
       <div className="">
         <div className="grid grid-cols-14">{scenarios.map((scenario, i) => tableRow(scenario, i))}</div>

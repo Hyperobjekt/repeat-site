@@ -55,6 +55,14 @@ body {
   }
 }
 
+#highlight {width:60%}
+
+.highlight--right { right: 0; }
+.highlight--left { right: 30%; width: 52.5%; }
+
+.vs--left { right: 60%; transform: translateX(50%);  }
+.vs--right { right: 30%; transform: translateX(50%);  }
+
 /* purgecss end ignore */
 
 @tailwind utilities;
@@ -65,6 +73,12 @@ body {
     -webkit-appearance: none;
     margin: 0;
   }
+}
+.vs-active {
+  @apply bg-black text-white;
+}
+.vs-inactive {
+  @apply bg-white text-black;
 }
 /* 
 .repeat-button-primary {
