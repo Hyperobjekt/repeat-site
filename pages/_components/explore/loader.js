@@ -129,6 +129,7 @@ const ExploreLoader = () => {
         <>{assembleCategories(filters)}</>
       </div>
       <div className="">
+        <pre>{JSON.stringify(filters,0,2)}</pre>
         <ExploreBenchmark />
       </div>
     </div>
