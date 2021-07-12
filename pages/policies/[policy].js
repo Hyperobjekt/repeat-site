@@ -8,6 +8,7 @@ import InTheMedia from "../_components/global/in-the-media";
 import RepeatFooter from "../_components/global/footer";
 import RepeatPolicy from "../_components/policy";
 
+
 let stats = {
   header: "The Biden Administration Climate Program",
   background: "",

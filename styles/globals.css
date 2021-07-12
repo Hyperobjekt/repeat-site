@@ -49,6 +49,20 @@ body {
     opacity: 1;
 }
 
+.ant-image-preview-img-wrapper::before {
+  display: inline-block;
+  width: 1px;
+  height: 0% !important;
+  margin-right: -1px !important;
+  content: '';
+}
+
+
+.ant-image-preview-img {
+  margin: auto;
+  max-height: 95% !important;
+}
+
 @media (max-width: 1023px) {
   .container {
     padding: 0 1.75rem;
