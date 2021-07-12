@@ -80,6 +80,9 @@ body {
 .vs-inactive {
   @apply bg-white text-black;
 }
+a,a.primary-link {
+  @apply text-repeat-burnt
+}
 /* 
 .repeat-button-primary {
   @apply items-center justify-center px-4 py-2 border-b-2 border-repeat-primary shadow-sm text-base font-medium text-white bg-repeat-primary-light hover:bg-repeat;
