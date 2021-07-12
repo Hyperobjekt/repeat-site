@@ -5,11 +5,11 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChartBarIcon, CursorClickIcon, MenuIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
 
 const pages = [
-  {
-    name: "Policy",
+ /* {
+    name: "Policies",
     icon: CursorClickIcon,
     href: "/policy",
-  },
+  }, */
   {
     name: "About",
     icon: ChartBarIcon,
@@ -102,11 +102,6 @@ export default function RepeatHeader() {
                 </Popover.Button>
               </div>
               <Popover.Group as="nav" className="hidden md:flex space-x-10">
-                <Link href="/about">
-                  <a href="/about" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
-                    About
-                  </a>
-                </Link>
                 <div className="relative group">
                   <button className={classNames(open ? "text-white" : "font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat", "group inline-flex items-center text-base font-medium hover:text-white focus:outline-none")}>
                     <Link href="/policies">
@@ -115,7 +110,7 @@ export default function RepeatHeader() {
                       </a>
                     </Link>
                   </button>
-                  <div className="absolute z-10 hidden -left-10 -right-40 bg-grey-200 group-hover:block">
+                  <div className="absolute z-10 hidden -right-40 bg-grey-200 group-hover:block">
                     <div className="mt-6 shadow-lg">
                       {policies.map((item) => (
                         <Link key={item.name} href={item.href}>
@@ -129,6 +124,11 @@ export default function RepeatHeader() {
                     </div>
                   </div>
                 </div>
+                <Link href="/about">
+                  <a href="/about" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
+                    About
+                  </a>
+                </Link>
                 {/* <Popover className="relative">
                   {({ open }) => (
                     <>
