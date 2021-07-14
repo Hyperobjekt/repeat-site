@@ -94,8 +94,8 @@ body {
 .vs-inactive {
   @apply bg-white text-black;
 }
-a,a.primary-link {
-  @apply text-repeat-burnt
+a.primary-link {
+  @apply text-repeat-burnt border-b border-repeat-burnt
 }
 /* 
 .repeat-button-primary {

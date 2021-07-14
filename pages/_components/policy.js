@@ -141,8 +141,15 @@ const policies = {
     contentBlocks: [
       {
         type: "paragraph",
-        content:
-          "Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.",
+        content: (
+          <span>
+            Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae{" "}
+            <a className="primary-link" href="#">
+              augue pharetra consequat
+            </a>
+            . Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.
+          </span>
+        ),
       },
       {
         type: "component",
