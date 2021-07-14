@@ -204,21 +204,21 @@ const RepeatPolicy = ({ policy }) => {
               </div>
             );
           if (block.type === "slider")
-          return (
-            <div key={i} className="md:w-full pt-5 pb-10">
-              {block.content}
-            </div>
-          );  
+            return (
+              <div key={i} className="md:w-full pt-5 pb-10">
+                {block.content}
+              </div>
+            );
           if (block.type === "pillars")
-          return (
-            <div key={i} className="md:w-full py-0">
-              {block.content}
-            </div>
-          );  
+            return (
+              <div key={i} className="md:w-full py-0">
+                {block.content}
+              </div>
+            );
           if (block.type === "heading")
             return (
               <div key={i} className="md:w-1/2 pt-2">
-                <h3 className="text-lg font-bold text-repeat-teal text-3xl mb-5">{block.content}</h3>
+                <h3 className="font-bold text-repeat-teal text-3xl mb-5">{block.content}</h3>
               </div>
             );
         })}

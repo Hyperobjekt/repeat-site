@@ -39,9 +39,8 @@ const RepeatMedia = () => {
     <React.Fragment>
       <RepeatHero backgroundClass="bg-media-cover md:bg-center bg-fixed md:bg-cover bg-no-repeat" />
       <div className="white-spacer absolute z-0 -mt-40 bg-white border-t-4 hidden sm:block"></div>
-      <div className="max-w-screen-lg m-auto relative m-auto z-10 -mt-40 text-repeat-black pb-24">
+      <div className="max-w-screen-lg m-auto relative z-10 -mt-40 text-repeat-black pb-24">
         <div className="container subpages lg:w-3/4 bg-white rounded-tr-2xl border-t-4 border-repeat">
-         
             <h2 className="text-2xl md:text-5xl pt-8 font-extrabold font-obliqua">
               Zero Lab + The Repeat <br />
               Project in the Media
