@@ -35,7 +35,7 @@ const ImageCarousel = ({ slides }) => {
                 <Image
                   src={slide.image}
                   preview={{
-                    src: "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png",
+                    src: slide.image,
                   }}
                 />
                 <div>{slide.caption}</div>
