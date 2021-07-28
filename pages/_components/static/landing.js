@@ -36,11 +36,11 @@ const RepeatLanding = () => {
         <div className="md:w-3/5">
           <p>
             The Princeton ZERO Lab and{" "}
-            <a href="http://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener">
+            <a className="primary-link" href="http://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener">
               Net-Zero America study
             </a>{" "}
             team, in partnership with{" "}
-            <a href="https://www.evolved.energy/" target="_blank" rel="noreferrer noopener">
+            <a className="primary-link" href="https://www.evolved.energy/" target="_blank" rel="noreferrer noopener">
               Evolved Energy Research
             </a>
             , have developed a suite of geospatial planning and analysis tools coupled with detailed macro-energy system optimization models capable of rapidly evaluating policy and regulatory proposals at politically-relevant spatial resolutions (e.g., state, county, and sometimes finer resolutions). This includes evaluation of candidate sites for wind and solar development, thermal power plant siting and repowering, and transmission expansion as well as associated impacts on air quality and
