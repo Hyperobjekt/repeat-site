@@ -10,6 +10,7 @@ import RepeatHero from "../_components/global/hero";
 
 let policies = [
   {
+    href: "/policies/biden-administration-plan",
     stats: {
       header: "The Biden Administration Climate Program",
       background: "",
@@ -34,6 +35,7 @@ let policies = [
     description: "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
   },
   {
+    href: "/policies/cres-climate-agenda",
     stats: {
       header: "U.S. Climate Action Partnership 2050 Carbon Plan",
       background: "",
@@ -58,6 +60,7 @@ let policies = [
     description: "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
   },
   {
+    href: "/policies/sba-green-recovery-fund",
     stats: {
       header: "Small Business Alliance Clean Jobs Proposal",
       background: "",
@@ -135,12 +138,14 @@ export default function HomePage() {
           <Stats stats={policy.stats} />
           <div className="md:w-1/2 pb-5 text-lg pt-8 text-repeat-black">
             <p>{policy.description}</p>
-            <a className="text-black hover:text-repeat" href="">
-              <span className="inline-block align-middle leading-5 border-b-2 border-black hover:border-repeat">Read more</span>
-              <span className="inline-block align-middle">
-                <ChevronRightIcon className="h-4 w-4" />
-              </span>
-            </a>
+            <Link href={policy.href}>
+              <a className="text-black hover:text-repeat" href={policy.href}>
+                <span className="inline-block align-middle leading-5 border-b-2 border-black hover:border-repeat">Read more</span>
+                <span className="inline-block align-middle">
+                  <ChevronRightIcon className="h-4 w-4" />
+                </span>
+              </a>
+            </Link>
           </div>
         </div>
       ))}
