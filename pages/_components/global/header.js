@@ -5,7 +5,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChartBarIcon, CursorClickIcon, MenuIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
 
 const pages = [
- /* {
+  /* {
     name: "Policies",
     icon: CursorClickIcon,
     href: "/policy",
@@ -27,25 +27,25 @@ const pages = [
     href: "https://netzeroamerica.princeton.edu",
   },*/
 ];
+
 const policies = [
   {
     name: "Biden Administration Plan",
     icon: ChartBarIcon,
   },
-  /*
+
   {
-    name: "CRES Climate Agenda",
+    name: "U.S. Climate Action Partnership 2050 Carbon Plan",
     icon: CursorClickIcon,
   },
   {
-    name: "SBA Green Recovery Fund",
+    name: "Small Business Alliance Clean Jobs Proposal",
     icon: ViewGridIcon,
   },
-  {
-    name: "Green New Deal",
-    icon: RefreshIcon,
-  },
-  */
+  // {
+  //   name: "Green New Deal",
+  //   icon: RefreshIcon,
+  // },
 ].map((e) => ({ ...e, href: "/policies/" + e.name.replace(/ /gi, "-").toLocaleLowerCase() }));
 
 function classNames(...classes) {
