@@ -6,7 +6,7 @@ const Pillars = () => {
       <div className="container max-w-screen-lg m-auto px-0 sm:px-0">
         <div className="grid pt-6 grid-cols-1 md:grid-cols-3 gap-10 place-content-center">
           <div className="block md:pb-8">
-            <h4 className="font-bold text-lg border-b-4 border-repeat-table-1 bg-repeat-table-1">
+            <h4 className="font-bold text-lg border-b-4 border-repeat-table-1">
               <span className="font-utopia text-repeat-burnt">1: </span>Efficiency/Electrification
             </h4>
             <div className="pt-4 font-utopia text-lg text-repeat-black">
