@@ -112,7 +112,7 @@ const ExploreLoader = () => {
   };
   return (
     <div className="">
-      <h2 className="text-repeat-light-blue text-3xl font-bold mb-3 bg-repeat-table-1">Examine the Data</h2>
+      <h2 className="text-repeat-light-blue text-3xl font-bold mb-3 bg-repeat-table-2">Examine the Data</h2>
       <p className="text-repeat-dark">Maecenas efficitur dolor. Donec gravida dolor quis dignissim elementum.</p>
       <p className="text-repeat-dark pt-8">Compare by</p>
       <div className="flex px-2 pt-5 border-b-4 border-repeat">
