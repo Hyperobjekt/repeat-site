@@ -20,10 +20,9 @@ const ExploreLoader = () => {
   let filters = useSelector((state) => state.filters);
 
   const setFilterClasses = (i) => {
-    let suffix = "abcdef".split("");
     let index = (i + 1) % 6;
     index = index ? index : 6 - index;
-    return `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 bg-repeat-table-${suffix[index - 1]} text-white`;
+    return `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 bg-repeat-table-${index} text-white`;
   };
 
   const assembleCategories = (filters) => {
@@ -113,7 +112,7 @@ const ExploreLoader = () => {
   };
   return (
     <div className="">
-      <h2 className="text-repeat-light-blue text-3xl font-bold mb-3">Examine the Data</h2>
+      <h2 className="text-repeat-teal text-3xl font-bold mb-3">Examine the Data</h2>
       <p className="text-repeat-dark">Maecenas efficitur dolor. Donec gravida dolor quis dignissim elementum.</p>
       <p className="text-repeat-dark pt-8">Compare by</p>
       <div className="flex px-2 pt-5 border-b-4 border-repeat">

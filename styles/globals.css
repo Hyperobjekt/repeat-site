@@ -39,6 +39,26 @@ body {
   width: 40%;
 }
 
+.bg-repeat-table-1 {
+   background: #926868;
+}
+
+.bg-repeat-table-2{ 
+  background: #7F7353;
+}
+.bg-repeat-table-3{ 
+  background: #607C5C;
+}
+.bg-repeat-table-4{ 
+  background: #5B7B80;
+}
+.bg-repeat-table-5{ 
+  background: #7E6E8C;
+}
+.bg-repeat-table-6{ 
+  background: #5E4557;
+}
+
 
 .font-forum {
   font-family: "Forum-Regular";
@@ -77,6 +97,7 @@ body {
 .vs--left { right: 60%; transform: translateX(50%);  }
 .vs--right { right: 30%; transform: translateX(50%);  }
 
+
 /* purgecss end ignore */
 
 @tailwind utilities;
@@ -97,9 +118,7 @@ body {
 a.primary-link {
   @apply text-repeat-burnt border-b border-repeat-burnt
 }
-.bg-repeat-table-a {
-   @apply bg-repeat-table-1;
-}
+
 /* 
 .repeat-button-primary {
   @apply items-center justify-center px-4 py-2 border-b-2 border-repeat-primary shadow-sm text-base font-medium text-white bg-repeat-primary-light hover:bg-repeat;
