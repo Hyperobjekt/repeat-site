@@ -68,11 +68,6 @@ module.exports = {
       colors: {
         repeat: {
           "table-1": "#926868",
-          "table-2": "#7F7353",
-          "table-3": "#607C5C",
-          "table-4": "#5B7B80",
-          "table-5": "#7E6E8C",
-          "table-6": "#5E4557",
           teal: "#325d6b",
           //black: "#323438",
           black: "#565656",
