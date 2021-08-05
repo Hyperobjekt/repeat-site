@@ -8,57 +8,6 @@ import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const tableData = [
-  {
-    state: "National",
-    category: "Pillar 1: Efficiency/Electrification",
-    subcategory: "Electricity Demand",
-    policy: "biden-administration",
-    values: [
-      {
-        variable: "Bulk demand",
-        history: {
-          2020: "97.88",
-        },
-        policy: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-        repeat: {
-          2030: "93.88",
-          2050: "93.88",
-          deltas: { 2030: 0, 2050: 0 },
-        },
-        nzap: {
-          2030: "97.88",
-          2050: "43.02",
-        },
-      },
-      {
-        variable: "Bulk demand +",
-        history: {
-          2020: "97.88",
-        },
-        policy: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-        repeat: {
-          2030: "93.88",
-          2050: "93.88",
-          deltas: { 2030: 0, 2050: 0 },
-        },
-        nzap: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-      },
-    ],
-  },
-];
-// $('.vs--left').click((e) => handleVsChange("left"))
-// $('.vs--right').click((e) => handleVsChange("right"))
-
 export const BenchmarkTable = ({ tableData }) => {
   const [vsWith, setVsWith] = useState("CURRENT"); // CURRENT | NZAP
 
@@ -125,9 +74,9 @@ export const BenchmarkTable = ({ tableData }) => {
           </tr>
         </thead>
         <tbody className="w-full max-h-96 overflow-auto block">
-          {tableData.map((row) => {
+          {tableData.map((row, i) => {
             return (
-              <>
+              <Fragment key={i}>
                 <tr className="bg-black text-white rounded-md table w-full table-fixed">
                   <td className="p-2" colSpan="10">
                     {row.category}
@@ -135,7 +84,6 @@ export const BenchmarkTable = ({ tableData }) => {
                 </tr>
                 {row.values
                   .map((valueRow) => {
-                    console.log(vsWith, valueRow);
                     if (vsWith === "CURRENT") {
                       valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.policy[2030])).toFixed(2);
                       valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy[2050])).toFixed(2);
@@ -147,9 +95,9 @@ export const BenchmarkTable = ({ tableData }) => {
 
                     return valueRow;
                   })
-                  .map((valueRow) => {
+                  .map((valueRow, vi) => {
                     return (
-                      <tr className="table w-full table-fixed">
+                      <tr className="table w-full table-fixed" key={vi}>
                         <td className="p-2">{valueRow.variable}</td>
                         <td className="p-2">{valueRow.history[2020]}</td>
 
@@ -170,124 +118,16 @@ export const BenchmarkTable = ({ tableData }) => {
                       </tr>
                     );
                   })}
-              </>
+              </Fragment>
             );
           })}
-
-          {/* <tr className="bg-black text-white rounded-md table w-full table-fixed">
-            <td className="p-2" colSpan="10">
-              Pillar 3: Clean Fuels
-            </td>
-          </tr>
-          <tr className="table w-full table-fixed">
-            <td className="p-2">Tellus</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-          </tr>
-          <tr className="table w-full table-fixed">
-            <td className="p-2">Tellus</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-          </tr>
-          <tr className="table w-full table-fixed">
-            <td className="p-2">Tellus</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-          </tr>
-          <tr className="table w-full table-fixed">
-            <td className="p-2">Tellus</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-          </tr>
-          <tr className="table w-full table-fixed">
-            <td className="p-2">Tellus</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-          </tr>
-          <tr className="table w-full table-fixed">
-            <td className="p-2">Tellus</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2" colSpan="2">
-              12.34
-            </td>
-            <td className="p-2">12.34</td>
-            <td className="p-2">12.34</td>
-          </tr>
-         */}
         </tbody>
       </table>
     </div>
   );
 };
 
-export const tableRow = (scenario, i) => {
-  return (
-    <div key={i}>
-      <div className="col-span-2">{scenario.variable_name}</div>
-      <div className="col-span-2">{scenario.value}</div>
-      <div className="">{scenario.value}</div>
-      <div className="">{scenario.value}</div>
-      <div className="col-span-2"></div>
-      <div className="">{scenario.value}</div>
-      <div className="">{scenario.value}</div>
-      <div className="col-span-2"></div>
-      <div className="">{scenario.value}</div>
-      <div className="">{scenario.value}</div>
-    </div>
-  );
-};
-
-const ExploreFilter = () => {
+const ExploreFilter = ({tableData}) => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
@@ -298,10 +138,6 @@ const ExploreFilter = () => {
   return (
     <div className="relative text-xs">
       <BenchmarkTable tableData={tableData} />
-      {/* {tableHeader()}
-      <div className="">
-        <div className="grid grid-cols-14">{scenarios.map((scenario, i) => tableRow(scenario, i))}</div>
-      </div> */}
     </div>
   );
 };
