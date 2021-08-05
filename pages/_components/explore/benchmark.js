@@ -74,60 +74,62 @@ export const BenchmarkTable = ({ tableData }) => {
           </tr>
         </thead>
         <tbody className="w-full max-h-96 overflow-auto block">
-          {tableData.map((row, i) => {
-            return (
-              <Fragment key={i}>
-                <tr className="bg-black text-white rounded-md table w-full table-fixed">
-                  <td className="p-2" colSpan="10">
-                    {row.category}
-                  </td>
-                </tr>
-                {row.values
-                  .map((valueRow) => {
-                    if (vsWith === "CURRENT") {
-                      valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.policy[2030])).toFixed(2);
-                      valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy[2050])).toFixed(2);
-                    }
-                    if (vsWith === "NZAP") {
-                      valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.nzap[2030])).toFixed(2);
-                      valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.nzap[2050])).toFixed(2);
-                    }
+          {tableData
+            ? tableData.map((row, i) => {
+                return (
+                  <Fragment key={i}>
+                    <tr className="bg-black text-white rounded-md table w-full table-fixed">
+                      <td className="p-2" colSpan="10">
+                        {row.category}
+                      </td>
+                    </tr>
+                    {row.values
+                      .map((valueRow) => {
+                        if (vsWith === "CURRENT") {
+                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.policy[2030])).toFixed(2);
+                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy[2050])).toFixed(2);
+                        }
+                        if (vsWith === "NZAP") {
+                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.nzap[2030])).toFixed(2);
+                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.nzap[2050])).toFixed(2);
+                        }
 
-                    return valueRow;
-                  })
-                  .map((valueRow, vi) => {
-                    return (
-                      <tr className="table w-full table-fixed" key={vi}>
-                        <td className="p-2">{valueRow.variable}</td>
-                        <td className="p-2">{valueRow.history[2020]}</td>
+                        return valueRow;
+                      })
+                      .map((valueRow, vi) => {
+                        return (
+                          <tr className="table w-full table-fixed" key={vi}>
+                            <td className="p-2">{valueRow.variable}</td>
+                            <td className="p-2">{valueRow.history[2020]}</td>
 
-                        <td className="p-2">{valueRow.policy[2030]}</td>
-                        <td className="p-2" colSpan="2">
-                          {valueRow.policy[2050]}
-                        </td>
+                            <td className="p-2">{valueRow.policy[2030]}</td>
+                            <td className="p-2" colSpan="2">
+                              {valueRow.policy[2050]}
+                            </td>
 
-                        <td className="p-2">
-                          {valueRow.repeat[2030]} <span className="inline-block text-xs pl-2 text-repeat-dark">{valueRow.repeat.deltas[2030]}</span>
-                        </td>
-                        <td className="p-2" colSpan="2">
-                          {valueRow.repeat[2050]} <span className="inline-block text-xs pl-2 text-repeat-dark">{valueRow.repeat.deltas[2050]}</span>
-                        </td>
+                            <td className="p-2">
+                              {valueRow.repeat[2030]} <span className="inline-block text-xs pl-2 text-repeat-dark">{valueRow.repeat.deltas[2030]}</span>
+                            </td>
+                            <td className="p-2" colSpan="2">
+                              {valueRow.repeat[2050]} <span className="inline-block text-xs pl-2 text-repeat-dark">{valueRow.repeat.deltas[2050]}</span>
+                            </td>
 
-                        <td className="p-2">{valueRow.nzap[2030]}</td>
-                        <td className="p-2">{valueRow.nzap[2050]}</td>
-                      </tr>
-                    );
-                  })}
-              </Fragment>
-            );
-          })}
+                            <td className="p-2">{valueRow.nzap[2030]}</td>
+                            <td className="p-2">{valueRow.nzap[2050]}</td>
+                          </tr>
+                        );
+                      })}
+                  </Fragment>
+                );
+              })
+            : null}
         </tbody>
       </table>
     </div>
   );
 };
 
-const ExploreFilter = ({tableData}) => {
+const ExploreFilter = ({ tableData }) => {
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
