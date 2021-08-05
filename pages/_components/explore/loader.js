@@ -10,6 +10,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+
+
 const ExploreLoader = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -129,7 +131,7 @@ const ExploreLoader = () => {
         <>{assembleCategories(filters)}</>
       </div>
       <div className="">
-        <ExploreBenchmark />
+        <ExploreBenchmark/>
       </div>
     </div>
   );
