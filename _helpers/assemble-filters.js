@@ -28,6 +28,14 @@ const getTableExamBy = (filters, explorer) => {
   if (explorer === "pathway") return "e-positive";
 };
 export const assembleFilters = (stateFilters, actionFilters) => {
+  /*? URL: 
+  - compareby=
+  - usstate=
+  - categories
+  - subcategories
+  - deltaas
+  */
+  console.log("setting filters...");
   let explorer = localStorage.getItem("explorer") || actionFilters.explorer || "year";
   let filter = {
     ...stateFilters,
