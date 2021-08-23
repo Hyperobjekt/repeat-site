@@ -33,7 +33,9 @@ export const assembleFilters = (stateFilters, actionFilters) => {
   - usstate=
   - categories
   - subcategories
-  - deltaas
+  - vsBy=
+  - deltaas=
+  - q=
   */
   console.log("setting filters...");
   let explorer = localStorage.getItem("explorer") || actionFilters.explorer || "year";

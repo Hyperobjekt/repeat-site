@@ -90,8 +90,8 @@ export const BenchmarkTable = ({ tableData }) => {
                           valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy[2050])).toFixed(2);
                         }
                         if (vsWith === "NZAP") {
-                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.nzap[2030])).toFixed(2);
-                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.nzap[2050])).toFixed(2);
+                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.core[2030])).toFixed(2);
+                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.core[2050])).toFixed(2);
                         }
 
                         return valueRow;
@@ -114,8 +114,8 @@ export const BenchmarkTable = ({ tableData }) => {
                               {valueRow.repeat[2050]} <span className="inline-block text-xs pl-2 text-repeat-dark">{valueRow.repeat.deltas[2050]}</span>
                             </td>
 
-                            <td className="p-2">{valueRow.nzap[2030]}</td>
-                            <td className="p-2">{valueRow.nzap[2050]}</td>
+                            <td className="p-2">{valueRow.core[2030]}</td>
+                            <td className="p-2">{valueRow.core[2050]}</td>
                           </tr>
                         );
                       })}

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { loadFilters, loadFilterAction } from "../../../redux/actions/filters.actions";
+import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import ExploreBenchmark from "./benchmark";
 
 function classNames(...classes) {
@@ -65,14 +66,16 @@ const ExploreLoader = () => {
   const router = useRouter();
   let routerQuery = { ...router.query };
   delete routerQuery.policy;
+  let filters = useSelector((state) => state.filters);
+  let scenarios = useSelector((state) => state.scenarios);
   const [tableData, setTableData] = useState(rawData);
   const [activeState, setActiveState] = useState("National");
   const [params, setParams] = useState(routerQuery);
-  let filters = useSelector((state) => state.filters);
 
   useEffect(() => {
     dispatch(loadFilters());
-    console.log(filters, params);
+    dispatch(loadScenarios());
+    console.log(filters, scenarios, params);
   }, []);
 
   const setFilterClasses = (color, active) => {
@@ -209,7 +212,7 @@ const ExploreLoader = () => {
         <>{assembleCategories(filters)}</>
       </div>
       <div className="">
-        <ExploreBenchmark tableData={tableData} />
+        <ExploreBenchmark tableData={scenarios} />
       </div>
     </div>
   );
