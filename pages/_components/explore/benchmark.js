@@ -86,25 +86,25 @@ export const BenchmarkTable = ({ tableData }) => {
                     {row.values
                       .map((valueRow) => {
                         if (vsWith === "CURRENT") {
-                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.policy[2030])).toFixed(2);
-                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy[2050])).toFixed(2);
+                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.policy ? valueRow.policy[2030] : 0)).toFixed(0);
+                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy ? valueRow.policy[2050] : 0)).toFixed(0);
                         }
                         if (vsWith === "NZAP") {
-                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.core[2030])).toFixed(2);
-                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.core[2050])).toFixed(2);
+                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.core ? valueRow.core[2030] : 0)).toFixed(0);
+                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.core ? valueRow.core[2050] : 0)).toFixed(0);
                         }
 
                         return valueRow;
                       })
                       .map((valueRow, vi) => {
                         return (
-                          <tr className="table w-full table-fixed" key={vi}>
+                          <tr className="table w-full table-fixed hover:bg-repeat hover:bg-opacity-5" key={vi}>
                             <td className="p-2">{valueRow.variable}</td>
                             <td className="p-2">{valueRow.history[2020]}</td>
 
-                            <td className="p-2">{valueRow.policy[2030]}</td>
+                            <td className="p-2">{valueRow.policy ? valueRow.policy[2030] : 0}</td>
                             <td className="p-2" colSpan="2">
-                              {valueRow.policy[2050]}
+                              {valueRow.policy ? valueRow.policy[2050] : 0}
                             </td>
 
                             <td className="p-2">
