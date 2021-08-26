@@ -37,7 +37,7 @@ export const assembleFilters = (stateFilters, actionFilters) => {
   - deltaas=
   - q=
   */
-  console.log("setting filters...");
+
   let explorer = localStorage.getItem("explorer") || actionFilters.explorer || "year";
   let filter = {
     ...stateFilters,
@@ -52,5 +52,7 @@ export const assembleFilters = (stateFilters, actionFilters) => {
     limit: actionFilters.limit || window.PAGE_LIMIT,
   };
   filter.url = generateUrl(filter);
+
+  console.log(filter.url);
   return { ...filter };
 };

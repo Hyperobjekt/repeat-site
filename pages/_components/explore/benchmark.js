@@ -8,7 +8,7 @@ import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export const BenchmarkTable = ({ tableData }) => {
+export const BenchmarkTable = ({ tableData, filters }) => {
   const [vsWith, setVsWith] = useState("CURRENT"); // CURRENT | NZAP
 
   const handleVsChange = (position) => {
@@ -29,6 +29,11 @@ export const BenchmarkTable = ({ tableData }) => {
     vsTo.classList.remove("vs-inactive");
 
     position === "left" ? setVsWith("CURRENT") : setVsWith("NZAP");
+  };
+
+  const getColor = (category) => {
+    let filteredCategory = filters.levelOneFilters.filter((cat) => cat.label === category);
+    return filteredCategory.length ? filteredCategory[0].color : "";
   };
 
   return (
@@ -76,11 +81,11 @@ export const BenchmarkTable = ({ tableData }) => {
         <tbody className="w-full max-h-96 overflow-auto block">
           {tableData
             ? tableData.map((row, i) => {
-                return (
+                return row.values.length ? (
                   <Fragment key={i}>
-                    <tr className="bg-black text-white rounded-md table w-full table-fixed">
+                    <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
-                        {row.category}
+                        {row.category} - {row.subcategory}
                       </td>
                     </tr>
                     {row.values
@@ -120,7 +125,7 @@ export const BenchmarkTable = ({ tableData }) => {
                         );
                       })}
                   </Fragment>
-                );
+                ) : null;
               })
             : null}
         </tbody>
@@ -139,7 +144,7 @@ const ExploreFilter = ({ tableData }) => {
 
   return (
     <div className="relative text-xs">
-      <BenchmarkTable tableData={tableData} />
+      <BenchmarkTable tableData={tableData} filters={filters} />
     </div>
   );
 };

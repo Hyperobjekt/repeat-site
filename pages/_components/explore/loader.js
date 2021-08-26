@@ -11,55 +11,6 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const rawData = [
-  {
-    state: "Arizona",
-    color: "table-1",
-    category: "Pillar 1: Efficiency/Electrification",
-    subcategory: "Electricity Demand",
-    policy: "biden-administration",
-    values: [
-      {
-        variable: "Bulk demand",
-        history: {
-          2020: "97.88",
-        },
-        policy: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-        repeat: {
-          2030: "93.88",
-          2050: "93.88",
-          deltas: { 2030: 0, 2050: 0 },
-        },
-        nzap: {
-          2030: "97.88",
-          2050: "43.02",
-        },
-      },
-      {
-        variable: "unbulk demand",
-        history: {
-          2020: "97.88",
-        },
-        policy: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-        repeat: {
-          2030: "93.88",
-          2050: "93.88",
-          deltas: { 2030: 0, 2050: 0 },
-        },
-        nzap: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-      },
-    ],
-  },
-];
 
 const ExploreLoader = () => {
   const dispatch = useDispatch();
@@ -68,7 +19,6 @@ const ExploreLoader = () => {
   delete routerQuery.policy;
   let filters = useSelector((state) => state.filters);
   let scenarios = useSelector((state) => state.scenarios);
-  const [tableData, setTableData] = useState(rawData);
   const [activeState, setActiveState] = useState("National");
   const [params, setParams] = useState(routerQuery);
 
@@ -132,12 +82,10 @@ const ExploreLoader = () => {
   };
 
   const changeUsState = (state) => {
-    let newDataTable = [...rawData].filter((row) => row.state === state.label);
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
     let newFilters = { ...filters, usStates };
     dispatch(loadFilterAction(newFilters));
     setActiveState(state.label);
-    setTableData(newDataTable);
   };
 
   const toggleCategory = (category) => {
