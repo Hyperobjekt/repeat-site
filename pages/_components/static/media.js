@@ -37,37 +37,32 @@ const media = [
 const RepeatMedia = () => {
   return (
     <React.Fragment>
-      <RepeatHero backgroundClass="bg-media-cover bg-center bg-fixed bg-cover bg-no-repeat" />
-      <div className="w-screen -mt-20 text-repeat-black pb-40">
-        <div className="container pl-20 max-w-screen-lg bg-white rounded-tr-2xl border-t-4 border-repeat">
-          <div className="container max-w-screen-md m-auto px-8 md:px-0 md:pl-40">
-            <h2 className="md:text-4xl pt-8 font-extrabold font-obliqua">
+      <RepeatHero backgroundClass="bg-media-cover md:bg-center bg-fixed md:bg-cover bg-no-repeat" />
+      <div className="white-spacer absolute z-0 -mt-40 bg-white border-t-4 hidden sm:block"></div>
+      <div className="max-w-screen-lg m-auto relative z-10 -mt-40 text-repeat-black pb-24">
+        <div className="container subpages lg:w-3/4 bg-white rounded-tr-2xl border-t-4 border-repeat">
+            <h2 className="text-2xl md:text-5xl pt-8 font-extrabold font-obliqua">
               Zero Lab + The Repeat <br />
               Project in the Media
             </h2>
-            <p className="font-utopia pt-6 text-repeat-burnt">Proin a vestibulum dui. Cras vitae erat felis. Mauris ullamcorper est sit amet velit ultrices egestas. Duis sit amet fringilla risus, non auctor eros. Nulla id tellus ac lectus ornare convallis. Pellentesque efficitur risus ligula, a ullamcorper ipsum porttitor quis.</p>
+            <p className="font-utopia pt-6 md:w-4/5 text-lg text-repeat-burnt">Proin a vestibulum dui. Cras vitae erat felis. Mauris ullamcorper est sit amet velit ultrices egestas. Duis sit amet fringilla risus, non auctor eros. Nulla id tellus ac lectus ornare convallis. Pellentesque efficitur risus ligula, a ullamcorper ipsum porttitor quis.</p>
             <div className="pt-8">
               <div className="block">
                 <img src="images/vox-media.png" className="w-2/3" alt="" />
               </div>
               <div className="block text-xs pt-2">July 27, 2010 – Vox</div>
-              <div className="md:text-2xl pt-2 font-black">E-Commerce Mega-Warehouses, a Smog Source, Faces New Pollution Regulations</div>
-              <p>Nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <div className="pt-6 md:w-4/5 leading-7">
-              <b>Princeton University Zero Lab</b>
-              <p className="pt-3">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy.</p>
-              <p className="pt-3">Nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+              <div className="md:text-2xl py-2 font-black">E-Commerce Mega-Warehouses, a Smog Source, Faces New Pollution Regulations</div>
+              <p className="md:text-lg text-repeat-black">Nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
             </div>
             {media.map((m, i) => {
               return (
                 <div className="pt-6" key={i}>
-                  <div className="block text-xs pt-2">{m.date}</div>
-                  <div className="block font-semibold text-md pt-2">{m.title}</div>
+                  <div className="block text-sm pt-2">{m.date}</div>
+                  <div className="block font-semibold text-lg pt-2">{m.title}</div>
                 </div>
               );
             })}
-          </div>
+       
         </div>
       </div>
 

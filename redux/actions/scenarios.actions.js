@@ -32,14 +32,14 @@ const getScenarios = async () => {
     headers: headers,
     redirect: "follow",
   };
-  const results = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/scenarios`, requestOptions);
+  const results = await fetch(`/api/scenarios`, requestOptions);
   if (results.status === 200) return await results.json();
   throw results;
 };
 
 export const loadScenarios = () => async (dispatch) => {
   let scenarios = await getScenarios();
-  await dispatch(loadScenariosActionSuccess(scenarios.data));
+  await dispatch(loadScenariosActionSuccess(scenarios.data || scenarios));
 
   // return function (dispatch) {
   //   dispatch(beginApiCall());

@@ -14,9 +14,9 @@ Router.events.on("routeChangeError", () => NProgress.done());
 function App({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   return (
-      <ReduxProvider store={store}>
-        <Component {...pageProps} />
-      </ReduxProvider>
+    <ReduxProvider store={store}>
+      <Component {...pageProps} />
+    </ReduxProvider>
   );
 }
 

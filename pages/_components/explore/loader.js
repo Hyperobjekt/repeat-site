@@ -1,30 +1,122 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import { loadFilters } from "../../../redux/actions/filters.actions";
-import ExploreFilter from "./filter";
+import { loadFilters, loadFilterAction } from "../../../redux/actions/filters.actions";
+import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import ExploreBenchmark from "./benchmark";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+
 const ExploreLoader = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
+  let routerQuery = { ...router.query };
+  delete routerQuery.policy;
+  let filters = useSelector((state) => state.filters);
+  let scenarios = useSelector((state) => state.scenarios);
   const [activeState, setActiveState] = useState("National");
-  const filters = useSelector((state) => state.filters);
+  const [params, setParams] = useState(routerQuery);
+
   useEffect(() => {
     dispatch(loadFilters());
+    dispatch(loadScenarios());
+    console.log(filters, params);
   }, []);
-  const loadScopeMenu = () => {
+
+  const setFilterClasses = (color, active) => {
+    return active ? `inline-block rounded border-2 border-transparent text-sm mb-3 mr-3 px-3 py-1 bg-repeat-${color} text-white` : `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 border-2 border-repeat-${color} text-repeat-${color} text-white`;
+  };
+
+  const assembleCategories = (filters) => {
+    let categories = [...filters.levelOneFilters]
+      .map((cat, i) => {
+        return { ...cat, class: setFilterClasses(cat.color, cat.active) };
+      })
+      .filter((cat) => cat.label !== "IMPACTS");
+    let subcategories = [...filters.levelTwoFilters]
+      .filter((sub) => sub.levelOneSlug !== "impacts")
+      .map((sub, i) => {
+        sub.class = setFilterClasses(sub.color, sub.active);
+        sub.visible = !!categories.filter((e) => e.slug === sub.levelOneSlug).filter((e) => e.active).length;
+        return sub;
+      });
+    return (
+      <>
+        <div className="py-2">Category</div>
+        <div className="block pt-3 px-3">
+          {categories.map((category) => (
+            <div
+              key={category.slug}
+              className={classNames(category.class, "cursor-pointer")}
+              onClick={() => {
+                toggleCategory(category);
+              }}
+            >
+              {category.label}
+            </div>
+          ))}
+        </div>
+        <div className="py-2">Subcategory</div>
+        <div className="block pt-3 px-3">
+          {subcategories
+            .filter((sub) => sub.visible)
+            .map((subcategory, i) => (
+              <div
+                key={i}
+                className={classNames(subcategory.class, "cursor-pointer")}
+                onClick={() => {
+                  toggleSubCategory(subcategory);
+                }}
+              >
+                {subcategory.label}
+              </div>
+            ))}
+        </div>
+      </>
+    );
+  };
+
+  const changeUsState = (state) => {
+    let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
+    let newFilters = { ...filters, usStates };
+    dispatch(loadFilterAction(newFilters));
+    setActiveState(state.label);
+  };
+
+  const toggleCategory = (category) => {
+    let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
+    let newFilters = { ...filters, levelOneFilters: categories };
+    dispatch(loadFilterAction(newFilters))
+    // console.log(filters.url)
+    // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
+    // setParams({
+    //   categories,
+    // });
+    // router.push(`?counter=10`, undefined, { shallow: true });
+  };
+  const toggleSubCategory = (subcategory) => {
+    let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: sub.slug === subcategory.slug && sub.active ? false : sub.active || sub.slug === subcategory.slug }));
+    let newFilters = { ...filters, levelTwoFilters: subcategories };
+    dispatch(loadFilterAction(newFilters));
+    // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
+    // setParams({
+    //   categories,
+    // });
+    // router.push(`?counter=10`, undefined, { shallow: true });
+  };
+
+  const loadStateMenu = () => {
     return (
       <Menu as="div" className="relative inline-block text-left">
         {({ open }) => (
           <>
             <div>
-              <Menu.Button className="inline-flex justify-center w-full rounded-md border  px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
+              <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
                 {activeState}
                 <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
               </Menu.Button>
@@ -36,7 +128,7 @@ const ExploreLoader = () => {
                   {filters.usStates.map((state) => (
                     <Menu.Item key={state.slug}>
                       {({ active }) => (
-                        <button onClick={() => setActiveState(state.label)} className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
+                        <button onClick={() => changeUsState(state)} className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
                           {state.label}
                         </button>
                       )}
@@ -52,7 +144,7 @@ const ExploreLoader = () => {
   };
   return (
     <div className="">
-      <h2 className="text-repeat-teal text-2xl font-bold">Examine the Data</h2>
+      <h2 className="text-repeat-teal text-3xl font-bold mb-3">Examine the Data</h2>
       <p className="text-repeat-dark">Maecenas efficitur dolor. Donec gravida dolor quis dignissim elementum.</p>
       <p className="text-repeat-dark pt-8">Compare by</p>
       <div className="flex px-2 pt-5 border-b-4 border-repeat">
@@ -61,14 +153,15 @@ const ExploreLoader = () => {
       </div>
       <p className="text-repeat-dark pt-8">Scope (select state or national)</p>
       <div className="flex">
-        <div className="flex-item pt-5">{loadScopeMenu()}</div>
+        <div className="flex-item pt-5">{loadStateMenu()}</div>
       </div>
 
       <div className="py-8">
-        <ExploreFilter />
+        <div className="py-2">Filter by</div>
+        <>{assembleCategories(filters)}</>
       </div>
       <div className="">
-        <ExploreBenchmark />
+        <ExploreBenchmark tableData={scenarios} />
       </div>
     </div>
   );

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import RepeatHero from "./global/hero";
 import ExploreLoader from "./explore/loader";
-
+import ImageCarousel from "./global/image-carousel";
 import Stats from "./global/stats";
+import Pillars from "./global/pillars";
 const graphic1 = {
-  header: "Policy Score Card",
+  header: "Policy Scorecard",
   background: "",
   stats: [
     {
@@ -66,68 +67,141 @@ const graphic3 = {
     },
   ],
 };
-const policies = {
-  "biden-administration-plan": {
-    header: "The Biden Administration Climate Program",
-    subHeader: "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-    contentBlocks: [
-      {
-        type: "paragraph",
-        content:
-          "Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.",
-      },
-      {
-        type: "component",
-        content: <Stats stats={graphic1} />,
-      },
-      {
-        type: "component",
-        content: <div className="bg-repeat-light py-20 text-center text-white rounded-xl text-3xl">Image Carousel placeholder</div>,
-      },
-      {
-        type: "paragraph",
-        content:
-          "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.",
-      },
-      {
-        type: "heading",
-        content: "Policy REPEAT Pillars",
-      },
-      {
-        type: "paragraph",
-        content: "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-      },
-      {
-        type: "component",
-        content: <Stats stats={graphic3} />,
-      },
-      {
-        type: "paragraph",
-        content:
-          "Sed hendrerit nibh non enim scelerisque mattis. Proin vel risus diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus accumsan urna eget enim varius scelerisque. Nam interdum neque non ex sagittis molestie. Nullam sed nisi id justo suscipit dapibus eget ac lectus. In placerat semper urna at vehicula. Nullam suscipit leo ipsum, sed convallis neque imperdiet id. Suspendisse sit amet malesuada quam. Quisque scelerisque vitae odio a consequat. Pellentesque rutrum diam facilisis congue malesuada. Duis nisi nulla, maximus aliquet consequat et, auctor vel eros.",
-      },
-      {
-        type: "paragraph",
-        content:
-          "Donec ut ipsum ac mauris ullamcorper facilisis eget quis odio. Nulla facilisi. Maecenas efficitur dolor eget venenatis rutrum. Mauris porttitor lacinia egestas. Mauris ut molestie metus. Donec gravida dolor quis dignissim elementum. Nullam sem tellus, convallis eu velit eget, suscipit mattis risus. Phasellus rhoncus felis a pellentesque vulputate. Duis vitae justo non erat maximus lobortis et nec est. Aenean consequat arcu sed mi tempor tincidunt. Phasellus nec ex vitae urna tristique ultrices sed non nulla. Pellentesque posuere felis at egestas viverra. Pellentesque at gravida nulla, ac pharetra nulla. Donec et dui quis nisl commodo faucibus. Suspendisse elementum eleifend condimentum.",
-      },
-    ],
+
+const slides = [
+  {
+    image: "/images/carousel-image-1.svg",
+    caption: (
+      <div className="py-2">
+        <h4 className="font-bold">2030 E+ Cumulative</h4>
+        <p className="text-xs">Solar, Wind and Population Density</p>
+      </div>
+    ),
   },
-  "cres-climate-agenda": {},
-  "sba-green-recovery-fund": {},
-  "green-new-deal": {},
+  {
+    image: "/images/carousel-image-2.svg",
+    caption: (
+      <div className="py-2">
+        <h4 className="font-bold">2030 E+ Cumulative</h4>
+        <p className="text-xs">Solar, Wind and Population Density</p>
+      </div>
+    ),
+  },
+  {
+    image: "/images/carousel-image-3.svg",
+    caption: (
+      <div className="py-2">
+        <h4 className="font-bold">2030 E+ Cumulative</h4>
+        <p className="text-xs">Solar, Wind and Population Density</p>
+      </div>
+    ),
+  },
+  {
+    image: "/images/carousel-image-2.svg",
+    caption: (
+      <div className="py-2">
+        <h4 className="font-bold">2030 E+ Cumulative</h4>
+        <p className="text-xs">Solar, Wind and Population Density</p>
+      </div>
+    ),
+  },
+  {
+    image: "/images/carousel-image-3.svg",
+    caption: (
+      <div className="py-2">
+        <h4 className="font-bold">2030 E+ Cumulative</h4>
+        <p className="text-xs">Solar, Wind and Population Density</p>
+      </div>
+    ),
+  },
+  {
+    image: "/images/carousel-image-2.svg",
+    caption: (
+      <div className="py-2">
+        <h4 className="font-bold">2030 E+ Cumulative</h4>
+        <p className="text-xs">Solar, Wind and Population Density</p>
+      </div>
+    ),
+  },
+  {
+    image: "/images/carousel-image-3.svg",
+    caption: (
+      <div className="py-2">
+        <h4 className="font-bold">2030 E+ Cumulative</h4>
+        <p className="text-xs">Solar, Wind and Population Density</p>
+      </div>
+    ),
+  },
+];
+
+let bidenPlan = {
+  header: "The Biden Administration Climate Program",
+  subHeader: "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+  contentBlocks: [
+    {
+      type: "paragraph",
+      content: (
+        <span>
+          Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae{" "}
+          <a className="primary-link" href="#">
+            augue pharetra consequat
+          </a>
+          . Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.
+        </span>
+      ),
+    },
+    {
+      type: "component",
+      content: <Stats stats={graphic1} />,
+    },
+    {
+      type: "heading",
+      content: "Details & Resources",
+    },
+    {
+      type: "slider",
+      content: (
+        <div className="py-6 text-repeat-black rounded-xl">
+          <ImageCarousel slides={slides} />
+        </div>
+      ),
+    },
+    {
+      type: "paragraph",
+      content:
+        "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.",
+    },
+    {
+      type: "heading",
+      content: "Policy REPEAT Pillars",
+    },
+    {
+      type: "paragraph",
+      content: "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+    },
+    {
+      type: "pillars",
+      content: <Pillars />,
+    },
+  ],
+};
+const policies = {
+  "biden-administration-plan": bidenPlan,
+  "cres-climate-agenda": bidenPlan,
+  "sba-green-recovery-fund": bidenPlan,
+  "green-new-deal": bidenPlan,
 };
 
 const RepeatPolicy = ({ policy }) => {
   const activePolicy = policies[policy];
   return activePolicy ? (
-    <div className="bg-policy-background bg-repeat-right-top bg-no-repeat">
+    <div className="bg-policy-background bg-repeat-mobile md:bg-repeat-right-top bg-no-repeat">
       <RepeatHero headerText={activePolicy.header} subheaderText={activePolicy.subHeader} bg="" />
-      <div className="container max-w-screen-lg pb-20 m-auto">
+      <div className="container max-w-screen-lg pb-8 m-auto">
         {activePolicy.contentBlocks.map((block, i) => {
           if (block.type === "paragraph")
             return (
-              <div key={i} className="md:w-1/2 pb-5">
+              <div key={i} className="md:w-1/2 pb-5 text-lg text-repeat-black">
                 <p>{block.content}</p>
               </div>
             );
@@ -137,10 +211,22 @@ const RepeatPolicy = ({ policy }) => {
                 {block.content}
               </div>
             );
+          if (block.type === "slider")
+            return (
+              <div key={i} className="md:w-full pt-5 pb-10">
+                {block.content}
+              </div>
+            );
+          if (block.type === "pillars")
+            return (
+              <div key={i} className="md:w-full py-0">
+                {block.content}
+              </div>
+            );
           if (block.type === "heading")
             return (
               <div key={i} className="md:w-1/2 pt-2">
-                <h3 className="text-lg font-bold">{block.content}</h3>
+                <h3 className="font-bold text-repeat-teal text-3xl mb-5">{block.content}</h3>
               </div>
             );
         })}
