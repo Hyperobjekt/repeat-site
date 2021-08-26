@@ -25,7 +25,7 @@ const ExploreLoader = () => {
   useEffect(() => {
     dispatch(loadFilters());
     dispatch(loadScenarios());
-    console.log(filters, scenarios, params);
+    console.log(filters, params);
   }, []);
 
   const setFilterClasses = (color, active) => {
@@ -91,7 +91,8 @@ const ExploreLoader = () => {
   const toggleCategory = (category) => {
     let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
     let newFilters = { ...filters, levelOneFilters: categories };
-    dispatch(loadFilterAction(newFilters));
+    dispatch(loadFilterAction(newFilters))
+    // console.log(filters.url)
     // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
     // setParams({
     //   categories,

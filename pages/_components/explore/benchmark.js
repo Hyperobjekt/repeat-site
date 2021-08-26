@@ -1,8 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 
 function classNames(...classes) {
@@ -135,12 +133,15 @@ export const BenchmarkTable = ({ tableData, filters }) => {
 };
 
 const ExploreFilter = ({ tableData }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
   useEffect(() => {
+    console.log("hello", filters.url);
+    router.push(filters.url, undefined, { shallow: true });
     dispatch(loadScenarios(filters.url));
-  }, []);
+  }, [filters]);
 
   return (
     <div className="relative text-xs">
