@@ -22,25 +22,30 @@ const getUsStates = (filters) => {
     });
   return [...filters.usStates];
 };
-const getTableExamBy = (filters, explorer) => {
-  if (filters.table) return filters.table;
-  if (explorer === "year") return "2020";
-  if (explorer === "pathway") return "e-positive";
-};
+
 export const assembleFilters = (stateFilters, actionFilters) => {
-  let explorer = localStorage.getItem("explorer") || actionFilters.explorer || "year";
+  /*? URL: 
+  - comparison=
+  - usstate=
+  - categories
+  - subcategories
+  - vsBy=
+  - deltaas=
+  - q=
+  */
+
+  let comparison = localStorage.getItem("comparison") || actionFilters.comparison || "benchmark";
   let filter = {
     ...stateFilters,
-    years: actionFilters.years,
-    scenarios: actionFilters.scenarios,
-    explorer: explorer,
+    comparison: comparison,
     usStates: getUsStates(actionFilters),
     levelOneFilters: getCategories(actionFilters),
     levelTwoFilters: getSubcategories(actionFilters),
-    table: getTableExamBy(actionFilters, explorer),
     page: actionFilters.page || 0,
     limit: actionFilters.limit || window.PAGE_LIMIT,
   };
   filter.url = generateUrl(filter);
+
+  console.log(filter.url);
   return { ...filter };
 };

@@ -1,14 +1,12 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export const BenchmarkTable = ({ tableData }) => {
+export const BenchmarkTable = ({ tableData, filters }) => {
   const [vsWith, setVsWith] = useState("CURRENT"); // CURRENT | NZAP
 
   const handleVsChange = (position) => {
@@ -29,6 +27,11 @@ export const BenchmarkTable = ({ tableData }) => {
     vsTo.classList.remove("vs-inactive");
 
     position === "left" ? setVsWith("CURRENT") : setVsWith("NZAP");
+  };
+
+  const getColor = (category) => {
+    let filteredCategory = filters.levelOneFilters.filter((cat) => cat.label === category);
+    return filteredCategory.length ? filteredCategory[0].color : "";
   };
 
   return (
@@ -76,35 +79,35 @@ export const BenchmarkTable = ({ tableData }) => {
         <tbody className="w-full max-h-96 overflow-auto block">
           {tableData
             ? tableData.map((row, i) => {
-                return (
+                return row.values.length ? (
                   <Fragment key={i}>
-                    <tr className="bg-black text-white rounded-md table w-full table-fixed">
+                    <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
-                        {row.category}
+                        {row.category} - {row.subcategory}
                       </td>
                     </tr>
                     {row.values
                       .map((valueRow) => {
                         if (vsWith === "CURRENT") {
-                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.policy[2030])).toFixed(2);
-                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy[2050])).toFixed(2);
+                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.policy ? valueRow.policy[2030] : 0)).toFixed(0);
+                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy ? valueRow.policy[2050] : 0)).toFixed(0);
                         }
                         if (vsWith === "NZAP") {
-                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.nzap[2030])).toFixed(2);
-                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.nzap[2050])).toFixed(2);
+                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.core ? valueRow.core[2030] : 0)).toFixed(0);
+                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.core ? valueRow.core[2050] : 0)).toFixed(0);
                         }
 
                         return valueRow;
                       })
                       .map((valueRow, vi) => {
                         return (
-                          <tr className="table w-full table-fixed" key={vi}>
+                          <tr className="table w-full table-fixed hover:bg-repeat hover:bg-opacity-5" key={vi}>
                             <td className="p-2">{valueRow.variable}</td>
                             <td className="p-2">{valueRow.history[2020]}</td>
 
-                            <td className="p-2">{valueRow.policy[2030]}</td>
+                            <td className="p-2">{valueRow.policy ? valueRow.policy[2030] : 0}</td>
                             <td className="p-2" colSpan="2">
-                              {valueRow.policy[2050]}
+                              {valueRow.policy ? valueRow.policy[2050] : 0}
                             </td>
 
                             <td className="p-2">
@@ -114,13 +117,13 @@ export const BenchmarkTable = ({ tableData }) => {
                               {valueRow.repeat[2050]} <span className="inline-block text-xs pl-2 text-repeat-dark">{valueRow.repeat.deltas[2050]}</span>
                             </td>
 
-                            <td className="p-2">{valueRow.nzap[2030]}</td>
-                            <td className="p-2">{valueRow.nzap[2050]}</td>
+                            <td className="p-2">{valueRow.core[2030]}</td>
+                            <td className="p-2">{valueRow.core[2050]}</td>
                           </tr>
                         );
                       })}
                   </Fragment>
-                );
+                ) : null;
               })
             : null}
         </tbody>
@@ -130,16 +133,19 @@ export const BenchmarkTable = ({ tableData }) => {
 };
 
 const ExploreFilter = ({ tableData }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
   useEffect(() => {
+    console.log("hello", filters.url);
+    router.push(filters.url, undefined, { shallow: true });
     dispatch(loadScenarios(filters.url));
-  }, []);
+  }, [filters]);
 
   return (
     <div className="relative text-xs">
-      <BenchmarkTable tableData={tableData} />
+      <BenchmarkTable tableData={tableData} filters={filters} />
     </div>
   );
 };

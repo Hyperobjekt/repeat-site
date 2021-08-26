@@ -4,87 +4,44 @@ import { useRouter } from "next/router";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { loadFilters, loadFilterAction } from "../../../redux/actions/filters.actions";
+import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import ExploreBenchmark from "./benchmark";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-const rawData = [
-  {
-    state: "National",
-    category: "Pillar 1: Efficiency/Electrification",
-    subcategory: "Electricity Demand",
-    policy: "biden-administration",
-    values: [
-      {
-        variable: "Bulk demand",
-        history: {
-          2020: "97.88",
-        },
-        policy: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-        repeat: {
-          2030: "93.88",
-          2050: "93.88",
-          deltas: { 2030: 0, 2050: 0 },
-        },
-        nzap: {
-          2030: "97.88",
-          2050: "43.02",
-        },
-      },
-      {
-        variable: "Bulk demand +",
-        history: {
-          2020: "97.88",
-        },
-        policy: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-        repeat: {
-          2030: "93.88",
-          2050: "93.88",
-          deltas: { 2030: 0, 2050: 0 },
-        },
-        nzap: {
-          2030: "97.88",
-          2050: "46.66",
-        },
-      },
-    ],
-  },
-];
 
 const ExploreLoader = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   let routerQuery = { ...router.query };
   delete routerQuery.policy;
-  const [tableData, setTableData] = useState(rawData);
+  let filters = useSelector((state) => state.filters);
+  let scenarios = useSelector((state) => state.scenarios);
   const [activeState, setActiveState] = useState("National");
   const [params, setParams] = useState(routerQuery);
-  let filters = useSelector((state) => state.filters);
 
-  const setFilterClasses = (i, active) => {
-    let index = (i + 1) % 6;
-    index = index ? index : 6 - index;
-    return active ? `inline-block rounded border-2 border-transparent text-sm mb-3 mr-3 px-3 py-1 bg-repeat-table-${index} text-white` : `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 border-2 border-repeat-table-${index} text-repeat-table-${index} text-white`;
+  useEffect(() => {
+    dispatch(loadFilters());
+    dispatch(loadScenarios());
+    console.log(filters, params);
+  }, []);
+
+  const setFilterClasses = (color, active) => {
+    return active ? `inline-block rounded border-2 border-transparent text-sm mb-3 mr-3 px-3 py-1 bg-repeat-${color} text-white` : `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 border-2 border-repeat-${color} text-repeat-${color} text-white`;
   };
 
   const assembleCategories = (filters) => {
     let categories = [...filters.levelOneFilters]
       .map((cat, i) => {
-        return { ...cat, class: setFilterClasses(i, cat.active) };
+        return { ...cat, class: setFilterClasses(cat.color, cat.active) };
       })
       .filter((cat) => cat.label !== "IMPACTS");
     let subcategories = [...filters.levelTwoFilters]
       .filter((sub) => sub.levelOneSlug !== "impacts")
       .map((sub, i) => {
-        sub.class = categories.filter((e) => e.slug === sub.levelOneSlug)[0].class;
+        sub.class = setFilterClasses(sub.color, sub.active);
         sub.visible = !!categories.filter((e) => e.slug === sub.levelOneSlug).filter((e) => e.active).length;
         return sub;
       });
@@ -109,7 +66,13 @@ const ExploreLoader = () => {
           {subcategories
             .filter((sub) => sub.visible)
             .map((subcategory, i) => (
-              <div key={i} className={classNames(subcategory.class, "cursor-pointer")}>
+              <div
+                key={i}
+                className={classNames(subcategory.class, "cursor-pointer")}
+                onClick={() => {
+                  toggleSubCategory(subcategory);
+                }}
+              >
                 {subcategory.label}
               </div>
             ))}
@@ -118,19 +81,27 @@ const ExploreLoader = () => {
     );
   };
 
-  useEffect(() => {
-    dispatch(loadFilters());
-  }, []);
-
-  const changeState = (state) => {
-    let newDataTable = [...rawData].filter((row) => row.state === state.label);
+  const changeUsState = (state) => {
+    let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
+    let newFilters = { ...filters, usStates };
+    dispatch(loadFilterAction(newFilters));
     setActiveState(state.label);
-    setTableData(newDataTable);
   };
 
   const toggleCategory = (category) => {
     let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
     let newFilters = { ...filters, levelOneFilters: categories };
+    dispatch(loadFilterAction(newFilters))
+    // console.log(filters.url)
+    // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
+    // setParams({
+    //   categories,
+    // });
+    // router.push(`?counter=10`, undefined, { shallow: true });
+  };
+  const toggleSubCategory = (subcategory) => {
+    let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: sub.slug === subcategory.slug && sub.active ? false : sub.active || sub.slug === subcategory.slug }));
+    let newFilters = { ...filters, levelTwoFilters: subcategories };
     dispatch(loadFilterAction(newFilters));
     // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
     // setParams({
@@ -157,7 +128,7 @@ const ExploreLoader = () => {
                   {filters.usStates.map((state) => (
                     <Menu.Item key={state.slug}>
                       {({ active }) => (
-                        <button onClick={() => changeState(state)} className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
+                        <button onClick={() => changeUsState(state)} className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
                           {state.label}
                         </button>
                       )}
@@ -190,7 +161,7 @@ const ExploreLoader = () => {
         <>{assembleCategories(filters)}</>
       </div>
       <div className="">
-        <ExploreBenchmark tableData={tableData} />
+        <ExploreBenchmark tableData={scenarios} />
       </div>
     </div>
   );

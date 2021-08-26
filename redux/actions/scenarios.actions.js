@@ -39,7 +39,7 @@ const getScenarios = async () => {
 
 export const loadScenarios = () => async (dispatch) => {
   let scenarios = await getScenarios();
-  await dispatch(loadScenariosActionSuccess(scenarios.data));
+  await dispatch(loadScenariosActionSuccess(scenarios.data || scenarios));
 
   // return function (dispatch) {
   //   dispatch(beginApiCall());

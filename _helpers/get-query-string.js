@@ -13,7 +13,7 @@
 export const generateUrl = (filters) => {
   let stateArr = [...filters.usStates].filter((us) => us.active);
   let urlArr = [];
-  let explorer = filters.explorer;
+  let comparison = filters.comparison;
   let state = stateArr.length ? stateArr[0].slug : "national";
   let categories = [...filters.levelOneFilters]
     .filter((category) => category.active)
@@ -23,14 +23,14 @@ export const generateUrl = (filters) => {
     .filter((subcategory) => subcategory.active)
     .map((subcategory) => subcategory.slug)
     .join(",");
-  let table = filters.table;
+
   let page = filters.page;
   let limit = filters.limit;
-  if (explorer) urlArr.push(`explorer=${explorer}`);
+  if (comparison) urlArr.push(`comparison=${comparison}`);
   if (state) urlArr.push(`state=${state}`);
   if (categories) urlArr.push(`categories=${categories}`);
   if (subcategories) urlArr.push(`subcategories=${subcategories}`);
-  if (table) urlArr.push(`table=${table}`);
+
   if (page) urlArr.push(`page=${page}`);
   if (limit) urlArr.push(`limit=${limit}`); //PAGE_LIMIT
   if (urlArr.length) return `?${urlArr.join("&")}`;

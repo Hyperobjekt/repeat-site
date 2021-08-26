@@ -1,7 +1,7 @@
 import * as types from "./_types";
 // import * as filtersApi from "../../pages/api/filters";
 
-export const setFilterAction = (filters) => ({ type: types.SET_FILTER_ACTION, filters });
+// export const setFilterAction = (filters) => ({ type: types.SET_FILTER_ACTION, filters });
 export const loadFilterAction = (filters) => ({ type: types.LOAD_FILTER_ACTION, filters });
 
 const getFilters = async () => {
@@ -20,14 +20,4 @@ const getFilters = async () => {
 export const loadFilters = () => async (dispatch) => {
   let filters = await getFilters();
   await dispatch(loadFilterAction(filters));
-  // return function (dispatch) {
-  // return filtersApi
-  //   .getFilters()
-  //   .then((filters) => {
-  //     return dispatch(loadFilterAction(filters));
-  //   })
-  //   .catch((err) => {
-  //     throw err;
-  //   });
-  // };
 };
