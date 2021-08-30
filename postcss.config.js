@@ -16,6 +16,7 @@ if (process.env.NODE_ENV != "development") {
         "hover:bg-opacity-15",
         "hover:text-gray-800",
         "group-hover:text-gray-800",
+        "bg-repeat-table-1"
       ],
       defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
     },
