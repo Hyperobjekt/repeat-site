@@ -5,7 +5,11 @@ export default async (req, res) => {
   await setCors(req, res, ["GET", "HEAD"]);
   let headers = { "Content-Type": "application/json" };
 
-  let url = `${process.env.REPEAT_API}scenarios`;
+  let queryString = Object.keys(req.query)
+    .map((key) => `${key}=${req.query[key]}`)
+    .join("&");
+
+  let url = `${process.env.REPEAT_API}scenarios?${queryString}`;
   let config = { method: "get", url, headers };
   return axios(config)
     .then((response) => {

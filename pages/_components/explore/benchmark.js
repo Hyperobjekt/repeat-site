@@ -116,13 +116,12 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                   <Fragment key={i}>
                     <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
-                        {row.category} - {row.subcategory}
+                        {row.category} - {row.subcategory} ({row.state} | {row.policy})
                       </td>
                     </tr>
                     {row.values
                       .map((valueRow) => {
                         if (vsWith === "CURRENT") {
-                          console.log(valueRow.policy)
                           valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow.current, 2030);
                           valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow.current, 2050);
                         }
@@ -172,9 +171,8 @@ const ExploreFilter = ({ tableData }) => {
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
   useEffect(() => {
-    console.log("hello", filters.url);
     router.push(filters.url, undefined, { shallow: true });
-    dispatch(loadScenarios(filters.url));
+    // dispatch(loadScenarios({ url: filters.url }));
   }, [filters]);
 
   return (

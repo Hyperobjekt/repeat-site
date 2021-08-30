@@ -10,9 +10,11 @@ import ExploreBenchmark from "./benchmark";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+function capitalize(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
-
-const ExploreLoader = () => {
+const ExploreLoader = ({ ...policy }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   let routerQuery = { ...router.query };
@@ -23,9 +25,11 @@ const ExploreLoader = () => {
   const [params, setParams] = useState(routerQuery);
 
   useEffect(() => {
+    let query = { ...policy, state: capitalize(params.state) };
+
     dispatch(loadFilters());
-    dispatch(loadScenarios());
-    console.log(filters, params);
+    dispatch(loadScenarios(query));
+    console.log(filters, params, policy);
   }, []);
 
   const setFilterClasses = (color, active) => {
@@ -84,6 +88,8 @@ const ExploreLoader = () => {
   const changeUsState = (state) => {
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
     let newFilters = { ...filters, usStates };
+    let query = { ...policy, state: state.label };
+    dispatch(loadScenarios(query));
     dispatch(loadFilterAction(newFilters));
     setActiveState(state.label);
   };
@@ -91,7 +97,7 @@ const ExploreLoader = () => {
   const toggleCategory = (category) => {
     let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
     let newFilters = { ...filters, levelOneFilters: categories };
-    dispatch(loadFilterAction(newFilters))
+    dispatch(loadFilterAction(newFilters));
     // console.log(filters.url)
     // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
     // setParams({

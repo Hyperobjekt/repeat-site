@@ -1,8 +1,8 @@
 import * as types from "./_types";
-// import * as scenariosApi from "../../pages/api/scenariosApi";
-// import { beginApiCall } from "./api_status.actions";
-// import { setCountAction } from "./count.actions";
-// import { assembleQuery } from "../../_helpers";
+
+const policyMapper = {
+  "biden-administration-plan": "Biden",
+};
 
 // Export Action creators
 export function createScenarioAction(scenario) {
@@ -24,7 +24,10 @@ export function deleteScenarioAction(scenario) {
   return { type: types.DELETE_SCENARIO_ACTION, scenario };
 }
 
-const getScenarios = async () => {
+const getScenarios = async (query) => {
+  let queryString = Object.keys(query)
+    .map((key) => `${key}=${query[key]}`)
+    .join("&");
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
   const requestOptions = {
@@ -32,13 +35,17 @@ const getScenarios = async () => {
     headers: headers,
     redirect: "follow",
   };
-  const results = await fetch(`/api/scenarios`, requestOptions);
+
+  const results = await fetch(`/api/scenarios?${queryString}`, requestOptions);
   if (results.status === 200) return await results.json();
   throw results;
 };
 
-export const loadScenarios = () => async (dispatch) => {
-  let scenarios = await getScenarios();
+export const loadScenarios = (policy) => async (dispatch) => {
+  let query = {
+    policy: policyMapper[policy.policy],
+  };
+  let scenarios = await getScenarios(query);
   await dispatch(loadScenariosActionSuccess(scenarios.data || scenarios));
 
   // return function (dispatch) {

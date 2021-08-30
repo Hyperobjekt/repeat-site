@@ -232,7 +232,7 @@ const RepeatPolicy = ({ policy }) => {
         })}
       </div>
       <div className="container max-w-screen-lg pb-10 m-auto">
-        <ExploreLoader />
+        <ExploreLoader policy={policy} />
       </div>
     </div>
   ) : null;
