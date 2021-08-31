@@ -11,7 +11,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 function capitalize(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  return string ? string.charAt(0).toUpperCase() + string.slice(1) : null;
 }
 
 const ExploreLoader = ({ ...policy }) => {
