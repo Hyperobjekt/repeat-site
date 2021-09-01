@@ -6,6 +6,7 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import { loadFilters, loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import ExploreBenchmark from "./benchmark";
+import ExploreTimeseries from "./timeseries";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -153,14 +154,33 @@ const ExploreLoader = ({ ...policy }) => {
       </Menu>
     );
   };
+
+  const setComparison = (comparison) => {
+    localStorage.setItem("comparison", comparison);
+    dispatch(loadFilters());
+  };
   return (
     <div className="">
       <h2 className="text-repeat-teal text-3xl font-bold mb-3">Examine the Data</h2>
       <p className="text-repeat-dark">Maecenas efficitur dolor. Donec gravida dolor quis dignissim elementum.</p>
       <p className="text-repeat-dark pt-8">Compare by</p>
       <div className="flex px-2 pt-5 border-b-4 border-repeat">
-        <div className="flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md">Benchmark</div>
-        <div className="flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md">Time Series</div>
+        <div
+          className={filters.comparison === "benchmark" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
+          onClick={() => {
+            setComparison("benchmark");
+          }}
+        >
+          Benchmark
+        </div>
+        <div
+          className={filters.comparison === "timeseries" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
+          onClick={() => {
+            setComparison("timeseries");
+          }}
+        >
+          Time Series
+        </div>
       </div>
       <p className="text-repeat-dark pt-8">Scope (select state or national)</p>
       <div className="flex">
@@ -171,9 +191,7 @@ const ExploreLoader = ({ ...policy }) => {
         <div className="py-2">Filter by</div>
         <>{assembleCategories(filters)}</>
       </div>
-      <div className="">
-        <ExploreBenchmark tableData={scenarios} />
-      </div>
+      <div className="">{filters.comparison === "benchmark" ? <ExploreBenchmark tableData={scenarios} /> : <ExploreTimeseries tableData={scenarios} />}</div>
     </div>
   );
 };
