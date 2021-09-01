@@ -1,9 +1,5 @@
 import * as types from "./_types";
 
-const policyMapper = {
-  "biden-administration-plan": "Biden",
-};
-
 // Export Action creators
 export function createScenarioAction(scenario) {
   return { type: types.CREATE_SCENARIO_ACTION, scenario };
@@ -38,28 +34,12 @@ const getScenarios = async (query) => {
 
   const results = await fetch(`/api/scenarios?${queryString}`, requestOptions);
   if (results.status === 200) return await results.json();
-  throw results;
+  return [];
 };
 
-export const loadScenarios = (policy) => async (dispatch) => {
-  let query = {
-    policy: policyMapper[policy.policy],
-  };
-  let scenarios = await getScenarios(query);
+export const loadScenarios = (query) => async (dispatch) => {
+  let q = {};
+  Object.keys(query).forEach((e) => (q[`_${e}`] = query[e]));
+  let scenarios = await getScenarios(q);
   await dispatch(loadScenariosActionSuccess(scenarios.data || scenarios));
-
-  // return function (dispatch) {
-  //   dispatch(beginApiCall());
-  // let assembledQuery = assembleQuery(filterUrl);
-  //   return scenariosApi
-  //     .getScenarios(assembledQuery)
-  //     .then((scenarios) => {
-  //       dispatch(loadScenariosActionSuccess(scenarios.data));
-  //       dispatch(setCountAction(scenarios.count));
-  //     })
-  //     .catch((err) => {
-  //       dispatch(loadScenariosActionFailure());
-  //       throw err;
-  //     });
-  // };
 };

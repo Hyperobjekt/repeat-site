@@ -10,9 +10,6 @@ import ExploreBenchmark from "./benchmark";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-function capitalize(string) {
-  return string ? string.charAt(0).toUpperCase() + string.slice(1) : null;
-}
 
 const ExploreLoader = ({ ...policy }) => {
   const dispatch = useDispatch();
@@ -21,15 +18,14 @@ const ExploreLoader = ({ ...policy }) => {
   delete routerQuery.policy;
   let filters = useSelector((state) => state.filters);
   let scenarios = useSelector((state) => state.scenarios);
-  const [activeState, setActiveState] = useState("National");
+  const [activeState, setActiveState] = useState("national");
   const [params, setParams] = useState(routerQuery);
+  const [apiQuery, setApiQuery] = useState({});
 
   useEffect(() => {
-    let query = { ...policy, state: capitalize(params.state) };
-
+    let query = { ...policy, state: params.state };
     dispatch(loadFilters());
     dispatch(loadScenarios(query));
-    console.log(filters, params, policy);
   }, []);
 
   const setFilterClasses = (color, active) => {
@@ -88,16 +84,21 @@ const ExploreLoader = ({ ...policy }) => {
   const changeUsState = (state) => {
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
     let newFilters = { ...filters, usStates };
-    let query = { ...policy, state: state.label };
-    dispatch(loadScenarios(query));
+    let query = { ...apiQuery, ...policy, state: state.slug };
     dispatch(loadFilterAction(newFilters));
+    dispatch(loadScenarios(query));
     setActiveState(state.label);
+    setApiQuery(query);
   };
 
   const toggleCategory = (category) => {
     let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
     let newFilters = { ...filters, levelOneFilters: categories };
+    let query = { ...apiQuery, category: category.slug };
+    if (!categories.filter((e) => e.active).length) delete query.category;
     dispatch(loadFilterAction(newFilters));
+    dispatch(loadScenarios(query));
+    setApiQuery(query);
     // console.log(filters.url)
     // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
     // setParams({
@@ -108,7 +109,11 @@ const ExploreLoader = ({ ...policy }) => {
   const toggleSubCategory = (subcategory) => {
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: sub.slug === subcategory.slug && sub.active ? false : sub.active || sub.slug === subcategory.slug }));
     let newFilters = { ...filters, levelTwoFilters: subcategories };
+    let query = { ...apiQuery, subcategory: subcategory.slug };
+    if (!subcategories.filter((e) => e.active).length) delete query.subcategory;
     dispatch(loadFilterAction(newFilters));
+    dispatch(loadScenarios(query));
+    setApiQuery(query);
     // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
     // setParams({
     //   categories,
