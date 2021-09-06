@@ -1,19 +1,22 @@
-const axios = require("axios");
+// const axios = require("axios");
+const data = require("../../_data/nzap_filters.json");
 import { setCors } from "../../_helpers/cors";
 
 export default async (req, res) => {
   await setCors(req, res, ["GET", "HEAD"]);
-  let headers = { "Content-Type": "application/json" };
+  // let headers = { "Content-Type": "application/json" };
 
-  let url = `${process.env.REPEAT_API}filters`;
-  let config = { method: "get", url, headers };
-  return axios(config)
-    .then((response) => {
-      return res.status(200).send(JSON.stringify(response.data));
-    })
-    .catch((error) => {
-      return res.status(error.response.status).send(error.response.data);
-    });
+  return res.status(200).send(JSON.stringify(data));
+
+  // let url = `${process.env.REPEAT_API}filters`;
+  // let config = { method: "get", url, headers };
+  // return axios(config)
+  //   .then((response) => {
+  //     return res.status(200).send(JSON.stringify(response.data));
+  //   })
+  //   .catch((error) => {
+  //     return res.status(error.response.status).send(error.response.data);
+  //   });
 };
 
 // import { handleResponse, handleError } from "./apiUtils";
