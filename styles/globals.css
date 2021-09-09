@@ -9,6 +9,13 @@ body {
   scroll-behavior: smooth;
 }
 
+nav {
+  align-items: baseline;
+}
+nav p {
+  margin-bottom: 0;
+}
+
 @media (min-width: 768px) {
   h2.md\:text-5xl {
     line-height: 1.2;
