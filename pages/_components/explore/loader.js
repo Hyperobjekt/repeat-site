@@ -191,7 +191,7 @@ const ExploreLoader = ({ ...policy }) => {
         <div className="py-2">Filter by</div>
         <>{assembleCategories(filters)}</>
       </div>
-      <div className="">{filters.comparison === "benchmark" ? <ExploreBenchmark tableData={scenarios} /> : <ExploreTimeseries tableData={scenarios} />}</div>
+      <div id="tableContainer" className="overflow-auto">{filters.comparison === "benchmark" ? <ExploreBenchmark tableData={scenarios} /> : <ExploreTimeseries tableData={scenarios} />}</div>
     </div>
   );
 };

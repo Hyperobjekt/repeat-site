@@ -78,7 +78,7 @@ export const TimeseriesTable = ({ tableData, filters }) => {
         </div>
       </div> */}
 
-      <table className="table-fixed w-full relative border-collapse">
+      <table className="table-fixed w-full relative border-collapse text-sm">
         <thead className="text-left">
           <tr className="table w-full table-fixed">
             <th className="px-2 pt-8 pb-3" colSpan="2"></th>

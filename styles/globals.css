@@ -130,10 +130,14 @@ body {
   }
 }
 
-#highlight {width:60%}
+/* Table CSS */
 
-.highlight--right { right: 0; }
-.highlight--left { right: 27.5%; width: 52.5%; }
+#tableContainer__shell { min-width: 1024px; }
+
+/* #highlight {width:60%} */
+
+.highlight--right { right: 0; width:60%}
+.highlight--left { right: 27.5%; width: 55.5%; }
 
 .vs--left { right: 60%; transform: translateX(50%);  }
 .vs--right { right: 28%; transform: translateX(50%);  }
