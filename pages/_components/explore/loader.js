@@ -19,7 +19,7 @@ const ExploreLoader = ({ ...policy }) => {
   delete routerQuery.policy;
   let filters = useSelector((state) => state.filters);
   let scenarios = useSelector((state) => state.scenarios);
-  const [activeState, setActiveState] = useState("national");
+  const [activeState, setActiveState] = useState("National");
   const [params, setParams] = useState(routerQuery);
   const [apiQuery, setApiQuery] = useState({});
 
@@ -135,7 +135,7 @@ const ExploreLoader = ({ ...policy }) => {
             </div>
 
             <Transition show={open} as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-              <Menu.Items static className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items static className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="py-1 h-60 overflow-auto">
                   {filters.usStates.map((state) => (
                     <Menu.Item key={state.slug}>
