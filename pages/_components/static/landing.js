@@ -30,7 +30,7 @@ let stats = {
 const RepeatLanding = () => {
   return (
     <React.Fragment>
-      <RepeatHero mode="dark" backgroundClass="bg-home-cover bg-fixed bg-cover bg-no-repeat" headerText="Data Driven Energy & Climate Policy Evaluation" subheaderText="Compiled by the Princeton ZERO Lab to put granular analysis in the hands of policy makers, media and the general public." />
+      <RepeatHero mode="dark" backgroundClass="bg-home-cover lg:bg-center bg-fixed bg-cover bg-no-repeat" headerText="Data Driven Energy & Climate Policy Evaluation" subheaderText="Compiled by the Princeton ZERO Lab to put granular analysis in the hands of policy makers, media and the general public." />
 
       <div className="container max-w-screen-lg pt-10 pb-20 m-auto text-lg text-repeat-black">
         <div className="md:w-3/5">
