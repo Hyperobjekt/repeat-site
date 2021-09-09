@@ -106,7 +106,7 @@ export default function RepeatHeader() {
                   <button className={classNames(open ? "text-white" : "font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat", "group inline-flex items-center text-base font-medium hover:text-white focus:outline-none")}>
                     <Link href="/policies">
                       <a href="/policies" className="text-base font-medium text-white">
-                        <p className="my-0">Policies</p>
+                        <p className="mb-0">Policies</p>
                       </a>
                     </Link>
                   </button>
