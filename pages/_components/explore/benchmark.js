@@ -57,7 +57,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
         <button className="inline-block border border-gray-500 px-2 py-1 text-sm rounded-md bg-white text-black vs-right-btn" onClick={() => handleVsChange("right")}>
           VS. →
         </button>
-        <div className="block py-1">Show difference as</div>
+        <div className="block py-2">Show difference as</div>
         <div className="block text-center">
           <button
             onClick={() => {
@@ -80,7 +80,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
 
       <table className="table-fixed w-full relative border-collapse">
         <thead className="text-left">
-          <tr className="table w-full table-fixed">
+          <tr className="table w-full table-fixed text-base tracking-wide	">
             <th className="p-2" colSpan="2">
               Category
             </th>
@@ -94,7 +94,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
               Net Zero
             </th>
           </tr>
-          <tr className="table w-full table-fixed">
+          <tr className="table w-full table-fixed text-base tracking-wide	">
             <th className="px-2 pt-8 pb-3"></th>
             <th className="px-2 pt-8 pb-3">2020</th>
             <th className="px-2 pt-8 pb-3">2030</th>
@@ -109,7 +109,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
             <th className="px-2 pt-8 pb-3">2050</th>
           </tr>
         </thead>
-        <tbody className="w-full max-h-96 overflow-auto block">
+        <tbody className="w-full max-h-96 overflow-auto block text-sm">
           {tableData
             ? tableData.map((row, i) => {
                 return row.values.length ? (
