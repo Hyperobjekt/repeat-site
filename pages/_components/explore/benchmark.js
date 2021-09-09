@@ -47,7 +47,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
   };
 
   return (
-    <div className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra">
+    <div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra">
       <div id="highlight" className="absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--left"></div>
 
       <button className="border border-gray-500 px-2 py-1 text-sm rounded-md absolute z-10 vs--left vs-left-btn bg-black text-white" onClick={() => handleVsChange("left")}>

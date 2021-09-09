@@ -130,6 +130,10 @@ body {
   }
 }
 
+/* Table CSS */
+
+#tableContainer__shell { min-width: 1024px; }
+
 /* #highlight {width:60%} */
 
 .highlight--right { right: 0; width:60%}
