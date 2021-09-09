@@ -101,12 +101,12 @@ export default function RepeatHeader() {
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <Popover.Group as="nav" className="hidden md:flex space-x-10 items-baseline">
+              <Popover.Group as="nav" className="hidden md:flex space-x-10">
                 <div className="relative group">
                   <button className={classNames(open ? "text-white" : "font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat", "group inline-flex items-center text-base font-medium hover:text-white focus:outline-none")}>
                     <Link href="/policies">
                       <a href="/policies" className="text-base font-medium text-white">
-                        <p className="mb-0">Policies</p>
+                        <p>Policies</p>
                       </a>
                     </Link>
                   </button>
