@@ -50,20 +50,20 @@ export const BenchmarkTable = ({ tableData, filters }) => {
     <div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra">
       <div id="highlight" className="absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--left"></div>
 
-      <button className="border border-gray-500 px-2 py-1 text-sm rounded-md absolute z-10 vs--left vs-left-btn bg-black text-white" onClick={() => handleVsChange("left")}>
+      <button className="border border-gray-500 px-2 py-1 text-xs rounded-md absolute z-10 vs--left vs-left-btn bg-black text-white" onClick={() => handleVsChange("left")}>
         ← VS.
       </button>
       <div className="absolute z-10 vs--right text-center">
-        <button className="inline-block border border-gray-500 px-2 py-1 text-sm rounded-md bg-white text-black vs-right-btn" onClick={() => handleVsChange("right")}>
+        <button className="inline-block border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn" onClick={() => handleVsChange("right")}>
           VS. →
         </button>
-        <div className="block py-2">Show difference as</div>
+        <div className="block pt-3 pb-2">Show difference as</div>
         <div className="block text-center">
           <button
             onClick={() => {
               updateDiff("ABSOLUTE");
             }}
-            className={diffType === "ABSOLUTE" ? "inline-block border border-black focus:outline-none px-2 py-1 text-sm rounded-bl-md rounded-tl-md bg-black text-white" : "inline-block border border-black focus:outline-none px-2 py-1 text-sm rounded-bl-md rounded-tl-md bg-white text-black"}
+            className={diffType === "ABSOLUTE" ? "inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md bg-black text-white" : "inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md bg-white text-black"}
           >
             Absolute
           </button>
@@ -71,7 +71,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
             onClick={() => {
               updateDiff("PERCENT");
             }}
-            className={diffType === "PERCENT" ? "inline-block border border-black focus:outline-none px-2 py-1 text-sm rounded-br-md rounded-tr-md bg-black text-white" : "inline-block border border-black focus:outline-none px-2 py-1 text-sm rounded-br-md rounded-tr-md bg-white text-black"}
+            className={diffType === "PERCENT" ? "inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md bg-black text-white" : "inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md bg-white text-black"}
           >
             Percent
           </button>
@@ -85,7 +85,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
               Category
             </th>
             <th className="p-2" colSpan="3">
-              Current Policy
+              Frozen Policy
             </th>
             <th className="p-2" colSpan="3">
               Repeat Scenario
