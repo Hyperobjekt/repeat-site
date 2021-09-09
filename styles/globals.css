@@ -8,7 +8,7 @@ body {
   margin: 0;
   scroll-behavior: smooth;
 }
-@supports (-webkit-overflow-scrolling: touch) { 	body * { 		background-attachment: scroll; 	} }
+@supports (-webkit-overflow-scrolling: touch) { 	.bg-fixed {	background-attachment: scroll !important; 	} }
 
 nav {
   align-items: baseline;
