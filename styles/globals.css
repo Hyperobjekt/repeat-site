@@ -8,6 +8,15 @@ body {
   margin: 0;
   scroll-behavior: smooth;
 }
+@supports (-webkit-overflow-scrolling: touch) { 	.bg-fixed {	background-attachment: scroll !important; 	} }
+
+nav {
+  align-items: baseline;
+  margin-top: 4px;
+}
+nav p {
+  margin-bottom: 0;
+}
 
 @media (min-width: 768px) {
   h2.md\:text-5xl {
@@ -40,60 +49,64 @@ body {
 }
 
 .bg-repeat-table-1 {
-   background: #926868;
+   background: #926868 !important;
 }
 .bg-repeat-table-2{ 
-  background: #7F7353;
+  background: #7F7353 !important;
 }
 .bg-repeat-table-3{ 
-  background: #607C5C;
+  background: #607C5C !important;
 }
 .bg-repeat-table-4{ 
-  background: #5B7B80;
+  background: #5B7B80 !important;
 }
 .bg-repeat-table-5{ 
-  background: #7E6E8C;
+  background: #7E6E8C !important;
 }
 .bg-repeat-table-6{ 
-  background: #5E4557;
+  background: #5E4557 !important;
 }
 
 .text-repeat-table-1 {
-  color: #926868;
+  color: #926868 !important;
 }
 .text-repeat-table-2{ 
- color: #7F7353;
+ color: #7F7353 !important;
 }
 .text-repeat-table-3{ 
- color: #607C5C;
+ color: #607C5C !important;
 }
 .text-repeat-table-4{ 
- color: #5B7B80;
+ color: #5B7B80 !important;
 }
 .text-repeat-table-5{ 
- color: #7E6E8C;
+ color: #7E6E8C !important;
 }
 .text-repeat-table-6{ 
- color: #5E4557;
+ color: #5E4557 !important;
+}
+
+.border-gray-500 {
+  border-color: #b1b1b1 !important;
 }
 
 .border-repeat-table-1 {
-  border-color: #926868;
+  border-color: #926868 !important;
 }
 .border-repeat-table-2{ 
- border-color: #7F7353;
+ border-color: #7F7353 !important;
 }
 .border-repeat-table-3{ 
- border-color: #607C5C;
+ border-color: #607C5C !important;
 }
 .border-repeat-table-4{ 
- border-color: #5B7B80;
+ border-color: #5B7B80 !important;
 }
 .border-repeat-table-5{ 
- border-color: #7E6E8C;
+ border-color: #7E6E8C !important;
 }
 .border-repeat-table-6{ 
- border-color: #5E4557;
+ border-color: #5E4557 !important;
 }
 
 
@@ -130,13 +143,17 @@ body {
   }
 }
 
-#highlight {width:60%}
+/* Table CSS */
 
-.highlight--right { right: 0; }
-.highlight--left { right: 30%; width: 52.5%; }
+#tableContainer__shell { min-width: 1024px; }
+
+/* #highlight {width:60%} */
+
+.highlight--right { right: 0; width:60%}
+.highlight--left { right: 27.5%; width: 55.5%; }
 
 .vs--left { right: 60%; transform: translateX(50%);  }
-.vs--right { right: 30%; transform: translateX(50%);  }
+.vs--right { right: 28%; transform: translateX(50%);  }
 
 
 /* purgecss end ignore */

@@ -105,16 +105,16 @@ export default function RepeatHeader() {
                 <div className="relative group">
                   <button className={classNames(open ? "text-white" : "font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat", "group inline-flex items-center text-base font-medium hover:text-white focus:outline-none")}>
                     <Link href="/policies">
-                      <a href="/policies" className="">
-                        <p className="text-base font-medium text-white">Policies</p>
+                      <a href="/policies" className="text-base font-medium text-white">
+                        <p>Policies</p>
                       </a>
                     </Link>
                   </button>
-                  <div className="absolute z-10 hidden -right-40 bg-grey-200 group-hover:block">
+                  <div className="absolute -m-2 z-10 hidden -right-40 bg-grey-200 group-hover:block">
                     <div className="mt-6 shadow-lg">
                       {policies.map((item) => (
                         <Link key={item.name} href={item.href}>
-                          <a href={item.href} className="-m-3 p-3 bg-white flex items-start hover:bg-repeat-light">
+                          <a href={item.href} className="p-3 bg-white flex items-start hover:bg-repeat-light">
                             <div className="px-2">
                               <p className="text-base font-medium text-black">{item.name}</p>
                             </div>

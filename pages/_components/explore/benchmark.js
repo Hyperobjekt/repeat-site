@@ -8,14 +8,15 @@ function classNames(...classes) {
 }
 export const BenchmarkTable = ({ tableData, filters }) => {
   const [vsWith, setVsWith] = useState("CURRENT"); // CURRENT | NZAP
+  const [diffType, setDiffType] = useState("ABSOLUTE");
 
   const handleVsChange = (position) => {
     const toPos = position;
     const fromPos = position === "left" ? "right" : "left";
 
     let highlight = document.getElementById("highlight");
-    let vsFrom = document.getElementsByClassName(`vs--${fromPos}`)[0];
-    let vsTo = document.getElementsByClassName(`vs--${toPos}`)[0];
+    let vsFrom = document.getElementsByClassName(`vs-${fromPos}-btn`)[0];
+    let vsTo = document.getElementsByClassName(`vs-${toPos}-btn`)[0];
 
     highlight.classList.remove(`highlight--${fromPos}`);
     highlight.classList.add(`highlight--${toPos}`);
@@ -34,25 +35,57 @@ export const BenchmarkTable = ({ tableData, filters }) => {
     return filteredCategory.length ? filteredCategory[0].color : "";
   };
 
+  const updateDiff = (diff) => {
+    setDiffType(diff);
+  };
+  const calculateDelta = (repeatValue, vsValue, year) => {
+    let r = Number(repeatValue[year]),
+      v = Number(vsValue ? vsValue[year] : 0);
+
+    if (diffType === "ABSOLUTE") return (r - v).toFixed(0);
+    if (diffType === "PERCENT") return (((r - v) / r) * 100).toFixed(0).toString() + "%";
+  };
+
   return (
-    <div className="container mt-4 relative m-auto w-full pt-8 pb-4">
+    <div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra">
       <div id="highlight" className="absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--left"></div>
 
-      <button className="border border-gray-500 px-2 py-1 text-sm rounded-md absolute z-10 vs--left bg-black text-white" onClick={() => handleVsChange("left")}>
+      <button className="border border-gray-500 px-2 py-1 text-xs rounded-md absolute z-10 vs--left vs-left-btn bg-black text-white" onClick={() => handleVsChange("left")}>
         ← VS.
       </button>
-      <button className="border border-gray-500 px-2 py-1 text-sm rounded-md absolute z-10 vs--right bg-white text-black" onClick={() => handleVsChange("right")}>
-        VS. →
-      </button>
+      <div className="absolute z-10 vs--right text-center">
+        <button className="inline-block border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn" onClick={() => handleVsChange("right")}>
+          VS. →
+        </button>
+        <div className="block pt-3 pb-2">Show difference as</div>
+        <div className="block text-center">
+          <button
+            onClick={() => {
+              updateDiff("ABSOLUTE");
+            }}
+            className={diffType === "ABSOLUTE" ? "inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md bg-black text-white" : "inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md bg-white text-black"}
+          >
+            Absolute
+          </button>
+          <button
+            onClick={() => {
+              updateDiff("PERCENT");
+            }}
+            className={diffType === "PERCENT" ? "inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md bg-black text-white" : "inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md bg-white text-black"}
+          >
+            Percent
+          </button>
+        </div>
+      </div>
 
       <table className="table-fixed w-full relative border-collapse">
         <thead className="text-left">
-          <tr className="table w-full table-fixed">
+          <tr className="table w-full table-fixed text-base tracking-wide	">
             <th className="p-2" colSpan="2">
               Category
             </th>
             <th className="p-2" colSpan="3">
-              Current Policy
+              Frozen Policy
             </th>
             <th className="p-2" colSpan="3">
               Repeat Scenario
@@ -61,40 +94,40 @@ export const BenchmarkTable = ({ tableData, filters }) => {
               Net Zero
             </th>
           </tr>
-          <tr className="table w-full table-fixed">
-            <th className="p-2"></th>
-            <th className="p-2">2020</th>
-            <th className="p-2">2030</th>
-            <th className="p-2" colSpan="2">
+          <tr className="table w-full table-fixed text-base tracking-wide	">
+            <th className="px-2 pt-8 pb-3"></th>
+            <th className="px-2 pt-8 pb-3">2020</th>
+            <th className="px-2 pt-8 pb-3">2030</th>
+            <th className="px-2 pt-8 pb-3" colSpan="2">
               2050
             </th>
-            <th className="p-2">2030</th>
-            <th className="p-2" colSpan="2">
+            <th className="px-2 pt-8 pb-3">2030</th>
+            <th className="px-2 pt-8 pb-3" colSpan="2">
               2050
             </th>
-            <th className="p-2">2030</th>
-            <th className="p-2">2050</th>
+            <th className="px-2 pt-8 pb-3">2030</th>
+            <th className="px-2 pt-8 pb-3">2050</th>
           </tr>
         </thead>
-        <tbody className="w-full max-h-96 overflow-auto block">
+        <tbody className="w-full max-h-96 overflow-auto block text-sm">
           {tableData
             ? tableData.map((row, i) => {
                 return row.values.length ? (
                   <Fragment key={i}>
                     <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
-                        {row.category} - {row.subcategory}
+                        {row.category} - {row.subcategory} ({row.state} | {row.policy})
                       </td>
                     </tr>
                     {row.values
                       .map((valueRow) => {
                         if (vsWith === "CURRENT") {
-                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.policy ? valueRow.policy[2030] : 0)).toFixed(0);
-                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.policy ? valueRow.policy[2050] : 0)).toFixed(0);
+                          valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow.current, 2030);
+                          valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow.current, 2050);
                         }
                         if (vsWith === "NZAP") {
-                          valueRow.repeat.deltas[2030] = (Number(valueRow.repeat[2030]) - Number(valueRow.core ? valueRow.core[2030] : 0)).toFixed(0);
-                          valueRow.repeat.deltas[2050] = (Number(valueRow.repeat[2050]) - Number(valueRow.core ? valueRow.core[2050] : 0)).toFixed(0);
+                          valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow.core, 2030);
+                          valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow.core, 2050);
                         }
 
                         return valueRow;
@@ -105,9 +138,9 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                             <td className="p-2">{valueRow.variable}</td>
                             <td className="p-2">{valueRow.history[2020]}</td>
 
-                            <td className="p-2">{valueRow.policy ? valueRow.policy[2030] : 0}</td>
+                            <td className="p-2">{valueRow.current ? valueRow.current[2030] : 0}</td>
                             <td className="p-2" colSpan="2">
-                              {valueRow.policy ? valueRow.policy[2050] : 0}
+                              {valueRow.current ? valueRow.current[2050] : 0}
                             </td>
 
                             <td className="p-2">
@@ -138,9 +171,8 @@ const ExploreFilter = ({ tableData }) => {
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
   useEffect(() => {
-    console.log("hello", filters.url);
     router.push(filters.url, undefined, { shallow: true });
-    dispatch(loadScenarios(filters.url));
+    // dispatch(loadScenarios({ url: filters.url }));
   }, [filters]);
 
   return (

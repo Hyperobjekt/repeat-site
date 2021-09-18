@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import RepeatHero from "./global/hero";
 import ExploreLoader from "./explore/loader";
 import ImageCarousel from "./global/image-carousel";
@@ -192,8 +193,13 @@ const policies = {
   "green-new-deal": bidenPlan,
 };
 
-const RepeatPolicy = ({ policy }) => {
-  const activePolicy = policies[policy];
+const RepeatPolicy = () => {
+  const router = useRouter();
+  const [activePolicy, setActivePolicy] = useState(null);
+  useEffect(() => {
+    setActivePolicy(policies[router.query.policy]);
+  }, []);
+
   return activePolicy ? (
     <div className="bg-policy-background bg-repeat-mobile md:bg-repeat-right-top bg-no-repeat">
       <RepeatHero headerText={activePolicy.header} subheaderText={activePolicy.subHeader} bg="" />
