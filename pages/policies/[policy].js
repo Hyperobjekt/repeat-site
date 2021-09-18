@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import RepeatHead from "../_components/global/head";
 import RepeatHeader from "../_components/global/header";
 import SectionHeader from "../_components/global/section-header";
@@ -32,8 +32,8 @@ let stats = {
 };
 
 export default function HomePage() {
-  const router = useRouter();
-  const { policy } = router.query;
+  // const router = useRouter();
+  // const { policy } = router.query;
   return (
     <React.Fragment>
       <RepeatHead />
@@ -41,7 +41,7 @@ export default function HomePage() {
         Skip to main
       </a>
       <RepeatHeader />
-      <RepeatPolicy policy={policy} />
+      <RepeatPolicy  />
       <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
       <Stats stats={stats} />
       <div className="py-8"></div>
