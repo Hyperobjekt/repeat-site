@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
@@ -10,17 +11,29 @@ function classNames(...classes) {
 }
 
 const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [activeState, setActiveState] = useState("National");
   const [apiQuery, setApiQuery] = useState({});
 
-  useEffect(() => {
-    dispatch(loadFilters());
+  const getQuery = () => {
+    let query = {};
+    query.state = router.query.state;
+    query.category = router.query.categories ? router.query.categories.split(",") : [];
+    query.subcategory = router.query.subcategories ? router.query.subcategories.split(",") : [];
+    return query;
+  };
+
+  useEffect(async () => {
+    let query = getQuery();
+    let nf = await dispatch(loadFilters({ ...query })); // new filters
+    let nas = nf.filters.usStates.filter((state) => state.active); // new active state
+    setActiveState(nas[0].label);
   }, []);
   const changeUsState = (state) => {
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
     let newFilters = { ...filters, usStates };
-    let query = { ...apiQuery, ...policy, state: state.slug };
+    let query = { ...apiQuery, policy, state: state.slug };
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
     setActiveState(state.label);
@@ -73,6 +86,25 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
       });
     return (
       <>
+        <div className="flex px-2 pt-5 border-b-4 border-repeat">
+          <div
+            className={filters.comparison === "benchmark" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
+            onClick={() => {
+              setComparison("benchmark");
+            }}
+          >
+            Benchmark
+          </div>
+          <div
+            className={filters.comparison === "timeseries" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
+            onClick={() => {
+              setComparison("timeseries");
+            }}
+          >
+            Time Series
+          </div>
+        </div>
+        <p className="text-repeat-dark pt-8">Scope (select state or national)</p>
         <div className="py-2">Category</div>
         <div className="block pt-3 px-3">
           {categories.map((category) => (
@@ -108,32 +140,34 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
   };
   const toggleCategory = (category) => {
     let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
-    let newFilters = { ...filters, levelOneFilters: categories };
+    let categorySlugs = categories.filter((e) => e.active).map((e) => e.slug);
+    let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: categorySlugs.includes(sub.slug) }));
+    let newFilters = { ...filters, levelOneFilters: categories, levelTwoFilters: subcategories };
     let query = { ...apiQuery, category: category.slug };
     if (!categories.filter((e) => e.active).length) delete query.category;
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
     setApiQuery(query);
-    // console.log(filters.url)
-    // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
-    // setParams({
-    //   categories,
-    // });
-    // router.push(`?counter=10`, undefined, { shallow: true });
   };
   const toggleSubCategory = (subcategory) => {
+    let routerQuery = { ...router.query };
+    delete routerQuery.comparison;
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: sub.slug === subcategory.slug && sub.active ? false : sub.active || sub.slug === subcategory.slug }));
+    let subcategorySlugs = subcategories.filter((e) => e.active).map((e) => e.slug);
     let newFilters = { ...filters, levelTwoFilters: subcategories };
     let query = { ...apiQuery, subcategory: subcategory.slug };
     if (!subcategories.filter((e) => e.active).length) delete query.subcategory;
+    routerQuery.state = routerQuery.state || "national";
+    routerQuery.subcategories = subcategorySlugs.join(",");
     dispatch(loadFilterAction(newFilters));
-    dispatch(loadScenarios(query));
+
+    dispatch(loadScenarios({ ...routerQuery }));
     setApiQuery(query);
-    // setCategories([...categories].map((e) => ({ ...e, active: true || category.slug === e.slug })));
-    // setParams({
-    //   categories,
-    // });
-    // router.push(`?counter=10`, undefined, { shallow: true });
+  };
+  const setComparison = (comparison) => {
+    let query = getQuery();
+    localStorage.setItem("comparison", comparison);
+    dispatch(loadFilters({ ...query }));
   };
   return (
     <>

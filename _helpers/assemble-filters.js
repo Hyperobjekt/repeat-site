@@ -45,6 +45,5 @@ export const assembleFilters = (stateFilters, actionFilters) => {
     limit: actionFilters.limit || window.PAGE_LIMIT,
   };
   filter.url = generateUrl(filter);
-  console.log(filter.url);
   return { ...filter };
 };

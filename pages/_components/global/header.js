@@ -60,7 +60,6 @@ const readScroll = () => {
   function scrollFunction() {
     let hasPtClass = document.getElementById("nav-bar").classList.contains("md:pt-6");
     if (document.documentElement.scrollTop > 100 && hasPtClass) {
-      console.log("start shrinking");
       document.getElementById("nav-bar").classList.add("md:pt-0");
       document.getElementById("nav-bar").classList.remove("md:pt-6");
     }
