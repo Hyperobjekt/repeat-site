@@ -39,7 +39,11 @@ const getScenarios = async (query) => {
 
 export const loadScenarios = (query) => async (dispatch) => {
   let q = {};
-  Object.keys(query).forEach((e) => (q[`_${e}`] = query[e]));
+  Object.keys(query).forEach((e) => {
+    if (e === "categories") return (q["_category"] = query[e].split(","));
+    if (e === "subcategories") return (q["_subcategory"] = query[e].split(","));
+    return (q[`_${e}`] = query[e]);
+  });
   let scenarios = await getScenarios(q);
   await dispatch(loadScenariosActionSuccess(scenarios.data || scenarios));
 };

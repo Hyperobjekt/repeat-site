@@ -33,6 +33,10 @@ export default async (req, res) => {
   delete query.skip;
   delete query.sort;
   delete query.populate;
+  if (query._category) query.$or = query._category.split(",").map((e) => ({ _category: e }));
+  if (query._subcategory) query.$or = query._subcategory.split(",").map((e) => ({ _subcategory: e }));
+  delete query._category;
+  delete query._subcategory;
 
   dbClient = await (async () => {
     try {
