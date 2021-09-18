@@ -13,7 +13,7 @@ module.exports = async () => {
   try {
     await client.connect();
     const db = client.db();
-    console.log('\n> DB connection established');
+    // console.log('\n> DB connection established');
     return db;
   } catch (err) {
     throw new Error('Error on DB connection', err)
