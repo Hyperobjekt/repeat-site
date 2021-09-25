@@ -133,11 +133,7 @@ let bidenPlan = {
     },
     {
       type: "slider",
-      content: (
-        <div className="py-6 text-repeat-black rounded-xl">
-          <ImageCarousel slides={slides} />
-        </div>
-      ),
+      content: <div className="py-6 text-repeat-black rounded-xl">{slides.length ? <ImageCarousel slides={slides} /> : null}</div>,
     },
     {
       type: "paragraph",
