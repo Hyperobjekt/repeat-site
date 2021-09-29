@@ -72,66 +72,38 @@ const graphic3 = {
 const slides = [
   {
     image: "/images/carousel-image-1.svg",
-    caption: (
-      <div className="py-2">
-        <h4 className="font-bold">2030 E+ Cumulative</h4>
-        <p className="text-xs">Solar, Wind and Population Density</p>
-      </div>
-    ),
+    caption: "2030 E+ Cumulative",
+    subcaption: "Solar, Wind and Population Density",
   },
   {
     image: "/images/carousel-image-2.svg",
-    caption: (
-      <div className="py-2">
-        <h4 className="font-bold">2030 E+ Cumulative</h4>
-        <p className="text-xs">Solar, Wind and Population Density</p>
-      </div>
-    ),
+    caption: "2030 E+ Cumulative",
+    subcaption: "Solar, Wind and Population Density",
   },
   {
     image: "/images/carousel-image-3.svg",
-    caption: (
-      <div className="py-2">
-        <h4 className="font-bold">2030 E+ Cumulative</h4>
-        <p className="text-xs">Solar, Wind and Population Density</p>
-      </div>
-    ),
+    caption: "2030 E+ Cumulative",
+    subcaption: "Solar, Wind and Population Density",
   },
   {
     image: "/images/carousel-image-2.svg",
-    caption: (
-      <div className="py-2">
-        <h4 className="font-bold">2030 E+ Cumulative</h4>
-        <p className="text-xs">Solar, Wind and Population Density</p>
-      </div>
-    ),
+    caption: "2030 E+ Cumulative",
+    subcaption: "Solar, Wind and Population Density",
   },
   {
     image: "/images/carousel-image-3.svg",
-    caption: (
-      <div className="py-2">
-        <h4 className="font-bold">2030 E+ Cumulative</h4>
-        <p className="text-xs">Solar, Wind and Population Density</p>
-      </div>
-    ),
+    caption: "2030 E+ Cumulative",
+    subcaption: "Solar, Wind and Population Density",
   },
   {
     image: "/images/carousel-image-2.svg",
-    caption: (
-      <div className="py-2">
-        <h4 className="font-bold">2030 E+ Cumulative</h4>
-        <p className="text-xs">Solar, Wind and Population Density</p>
-      </div>
-    ),
+    caption: "2030 E+ Cumulative",
+    subcaption: "Solar, Wind and Population Density",
   },
   {
     image: "/images/carousel-image-3.svg",
-    caption: (
-      <div className="py-2">
-        <h4 className="font-bold">2030 E+ Cumulative</h4>
-        <p className="text-xs">Solar, Wind and Population Density</p>
-      </div>
-    ),
+    caption: "2030 E+ Cumulative",
+    subcaption: "Solar, Wind and Population Density",
   },
 ];
 
@@ -161,11 +133,7 @@ let bidenPlan = {
     },
     {
       type: "slider",
-      content: (
-        <div className="py-6 text-repeat-black rounded-xl">
-          <ImageCarousel slides={slides} />
-        </div>
-      ),
+      content: <div className="py-6 text-repeat-black rounded-xl">{slides.length ? <ImageCarousel slides={slides} /> : null}</div>,
     },
     {
       type: "paragraph",
