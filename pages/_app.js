@@ -2,6 +2,7 @@ import React from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import Router from "next/router";
 import NProgress from "nprogress"; //nprogress module
+import SimpleReactLightbox from "simple-react-lightbox";
 
 import { useStore } from "../redux/store.config";
 import "../styles/globals.css";
@@ -15,7 +16,9 @@ function App({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   return (
     <ReduxProvider store={store}>
-      <Component {...pageProps} />
+      <SimpleReactLightbox>
+        <Component {...pageProps} />
+      </SimpleReactLightbox>
     </ReduxProvider>
   );
 }
