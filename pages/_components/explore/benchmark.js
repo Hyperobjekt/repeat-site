@@ -116,7 +116,12 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                   <Fragment key={i}>
                     <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
-                        {row.category} - {row.subcategory} ({row.state} | {row.policy})
+                        <span>
+                          <b>
+                            {row.category} - {row.subcategory}
+                          </b>
+                        </span>{" - "}
+                        <span>( {row.units} )</span>
                       </td>
                     </tr>
                     {row.values
