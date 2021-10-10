@@ -88,7 +88,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
               Frozen Policy
             </th>
             <th className="p-2" colSpan="3">
-              Repeat Scenario
+              {tableData ? tableData[0].policy : "Repeat"} Policy
             </th>
             <th className="p-2" colSpan="2">
               Net Zero
