@@ -10,8 +10,16 @@ const RepeatHead = () => {
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <meta name="description" content="Rapid Energy Policy Evaluation and Analysis Toolkit" />
       <meta name="author" content="princeton.edu" />
-      <title>Repeat </title>
+      <title>REPEAT | Rapid Energy Policy Evaluation &amp; Analysis Toolkit</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta property="og:title" content="REPEAT | Rapid Energy Policy Evaluation &amp; Analysis Toolkit" />
+      <meta property="og:description" content="Compiled by the Princeton ZERO Lab to put granular analysis in the hands of policy makers, media and the general public." />
+      <meta property="og:image" content="https://repeatproject.org/images/social/repeat-social.png" />
+      <meta property="og:url" content="https://repeatproject.org"></meta>
+      <meta name="twitter:title" content="REPEAT | Rapid Energy Policy Evaluation &amp; Analysis Toolkit" />
+      <meta name="twitter:description" content="Compiled by the Princeton ZERO Lab to put granular analysis in the hands of policy makers, media and the general public." />
+      <meta name="twitter:image" content="https://repeatproject.org/images/social/repeat-social.png" />
+      <meta name="twitter:card" content="summary_large_image"></meta>
       <link rel="icon" type="image/x-icon" href="/images/favicon/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/favicon-32x32.png" />
