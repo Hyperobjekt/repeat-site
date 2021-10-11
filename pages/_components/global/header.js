@@ -94,7 +94,7 @@ export default function RepeatHeader() {
                   </a>
                 </Link>
               </div>
-              <div className="pr-2 -mt-4 md:hidden">
+              <div className="pr-2 -mt-4 hidden">
                 <Popover.Button className="p-2 inline-flex items-center justify-center text-repeat hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
