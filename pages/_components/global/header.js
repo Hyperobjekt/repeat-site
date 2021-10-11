@@ -19,7 +19,7 @@ const pages = [
     name: "Media",
     icon: ViewGridIcon,
     href: "/media",
-  },
+  }, 
   /*{
     name: "NZAP",
     icon: RefreshIcon,
@@ -100,7 +100,7 @@ export default function RepeatHeader() {
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <Popover.Group as="nav" className="hidden md:flex space-x-10">
+              <Popover.Group as="nav" className="hidden md:none space-x-10">
                 <div className="relative group">
                   <button className={classNames(open ? "text-white" : "font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat", "group inline-flex items-center text-base font-medium hover:text-white focus:outline-none")}>
                     <Link href="/policies">

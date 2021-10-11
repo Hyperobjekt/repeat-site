@@ -6,7 +6,7 @@ export default function RepeatFooter() {
       <div className="flex-1">
         <img className="max-h-10" src="/images/princeton-logo.svg" alt="" />
       </div>
-      <div className="flex-1 text-right">
+      <div className="flex-1 hidden text-right">
         <a href="" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
           About
         </a>

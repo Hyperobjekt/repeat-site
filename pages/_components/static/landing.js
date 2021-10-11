@@ -80,9 +80,9 @@ const RepeatLanding = () => {
         </div>
       </div>
 
-      <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
+    {/*  <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." /> 
 
-      <Stats stats={stats} />
+     <Stats stats={stats} /> 
 
       <div className="container max-w-screen-lg pt-7 pb-20 m-auto">
         <div className="md:w-1/2">
@@ -95,8 +95,8 @@ const RepeatLanding = () => {
         </Link>
       </div>
 
-      <InTheMedia />
-    </React.Fragment>
+  <InTheMedia /> */}
+    </React.Fragment> 
   );
 };
 
