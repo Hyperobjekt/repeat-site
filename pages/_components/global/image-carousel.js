@@ -21,8 +21,8 @@ const ImageCarousel = ({ slides }) => {
   if (!slides?.length) return null;
   return (
     <div className="relative overflow-x-hidden">
-      <div className="absolute z-10 left-10 w-10 h-10 bg-repeat-light rounded-full shadow-md" style={{ top: "25%" }} onClick={previous}></div>
-      <div className="absolute z-10 right-10 w-10 h-10 bg-repeat-light rounded-full shadow-md" style={{ top: "25%" }} onClick={next}></div>
+      <div className="bumper-left absolute z-10 left-10 w-10 h-10 bg-repeat-light rounded-full shadow-md" style={{ top: "25%" }} onClick={previous}></div>
+      <div className="bumper-right absolute z-10 right-10 w-10 h-10 bg-repeat-light rounded-full shadow-md" style={{ top: "25%" }} onClick={next}></div>
       <div className="relative h-72" id="slides">
         <SRLWrapper>
           <div
