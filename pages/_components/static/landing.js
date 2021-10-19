@@ -73,9 +73,7 @@ const RepeatLanding = () => {
             </div>
           </div>
         </div>
-
-          
-
+        
           <div className="md:w-3/5">
 
           <br/>
