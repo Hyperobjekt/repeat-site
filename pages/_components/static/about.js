@@ -94,24 +94,20 @@ const RepeatAbout = () => {
 
           <div className="md:w-4/5 leading-7 py-7 text-lg">
             <p className="pt-3">
-              The Princeton ZERO Lab and{" "}
-              <a className="primary-link" href="http://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener">
-                Net-Zero America study
-              </a>{" "}
-              team, in partnership with{" "}
-              <a className="primary-link" href="https://www.evolved.energy/" target="_blank" rel="noreferrer noopener">
-                Evolved Energy Research
-              </a>
-              , have developed a suite of geospatial planning and analysis tools coupled with detailed macro-energy system optimization models capable of rapidly evaluating policy and regulatory proposals at politically-relevant spatial resolutions (e.g., state, county, and sometimes finer resolutions). This includes evaluation of candidate sites for wind and solar development, thermal power plant siting and repowering, and transmission expansion as well as associated impacts on air quality and
-              labor/employment.
+              The REPEAT Project provides regular, timely, and independent environmental and economic evaluation of federal energy and climate policies as they’re proposed and enacted. From Congressional legislation to proposed regulations and executive actions, the REPEAT Project provides a detailed look at the United States’ evolving policy environment and the country’s progress on the road to net-zero greenhouse gas emissions. 
             </p>
             <p className="pt-3">
-              These tools were employed to great impact in the Princeton Net-Zero America study, which “set an entirely new standard” in energy transition modeling by offering an “unprecedented degree of clarity and granularity” in its results, according to John Holdren, former Science Advisor to President Obama and Director of the White House Office of Science and Technology Policy. The spatially-explicit and granular results and associated maps have proven to be highly relevant to a wide range
-              of stakeholders and decision makers, and the responses to the report indicate the desire for more politically-salient outputs from energy systems models.
-            </p>
-            <p className="pt-3">The REPEAT Project is further developing and refining this suite of geospatially-granular planning, modeling, and visualization tools and employing them to rapidly evaluate federal energy and climate policy proposals, providing independent, timely, and credible information and analysis for broad educational purposes, including as a resource available publicly for stakeholders, decision-makers, and the media.</p>
+              Led by the Princeton ZERO Lab (<a className="primary-link" href="https://mae.princeton.edu/people/faculty/jenkins" target="_blank" rel="noreferrer noopener">Prof. Jesse D. Jenkins, PI</a>), in partnership with <a className="primary-link" href="https://www.evolved.energy/" target="_blank" rel="noreferrer noopener">Evolved Energy Research</a> and <a className="primary-link" href="https://engineering.dartmouth.edu/community/faculty/erin-mayfield" target="_blank" rel="noreferrer noopener">Prof. Erin Mayfield</a> of Dartmouth University, the REPEAT Project employs a suite of geospatial planning and analysis tools coupled with detailed macro-energy system optimization models capable of rapidly evaluating policy and regulatory proposals at politically-relevant spatial resolutions (e.g., state, county, and sometimes finer resolutions). This includes evaluation of candidate sites for wind and solar development, thermal power plant siting and repowering, and transmission expansion as well as the impacts of the nation’s energy infrastructure on air quality and public health, and changes in energy sector employment. 
+              
+              Results and publications are intended to provide independent, timely, and credible information and analysis for broad educational purposes, including as a resource for stakeholders, decision-makers, and the media.
+              
+              Funding for the REPEAT Project was provided by a grant from <a className="primary-link" href="https://hewlett.org/" target="_blank" rel="noreferrer noopener">the Hewlett Foundation</a>.
+          </p>
+          <p className="pt-3">
+              The REPEAT toolkit reflects further development and refinement of the models and methods used in the landmark <a className="primary-link" href="https://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener">Princeton Net-Zero America Study</a>, which “set an entirely new standard” in energy transition modeling by offering an “unprecedented degree of clarity and granularity” in its results, according to John Holdren, former Science Advisor to President Obama and Director of the White House Office of Science and Technology Policy. The influential report was <a className="primary-link" href="https://netzeroamerica.princeton.edu/media" target="_blank" rel="noreferrer noopener">widely covered in major media</a> and the spatially-explicit and granular results and associated maps have proven to be highly relevant to a wide range of stakeholders and decision makers. The impact of and reception to the <i>Net-Zero America</i> project indicates the desire for more politically-salient outputs from energy systems models and inspired and motivated the REPEAT Project, which aims to evolve and automate these detailed methods for timely and granular evaluation of federal policies.
+          </p>
           </div>
-          <div className="pt-8 inline-block">
+          <a href="https://mae.princeton.edu/people/faculty/jenkins" target="_blank" rel="noreferrer noopener" className="pt-8 inline-block">
             <div className="block text-3xl border-4 border-repeat text-center py-5 font-mono relative">
               <div className="block -top-6 w-full absolute">
                 <span className="bg-white text-xs font-mono text-repeat py-1 px-3 uppercase">Princeton University</span>
@@ -125,11 +121,13 @@ const RepeatAbout = () => {
               <span className="text-repeat">O</span>ptimization&nbsp;
               <span className="text-repeat">Lab</span>oratory&nbsp;
             </span>
-          </div>
+          </a>
 
           <div className="py-6 md:w-4/5 leading-7">
-            <b>Princeton University Zero Lab</b>
-            <p className="pt-3">The Princeton Zero-carbon Energy systems Research and Optimization Laboratory (ZERO Lab) conducts research to improve decision-making and accelerate rapid, affordable, and effective transitions to net-zero carbon energy systems. ZERO Lab’s research focuses on improving and applying optimization-based macro-energy systems models to evaluate low-carbon energy technologies and generate insights to guide policy and planning decisions.</p>
+            <h3 className="font-bold text-2xl mt-4 mb-3">Princeton University Zero Lab</h3>
+            <p className="pt-3 pb-6">The Princeton Zero-carbon Energy systems Research and Optimization Laboratory (ZERO Lab) conducts research to improve decision-making and accelerate rapid, affordable, and effective transitions to net-zero carbon energy systems. ZERO Lab’s research focuses on improving and applying optimization-based macro-energy systems models to evaluate low-carbon energy technologies and generate insights to guide policy and planning decisions.</p>
+
+            <b>The REPEAT Project Team</b>
           </div>
         </div>
       </div>
@@ -137,12 +135,12 @@ const RepeatAbout = () => {
       {/* Team */}
 
       <div className="container max-w-screen-lg m-auto text-repeat-black">
-        <div className="subpages w-100 m-auto pb-10 pt-5 px-0">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-20">
+        <div className="subpages w-100 m-auto pb-10 pt-0 px-0">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-2">
             {team.map((member) => (
-              <div key={member.name} className="py-2 px-3 text-center">
+              <div key={member.name} className="py-2 px-0 text-center">
                 {/* <img className="w-full rounded-full" src={`images/${member.name.split(" ").join("-").toLocaleLowerCase()}.svg`} alt={member.name} /> */}
-                <div className="text-center pt-2">
+                <div className="text-left pt-2">
                   <h3 className="font-bold">{member.name}</h3>
                   <h5 className="text-sm">{member.title}</h5>
                 </div>
@@ -156,35 +154,30 @@ const RepeatAbout = () => {
 
       <div className="container max-w-screen-lg m-auto text-repeat-black pb-20">
         <div className="subpages lg:w-3/4 bg-white">
-          <div className="md:w-4/5 leading-7 text-lg">
-            <p className="pt-3">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam.</p>
-            <p className="pt-3">Nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
-          </div>
 
-          <div className="md:w-4/5 leading-7 pt-10">
+          <a href="https://www.evolved.energy/" target="_blank" rel="noreferrer noopener" className="md:w-4/5 leading-7 pt-10">
             <img src="images/evolved-energy-research.svg" alt="" />
+          </a>
+
+          <div className="md:w-4/5 leading-7 pt-10 text-lg">
+          <h3 className="font-bold text-2xl mt-4 mb-3">Evolved Energy Research</h3>
+            <p className="pt-3"><a className="primary-link" href="https://www.evolved.energy/" target="_blank" rel="noreferrer noopener">Evolved Energy Research</a> (EER) is a research and consulting firm focused on questions posed by transforming the energy economy. Their consulting work and insight, supported by complex technical analyses of energy systems, are designed to support strategic decision-making for policymakers, stakeholders, utilities, investors, and technology companies. EER has developed models to simulate and optimize economy-wide energy systems, bulk power systems operations, and utility distribution systems.</p>
           </div>
 
           <div className="md:w-4/5 leading-7 pt-10 text-lg">
-            <b>Evolved Energy Research</b>
-            <p className="pt-3">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            <h3 className="font-bold text-2xl mt-4 mb-3">Carbon Impact Consulting</h3>
+            <p className="pt-3"><a className="primary-link" href="https://www.linkedin.com/in/gregschivley/" target="_blank" rel="noreferrer noopener">Carbon Impact Consulting</a> leads development of the PowerGenome open-source software project and works with clients to produce data and analysis for energy system models.</p>
           </div>
 
           <div className="md:w-4/5 leading-7 pt-10 text-lg">
-            <b>Carbon Impact Consulting</b>
-            <p className="pt-3">Greg Schivley dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            <h3 className="font-bold text-2xl mt-4 mb-3">Montara Mountain Energy</h3>
+            <p className="pt-3"><a className="primary-link" href="https://www.linkedin.com/in/emilyleslie/" target="_blank" rel="noreferrer noopener">Montara Mountain Energy</a> provides technical and analytic consulting services addressing the spatial component of the decarbonization challenge. Much of our work consists of data-driven visual problem-solving, answering questions like the following: where are the best clean energy opportunities, from a technical, economic, societal and environmental  perspective?</p>
           </div>
 
           <div className="md:w-4/5 leading-7 pt-10 text-lg">
-            <b>Montara Mountain Energy</b>
-            <p className="pt-3">Greg Schivley dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-          </div>
-
-          <div className="md:w-4/5 leading-7 pt-10 text-lg">
-            <b>The Net Zero America Study</b>
+            <h3 className="font-bold text-2xl mt-4 mb-3">The Net Zero America Study</h3>
             <p className="pt-3">
-              The Princeton Net-Zero America study provides the most detailed and granular analysis of paths to net-zero greenhouse gas emissions in the United States. The study quantified five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad
-              stakeholders wish to make to shape the energy transition. Net-Zero America provides granular guidance to inform these critical choices.
+            The <a className="primary-link" href="https://www.linkedin.com/in/emilyleslie/" target="_blank" rel="noreferrer noopener">Princeton <i>Net-Zero America</i> Study</a> provides the most detailed and granular analysis of paths to net-zero greenhouse gas emissions in the United States. The study quantified five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad stakeholders wish to make to shape the energy transition. Net-Zero America provides granular guidance to inform these critical choices.
             </p>
           </div>
         </div>
@@ -201,11 +194,7 @@ const RepeatAbout = () => {
             </div>
           </div>
         </div>
-        <div className="max-w-screen-lg bg-white">
-          <div className="md:w-3/4 leading-7 pt-10 text-lg">
-            <p className="pt-3 md:w-4/5">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy.</p>
-          </div>
-        </div>
+      
       </div>
 
       <SectionHeader headerText="evaluate the policies" subheaderText="Our data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
