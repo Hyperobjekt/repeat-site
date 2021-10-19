@@ -159,7 +159,7 @@ const RepeatAbout = () => {
             <img src="images/evolved-energy-research.svg" alt="" />
           </a>
 
-          <div className="md:w-4/5 leading-7 pt-10 text-lg">
+          <div className="md:w-4/5 leading-7 pt-2 text-lg">
           <h3 className="font-bold text-2xl mt-4 mb-3">Evolved Energy Research</h3>
             <p className="pt-3"><a className="primary-link" href="https://www.evolved.energy/" target="_blank" rel="noreferrer noopener">Evolved Energy Research</a> (EER) is a research and consulting firm focused on questions posed by transforming the energy economy. Their consulting work and insight, supported by complex technical analyses of energy systems, are designed to support strategic decision-making for policymakers, stakeholders, utilities, investors, and technology companies. EER has developed models to simulate and optimize economy-wide energy systems, bulk power systems operations, and utility distribution systems.</p>
           </div>
@@ -174,34 +174,36 @@ const RepeatAbout = () => {
             <p className="pt-3"><a className="primary-link" href="https://www.linkedin.com/in/emilyleslie/" target="_blank" rel="noreferrer noopener">Montara Mountain Energy</a> provides technical and analytic consulting services addressing the spatial component of the decarbonization challenge. Much of our work consists of data-driven visual problem-solving, answering questions like the following: where are the best clean energy opportunities, from a technical, economic, societal and environmental  perspective?</p>
           </div>
 
-          <div className="md:w-4/5 leading-7 pt-10 text-lg">
+          <div className="max-w-screen-lg m-auto bg-white">
+          <div className="flex flex-col md:flex-row md:w-5/8 h-full items-center">
+            <a href="https://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener" className="w-full block md:w-full leading-7 pt-10 text-lg">
+              <img src="images/Princeton_NZA_Interim_Report_15_Dec_2020.svg" alt="" />
+            </a>
+            <div className="hidden w-full block md:w-1/3 font-utopia md:pl-7 pt-3">
+              <i>The Net-Zero America study “set an entirely new standard” in energy transition modeling by offering an “unprecedented degree of clarity and granularity” in its results.</i>
+            </div>
+          </div>
+        </div>
+
+          <div className="md:w-4/5 leading-7 pt-3 text-lg">
             <h3 className="font-bold text-2xl mt-4 mb-3">The Net Zero America Study</h3>
             <p className="pt-3">
-            The <a className="primary-link" href="https://www.linkedin.com/in/emilyleslie/" target="_blank" rel="noreferrer noopener">Princeton <i>Net-Zero America</i> Study</a> provides the most detailed and granular analysis of paths to net-zero greenhouse gas emissions in the United States. The study quantified five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad stakeholders wish to make to shape the energy transition. Net-Zero America provides granular guidance to inform these critical choices.
+            The <a className="primary-link" href="https://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener">Princeton <i>Net-Zero America</i> Study</a> provides the most detailed and granular analysis of paths to net-zero greenhouse gas emissions in the United States. The study quantified five distinct technological pathways, all using technologies known today, by which the United States could decarbonize its entire economy. With multiple plausible and affordable pathways available, the societal conversation can now turn from “if” to “how” and focus on the choices the nation and its myriad stakeholders wish to make to shape the energy transition. Net-Zero America provides granular guidance to inform these critical choices.
             </p>
           </div>
         </div>
 
         {/* NZA report image */}
 
-        <div className="max-w-screen-lg m-auto bg-white">
-          <div className="flex flex-col md:flex-row md:w-5/8 h-full items-center">
-            <div className="w-full block md:w-1/2 leading-7 pt-10 text-lg">
-              <img src="images/Princeton_NZA_Interim_Report_15_Dec_2020.svg" alt="" />
-            </div>
-            <div className="w-full block md:w-1/3 font-utopia md:pl-7 pt-3">
-              <i>The Net-Zero America study “set an entirely new standard” in energy transition modeling by offering an “unprecedented degree of clarity and granularity” in its results.</i>
-            </div>
-          </div>
-        </div>
+        
       
       </div>
 
-      <SectionHeader headerText="evaluate the policies" subheaderText="Our data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
+  {/*   <SectionHeader headerText="evaluate the policies" subheaderText="Our data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
 
       <Stats stats={stats} />
       <div className="py-8"></div>
-      <InTheMedia />
+            <InTheMedia /> */}
     </React.Fragment>
   );
 };
