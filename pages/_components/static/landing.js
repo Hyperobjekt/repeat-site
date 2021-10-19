@@ -4,6 +4,7 @@ import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
 import Stats from "../global/stats";
 import InTheMedia from "../global/in-the-media";
+// import reportPPTX from "/public/docs/REPEAT_Preliminary_Report_101921.pptx"
 
 let stats = {
   header: "The Biden Administration Climate Program",
@@ -50,9 +51,9 @@ const RepeatLanding = () => {
 
           <div className="md:w-full py-6">
           <div className="flex flex-col md:flex-row h-full items-center">
-            <div className="block w-full md:w-3/5">
+            <a href="/docs/REPEAT_Preliminary_Report_101921.pptx" target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
               <img src="/images/report-image.jpg" alt="" />
-            </div>
+            </a>
             <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
               <div className="block hidden">
                 <span className="inline-block rounded-full w-4 h-4 mr-3 bg-repeat"></span>

@@ -90,8 +90,8 @@ export default function RepeatHeader() {
       {({ open }) => (
         <>
           <div className="container max-w-screen-lg mx-auto pt-4 md:px-1 sm:px-6">
-            <div id="nav-bar" className="flex justify-between items-center md:pt-6 pb-4 md:justify-start md:space-x-10 transition-all duration-200 ease-in-out">
-              <div className="flex justify-start pl-2 md:pl-0 lg:w-0 lg:flex-1">
+            <div id="nav-bar" className="flex justify-between items-center tracking-wider md:pt-6 pb-4 md:justify-start md:space-x-10 transition-all duration-200 ease-in-out">
+              <div className="flex justify-start  pl-2 md:pl-0 lg:w-0 lg:flex-1">
                 <Link href="/">
                   <a href="/">
                     <span className="text-repeat text-2xl font-bold">REPEAT</span>

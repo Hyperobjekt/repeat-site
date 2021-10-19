@@ -33,6 +33,10 @@ nav p {
     url("/font-files/Forum-Regular.woff") format("woff2");
 }
 
+.bg-home-cover h1 {
+  line-height: 1.1;
+}
+
 .bg-policy-background {
   background-size: 38%;
 }
