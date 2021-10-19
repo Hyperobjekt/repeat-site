@@ -50,10 +50,10 @@ const RepeatLanding = () => {
 
           <div className="md:w-full py-6">
           <div className="flex flex-col md:flex-row h-full items-center">
-            <div className="block w-full md:w-1/2">
-              <img src="/images/map.svg" alt="" />
+            <div className="block w-full md:w-3/5">
+              <img src="/images/report-image.jpg" alt="" />
             </div>
-            <div className="w-full md:w-1/2 pl-0 md:pl-20 d-none">
+            <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
               <div className="block hidden">
                 <span className="inline-block rounded-full w-4 h-4 mr-3 bg-repeat"></span>
                 <span className="inline-block font-bold">PV</span>
@@ -78,7 +78,7 @@ const RepeatLanding = () => {
           <div className="md:w-3/5">
 
           <br/>
-          <h3 className="font-bold text-2xl mt-4 mb-8">Detailed Data Portal, Coming Soon ...</h3>
+          <h3 className="font-bold text-2xl mt-4 mb-6">Detailed Data Portal, Coming Soon ...</h3>
 
           <p>REPEAT will release granular, geospatially resolved results, analysis of air quality, public health, and employment impacts, and a state-by-state data portal at this website very soon. Stay tuned!</p>
 
@@ -94,7 +94,7 @@ const RepeatLanding = () => {
          
         </div>
         
-        <div className="md:w-3/5">
+        <div className="hidden md:w-3/5">
           <p>
             These tools were employed to great impact in the Princeton Net-Zero America study, which “set an entirely new standard” in energy transition modeling by offering an “unprecedented degree of clarity and granularity” in its results, according to John Holdren, former Science Advisor to President Obama and Director of the White House Office of Science and Technology Policy. The spatially-explicit and granular results and associated maps have proven to be highly relevant to a wide range
             of stakeholders and decision makers, and the responses to the report indicate the desire for more politically-salient outputs from energy systems models.
