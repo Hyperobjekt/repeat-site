@@ -5,24 +5,12 @@ import InTheMedia from "../global/in-the-media";
 import Stats from "../global/stats";
 const team = [
   {
-    name: "Jesse D. Jenkins (PI)",
-    title: "Princeton University Zero Lab",
+    name: "Prof. Jesse D. Jenkins (PI)",
+    title: "Princeton University ZERO Lab",
   },
   {
-    name: "Erin Mayfield",
-    title: "Princeton University Zero Lab",
-  },
-  {
-    name: "Neha Patankar",
-    title: "Princeton University Zero Lab",
-  },
-  {
-    name: "Qingyu Xu",
-    title: "Princeton University Zero Lab",
-  },
-  {
-    name: "Annie Jacobson",
-    title: "Princeton University Zero Lab",
+    name: "Prof. Erin Mayfield",
+    title: "Princeton University ZERO Lab",
   },
   {
     name: "Ryan Jones",
@@ -33,7 +21,19 @@ const team = [
     title: "Evolved Energy Research",
   },
   {
-    name: "Greg Schivley",
+    name: "Dr. Neha Patankar",
+    title: "Princeton University ZERO Lab",
+  },
+  {
+    name: "Dr. Qingyu Xu",
+    title: "Princeton University ZERO Lab",
+  },
+  {
+    name: "Annie Jacobson",
+    title: "Princeton University ZERO Lab",
+  },
+  {
+    name: "Dr. Greg Schivley",
     title: "Carbon Impact Consulting",
   },
   {
@@ -41,24 +41,24 @@ const team = [
     title: "Montara Mountain Energy",
   },
   {
-    name: "Andrew Pascale",
+    name: "Dr. Andrew Pascale",
     title: "Montara Mountain Energy",
   },
   {
     name: "Claire Wayner",
-    title: "",
+    title: "Princeton University ZERO Lab",
   },
   {
     name: "Aneesha Manocha",
-    title: "",
+    title: "Princeton University ZERO Lab",
   },
   {
     name: "Riti Bhandarkar",
-    title: "",
+    title: "Princeton University ZERO Lab",
   },
   {
     name: "Cady Feng",
-    title: "",
+    title: "Princeton University ZERO Lab",
   },
 ];
 const stats = {
