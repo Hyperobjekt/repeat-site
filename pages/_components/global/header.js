@@ -11,15 +11,20 @@ const pages = [
     href: "/policy",
   }, */
   {
+    name: "Home",
+    icon: ChartBarIcon,
+    href: "/",
+  },
+  {
     name: "About",
     icon: ChartBarIcon,
     href: "/about",
   },
-  {
+ /* {
     name: "Media",
     icon: ViewGridIcon,
     href: "/media",
-  }, 
+  }, */
   /*{
     name: "NZAP",
     icon: RefreshIcon,
@@ -94,14 +99,14 @@ export default function RepeatHeader() {
                   </a>
                 </Link>
               </div>
-              <div className="pr-2 -mt-4 hidden">
+              <div className="pr-2 -mt-4 md:hidden">
                 <Popover.Button className="p-2 inline-flex items-center justify-center text-repeat hover:text-gray-500 hover:bg-gray-100 focus:outline-none">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon className="h-6 w-6" aria-hidden="true" />
                 </Popover.Button>
               </div>
-              <Popover.Group as="nav" className="hidden md:none space-x-10">
-                <div className="relative group">
+              <Popover.Group as="nav" className="hidden md:flex space-x-10">
+                {/* <div className="relative group">
                   <button className={classNames(open ? "text-white" : "font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat", "group inline-flex items-center text-base font-medium hover:text-white focus:outline-none")}>
                     <Link href="/policies">
                       <a href="/policies" className="text-base font-medium text-white">
@@ -122,7 +127,12 @@ export default function RepeatHeader() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </div>  */}
+                <Link href="/">
+                  <a href="/" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
+                    Home
+                  </a>
+                </Link>
                 <Link href="/about">
                   <a href="/about" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
                     About
@@ -155,11 +165,11 @@ export default function RepeatHeader() {
                     </>
                   )}
                 </Popover> */}
-                <Link href="/media">
+                {/* <Link href="/media">
                   <a href="/media" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
                     Media
                   </a>
-                </Link>
+              </Link> */}
                 {/* <a href="https://netzeroamerica.princeton.edu" target="blank" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
                   NZAP
                               </a> */}
@@ -201,7 +211,7 @@ export default function RepeatHeader() {
                 </div>
 
                 {/* ..... */}
-                <div className="py-6 px-5">
+          {/*  <div className="py-6 px-5">
                   <div className="font-bold text-repeat pb-2">Policies</div>
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                     {policies.map((item) => (
@@ -210,8 +220,8 @@ export default function RepeatHeader() {
                       </a>
                     ))}
                   </div>
-                </div>
-              </div>
+                </div> */}
+                    </div> 
             </Popover.Panel>
           </Transition>
         </>

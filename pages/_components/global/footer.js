@@ -6,17 +6,20 @@ export default function RepeatFooter() {
       <div className="flex-1">
         <img className="max-h-10" src="/images/princeton-logo.svg" alt="" />
       </div>
-      <div className="flex-1 hidden text-right">
+      <div className="flex-1 text-right">
+      <a href="" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
+          Home
+        </a>
         <a href="" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
           About
         </a>
-        <a href="" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
+        <a href="" className="hidden inline-block pl-4 text-sm text-repeat-black font-semibold">
           Policies
         </a>
-        <a href="" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
+        <a href="" className="hidden inline-block pl-4 text-sm text-repeat-black font-semibold">
           Media
         </a>
-        <a href="" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
+        <a href="" className="hidden inline-block pl-4 text-sm text-repeat-black font-semibold">
           NZAP
         </a>
       </div>
