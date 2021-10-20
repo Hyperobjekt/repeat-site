@@ -125,7 +125,7 @@ const RepeatAbout = () => {
 
           <div className="py-6 md:w-4/5 leading-7">
             <h3 className="font-bold text-2xl mt-4 mb-3">Princeton University Zero Lab</h3>
-            <p className="pt-3 pb-6">The Princeton Zero-carbon Energy systems Research and Optimization Laboratory (ZERO Lab) conducts research to improve decision-making and accelerate rapid, affordable, and effective transitions to net-zero carbon energy systems. ZERO Lab’s research focuses on improving and applying optimization-based macro-energy systems models to evaluate low-carbon energy technologies and generate insights to guide policy and planning decisions.</p>
+            <p className="pt-3 pb-6">The Princeton Zero-carbon Energy systems Research and Optimization Laboratory (<a className="primary-link" href="https://mae.princeton.edu/people/faculty/jenkins" target="_blank" rel="noreferrer noopener">ZERO Lab</a>) conducts research to improve decision-making and accelerate rapid, affordable, and effective transitions to net-zero carbon energy systems. ZERO Lab’s research focuses on improving and applying optimization-based macro-energy systems models to evaluate low-carbon energy technologies and generate insights to guide policy and planning decisions.</p>
 
             <b>The REPEAT Project Team</b>
           </div>

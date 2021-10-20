@@ -45,13 +45,13 @@ const RepeatLanding = () => {
           <br/>
           <h3 className="font-bold text-2xl mt-4 mb-6">Preliminary Report: The Climate Impact of Congressional Infrastructure and Budget Bills</h3>
 
-          <p>With Congress considering infrastructure and budget bills that would provide unprecedented public investments in clean energy infrastructure, clean vehicles, and other low-carbon solutions, the REPEAT Project is releasing this preliminary report on the national-scale impacts of the Build Back Better Act being considered in the House of Representatives (H.R. 5376, as reported by the Budget Committee on September 27, 2021) and the Infrastructure Investment and Jobs Act (<a className="primary-link" href="https://www.congress.gov/bill/117th-congress/house-bill/3684/text" target="_blank" rel="noreferrer noopener">H.R. 3684</a>, as passed by the Senate on August 10, 2021). </p>
+          <p>With Congress considering infrastructure and budget bills that would provide unprecedented public investments in clean energy infrastructure, clean vehicles, and other low-carbon solutions, the REPEAT Project is releasing this preliminary report on the national-scale impacts of the Build Back Better Act being considered in the House of Representatives (<a className="primary-link" href="https://www.congress.gov/bill/117th-congress/house-bill/5376/text" target="_blank" rel="noreferrer noopener">H.R. 5376</a>, as reported by the Budget Committee on September 27, 2021) and the Infrastructure Investment and Jobs Act (<a className="primary-link" href="https://www.congress.gov/bill/117th-congress/house-bill/3684/text" target="_blank" rel="noreferrer noopener">H.R. 3684</a>, as passed by the Senate on August 10, 2021). </p>
           <br/>
           </div>
 
           <div className="md:w-full py-6">
           <div className="flex flex-col md:flex-row h-full items-center">
-            <a href="/docs/REPEAT_Preliminary_Report_101921.pptx" target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
+            <a href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
               <img src="/images/report-image.jpg" alt="" />
             </a>
             <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
@@ -68,7 +68,7 @@ const RepeatLanding = () => {
                 <span className="inline-block font-bold">Population Density &lt; 100 people per sq. mi</span>
               </div>
               <div className="block font-utopia pt-3">
-                <i>Download the report for details on the impact of these pending policies on carbon dioxide emissions, clean energy and electric vehicle deployment, fossil energy use, and more. (This version, October XX, 2021)</i>
+                <i><a className="primary-link" href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener">Download the report</a> for details on the impact of these pending policies on carbon dioxide emissions, clean energy and electric vehicle deployment, fossil energy use, and more. (This version, October 20, 2021.)</i>
               </div>
             </div>
           </div>
