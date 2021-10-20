@@ -2,5 +2,4 @@ User-agent: *
 
 Disallow: /policies/
 Disallow: /policies
-Disallow: /about
 Disallow: /media
