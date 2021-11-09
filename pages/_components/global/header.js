@@ -30,23 +30,14 @@ const pages = [
 
 const policies = [
   {
-    name: "Biden Administration Plan",
-    icon: ChartBarIcon,
-  },
-
-  {
-    name: "U.S. Climate Action Partnership 2050 Carbon Plan",
-    icon: CursorClickIcon,
+    name: "Infrastructure Investment and Jobs Act",
+    slug: "bif"
   },
   {
-    name: "Small Business Alliance Clean Jobs Proposal",
-    icon: ViewGridIcon,
+    name: "Build Back Better Act",
+    slug: "bbb-and-bif"
   },
-  // {
-  //   name: "Green New Deal",
-  //   icon: RefreshIcon,
-  // },
-].map((e) => ({ ...e, href: "/policies/" + e.name.replace(/ /gi, "-").toLocaleLowerCase() }));
+].map((e) => ({ ...e, href: "/policies/" + e.slug }));
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

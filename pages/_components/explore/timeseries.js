@@ -107,13 +107,13 @@ export const TimeseriesTable = ({ tableData, filters }) => {
                           <td className="p-2" colSpan="2">
                             {valueRow.variable}
                           </td>
-                          <td className="p-2">{valueRow.history[2020]}</td>
-                          <td className="p-2">{valueRow.core[2025] || "0"}</td>
-                          <td className="p-2">{valueRow.core[2030] || "0"}</td>
-                          <td className="p-2">{valueRow.core[2035] || "0"}</td>
-                          <td className="p-2">{valueRow.core[2040] || "0"}</td>
-                          <td className="p-2">{valueRow.core[2045] || "0"}</td>
-                          <td className="p-2">{valueRow.core[2050] || "0"}</td>
+                          <td className="p-2">{valueRow.history ? valueRow.history[2020] : 0}</td>
+                          <td className="p-2">{valueRow.core ? valueRow.core[2025] : 0}</td>
+                          <td className="p-2">{valueRow.core ? valueRow.core[2030] : 0}</td>
+                          <td className="p-2">{valueRow.core ? valueRow.core[2035] : 0}</td>
+                          <td className="p-2">{valueRow.core ? valueRow.core[2040] : 0}</td>
+                          <td className="p-2">{valueRow.core ? valueRow.core[2045] : 0}</td>
+                          <td className="p-2">{valueRow.core ? valueRow.core[2050] : 0}</td>
                         </tr>
                       );
                     })}
