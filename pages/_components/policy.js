@@ -107,8 +107,8 @@ const slides = [
   },
 ];
 
-let bidenPlan = {
-  header: "The Biden Administration Climate Program",
+let bifPlan = {
+  header: "Infrastructure Investment and Jobs Act as passed Nov 6, 2021",
   subHeader: "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
   contentBlocks: [
     {
@@ -158,11 +158,62 @@ let bidenPlan = {
     },
   ],
 };
+
+let bbbAndBifPlan = {
+  header: "Build Back Better Act (v1.0) as reported by the Budget Committee on Sept 25, 2021 (H. Rept. 117-30)",
+  subHeader: "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+  contentBlocks: [
+    {
+      type: "paragraph",
+      content: (
+        <span>
+          Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae{" "}
+          <a className="primary-link" href="#">
+            augue pharetra consequat
+          </a>
+          . Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.
+        </span>
+      ),
+    },
+    {
+      type: "component",
+      content: <Stats stats={graphic1} />,
+    },
+    {
+      type: "heading",
+      content: "Details & Resources",
+    },
+    {
+      type: "slider",
+      content: (
+        <div className="py-6 text-repeat-black rounded-xl">
+          <ImageCarousel slides={slides} />
+        </div>
+      ),
+    },
+    {
+      type: "paragraph",
+      content:
+        "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.",
+    },
+    {
+      type: "heading",
+      content: "Policy REPEAT Pillars",
+    },
+    {
+      type: "paragraph",
+      content: "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+    },
+    {
+      type: "pillars",
+      content: <Pillars />,
+    },
+  ],
+};
+
 const policies = {
-  "biden-administration-plan": bidenPlan,
-  "cres-climate-agenda": bidenPlan,
-  "sba-green-recovery-fund": bidenPlan,
-  "green-new-deal": bidenPlan,
+  "bif": bifPlan,
+  "bbb-and-bif": bbbAndBifPlan,
 };
 
 const RepeatPolicy = () => {
