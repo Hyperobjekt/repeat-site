@@ -34,6 +34,7 @@ const getScenarios = async (query) => {
 
   const results = await fetch(`/api/scenarios?${queryString}`, requestOptions);
   if (results.status === 200) return await results.json();
+
   return [];
 };
 

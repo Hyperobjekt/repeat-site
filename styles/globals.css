@@ -143,6 +143,24 @@ nav p {
   }
 }
 
+/* Carousel */
+
+.bumper-left {
+  background-image: url(/images/icons/bumper-left.svg);
+  background-size: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.bumper-right {
+  background-image: url(/images/icons/bumper-right.svg);
+  background-size: 130%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
 /* Table CSS */
 
 #tableContainer__shell { min-width: 1024px; }
@@ -165,6 +183,17 @@ nav p {
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+  @variants responsive {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
   }
 }
 .vs-active {

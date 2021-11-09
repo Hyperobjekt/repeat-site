@@ -88,7 +88,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
               Frozen Policy
             </th>
             <th className="p-2" colSpan="3">
-              Repeat Scenario
+              {tableData ? tableData[0].policy : "Repeat"} Policy
             </th>
             <th className="p-2" colSpan="2">
               Net Zero
@@ -116,7 +116,12 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                   <Fragment key={i}>
                     <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
-                        {row.category} - {row.subcategory} ({row.state} | {row.policy})
+                        <span>
+                          <b>
+                            {row.category} - {row.subcategory}
+                          </b>
+                        </span>{" - "}
+                        <span>( {row.units} )</span>
                       </td>
                     </tr>
                     {row.values
@@ -136,7 +141,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                         return (
                           <tr className="table w-full table-fixed hover:bg-repeat hover:bg-opacity-5" key={vi}>
                             <td className="p-2">{valueRow.variable}</td>
-                            <td className="p-2">{valueRow.history[2020]}</td>
+                            <td className="p-2">{valueRow.history ? valueRow.history[2020] : 0}</td>
 
                             <td className="p-2">{valueRow.current ? valueRow.current[2030] : 0}</td>
                             <td className="p-2" colSpan="2">
@@ -150,8 +155,8 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                               {valueRow.repeat[2050]} <span className="inline-block text-xs pl-2 text-repeat-dark">{valueRow.repeat.deltas[2050]}</span>
                             </td>
 
-                            <td className="p-2">{valueRow.core[2030]}</td>
-                            <td className="p-2">{valueRow.core[2050]}</td>
+                            <td className="p-2">{valueRow.core ? valueRow.core[2030] : 0}</td>
+                            <td className="p-2">{valueRow.core ? valueRow.core[2050] : 0}</td>
                           </tr>
                         );
                       })}
