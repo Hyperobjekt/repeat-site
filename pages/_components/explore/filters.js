@@ -30,6 +30,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     let nas = nf.filters.usStates.filter((state) => state.active); // new active state
     setActiveState(nas[0].label);
   }, []);
+
   const changeUsState = (state) => {
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
     let newFilters = { ...filters, usStates };
@@ -39,6 +40,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     setActiveState(state.label);
     setApiQuery(query);
   };
+
   const loadStateMenu = () => {
     return (
       <Menu as="div" className="relative inline-block text-left">
@@ -73,6 +75,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
       </Menu>
     );
   };
+
   const assembleCategories = (filters) => {
     let categories = [...filters.levelOneFilters]
       .map((cat, i) => {
@@ -121,25 +124,31 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
             </div>
           ))}
         </div>
-        <div className="py-2">Subcategory</div>
-        <div className="block pt-3 px-3">
-          {subcategories
-            .filter((sub) => sub.visible)
-            .map((subcategory, i) => (
-              <div
-                key={i}
-                className={classNames(subcategory.class, "cursor-pointer")}
-                onClick={() => {
-                  toggleSubCategory(subcategory);
-                }}
-              >
-                {subcategory.label}
-              </div>
-            ))}
-        </div>
+
+        {subcategories.filter(sub => sub.visible).length ?
+          <>
+            <div className="py-2">Subcategory</div>
+            <div className="block pt-3 px-3">
+              {subcategories
+                .filter((sub) => sub.visible)
+                .map((subcategory, i) => (
+                  <div
+                    key={i}
+                    className={classNames(subcategory.class, "cursor-pointer")}
+                    onClick={() => {
+                      toggleSubCategory(subcategory);
+                    }}
+                  >
+                    {subcategory.label}
+                  </div>
+                ))}
+            </div>
+          </>
+          : null}
       </>
     );
   };
+
   const toggleCategory = (category) => {
     let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
     let categorySlugs = categories.filter((e) => e.active).map((e) => e.slug);
@@ -151,6 +160,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     dispatch(loadScenarios(query));
     setApiQuery(query);
   };
+
   const toggleSubCategory = (subcategory) => {
     let routerQuery = { ...router.query };
     delete routerQuery.comparison;
@@ -166,11 +176,13 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     dispatch(loadScenarios({ ...routerQuery }));
     setApiQuery(query);
   };
+
   const setComparison = (comparison) => {
     let query = getQuery();
     localStorage.setItem("comparison", comparison);
     dispatch(loadFilters({ ...query }));
   };
+
   return (
     <>
       <div className="flex">
