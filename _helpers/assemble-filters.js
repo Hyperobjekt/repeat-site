@@ -41,8 +41,8 @@ export const assembleFilters = (stateFilters, actionFilters) => {
     usStates: getUsStates(actionFilters),
     levelOneFilters: getCategories(actionFilters),
     levelTwoFilters: getSubcategories(actionFilters),
-    page: actionFilters.page || 0,
-    limit: actionFilters.limit || window.PAGE_LIMIT,
+    page: actionFilters.page || 1,
+    limit: actionFilters.limit || 25,
   };
   filter.url = generateUrl(filter);
   return { ...filter };

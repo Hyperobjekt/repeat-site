@@ -63,7 +63,7 @@ export default async (req, res) => {
   if (req.query.limit !== null) limit = Number(req.query.limit);
   if (req.query.sort) sort = createSortQuery(req.query.sort);
 
-  scenarios.data = await read(dbClient, schema, COLLECTION, query, skip || 0, limit || 200, sort, false);
+  scenarios.data = await read(dbClient, schema, COLLECTION, query, skip || 0, limit || 25, sort, false);
   scenarios.count = await count(dbClient, schema, COLLECTION, query);
 
   return res.status(200).send(JSON.stringify(scenarios));

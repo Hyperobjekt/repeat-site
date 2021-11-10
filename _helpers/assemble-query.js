@@ -21,8 +21,8 @@ export const assembleQuery = (filterUrl) => {
   let assembled = { $and: [{ _geo: query.state || 'national' }, examiner] }
   if (categories && categories.$or.length) assembled.$and.push(categories)
   if (subcategories && subcategories.$or.length) assembled.$and.push(subcategories)
-  if (query.page) skip = (Number(query.page) - 1) * (Number(query.limit) || window.PAGE_LIMIT);
-  limit = query.limit ? query.limit : window.PAGE_LIMIT;
+  if (query.page) skip = (Number(query.page) - 1) * (Number(query.limit) || 25);
+  limit = query.limit ? query.limit : 25;
   assembled.limit = Number(limit) + 4;
   assembled.skip = skip > 0 ? skip - 3 : skip;
   assembled.sort = 'alt_l1,alt_l2,alt_v'
