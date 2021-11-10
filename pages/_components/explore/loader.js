@@ -17,6 +17,7 @@ import ExploreTimeseries from "./timeseries";
 
 const ExploreLoader = () => {
   let sheetArr = [];
+  let pageLimit = 25;
   const dispatch = useDispatch();
   const router = useRouter();
   let routerQuery = { ...router.query };
@@ -32,7 +33,6 @@ const ExploreLoader = () => {
   const [dlProgress, setDlProgress] = useState(0);
 
   useEffect(() => {
-    window.PAGE_LIMIT = 200;
     dispatch(loadScenarios({ ...routerQuery }));
   }, []);
 
@@ -41,10 +41,10 @@ const ExploreLoader = () => {
   };
 
   const changePage = (page, pageSize) => {
-    let limit = window.PAGE_LIMIT;
+    let limit = pageLimit;
     if (pageSize) limit = pageSize;
-    let newFilters = { ...filters, page: page };
-    let query = { ...apiQuery, page: page };
+    let newFilters = { ...filters, page };
+    let query = { ...apiQuery, policy, page };
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
     setApiQuery(query);
@@ -80,8 +80,8 @@ const ExploreLoader = () => {
 
   const downloadBatch = i => {
     setDownloadingCSV(true);
-    let downloadCount = Math.ceil(count / window.PAGE_LIMIT);
-    let queryObject = { ...assembleQuery(filters.url), skip: i * window.PAGE_LIMIT, limit: window.PAGE_LIMIT, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
+    let downloadCount = Math.ceil(count / pageLimit);
+    let queryObject = { ...assembleQuery(filters.url), skip: i * pageLimit, limit: pageLimit, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
     getScenarios(queryObject).then(dl => {
       let data = dl.data.map(row => {
         Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_' || cell.substring(0, 5) === 'unit_').forEach(key => delete row[key])
@@ -116,8 +116,8 @@ const ExploreLoader = () => {
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-6">
-        <div className="block">
+      <div className="flex gap-10 pt-6">
+        <div className="w-4/12">
           <button className="repeat-button pt-2 pb-2 pr-3 pl-3 rounded flex items-center" onClick={() => { downloadBatch(0) }}>
             {
               downloadingCSV
@@ -132,12 +132,12 @@ const ExploreLoader = () => {
             }
           </button>
         </div>
-        <div className="block flex justify-end">
+        <div className="w-8/12 flex justify-end">
           <Pagination
             total={count}
             current={Number(filters.page) || 1}
-            pageSizeOptions={[200, 500, 1000, 1500, 2000]}
-            defaultPageSize={Number(filters.limit) || window.PAGE_LIMIT}
+            pageSizeOptions={[25, 50, 100, 200, 500]}
+            defaultPageSize={Number(filters.limit) || pageLimit}
             onChange={changePage}
             showSizeChanger />
          </div>
