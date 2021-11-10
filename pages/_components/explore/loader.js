@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
-
-import { loadFilters } from "../../../redux/actions/filters.actions";
+import { Pagination, Progress } from "antd";
+import { Download } from 'react-bootstrap-icons'
+import * as moment from 'moment-timezone';
+import "antd/dist/antd.css";
+ 
+// import { scenariosApi } from "../../api/scenarios";
+import { loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
+import { assembleQuery, convertToCSV } from '../../../_helpers';
+import { handleResponse, handleError } from "../../api/apiUtils";
 import ExploreFilters from "./filters";
 import ExploreBenchmark from "./benchmark";
 import ExploreTimeseries from "./timeseries";
 
 const ExploreLoader = () => {
+  let sheetArr = [];
   const dispatch = useDispatch();
   const router = useRouter();
   let routerQuery = { ...router.query };
@@ -16,16 +24,77 @@ const ExploreLoader = () => {
   routerQuery.state = routerQuery.state || "national";
   let filters = useSelector((state) => state.filters);
   let scenarios = useSelector((state) => state.scenarios);
+  let count = useSelector((state) => state.count);
   const [policy, setPolicy] = useState(routerQuery.policy);
   const [params, setParams] = useState(routerQuery);
+  const [apiQuery, setApiQuery] = useState({});
+  const [downloadingCSV, setDownloadingCSV] = useState(false)
+  const [dlProgress, setDlProgress] = useState(0);
 
   useEffect(() => {
+    window.PAGE_LIMIT = 200;
     dispatch(loadScenarios({ ...routerQuery }));
   }, []);
 
   const setFilterClasses = (color, active) => {
     return active ? `inline-block rounded border-2 border-transparent text-sm mb-3 mr-3 px-3 py-1 bg-repeat-${color} text-white` : `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 border-2 border-repeat-${color} text-repeat-${color} text-white`;
   };
+
+  const changePage = (page, pageSize) => {
+    let limit = window.PAGE_LIMIT;
+    if (pageSize) limit = pageSize;
+    let newFilters = { ...filters, page: page };
+    let query = { ...apiQuery, page: page };
+    dispatch(loadFilterAction(newFilters));
+    dispatch(loadScenarios(query));
+    setApiQuery(query);
+  }
+
+  const getScenarios = (query = null) => {
+    let baseUrl = `/api/scenarios?limit=${query.limit}&skip=${query.skip || 0}&sort=${query.sort || 'filter_level_1'}`;
+    delete query.limit;
+    delete query.skip;
+    delete query.sort;
+    return fetch(baseUrl, {
+      method: 'POST',
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(query)
+    })
+      .then(handleResponse)
+      .catch(handleError);
+  }
+
+  const downloadFullCSV = (sheetArr, headers) => {
+    let csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...sheetArr].join('\n');
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `repeat-data-${moment().format()}.csv`);
+    document.body.appendChild(link); // Required for FF
+    link.click();
+    setTimeout(() => {
+      setDownloadingCSV(false);
+      setDlProgress(0)
+    }, 3000)
+  }
+
+  const downloadBatch = i => {
+    setDownloadingCSV(true);
+    let downloadCount = Math.ceil(count / window.PAGE_LIMIT);
+    let queryObject = { ...assembleQuery(filters.url), skip: i * window.PAGE_LIMIT, limit: window.PAGE_LIMIT, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
+    getScenarios(queryObject).then(dl => {
+      let data = dl.data.map(row => {
+        Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_' || cell.substring(0, 5) === 'unit_').forEach(key => delete row[key])
+        return row;
+      })
+      let converted = convertToCSV(data);
+      i++;
+      setDlProgress(Math.round((i / downloadCount) * 100))
+      sheetArr = [...sheetArr, ...converted.csvArr]
+      if (downloadCount > i) return downloadBatch(i);
+      if (downloadCount === i) return downloadFullCSV(sheetArr, converted.headers)
+    })
+  }
 
   return (
     <div className="">
@@ -46,6 +115,34 @@ const ExploreLoader = () => {
           </div>
         </div>
       )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-6">
+        <div className="block">
+          <button className="repeat-button pt-2 pb-2 pr-3 pl-3 rounded flex items-center" onClick={() => { downloadBatch(0) }}>
+            {
+              downloadingCSV
+                ? <React.Fragment>
+                  {dlProgress === 100 ? <span className="pr-2">Done</span> : <span className="pr-2">Downloading...</span>}
+                  <Progress strokeColor={{ from: '#108ee9', to: '#ed6d08' }} type="circle" percent={dlProgress} width={30} />
+                </React.Fragment>
+                : <React.Fragment>
+                  <span className="pr-2">Download this table as a csv </span>
+                  <Download className="" />
+                </React.Fragment>
+            }
+          </button>
+        </div>
+        <div className="block flex justify-end">
+          <Pagination
+            total={count}
+            current={Number(filters.page) || 1}
+            pageSizeOptions={[200, 500, 1000, 1500, 2000]}
+            defaultPageSize={Number(filters.limit) || window.PAGE_LIMIT}
+            onChange={changePage}
+            showSizeChanger />
+         </div>
+      </div>
+
     </div>
   );
 };

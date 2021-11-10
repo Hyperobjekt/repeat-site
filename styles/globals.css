@@ -210,3 +210,28 @@ a.primary-link {
 .repeat-button-primary {
   @apply items-center justify-center px-4 py-2 border-b-2 border-repeat-primary shadow-sm text-base font-medium text-white bg-repeat-primary-light hover:bg-repeat;
 } */
+.repeat-button {
+  @apply bg-white text-black;
+  /*border: 1px $ground-color solid;*/
+  @apply border;
+  transition: background-color .3s ease;
+}
+.repeat-button:hover {
+  background-color:#be5709;
+  color: white;
+  border-color: #be5709;
+  text-decoration: none;
+}
+
+.ant-pagination-item,
+.ant-pagination-item-link {
+  border-width: 0 !important;
+}
+.ant-pagination-item:hover a,
+.ant-pagination-item-active a,
+.ant-pagination-item:focus-visible a {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: rgba(0, 0, 0, 0.85) !important;
+}
