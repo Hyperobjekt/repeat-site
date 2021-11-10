@@ -1,7 +1,7 @@
 import * as types from "./_types";
 // import * as filtersApi from "../../pages/api/filters";
 
-// export const setFilterAction = (filters) => ({ type: types.SET_FILTER_ACTION, filters });
+export const setFilterAction = (filters) => ({ type: types.SET_FILTER_ACTION, filters });
 export const loadFilterAction = (filters) => ({ type: types.LOAD_FILTER_ACTION, filters });
 
 const getFilters = async (query) => {
@@ -16,6 +16,7 @@ const getFilters = async (query) => {
   const results = await fetch(`/api/filters`, requestOptions);
   if (results.status === 200) result = await results.json();
   result.usStates = result.usStates.map((state) => ({ ...state, active: state.slug === query.state }));
+
   result.levelOneFilters = result.levelOneFilters.map((cat) => ({ ...cat, active: query.category.includes(cat.slug) }));
   result.levelTwoFilters = result.levelTwoFilters.map((subcat) => ({ ...subcat, active: query.subcategory.includes(subcat.slug) }));
   return result;

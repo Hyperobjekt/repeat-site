@@ -1,4 +1,5 @@
 import { setCors } from "../../_helpers/cors";
+import { handleResponse, handleError } from "./apiUtils";
 const ObjectID = require("mongodb").ObjectID;
 let dbClient;
 const COLLECTION = "scenarios";

@@ -1,4 +1,6 @@
 import * as types from "./_types";
+import { setCountAction } from "./count.actions";
+
 
 // Export Action creators
 export function createScenarioAction(scenario) {
@@ -31,7 +33,6 @@ const getScenarios = async (query) => {
     headers: headers,
     redirect: "follow",
   };
-
   const results = await fetch(`/api/scenarios?${queryString}`, requestOptions);
   if (results.status === 200) return await results.json();
 
@@ -43,8 +44,14 @@ export const loadScenarios = (query) => async (dispatch) => {
   Object.keys(query).forEach((e) => {
     if (e === "categories") return (q["_category"] = query[e].split(","));
     if (e === "subcategories") return (q["_subcategory"] = query[e].split(","));
+    if (e === "limit") return (q["limit"] = Number(query[e]));
+    if (e === "page") {
+      q["skip"] = (Number(query[e]) - 1) * (Number(query.limit) || window.PAGE_LIMIT);
+      return;
+    };
     return (q[`_${e}`] = query[e]);
   });
   let scenarios = await getScenarios(q);
+  await dispatch(setCountAction(scenarios.count));
   await dispatch(loadScenariosActionSuccess(scenarios.data || scenarios));
 };
