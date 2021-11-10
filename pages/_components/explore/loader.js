@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import { Pagination } from "antd";
+import "antd/dist/antd.css";
 
-import { loadFilters } from "../../../redux/actions/filters.actions";
+import { loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import ExploreFilters from "./filters";
 import ExploreBenchmark from "./benchmark";
@@ -16,16 +18,29 @@ const ExploreLoader = () => {
   routerQuery.state = routerQuery.state || "national";
   let filters = useSelector((state) => state.filters);
   let scenarios = useSelector((state) => state.scenarios);
+  let count = useSelector((state) => state.count);
   const [policy, setPolicy] = useState(routerQuery.policy);
   const [params, setParams] = useState(routerQuery);
+  const [apiQuery, setApiQuery] = useState({});
 
   useEffect(() => {
+    window.PAGE_LIMIT = 200;
     dispatch(loadScenarios({ ...routerQuery }));
   }, []);
 
   const setFilterClasses = (color, active) => {
     return active ? `inline-block rounded border-2 border-transparent text-sm mb-3 mr-3 px-3 py-1 bg-repeat-${color} text-white` : `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 border-2 border-repeat-${color} text-repeat-${color} text-white`;
   };
+
+  const changePage = (page, pageSize) => {
+    let limit = window.PAGE_LIMIT;
+    if (pageSize) limit = pageSize;
+    let newFilters = { ...filters, page: page };
+    let query = { ...apiQuery, page: page };
+    dispatch(loadFilterAction(newFilters));
+    dispatch(loadScenarios(query));
+    setApiQuery(query);
+  }
 
   return (
     <div className="">
@@ -46,6 +61,21 @@ const ExploreLoader = () => {
           </div>
         </div>
       )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-6">
+        <div className="block">
+        </div>
+        <div className="block flex justify-end">
+          <Pagination
+            total={count}
+            current={Number(filters.page) || 1}
+            pageSizeOptions={[200, 500, 1000, 1500, 2000]}
+            defaultPageSize={Number(filters.limit) || window.PAGE_LIMIT}
+            onChange={changePage}
+            showSizeChanger />
+         </div>
+      </div>
+
     </div>
   );
 };

@@ -172,7 +172,6 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     routerQuery.state = routerQuery.state || "national";
     routerQuery.subcategories = subcategorySlugs.join(",");
     dispatch(loadFilterAction(newFilters));
-
     dispatch(loadScenarios({ ...routerQuery }));
     setApiQuery(query);
   };
