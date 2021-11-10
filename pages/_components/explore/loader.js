@@ -43,11 +43,13 @@ const ExploreLoader = () => {
   const changePage = (page, pageSize) => {
     let limit = pageLimit;
     if (pageSize) limit = pageSize;
-    let newFilters = { ...filters, page };
-    let query = { ...apiQuery, policy, page };
+    let newFilters = { ...filters, page, limit };
+    let newRouterQuery = { ...routerQuery, policy, page, limit };
+    let newQuery = { ...apiQuery, policy, page, limit };
+
     dispatch(loadFilterAction(newFilters));
-    dispatch(loadScenarios(query));
-    setApiQuery(query);
+    dispatch(loadScenarios(newRouterQuery));
+    setApiQuery(newQuery);
   }
 
   const getScenarios = (query = null) => {
@@ -100,9 +102,10 @@ const ExploreLoader = () => {
     <div className="">
       <h2 className="text-repeat-teal text-3xl font-bold mb-3">Examine the Data</h2>
       <p className="text-repeat-dark">Maecenas efficitur dolor. Donec gravida dolor quis dignissim elementum.</p>
-      <p className="text-repeat-dark pt-8">Compare by</p>
+      <p className="pt-8">Compare by</p>
 
       <ExploreFilters filters={filters} setFilterClasses={setFilterClasses} policy={policy} />
+
       {[...scenarios].map((e) => e.values).flat().length ? (
         <div id="tableContainer" className="overflow-auto">
           {filters.comparison === "benchmark" ? <ExploreBenchmark tableData={scenarios} /> : <ExploreTimeseries tableData={scenarios} />}
@@ -118,7 +121,7 @@ const ExploreLoader = () => {
 
       <div className="flex gap-10 pt-6">
         <div className="w-4/12">
-          <button className="repeat-button pt-2 pb-2 pr-3 pl-3 rounded flex items-center" onClick={() => { downloadBatch(0) }}>
+          <button className="border border-black pt-2 pb-2 pr-3 pl-3 rounded flex items-center" onClick={() => { downloadBatch(0) }}>
             {
               downloadingCSV
                 ? <React.Fragment>

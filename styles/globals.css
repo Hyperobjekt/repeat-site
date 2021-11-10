@@ -210,17 +210,11 @@ a.primary-link {
 .repeat-button-primary {
   @apply items-center justify-center px-4 py-2 border-b-2 border-repeat-primary shadow-sm text-base font-medium text-white bg-repeat-primary-light hover:bg-repeat;
 } */
-.repeat-button {
-  @apply bg-white text-black;
-  /*border: 1px $ground-color solid;*/
-  @apply border;
-  transition: background-color .3s ease;
-}
-.repeat-button:hover {
-  background-color:#be5709;
-  color: white;
-  border-color: #be5709;
-  text-decoration: none;
+
+.ant-collapse-header,
+.ant-collapse-content-box {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .ant-pagination-item,
@@ -229,9 +223,19 @@ a.primary-link {
 }
 .ant-pagination-item:hover a,
 .ant-pagination-item-active a,
-.ant-pagination-item:focus-visible a {
-  color: rgba(0, 0, 0, 0.85) !important;
+.ant-pagination-item a:focus-visible,
+.ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link,
+.ant-pagination-prev:focus-visible .ant-pagination-item-link,
+.ant-pagination-next:focus-visible .ant-pagination-item-link {
+  color: black !important;
 }
+.ant-pagination-item a:focus-visible,
+.ant-pagination-prev .ant-pagination-item-link:focus-visible,
+.ant-pagination-next .ant-pagination-item-link:focus-visible {
+  outline: rgba(0, 0, 0, 0.85);
+}
+
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
   border-color: rgba(0, 0, 0, 0.85) !important;
 }
