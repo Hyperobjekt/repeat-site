@@ -1,8 +1,0 @@
-# Next-on-Netlify Redirects
-/api/apiUtils  /.netlify/functions/next_api_apiUtils  200
-/api/filters  /.netlify/functions/next_api_filters  200
-/api/hello  /.netlify/functions/next_api_hello  200
-/api/scenarios  /.netlify/functions/next_api_scenarios  200
-/_next/image*  url=:url w=:width q=:quality  /nextimg/:url/:width/:quality  301!
-/nextimg/*  /.netlify/functions/next_image  200
-/policies/:policy  /policies/[policy].html  200
