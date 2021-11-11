@@ -2,6 +2,8 @@
 @tailwind base;
 @tailwind components;
 
+@import "~antd/dist/antd.css";
+
 /*@import "~antd/lib/style/index.css";
 @import "~antd/lib/pagination/style/index.css";
 @import "~antd/lib/select/style/index.css";*/

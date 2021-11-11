@@ -9,6 +9,7 @@ import * as moment from 'moment-timezone';
 // import "antd/lib/pagination/style/index.css";
 // import "antd/lib/select/style/index.css";
 // import "antd/dist/antd.css";
+import "antd/dist/antd.css";
  
 import { loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
