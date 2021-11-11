@@ -6,6 +6,7 @@ import SimpleReactLightbox from "simple-react-lightbox";
 
 import { useStore } from "../redux/store.config";
 import "../styles/globals.css";
+import "antd/dist/antd.css";
 
 //Binding events.
 Router.events.on("routeChangeStart", () => NProgress.start());

@@ -2,9 +2,9 @@
 @tailwind base;
 @tailwind components;
 
-@import "~antd/lib/style/index.css";
+/*@import "~antd/lib/style/index.css";
 @import "~antd/lib/pagination/style/index.css";
-@import "~antd/lib/select/style/index.css";
+@import "~antd/lib/select/style/index.css";*/
 
 html,
 body {
@@ -113,11 +113,6 @@ nav p {
  border-color: #5E4557 !important;
 }
 
-
-
-
-
-
 .font-forum {
   font-family: "Forum-Regular";
 }
@@ -177,6 +172,40 @@ nav p {
 .vs--left { right: 60%; transform: translateX(50%);  }
 .vs--right { right: 28%; transform: translateX(50%);  }
 
+/* Ant Design Overrides */
+
+.ant-collapse-header,
+.ant-collapse-content-box {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.ant-pagination-item,
+.ant-pagination-item-link {
+  border-width: 0 !important;
+}
+.ant-pagination-item:hover a,
+.ant-pagination-item-active a,
+.ant-pagination-item a:focus-visible,
+.ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link,
+.ant-pagination-prev:focus-visible .ant-pagination-item-link,
+.ant-pagination-next:focus-visible .ant-pagination-item-link,
+.ant-select-single:not(.ant-select-open) .ant-select-arrow {
+  color: black !important;
+}
+.ant-pagination-item a:focus-visible,
+.ant-pagination-prev .ant-pagination-item-link:focus-visible,
+.ant-pagination-next .ant-pagination-item-link:focus-visible {
+  outline: rgba(0, 0, 0, 0.85) !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: rgba(0, 0, 0, 0.85) !important;
+}
+.ant-select-arrow {
+  transition: all 0.3s;
+}
 
 /* purgecss end ignore */
 
@@ -208,33 +237,4 @@ nav p {
 }
 a.primary-link {
   @apply text-repeat-burnt border-b border-repeat-burnt
-}
-
-.ant-collapse-header,
-.ant-collapse-content-box {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.ant-pagination-item,
-.ant-pagination-item-link {
-  border-width: 0 !important;
-}
-.ant-pagination-item:hover a,
-.ant-pagination-item-active a,
-.ant-pagination-item a:focus-visible,
-.ant-pagination-prev:hover .ant-pagination-item-link,
-.ant-pagination-next:hover .ant-pagination-item-link,
-.ant-pagination-prev:focus-visible .ant-pagination-item-link,
-.ant-pagination-next:focus-visible .ant-pagination-item-link {
-  color: black !important;
-}
-.ant-pagination-item a:focus-visible,
-.ant-pagination-prev .ant-pagination-item-link:focus-visible,
-.ant-pagination-next .ant-pagination-item-link:focus-visible {
-  outline: rgba(0, 0, 0, 0.85);
-}
-
-.ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  border-color: rgba(0, 0, 0, 0.85) !important;
 }
