@@ -90,7 +90,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
 
   const loadComparisonMenu = (filters) => {
     return (
-      <div className="flex px-2 pt-5 border-b-4 border-repeat">
+      <div className="flex px-2 border-b-4 border-repeat">
         <div
           className={filters.comparison === "benchmark" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
           onClick={() => {

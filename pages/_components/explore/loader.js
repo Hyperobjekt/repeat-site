@@ -4,9 +4,11 @@ import { useRouter } from "next/router";
 import { Pagination, Progress } from "antd";
 import { Download } from 'react-bootstrap-icons'
 import * as moment from 'moment-timezone';
-import "antd/dist/antd.css";
+
+import "antd/lib/style/index.css";
+import "antd/lib/pagination/style/index.css";
+import "antd/lib/select/style/index.css";
  
-// import { scenariosApi } from "../../api/scenarios";
 import { loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import { assembleQuery, convertToCSV } from '../../../_helpers';
@@ -33,6 +35,8 @@ const ExploreLoader = () => {
   const [dlProgress, setDlProgress] = useState(0);
 
   useEffect(() => {
+    // console.log(`routerQuery`, routerQuery);
+    // console.log(`filters`, filters);
     dispatch(loadScenarios({ ...routerQuery }));
   }, []);
 
