@@ -140,5 +140,10 @@ module.exports = {
     backdropFilter: ["responsive"],
     backgroundOpacity: ["responsive", "hover", "active", "group-hover", "focus"],
   },
-  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography"), require("@tailwindcss/aspect-ratio"), require("tailwindcss-filters")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+    require("tailwindcss-filters"),
+  ],
 };

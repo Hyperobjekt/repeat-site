@@ -1,4 +1,4 @@
-/* purgecss start ignore */
+/*! purgecss start ignore */
 @tailwind base;
 @tailwind components;
 
@@ -109,11 +109,6 @@ nav p {
  border-color: #5E4557 !important;
 }
 
-
-
-
-
-
 .font-forum {
   font-family: "Forum-Regular";
 }
@@ -173,8 +168,42 @@ nav p {
 .vs--left { right: 60%; transform: translateX(50%);  }
 .vs--right { right: 28%; transform: translateX(50%);  }
 
+/* Ant Design Overrides */
 
-/* purgecss end ignore */
+.ant-collapse-header,
+.ant-collapse-content-box {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.ant-pagination-item,
+.ant-pagination-item-link {
+  border-width: 0 !important;
+}
+.ant-pagination-item:hover a,
+.ant-pagination-item-active a,
+.ant-pagination-item a:focus-visible,
+.ant-pagination-prev:hover .ant-pagination-item-link:not([disabled]),
+.ant-pagination-next:hover .ant-pagination-item-link:not([disabled]),
+.ant-pagination-prev:focus-visible .ant-pagination-item-link:not([disabled]),
+.ant-pagination-next:focus-visible .ant-pagination-item-link:not([disabled]),
+.ant-select-single:not(.ant-select-open) .ant-select-arrow {
+  color: black !important;
+}
+.ant-pagination-item a:focus-visible,
+.ant-pagination-prev .ant-pagination-item-link:focus-visible,
+.ant-pagination-next .ant-pagination-item-link:focus-visible {
+  outline: rgba(0, 0, 0, 0.85) !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-color: rgba(0, 0, 0, 0.85) !important;
+}
+.ant-select-arrow {
+  transition: all 0.3s;
+}
+
+/*! purgecss end ignore */
 
 @tailwind utilities;
 
@@ -203,35 +232,5 @@ nav p {
   @apply bg-white text-black;
 }
 a.primary-link {
-  @apply text-repeat-burnt border-b border-repeat-burnt
-}
-
-/* 
-.repeat-button-primary {
-  @apply items-center justify-center px-4 py-2 border-b-2 border-repeat-primary shadow-sm text-base font-medium text-white bg-repeat-primary-light hover:bg-repeat;
-} */
-.repeat-button {
-  @apply bg-white text-black;
-  /*border: 1px $ground-color solid;*/
-  @apply border;
-  transition: background-color .3s ease;
-}
-.repeat-button:hover {
-  background-color:#be5709;
-  color: white;
-  border-color: #be5709;
-  text-decoration: none;
-}
-
-.ant-pagination-item,
-.ant-pagination-item-link {
-  border-width: 0 !important;
-}
-.ant-pagination-item:hover a,
-.ant-pagination-item-active a,
-.ant-pagination-item:focus-visible a {
-  color: rgba(0, 0, 0, 0.85) !important;
-}
-.ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  border-color: rgba(0, 0, 0, 0.85) !important;
+  @apply text-repeat-burnt border-b border-repeat-burnt;
 }
