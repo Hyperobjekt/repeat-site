@@ -1,7 +1,6 @@
 /*! purgecss start ignore */
 @tailwind base;
 @tailwind components;
-/*@import 'antd/dist/antd.css';*/
 
 html,
 body {
