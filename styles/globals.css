@@ -1,10 +1,7 @@
-/* purgecss start ignore */
+/*! purgecss start ignore */
 @tailwind base;
 @tailwind components;
-
-/*@import "~antd/lib/style/index.css";
-@import "~antd/lib/pagination/style/index.css";
-@import "~antd/lib/select/style/index.css";*/
+/*@import 'antd/dist/antd.css';*/
 
 html,
 body {
@@ -187,10 +184,10 @@ nav p {
 .ant-pagination-item:hover a,
 .ant-pagination-item-active a,
 .ant-pagination-item a:focus-visible,
-.ant-pagination-prev:hover .ant-pagination-item-link,
-.ant-pagination-next:hover .ant-pagination-item-link,
-.ant-pagination-prev:focus-visible .ant-pagination-item-link,
-.ant-pagination-next:focus-visible .ant-pagination-item-link,
+.ant-pagination-prev:hover .ant-pagination-item-link:not([disabled]),
+.ant-pagination-next:hover .ant-pagination-item-link:not([disabled]),
+.ant-pagination-prev:focus-visible .ant-pagination-item-link:not([disabled]),
+.ant-pagination-next:focus-visible .ant-pagination-item-link:not([disabled]),
 .ant-select-single:not(.ant-select-open) .ant-select-arrow {
   color: black !important;
 }
@@ -207,7 +204,7 @@ nav p {
   transition: all 0.3s;
 }
 
-/* purgecss end ignore */
+/*! purgecss end ignore */
 
 @tailwind utilities;
 
@@ -236,5 +233,5 @@ nav p {
   @apply bg-white text-black;
 }
 a.primary-link {
-  @apply text-repeat-burnt border-b border-repeat-burnt
+  @apply text-repeat-burnt border-b border-repeat-burnt;
 }

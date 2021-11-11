@@ -5,10 +5,9 @@ import { Pagination, Progress } from "antd";
 import { Download } from 'react-bootstrap-icons'
 import * as moment from 'moment-timezone';
 
-// import "antd/lib/style/index.css";
-// import "antd/lib/pagination/style/index.css";
-// import "antd/lib/select/style/index.css";
-// import "antd/dist/antd.css";
+import "antd/lib/style/index.css";
+import "antd/lib/select/style/index.css";
+import "antd/lib/pagination/style/index.css";
  
 import { loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
@@ -36,8 +35,8 @@ const ExploreLoader = () => {
   const [dlProgress, setDlProgress] = useState(0);
 
   useEffect(() => {
-    console.log(`routerQuery`, routerQuery);
-    console.log(`filters`, filters);
+    // console.log(`routerQuery`, routerQuery);
+    // console.log(`filters`, filters);
     dispatch(loadScenarios({ ...routerQuery }));
   }, []);
 
