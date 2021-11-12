@@ -50,32 +50,56 @@ const RepeatLanding = () => {
           </div>
 
           <div className="md:w-full py-6">
-          <div className="flex flex-col md:flex-row h-full items-center">
-            <a href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
-              <img src="/images/report-image.jpg" alt="" />
-            </a>
-            <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
-              <div className="block hidden">
-                <span className="inline-block rounded-full w-4 h-4 mr-3 bg-repeat"></span>
-                <span className="inline-block font-bold">PV</span>
-              </div>
-              <div className="block hidden">
-                <span className="inline-block rounded-full w-4 h-4 mr-3 bg-repeat"></span>
-                <span className="inline-block font-bold">Wind</span>
-              </div>
-              <div className="block hidden">
-                <span className="inline-block rounded-full w-4 h-4 mr-3 bg-repeat-neutral"></span>
-                <span className="inline-block font-bold">Population Density &lt; 100 people per sq. mi</span>
-              </div>
-              <div className="block font-utopia pt-3">
-                <i><a className="primary-link" href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener">Download the report</a> for details on the impact of these pending policies on carbon dioxide emissions, clean energy and electric vehicle deployment, fossil energy use, and more. (This version, October 20, 2021.)</i>
+            <div className="flex flex-col md:flex-row h-full items-center">
+              <a href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
+                <img src="/images/report-image.jpg" alt="" />
+              </a>
+              <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
+                <div className="block hidden">
+                  <span className="inline-block rounded-full w-4 h-4 mr-3 bg-repeat"></span>
+                  <span className="inline-block font-bold">PV</span>
+                </div>
+                <div className="block hidden">
+                  <span className="inline-block rounded-full w-4 h-4 mr-3 bg-repeat"></span>
+                  <span className="inline-block font-bold">Wind</span>
+                </div>
+                <div className="block hidden">
+                  <span className="inline-block rounded-full w-4 h-4 mr-3 bg-repeat-neutral"></span>
+                  <span className="inline-block font-bold">Population Density &lt; 100 people per sq. mi</span>
+                </div>
+                <div className="block font-utopia pt-3">
+                  <i><a className="primary-link" href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener">Download the report</a> for details on the impact of these pending policies on carbon dioxide emissions, clean energy and electric vehicle deployment, fossil energy use, and more. (This version, October 20, 2021.)</i>
+                </div>
               </div>
             </div>
-          </div>
         </div>
 
           <div className="md:w-3/5">
 
+          <h3 className="font-bold text-2xl mt-4 mb-6">Addendum to Preliminary Report (11/12/21)</h3>
+
+          <p>Since release of our “Preliminary Report: The Climate Impact of Congressional Infrastructure and Budget Bills,” on October 20th, 2021, the U.S. House of Representatives passed the <b>Infrastructure Investment and Jobs Act</b> (<a href="https://www.congress.gov/bill/117th-congress/house-bill/3684/text" className="primary-link" target="_blank" rel="noopener noreferrer"> H.R. 3684 </a>) on November 6th and introduced a new version of the <b>Build Back Better Act</b> (<a href="https://rules.house.gov/bill/117/hr-5376" className="primary-link" target="_blank" rel="noopener noreferrer"> H.R. 5376, RCP 117-18 </a>) on November 3, 2021.</p>
+          <br/>
+          <p>There are a significant number of changes to the Build Back Better Act, which the REPEAT Project has carefully documented along with a thorough catalog of all climate and clean energy provisions in the final Infrastructure Bill in <a className="primary-link" href="http://bit.ly/REPEAT-Policies" target="_blank" rel="noopener noreferrer">this document</a>.</p>
+      
+        
+          </div>
+
+          <div className="md:w-full py-6">
+            <div className="flex flex-col md:flex-row h-full items-center">
+              <a href="/docs/REPEAT_Prelim_Report_Addendum_111221.pdf" target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
+                <img src="/images/report-addendum.jpg" alt="" />
+              </a>
+              <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
+                <div className="block font-utopia pt-3">
+                  <i><a href="/docs/REPEAT_Prelim_Report_Addendum_111221.pdf" target="_blank" rel="noreferrer noopener" className="primary-link">This addendum to our preliminary report</a> compiles emissions results from our original analysis of the Build Back Better Act (‘BBB 1.0’) as reported by the Budget Committee on September 27, 2021 but <i>without</i> the Clean Electricity Performance Program (the most substantive single change from BBB 1.0 to BBB 2.0) as well as our initial analysis of the Infrastructure Bill impacts.</i>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div className="md:w-3/5">
+          <br/>
+          <p>The REPEAT Project is currently modeling the updated version of Build Back Better (‘BBB 2.0’) and conducting a final analysis of the Infrastructure Bill, which will supersede results in our preliminary report and this addendum and will be released as soon as possible.</p>
           <br/>
           <h3 className="font-bold text-2xl mt-4 mb-6">Detailed Data Portal, Coming Soon ...</h3>
 
