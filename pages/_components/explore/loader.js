@@ -13,6 +13,10 @@ import ExploreFilters from "./filters";
 import ExploreBenchmark from "./benchmark";
 import ExploreTimeseries from "./timeseries";
 
+import "antd/lib/style/index.css";
+import "antd/lib/select/style/index.css";
+import "antd/lib/pagination/style/index.css";
+
 const ExploreLoader = () => {
   let sheetArr = [];
   let pageLimit = 25;

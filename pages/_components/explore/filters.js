@@ -8,6 +8,10 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import { loadFilters, loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 
+import "antd/lib/style/index.css";
+import "antd/lib/select/style/index.css";
+import "antd/lib/collapse/style/index.css";
+
 const { Panel } = Collapse;
 
 function classNames(...classes) {
