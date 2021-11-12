@@ -4,10 +4,6 @@ import { useRouter } from "next/router";
 import { Pagination, Progress } from "antd";
 import { Download } from 'react-bootstrap-icons'
 import * as moment from 'moment-timezone';
-
-import "antd/lib/style/index.css";
-import "antd/lib/pagination/style/index.css";
-import "antd/lib/select/style/index.css";
  
 import { loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
@@ -35,8 +31,6 @@ const ExploreLoader = () => {
   const [dlProgress, setDlProgress] = useState(0);
 
   useEffect(() => {
-    // console.log(`routerQuery`, routerQuery);
-    // console.log(`filters`, filters);
     dispatch(loadScenarios({ ...routerQuery }));
   }, []);
 
@@ -106,7 +100,7 @@ const ExploreLoader = () => {
     <div className="">
       <h2 className="text-repeat-teal text-3xl font-bold mb-3">Examine the Data</h2>
       <p className="text-repeat-dark">Maecenas efficitur dolor. Donec gravida dolor quis dignissim elementum.</p>
-      <p className="pt-8">Compare by</p>
+      <p className="pt-8 pb-4">Compare by</p>
 
       <ExploreFilters filters={filters} setFilterClasses={setFilterClasses} policy={policy} />
 

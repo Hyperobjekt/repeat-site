@@ -114,7 +114,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
   const loadStateMenu = () => {
     return (
       <>
-        <p className="pt-8">Scope (select state or national)</p>
+        <p className="pt-8 pb-4">Scope (select state or national)</p>
         <Menu as="div" className="relative inline-block text-left z-10">
           {({ open }) => (
             <>
