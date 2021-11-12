@@ -6,6 +6,11 @@ import ImageCarousel from "./global/image-carousel";
 import Stats from "./global/stats";
 import Pillars from "./global/pillars";
 
+import "antd/lib/style/index.css";
+import "antd/lib/select/style/index.css";
+import "antd/lib/collapse/style/index.css";
+import "antd/lib/pagination/style/index.css";
+
 const graphic1 = {
   header: "Policy Scorecard",
   background: "",
