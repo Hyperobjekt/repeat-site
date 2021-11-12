@@ -83,6 +83,7 @@ module.exports = {
           primary: "#4059ad",
           burnt: "#D2801E",
           "light-blue": "#EDF1F2",
+          "dark-blue": "#424D62",
         },
       },
       borderColor: {
@@ -96,6 +97,7 @@ module.exports = {
         primary: "#4059ad",
         burnt: "#D2801E",
         "light-blue": "#EDF1F2",
+        "dark-blue": "#424D62",
       },
       rotate: {
         60: "60deg",
