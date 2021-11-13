@@ -117,39 +117,43 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
 
   const loadStateMenu = () => {
     return (
-      <>
-        <p className="pt-8 pb-4">Scope (select state or national)</p>
-        <Menu as="div" className="relative inline-block text-left z-10">
-          {({ open }) => (
-            <>
-              <div>
-                <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
-                  {activeState}
-                  <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                </Menu.Button>
-              </div>
+      <div className="flex">
+        <div className="flex-item flex">
+          <span className="my-auto">Scope</span>
+        </div>
+        <div className="flex-item pl-4">
+          <Menu as="div" className="relative inline-block text-left z-10">
+            {({ open }) => (
+              <>
+                <div>
+                  <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
+                    {activeState}
+                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+                  </Menu.Button>
+                </div>
 
-              <Transition show={open} as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
-                <Menu.Items static className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <div className="py-1 h-60 overflow-auto">
-                    {filters
-                      ? filters.usStates.map((state) => (
-                          <Menu.Item key={state.slug}>
-                            {({ active }) => (
-                              <button onClick={() => changeUsState(state)} className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
-                                {state.label}
-                              </button>
-                            )}
-                          </Menu.Item>
-                        ))
-                      : null}
-                  </div>
-                </Menu.Items>
-              </Transition>
-            </>
-          )}
-        </Menu>
-      </>
+                <Transition show={open} as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
+                  <Menu.Items static className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1 h-60 overflow-auto">
+                      {filters
+                        ? filters.usStates.map((state) => (
+                            <Menu.Item key={state.slug}>
+                              {({ active }) => (
+                                <button onClick={() => changeUsState(state)} className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
+                                  {state.label}
+                                </button>
+                              )}
+                            </Menu.Item>
+                          ))
+                        : null}
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </>
+            )}
+          </Menu>
+        </div>
+      </div>
     );
   };
 
@@ -233,14 +237,10 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
 
   return (
     <>
-      <div className="flex">
-        <div className="flex-item">
-          {filters ? loadComparisonMenu(filters) : null}
-        </div>
-      </div>
+      {filters ? loadComparisonMenu(filters) : null}
 
-      <div className="flex">
-        <div className="flex-item pt-5">{loadStateMenu()}</div>
+      <div className="pt-12">
+        {loadStateMenu()}
       </div>
 
       <div className="py-8">

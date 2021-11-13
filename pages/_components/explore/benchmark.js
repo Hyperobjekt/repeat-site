@@ -30,10 +30,14 @@ export const BenchmarkTable = ({ tableData, filters }) => {
     position === "left" ? setVsWith("CURRENT") : setVsWith("NZAP");
   };
 
-  const getColor = (category) => {
+  const getCatColor = (category) => {
     let filteredCategory = filters.levelOneFilters.filter((cat) => cat.label === category);
     return filteredCategory.length ? filteredCategory[0].color : "";
   };
+
+  const getColColor = (position) => {
+    return position === vsWith ? "" : "text-repeat-gray";
+  }
 
   const updateDiff = (diff) => {
     setDiffType(diff);
@@ -41,13 +45,15 @@ export const BenchmarkTable = ({ tableData, filters }) => {
   const calculateDelta = (repeatValue, vsValue, year) => {
     let r = Number(repeatValue[year]),
         v = Number(vsValue ? vsValue[year] : 0);
-    if (diffType === "ABSOLUTE") return addSign((r - v).toFixed(0).replace('-0', '0'));
-    if (diffType === "PERCENT") return (((r - v) / r) * 100).toFixed(0).toString() + "%";
+    if (diffType === "ABSOLUTE") return formatDelta((r - v));
+    if (diffType === "PERCENT") return formatDelta((((r - v) / r) * 100), "%");
   };
-  const addSign = (delta) => {
-    if (Number(delta) > 0) return `+${delta}`;
-    if (delta === "0") return <span className="ml-1.5">{delta}</span>;
-    return `${delta}`;
+  const formatDelta = (delta, suffix = "") => {
+    delta = parseInt(delta.toFixed(0));
+    if (isNaN(delta) || !isFinite(delta)) return `0${suffix}`;
+    if (delta > 0) return `+${delta.toString()+suffix}`;
+    if (delta === 0) return <span className="ml-1.5">{delta.toString()}{suffix}</span>;
+    return delta.toString();
   }
 
   return (
@@ -118,7 +124,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
             ? tableData.map((row, i) => {
                 return row.values.length ? (
                   <Fragment key={i}>
-                    <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
+                    <tr className={`bg-repeat-${getCatColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
                         <span>
                           <b>
@@ -147,10 +153,8 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                             <td className="p-2">{valueRow.variable}</td>
                             <td className="p-2">{valueRow.history ? valueRow.history[2020] : 0}</td>
 
-                            <td className="p-2">{valueRow.current ? valueRow.current[2030] : 0}</td>
-                            <td className="p-2" colSpan="2">
-                              {valueRow.current ? valueRow.current[2050] : 0}
-                            </td>
+                            <td className={`p-2 ${getColColor("CURRENT")}`}>{valueRow.current ? valueRow.current[2030] : 0}</td>
+                            <td className={`p-2 ${getColColor("CURRENT")}`} colSpan="2">{valueRow.current ? valueRow.current[2050] : 0}</td>
 
                             <td className="p-2">
                               <div className="flex">
@@ -171,8 +175,8 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                             <td className="p-2">
                             </td>
 
-                            <td className="p-2">{valueRow.core ? valueRow.core[2030] : 0}</td>
-                            <td className="p-2">{valueRow.core ? valueRow.core[2050] : 0}</td>
+                            <td className={`p-2 ${getColColor("NZAP")}`}>{valueRow.core ? valueRow.core[2030] : 0}</td>
+                            <td className={`p-2 ${getColColor("NZAP")}`}>{valueRow.core ? valueRow.core[2050] : 0}</td>
                           </tr>
                         );
                       })}
