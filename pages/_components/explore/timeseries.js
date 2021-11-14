@@ -46,49 +46,24 @@ export const TimeseriesTable = ({ tableData, filters }) => {
     if (diffType === "PERCENT") return (((r - v) / r) * 100).toFixed(0).toString() + "%";
   };
 
+  let years = tableData ? [...new Set(tableData.map((row) => row.values.map((valueRow) => Object.keys(valueRow.core)).flat()).flat())] : [];
+
   return (
     <div className="container relative m-auto w-full pb-4 font-effra">
-      {/* <div id="highlight" className="absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--left"></div> */}
-
-      {/* <button className="border border-gray-500 px-2 py-1 text-sm rounded-md absolute z-10 vs--left vs-left-btn bg-black text-white" onClick={() => handleVsChange("left")}>
-        ← VS.
-      </button>
-      <div className="absolute z-10 vs--right text-center">
-        <button className="inline-block border border-gray-500 px-2 py-1 text-sm rounded-md bg-white text-black vs-right-btn" onClick={() => handleVsChange("right")}>
-          VS. →
-        </button>
-        <div className="block py-1">Show difference as</div>
-        <div className="block text-center">
-          <button
-            onClick={() => {
-              updateDiff("ABSOLUTE");
-            }}
-            className={diffType === "ABSOLUTE" ? "inline-block border border-black focus:outline-none px-2 py-1 text-sm rounded-bl-md rounded-tl-md bg-black text-white" : "inline-block border border-black focus:outline-none px-2 py-1 text-sm rounded-bl-md rounded-tl-md bg-white text-black"}
-          >
-            Absolute
-          </button>
-          <button
-            onClick={() => {
-              updateDiff("PERCENT");
-            }}
-            className={diffType === "PERCENT" ? "inline-block border border-black focus:outline-none px-2 py-1 text-sm rounded-br-md rounded-tr-md bg-black text-white" : "inline-block border border-black focus:outline-none px-2 py-1 text-sm rounded-br-md rounded-tr-md bg-white text-black"}
-          >
-            Percent
-          </button>
-        </div>
-      </div> */}
-
       <table className="table-fixed w-full relative border-collapse text-sm">
         <thead className="text-left">
           <tr className="table w-full table-fixed">
-            <th className="px-2 pt-8 pb-3" colSpan="2"></th>
-            <th className="border-b border-dark px-2 pt-8 pb-3">2020</th>
+            <th className="border-b border-dark px-2 pt-8 pb-3" colSpan="2">Category</th>
+            {years.map((year, yi) => {
+              return <th className="border-b border-dark px-2 pt-8 pb-3" key={yi}>{year}</th>
+            })}
+            {/*<th className="border-b border-dark px-2 pt-8 pb-3">2020</th>
             <th className="border-b border-dark px-2 pt-8 pb-3">2025</th>
             <th className="border-b border-dark px-2 pt-8 pb-3">2030</th>
             <th className="border-b border-dark px-2 pt-8 pb-3">2035</th>
             <th className="border-b border-dark px-2 pt-8 pb-3">2040</th>
             <th className="border-b border-dark px-2 pt-8 pb-3">2045</th>
-            <th className="border-b border-dark px-2 pt-8 pb-3">2050</th>
+            <th className="border-b border-dark px-2 pt-8 pb-3">2050</th>*/}
           </tr>
         </thead>
         <tbody className="w-full max-h-96 overflow-auto block pt-3">
@@ -107,13 +82,16 @@ export const TimeseriesTable = ({ tableData, filters }) => {
                           <td className="p-2" colSpan="2">
                             {valueRow.variable}
                           </td>
-                          <td className="p-2">{valueRow.history ? valueRow.history[2020] : 0}</td>
+                          {years.map((year, yi) => {
+                            return <td className="p-2" key={yi}>{valueRow.core ? valueRow.core[year] : 0}</td>
+                          })}
+                          {/*<td className="p-2">{valueRow.history ? valueRow.history[2020] : 0}</td>
                           <td className="p-2">{valueRow.core ? valueRow.core[2025] : 0}</td>
                           <td className="p-2">{valueRow.core ? valueRow.core[2030] : 0}</td>
                           <td className="p-2">{valueRow.core ? valueRow.core[2035] : 0}</td>
                           <td className="p-2">{valueRow.core ? valueRow.core[2040] : 0}</td>
                           <td className="p-2">{valueRow.core ? valueRow.core[2045] : 0}</td>
-                          <td className="p-2">{valueRow.core ? valueRow.core[2050] : 0}</td>
+                          <td className="p-2">{valueRow.core ? valueRow.core[2050] : 0}</td>*/}
                         </tr>
                       );
                     })}
