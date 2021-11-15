@@ -27,12 +27,12 @@ const stats = {
 };
 
 const media = [
-  { date: "July 22, 2010 – The Washington Post", title: "How Biden Could Deliver Climate Goals" },
-  { date: "July 15, 2010 – The New York Times", title: "Joe Biden Takes Climate Change Seriously - The New York Times" },
-  { date: "June 30, 2010 – MSNBC", title: "Why the House Republicans' plan to fight climate change matters" },
-  { date: "June 28, 2010 – Insider", title: "Greta Thunberg isn't the only trailblazing young climate leader. Activists from the Amazon to Nigeria share their ideas for battling the climate crisis." },
-  { date: "June 12, 2010 – Ars Technica", title: "Dutch court orders Shell oil company to cut carbon emissions 45% by 2030" },
-  { date: "May 28, 2010 – The Washington Post", title: "ExxonMobil rebel shareholders win board seats " },
+  { date: "Oct. 28, 2021 – The Washington Post", title: "New budget deal marks the biggest climate investment in U.S. history", link: "https://www.washingtonpost.com/climate-environment/2021/10/28/climate-biden-build-back-better/" },
+  { date: "Oct. 25, 2021 – The New Yorker", title: "What’s Left in the Democrats’ Shrunken Spending Bill?", link: "https://www.newyorker.com/news/our-columnists/whats-left-in-the-democrats-shrunken-spending-bill" },
+  { date: "Oct. 28, 2021 – The Week", title: "Why climate advocates are happy with Biden's spending framework", link: "https://theweek.com/climate-change/1006549/climate-change-measures-in-biden-framework" },
+  { date: "Oct. 28, 2021 – Roll Call", title: "Framework’s climate elements may keep emissions goals in reach", link: "https://www.rollcall.com/2021/10/28/frameworks-climate-elements-may-keep-emissions-goals-in-reach/" },
+  { date: "Oct. 28, 2021 – Slate", title: "There Are at Least Two Extremely Good Things to Celebrate in Biden’s New Build Back Better Plan", link: "https://slate.com/business/2021/10/biden-build-back-better-climate-child-poverty-tax-credit.html" },
+
 ];
 const RepeatMedia = () => {
   return (
@@ -46,19 +46,23 @@ const RepeatMedia = () => {
               Project in the Media
             </h2>
             <p className="font-utopia pt-6 md:w-4/5 text-lg text-repeat-burnt">Proin a vestibulum dui. Cras vitae erat felis. Mauris ullamcorper est sit amet velit ultrices egestas. Duis sit amet fringilla risus, non auctor eros. Nulla id tellus ac lectus ornare convallis. Pellentesque efficitur risus ligula, a ullamcorper ipsum porttitor quis.</p>
+            
+            
             <div className="pt-8">
-              <div className="block">
-                <img src="images/vox-media.png" className="w-2/3" alt="" />
-              </div>
-              <div className="block text-xs pt-2">July 27, 2010 – Vox</div>
-              <div className="md:text-2xl py-2 font-black">E-Commerce Mega-Warehouses, a Smog Source, Faces New Pollution Regulations</div>
-              <p className="md:text-lg text-repeat-black">Nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+              <a href="https://www.vox.com/22738414/democrats-manchin-climate-reconciliation-plan-b" target="_blank" rel="noopener noreferrer" className="block">
+                <img src="images/vox-bg.webp" className="w-2/3" alt="" />
+              </a>
+              <div className="block text-xs pt-2">Oct. 27, 2021 – Vox</div>
+              <a href="https://www.vox.com/22738414/democrats-manchin-climate-reconciliation-plan-b" target="_blank" rel="noopener noreferrer" className="md:text-2xl py-2 font-black">Biden’s Plan B for the climate crisis, explained</a>
+              <p className="md:text-lg text-repeat-black">It’s not too late for Democrats to go big on climate change. But it won’t be easy, and there’s no margin for error.</p>
             </div>
+
+
             {media.map((m, i) => {
               return (
                 <div className="pt-6" key={i}>
                   <div className="block text-sm pt-2">{m.date}</div>
-                  <div className="block font-semibold text-lg pt-2">{m.title}</div>
+                  <a href={m.link} className="block font-semibold text-lg pt-2 hover:text-repeat-burnt" target="_blank" rel="noreferrer noopener">{m.title}</a>
                 </div>
               );
             })}
@@ -70,7 +74,6 @@ const RepeatMedia = () => {
 
       <Stats stats={stats} />
       <div className="py-8"></div>
-      <InTheMedia />
     </React.Fragment>
   );
 };
