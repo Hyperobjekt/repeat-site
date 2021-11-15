@@ -147,7 +147,6 @@ nav p {
   background-repeat: no-repeat;
   cursor: pointer;
 }
-
 .bumper-right {
   background-image: url(/images/icons/bumper-right.svg);
   background-size: 130%;
@@ -158,15 +157,25 @@ nav p {
 
 /* Table CSS */
 
-#tableContainer__shell { min-width: 1024px; }
-
-/* #highlight {width:60%} */
-
-.highlight--right { right: 0; width:60%}
-.highlight--left { right: 27.5%; width: 55.5%; }
-
-.vs--left { right: 60%; transform: translateX(50%);  }
-.vs--right { right: 28%; transform: translateX(50%);  }
+#tableContainer__shell {
+  min-width: 1024px;
+}
+.highlight--right {
+  right: 0;
+  width:60%
+}
+.highlight--left {
+  right: 27.5%;
+  width: 55.5%;
+}
+.vs--left {
+  right: 58%;
+  transform: translateX(50%);
+}
+.vs--right {
+  right: 28%;
+  transform: translateX(50%);
+}
 
 /* Ant Design Overrides */
 
@@ -175,7 +184,6 @@ nav p {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-
 .ant-pagination-item,
 .ant-pagination-item-link {
   border-width: 0 !important;
@@ -195,7 +203,6 @@ nav p {
 .ant-pagination-next .ant-pagination-item-link:focus-visible {
   outline: rgba(0, 0, 0, 0.85) !important;
 }
-
 .ant-select:not(.ant-select-customize-input) .ant-select-selector {
   border-color: rgba(0, 0, 0, 0.85) !important;
 }
