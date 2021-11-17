@@ -4,15 +4,13 @@ import { useRouter } from "next/router";
 import { Pagination, Progress } from "antd";
 import { Download } from 'react-bootstrap-icons'
 import * as moment from 'moment-timezone';
- 
-import { loadFilterAction } from "../../../redux/actions/filters.actions";
+import { loadFilters, loadFilterAction } from "../../../redux/actions/filters.actions";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import { assembleQuery, convertToCSV } from '../../../_helpers';
 import { handleResponse, handleError } from "../../api/apiUtils";
 import ExploreFilters from "./filters";
 import ExploreBenchmark from "./benchmark";
-import ExploreTimeseries from "./timeseries";
-
+import ExploreTimeSeries from "./timeseries";
 import "antd/lib/style/index.css";
 import "antd/lib/select/style/index.css";
 import "antd/lib/pagination/style/index.css";
@@ -34,24 +32,34 @@ const ExploreLoader = () => {
   const [downloadingCSV, setDownloadingCSV] = useState(false)
   const [dlProgress, setDlProgress] = useState(0);
 
-  useEffect(() => {
+  useEffect(async () => {
+    let query = getQuery();
+    dispatch(loadFilters({ ...query }));
     dispatch(loadScenarios({ ...routerQuery }));
   }, []);
+
+  const getQuery = () => {
+    let query = {};
+    query.page = router.query.page;
+    query.limit = router.query.limit;
+    query.state = router.query.state;
+    query.category = router.query.categories ? router.query.categories.split(",") : [];
+    query.subcategory = router.query.subcategories ? router.query.subcategories.split(",") : [];
+    return query;
+  };
 
   const setFilterClasses = (color, active) => {
     return active ? `inline-block rounded border-2 border-transparent text-sm mb-3 mr-3 px-3 py-1 bg-repeat-${color} text-white` : `inline-block rounded text-sm mb-3 mr-3 px-3 py-1 border-2 border-repeat-${color} text-repeat-${color} text-white`;
   };
 
   const changePage = (page, pageSize) => {
-    let limit = pageLimit;
-    if (pageSize) limit = pageSize;
+    let limit = pageSize ? pageSize : pageLimit;
     let newFilters = { ...filters, page, limit };
-    let newRouterQuery = { ...routerQuery, policy, page, limit };
-    let newQuery = { ...apiQuery, policy, page, limit };
+    let query = { ...apiQuery, policy, page, limit };
 
     dispatch(loadFilterAction(newFilters));
-    dispatch(loadScenarios(newRouterQuery));
-    setApiQuery(newQuery);
+    dispatch(loadScenarios(query));
+    setApiQuery(query);
   }
 
   const getScenarios = (query = null) => {
@@ -110,7 +118,7 @@ const ExploreLoader = () => {
 
       {[...scenarios].map((e) => e.values).flat().length ? (
         <div id="tableContainer" className="overflow-auto">
-          {filters.comparison === "benchmark" ? <ExploreBenchmark tableData={scenarios} /> : <ExploreTimeseries tableData={scenarios} />}
+          {filters.comparison === "benchmark" ? <ExploreBenchmark tableData={scenarios} /> : <ExploreTimeSeries tableData={scenarios} />}
         </div>
       ) : (
         <div className="w-full text-center py-10 px-20">
@@ -141,8 +149,9 @@ const ExploreLoader = () => {
           <Pagination
             total={count}
             current={Number(filters.page) || 1}
+            pageSize={Number(filters.limit) || pageLimit}
+            defaultPageSize={pageLimit}
             pageSizeOptions={[25, 50, 100, 200, 500]}
-            defaultPageSize={Number(filters.limit) || pageLimit}
             onChange={changePage}
             showSizeChanger />
          </div>

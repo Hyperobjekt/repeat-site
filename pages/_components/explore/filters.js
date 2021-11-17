@@ -14,10 +14,6 @@ import "antd/lib/collapse/style/index.css";
 
 const { Panel } = Collapse;
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -30,18 +26,24 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
 
   useEffect(async () => {
     let query = getQuery();
-    let nf = await dispatch(loadFilters({ ...query })); // new filters
-    let nas = nf.filters.usStates.filter((state) => state.active); // new active state
-    setActiveState(nas[0].label);
+    let newFilters = await dispatch(loadFilters({ ...query }));
+    let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
+    setActiveState(newActiveState[0].label);
   }, []);
 
   const getQuery = () => {
     let query = {};
+    query.page = router.query.page;
+    query.limit = router.query.limit;
     query.state = router.query.state;
     query.category = router.query.categories ? router.query.categories.split(",") : [];
     query.subcategory = router.query.subcategories ? router.query.subcategories.split(",") : [];
     return query;
   };
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
 
   const changeUsState = (state) => {
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));

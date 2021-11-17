@@ -5,7 +5,6 @@ export const setFilterAction = (filters) => ({ type: types.SET_FILTER_ACTION, fi
 export const loadFilterAction = (filters) => ({ type: types.LOAD_FILTER_ACTION, filters });
 
 const getFilters = async (query) => {
-  let result;
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
   const requestOptions = {
@@ -13,16 +12,18 @@ const getFilters = async (query) => {
     headers: headers,
     redirect: "follow",
   };
-  const results = await fetch(`/api/filters`, requestOptions);
-  if (results.status === 200) result = await results.json();
-  result.usStates = result.usStates.map((state) => ({ ...state, active: state.slug === query.state }));
-
-  result.levelOneFilters = result.levelOneFilters.map((cat) => ({ ...cat, active: query.category.includes(cat.slug) }));
-  result.levelTwoFilters = result.levelTwoFilters.map((subcat) => ({ ...subcat, active: query.subcategory.includes(subcat.slug) }));
-  return result;
+  let response;
+  const request = await fetch(`/api/filters`, requestOptions);
+  if (request.status === 200) filters = await request.json();
+  let filters = { ...filters, ...query };
+  filters.usStates = filters.usStates.map((state) => ({ ...state, active: state.slug === query.state }));
+  filters.levelOneFilters = filters.levelOneFilters.map((cat) => ({ ...cat, active: query.category ? query.category.includes(cat.slug) : false }));
+  filters.levelTwoFilters = filters.levelTwoFilters.map((subcat) => ({ ...subcat, active: query.subcategory ? query.subcategory.includes(subcat.slug) : false }));
+  return filters;
 };
 
 export const loadFilters = (query) => async (dispatch) => {
   let filters = await getFilters(query);
+  console.log(filters);
   return await dispatch(loadFilterAction(filters));
 };
