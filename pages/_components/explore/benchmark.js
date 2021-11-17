@@ -34,7 +34,6 @@ export const BenchmarkTable = ({ tableData, filters }) => {
   const calculateDelta = (repeatValue, vsValue, year) => {
     let r = Number(repeatValue[year]),
         v = Number(vsValue ? vsValue[year] : 0);
-
     if (diffType === "ABSOLUTE") return formatDelta((r - v));
     if (diffType === "PERCENT") return formatDelta((((r - v) / v) * 100))+"%";
   };
@@ -45,7 +44,10 @@ export const BenchmarkTable = ({ tableData, filters }) => {
     else if(Math.abs(delta) >= 100) delta = delta.toFixed(0);
     else if(Math.abs(delta) >= 10) delta = delta.toFixed(1);
     else if(Math.abs(delta) >= 1) delta = delta.toFixed(2);
-    else delta = delta.toFixed(3);
+    else delta = delta.toFixed(2);
+    if(Number(delta) === 0) delta = (0).toFixed(2);
+    if(Number(delta) >= 0) delta = `+${delta}`;
+    return delta;
   };
 
   return (

@@ -177,6 +177,17 @@ nav p {
   transform: translateX(50%);
 }
 
+/* Table CSS */
+
+.bg-parallax {
+  background-size: auto 133%;
+}
+@media (min-width: 1024px) {
+  .bg-parallax {
+    background-size: 125%;
+  }
+}
+
 /* Ant Design Overrides */
 
 .ant-collapse-header,

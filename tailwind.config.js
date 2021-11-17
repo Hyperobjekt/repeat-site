@@ -32,9 +32,6 @@ module.exports = {
         "repeat-right-top": "right 16rem top 9rem",
         "repeat-mobile": "right 2rem top 9rem",
       },
-      backgroundSize: {
-        parallax: "125%",
-      },
       backgroundImage: (theme) => ({
         "media-vox": "url('/images/vox-media.png')",
         "media-washington-post": "url('/images/washington-post.png')",

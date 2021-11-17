@@ -1,5 +1,4 @@
 import * as types from "./_types";
-// import * as filtersApi from "../../pages/api/filters";
 
 export const setFilterAction = (filters) => ({ type: types.SET_FILTER_ACTION, filters });
 export const loadFilterAction = (filters) => ({ type: types.LOAD_FILTER_ACTION, filters });
@@ -24,6 +23,5 @@ const getFilters = async (query) => {
 
 export const loadFilters = (query) => async (dispatch) => {
   let filters = await getFilters(query);
-  console.log(filters);
   return await dispatch(loadFilterAction(filters));
 };
