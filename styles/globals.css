@@ -162,14 +162,14 @@ nav p {
 }
 .highlight--right {
   right: 0;
-  width:60%
+  width: 57%
 }
 .highlight--left {
   right: 27.5%;
   width: 55.5%;
 }
 .vs--left {
-  right: 58%;
+  right: 57%;
   transform: translateX(50%);
 }
 .vs--right {
