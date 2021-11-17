@@ -7,39 +7,15 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export const BenchmarkTable = ({ tableData, filters }) => {
-  const [vsWith, setVsWith] = useState("CURRENT"); // CURRENT | NZAP
+  const [vsWith, setVsWith] = useState("NZAP"); // CURRENT | NZAP
   const [diffType, setDiffType] = useState("ABSOLUTE");
   const [fromPos, setFromPos] = useState("left");
   const [toPos, setToPos] = useState("right");
 
   const toggleVs = () => {
-    // const toPos = position;
-    // const fromPos = position === "left" ? "right" : "left";
-
-    setToPos(toPos === "left" ? "right" : "left");
+    setVsWith(vsWith === "NZAP" ? "CURRENT" : "NZAP");
     setFromPos(fromPos === "left" ? "right" : "left");
-
-    setVsWith(vsWith === "CURRENT" ? "NZAP" : "CURRENT");
-
-    // let highlight = document.getElementById("highlight");
-    // let vsFrom = document.getElementsByClassName(`vs-${fromPos}-btn`)[0];
-    // let vsTo = document.getElementsByClassName(`vs-${toPos}-btn`)[0];
-
-    // highlight.classList.remove(`highlight--${fromPos}`);
-    // highlight.classList.add(`highlight--${toPos}`);
-
-    // highlight.classList.remove(`highlight--${fromPos}`);
-    // highlight.classList.add(`highlight--${toPos}`);
-
-    // diffToggle
-
-    // vsFrom.classList.remove("vs-active");
-    // vsFrom.classList.add("vs-inactive");
-
-    // vsTo.classList.add("vs-active");
-    // vsTo.classList.remove("vs-inactive");
-
-    // position === "left" ? setVsWith("CURRENT") : setVsWith("NZAP");
+    setToPos(toPos === "right" ? "left" : "right");
   };
 
   const getCatColor = (category) => {
@@ -49,33 +25,50 @@ export const BenchmarkTable = ({ tableData, filters }) => {
 
   const getColColor = (position) => {
     return position === vsWith ? "" : "text-repeat-gray";
-  }
+  };
 
   const updateDiff = (diff) => {
     setDiffType(diff);
   };
+
   const calculateDelta = (repeatValue, vsValue, year) => {
     let r = Number(repeatValue[year]),
         v = Number(vsValue ? vsValue[year] : 0);
-    if (diffType === "ABSOLUTE") return formatDelta((r - v));
-    if (diffType === "PERCENT") return formatDelta((((r - v) / r) * 100), "%");
-  };
-  const formatDelta = (delta, suffix = "") => {
-    delta = Number(delta.toFixed(1));
-    if (isNaN(delta) || !isFinite(delta)) return `0${suffix}`;
-    if (delta > 0) return `+${delta.toString()+suffix}`;
-    if (delta === 0) return <span className="ml-1.5">{delta.toString()}{suffix}</span>;
-    return delta.toString();
-  }
 
+    if (diffType === "ABSOLUTE") return formatDelta((r - v));
+    if (diffType === "PERCENT") return formatDelta((((r - v) / v) * 100))+"%";
+  };
+
+  const formatDelta = (delta) => {
+    delta = Number(delta);
+
+    if(isNaN(delta) || !isFinite(delta)) delta = (0).toFixed(2);
+    else if(Math.abs(delta) >= 100) delta = delta.toFixed(0);
+    else if(Math.abs(delta) >= 10) delta = delta.toFixed(1);
+    else if(Math.abs(delta) >= 1) delta = delta.toFixed(2);
+    else delta = delta.toFixed(3);
+
+    if (delta > 0) return `+${delta}`;
+    return delta;
+  };
+  console.log(vsWith);
   return (
     <div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra transition-colors duration-300 ease-in-out">
-      <div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${fromPos}`}></div>
+      <div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
 
-      <div id="diffToggle" className={`absolute z-10 vs--${fromPos} text-center`}>
-        <button className={`inline-block border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-${toPos}-btn`} onClick={() => toggleVs()}>
-          {toPos === "left" ? "← " : ""}VS.{toPos === "right" ? " →" : ""}
-        </button>
+      <div className={`absolute z-10 vs--left text-center`}>
+        <button className={`w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn`}
+                disabled={vsWith === "CURRENT"}
+                onClick={() => toggleVs()}>← VS.</button>
+      </div>
+
+      <div className={`repeat-diff-toggle absolute z-10 vs--right text-center`}>
+        <button className={`w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn`}
+                disabled={vsWith === "NZAP"}
+                onClick={() => toggleVs()}>VS. →</button>
+      </div>
+
+      <div className={`absolute z-10 pt-7 vs--${toPos} text-center`}>
         <div className="block pt-3 pb-2">Show difference as</div>
         <div className="block text-center">
           <button
@@ -134,7 +127,8 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                           <b>
                             {row.category} - {row.subcategory}
                           </b>
-                        </span>{" - "}
+                        </span>
+                        {" "}
                         <span>( {row.units} )</span>
                       </td>
                     </tr>
@@ -193,7 +187,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
   );
 };
 
-const ExploreFilter = ({ tableData }) => {
+const ExploreBenchmark = ({ tableData }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
@@ -210,4 +204,4 @@ const ExploreFilter = ({ tableData }) => {
   );
 };
 
-export default ExploreFilter;
+export default ExploreBenchmark;
