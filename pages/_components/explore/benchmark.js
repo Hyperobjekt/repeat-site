@@ -34,36 +34,32 @@ export const BenchmarkTable = ({ tableData, filters }) => {
   const calculateDelta = (repeatValue, vsValue, year) => {
     let r = Number(repeatValue[year]),
         v = Number(vsValue ? vsValue[year] : 0);
-
     if (diffType === "ABSOLUTE") return formatDelta((r - v));
     if (diffType === "PERCENT") return formatDelta((((r - v) / v) * 100))+"%";
   };
 
   const formatDelta = (delta) => {
     delta = Number(delta);
-
     if(isNaN(delta) || !isFinite(delta)) delta = (0).toFixed(2);
     else if(Math.abs(delta) >= 100) delta = delta.toFixed(0);
     else if(Math.abs(delta) >= 10) delta = delta.toFixed(1);
     else if(Math.abs(delta) >= 1) delta = delta.toFixed(2);
     else delta = delta.toFixed(3);
-
     if (delta > 0) return `+${delta}`;
     return delta;
   };
-  console.log(vsWith);
   return (
     <div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra transition-colors duration-300 ease-in-out">
       <div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
 
-      <div className={`absolute z-10 vs--left text-center`}>
-        <button className={`w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn`}
+      <div className="absolute z-10 vs--left text-center">
+        <button className="w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn"
                 disabled={vsWith === "CURRENT"}
                 onClick={() => toggleVs()}>← VS.</button>
       </div>
 
-      <div className={`repeat-diff-toggle absolute z-10 vs--right text-center`}>
-        <button className={`w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn`}
+      <div className="absolute z-10 vs--right text-center">
+        <button className="w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn"
                 disabled={vsWith === "NZAP"}
                 onClick={() => toggleVs()}>VS. →</button>
       </div>
