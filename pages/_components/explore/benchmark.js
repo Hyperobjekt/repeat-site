@@ -71,7 +71,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
             onClick={() => {
               updateDiff("ABSOLUTE");
             }}
-            className={`${diffType === "ABSOLUTE" ? "bg-white text-black" : "bg-black text-white"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md`}
+            className={`${diffType === "ABSOLUTE" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md`}
           >
             Absolute
           </button>
@@ -79,7 +79,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
             onClick={() => {
               updateDiff("PERCENT");
             }}
-            className={`${diffType === "PERCENT" ? "bg-white text-black" : "bg-black text-white"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md`}
+            className={`${diffType === "PERCENT" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md`}
           >
             Percent
           </button>
