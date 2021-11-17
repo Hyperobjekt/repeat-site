@@ -97,7 +97,7 @@ export default function HomePage() {
 
       <>
         <div className="bg-policy-background bg-repeat-mobile md:bg-repeat-right-top bg-no-repeat">
-          <RepeatHero backgroundClass="bg-policies-cover md:bg-center bg-fixed md:bg-cover bg-no-repeat" />
+          <RepeatHero bgClasses="bg-policies-cover md:bg-center bg-fixed md:bg-cover bg-no-repeat" />
           <div className="white-spacer absolute z-0 -mt-40 bg-white border-t-4 hidden sm:block"></div>
           <div className="max-w-screen-lg m-auto relative z-10 -mt-40 text-repeat-black pb-24">
             <div className="container subpages lg:w-3/4 bg-white rounded-tr-2xl border-t-4 border-repeat">

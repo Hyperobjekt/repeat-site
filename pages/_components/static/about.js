@@ -85,7 +85,7 @@ const stats = {
 const RepeatAbout = () => {
   return (
     <React.Fragment>
-      <RepeatHero backgroundClass="bg-about-cover bg-center bg-fixed bg-cover bg-no-repeat" />
+      <RepeatHero bgClasses="bg-about-cover bg-center bg-fixed bg-cover bg-no-repeat" />
       <div className="white-spacer absolute z-0 -mt-40 bg-white border-t-4 hidden sm:block"></div>
       <div className="max-w-screen-lg m-auto relative z-10 -mt-40 text-repeat-black text-lg">
         <div className="container subpages lg:w-3/4 bg-white rounded-tr-2xl border-t-4 border-repeat">
