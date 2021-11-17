@@ -56,7 +56,6 @@ const ExploreLoader = () => {
     let limit = pageSize ? pageSize : pageLimit;
     let newFilters = { ...filters, page, limit };
     let query = { ...apiQuery, policy, page, limit };
-
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
     setApiQuery(query);
@@ -86,8 +85,8 @@ const ExploreLoader = () => {
     link.click();
     setTimeout(() => {
       setDownloadingCSV(false);
-      setDlProgress(0)
-    }, 3000)
+      setDlProgress(0);
+    }, 3000);
   }
 
   const downloadBatch = i => {
@@ -95,16 +94,25 @@ const ExploreLoader = () => {
     let downloadCount = Math.ceil(count / pageLimit);
     let queryObject = { ...assembleQuery(filters.url), skip: i * pageLimit, limit: pageLimit, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
     getScenarios(queryObject).then(dl => {
-      let data = dl.data.map(row => {
-        Object.keys(row).filter(cell => cell.charAt(0) === '_' || cell === 'id' || cell.substring(0, 4) === 'alt_' || cell.substring(0, 5) === 'unit_').forEach(key => delete row[key])
-        return row;
-      })
+      let data = dl.data.map((row, i) => {
+        Object.keys(row).filter(key => key.charAt(0) === "_").forEach(key => delete row[key]);
+        let varRows = [];
+        row.values.filter(valObj => {
+          let varRow = { ...row };
+          Object.keys(valObj).forEach((key1) => {
+            if(key1 === "variable") varRow[key1] = valObj[key1];
+            else Object.keys(valObj[key1]).forEach(key2 => key2 !== "deltas" ? varRow[`${key1}_pol_${key2}`] = valObj[key1][key2] : null);
+          });
+          varRows.push(varRow);
+        });
+        return varRows;
+      }).flat().map(({ variables, values, ...row }) => row);
       let converted = convertToCSV(data);
       i++;
       setDlProgress(Math.round((i / downloadCount) * 100))
       sheetArr = [...sheetArr, ...converted.csvArr]
       if (downloadCount > i) return downloadBatch(i);
-      if (downloadCount === i) return downloadFullCSV(sheetArr, converted.headers)
+      if (downloadCount === i) return downloadFullCSV(sheetArr, converted.headers);
     })
   }
 
@@ -132,17 +140,15 @@ const ExploreLoader = () => {
       <div className="flex gap-10 pt-6">
         <div className="w-4/12">
           <button className="border border-black pt-2 pb-2 pr-3 pl-3 rounded flex items-center" onClick={() => { downloadBatch(0) }}>
-            {
-              downloadingCSV
-                ? <React.Fragment>
+            {downloadingCSV
+              ? <React.Fragment>
                   {dlProgress === 100 ? <span className="pr-2">Done</span> : <span className="pr-2">Downloading...</span>}
                   <Progress strokeColor={{ from: '#108ee9', to: '#ed6d08' }} type="circle" percent={dlProgress} width={30} />
                 </React.Fragment>
-                : <React.Fragment>
+              : <React.Fragment>
                   <span className="pr-2">Download this table as a csv </span>
                   <Download className="" />
-                </React.Fragment>
-            }
+                </React.Fragment>}
           </button>
         </div>
         <div className="w-8/12 flex justify-end">

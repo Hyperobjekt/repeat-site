@@ -118,20 +118,6 @@ nav p {
     opacity: 1;
 }
 
-.ant-image-preview-img-wrapper::before {
-  display: inline-block;
-  width: 1px;
-  height: 0% !important;
-  margin-right: -1px !important;
-  content: '';
-}
-
-
-.ant-image-preview-img {
-  margin: auto;
-  max-height: 95% !important;
-}
-
 @media (max-width: 1023px) {
   .container {
     padding: 0 1.75rem;
@@ -219,6 +205,28 @@ nav p {
 }
 .ant-select-arrow {
   transition: all 0.3s;
+}
+
+.ant-progress {
+  position: relative;
+}
+.ant-progress-text {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.ant-image-preview-img-wrapper::before {
+  display: inline-block;
+  width: 1px;
+  height: 0% !important;
+  margin-right: -1px !important;
+  content: '';
+}
+.ant-image-preview-img {
+  margin: auto;
+  max-height: 95% !important;
 }
 
 /*! purgecss end ignore */
