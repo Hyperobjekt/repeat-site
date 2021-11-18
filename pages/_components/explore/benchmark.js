@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
+import { ChevronRight, ChevronLeft } from 'react-bootstrap-icons'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -55,15 +56,15 @@ export const BenchmarkTable = ({ tableData, filters }) => {
       <div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
 
       <div className="absolute z-10 vs--left text-center">
-        <button className="w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn"
+        <button className="w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn"
                 disabled={vsWith === "CURRENT"}
-                onClick={() => toggleVs()}>← VS.</button>
+                onClick={() => toggleVs()}><ChevronLeft className="mr-2" /> VS.</button>
       </div>
 
       <div className="absolute z-10 vs--right text-center">
-        <button className="w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn"
+        <button className="w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn"
                 disabled={vsWith === "NZAP"}
-                onClick={() => toggleVs()}>VS. →</button>
+                onClick={() => toggleVs()}>VS. <ChevronRight className="ml-2" /></button>
       </div>
 
       <div className={`absolute z-10 pt-7 vs--${toPos} text-center`}>
@@ -98,7 +99,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
               Frozen Policy
             </th>
             <th className="p-2" colSpan="3">
-              {tableData ? tableData[0].policy : "Repeat"} Policy
+              {tableData ? tableData[0].policy : "REPEAT"} Policy
             </th>
             <th className={`p-2 ${getColColor("NZAP")}`} colSpan="2">
               Net Zero
@@ -122,11 +123,11 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                     <tr className={`bg-repeat-${getCatColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
                         <span>
-                          <b>
+                          <strong>
                             {row.category} - {row.subcategory}
-                          </b>
+                          </strong>
                         </span>
-                        {" "}
+                        &nbsp;&nbsp;
                         <span>( {row.units} )</span>
                       </td>
                     </tr>
