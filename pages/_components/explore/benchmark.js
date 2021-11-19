@@ -7,7 +7,7 @@ import { ChevronRight, ChevronLeft } from 'react-bootstrap-icons'
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export const BenchmarkTable = ({ tableData, filters }) => {
+export const BenchmarkTable = ({ tableData, filters, reloading }) => {
   const [vsWith, setVsWith] = useState("NZAP"); // CURRENT | NZAP
   const [diffType, setDiffType] = useState("ABSOLUTE");
   const [fromPos, setFromPos] = useState("left");
@@ -115,7 +115,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
             <th className={`px-2 pt-8 pb-3 ${getColColor("NZAP")}`}>2050</th>
           </tr>
         </thead>
-        <tbody className="w-full max-h-96 overflow-auto block text-sm">
+        <tbody className={`w-full max-h-96 overflow-auto block text-sm transition-opacity duration-300 delay-100 ${reloading ? "opacity-25" : ""}`}>
           {tableData
             ? tableData.map((row, i) => {
                 return row.values.length ? (
@@ -186,19 +186,18 @@ export const BenchmarkTable = ({ tableData, filters }) => {
   );
 };
 
-const ExploreBenchmark = ({ tableData }) => {
+const ExploreBenchmark = ({ tableData, reloading }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
   useEffect(() => {
     router.push(filters.url, undefined, { shallow: true });
-    // dispatch(loadScenarios({ url: filters.url }));
   }, [filters]);
 
   return (
     <div className="relative text-xs">
-      <BenchmarkTable tableData={tableData} filters={filters} />
+      <BenchmarkTable tableData={tableData} filters={filters} reloading={reloading} />
     </div>
   );
 };
