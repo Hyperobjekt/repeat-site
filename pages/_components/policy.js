@@ -220,9 +220,10 @@ const policies = {
 const RepeatPolicy = () => {
   const router = useRouter();
   const [activePolicy, setActivePolicy] = useState(null);
+
   useEffect(() => {
     setActivePolicy(policies[router.query.policy]);
-  }, []);
+  });
 
   return activePolicy ? (
     <div className="bg-policy-background bg-repeat-mobile md:bg-repeat-right-top bg-no-repeat">

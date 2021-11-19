@@ -63,28 +63,24 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
 
   const toggleCategory = (category) => {
     let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
-    let categorySlugs = categories.filter((e) => e.active).map((e) => e.slug);
+    let categorySlugs = categories.filter((c) => c.active).map((c) => c.slug);
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: categorySlugs.includes(sub.slug) }));
     let newFilters = { ...filters, levelOneFilters: categories, levelTwoFilters: subcategories };
-    let query = { ...apiQuery, policy, category: category.slug };
-    if (!categories.filter((e) => e.active).length) delete query.category;
+    let query = { ...apiQuery, policy, category: categorySlugs };
+    if (!categories.filter((c) => c.active).length) delete query.category;
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
     setApiQuery(query);
   };
 
   const toggleSubCategory = (subcategory) => {
-    let routerQuery = { ...router.query };
-    delete routerQuery.comparison;
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: sub.slug === subcategory.slug && sub.active ? false : sub.active || sub.slug === subcategory.slug }));
-    let subcategorySlugs = subcategories.filter((e) => e.active).map((e) => e.slug);
+    let subcategorySlugs = subcategories.filter((s) => s.active).map((s) => s.slug);
     let newFilters = { ...filters, levelTwoFilters: subcategories };
-    let query = { ...apiQuery, policy, subcategory: subcategory.slug };
-    if (!subcategories.filter((e) => e.active).length) delete query.subcategory;
-    routerQuery.state = routerQuery.state || "national";
-    routerQuery.subcategories = subcategorySlugs.join(",");
+    let query = { ...apiQuery, policy, subcategory: subcategorySlugs };
+    if (!subcategories.filter((s) => s.active).length) delete query.subcategory;
     dispatch(loadFilterAction(newFilters));
-    dispatch(loadScenarios({ ...routerQuery, policy }));
+    dispatch(loadScenarios(query));
     setApiQuery(query);
   };
 

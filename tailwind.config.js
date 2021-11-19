@@ -50,14 +50,6 @@ module.exports = {
       transitionProperty: {
         width: "width",
       },
-      minHeight: {
-        map: "260px",
-      },
-      height: {
-        "screen/2": "50vh",
-        "screen/1.5": "66.667vh",
-        "screen/1.3": "75vh",
-      },
       gridColumn: {
         "span-14": "span 14 / span 14",
       },
@@ -113,6 +105,18 @@ module.exports = {
         "not-allowed": "not-allowed",
         crosshair: "crosshair",
         "zoom-in": "zoom-in",
+      },
+      height: {
+        "screen/2": "50vh",
+        "screen/1.5": "66.667vh",
+        "screen/1.3": "75vh",
+      },
+      minHeight: {
+        map: "260px",
+        explorer: "10rem",
+      },
+      maxHeight: {
+        explorer: "35rem",
       },
       width: {
         "1/7": "14.2857143%",

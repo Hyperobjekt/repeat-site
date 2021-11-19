@@ -6,7 +6,7 @@ import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export const TimeSeriesTable = ({ tableData, filters }) => {
+export const TimeSeriesTable = ({ tableData, filters, reloading }) => {
 
   const getColor = (category) => {
     let filteredCategory = filters.levelOneFilters.filter((cat) => cat.label === category);
@@ -26,7 +26,7 @@ export const TimeSeriesTable = ({ tableData, filters }) => {
             })}
           </tr>
         </thead>
-        <tbody className="w-full max-h-96 overflow-auto block pt-3">
+        <tbody className={`w-full max-h-96 overflow-auto block pt-3 transition-opacity duration-300 delay-100 ${reloading ? "opacity-25" : ""}`}>
           {tableData
             ? tableData.map((row, i) => {
                 return row.values.length ? (
@@ -58,19 +58,18 @@ export const TimeSeriesTable = ({ tableData, filters }) => {
   );
 };
 
-const ExploreTimeSeries = ({ tableData }) => {
+const ExploreTimeSeries = ({ tableData, reloading }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
   useEffect(() => {
     router.push(filters.url, undefined, { shallow: true });
-    // dispatch(loadScenarios({ url: filters.url }));
   }, [filters]);
 
   return (
     <div className="relative text-xs">
-      <TimeSeriesTable tableData={tableData} filters={filters} />
+      <TimeSeriesTable tableData={tableData} filters={filters} reloading={reloading} />
     </div>
   );
 };

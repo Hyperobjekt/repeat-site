@@ -29,14 +29,25 @@ const ExploreLoader = () => {
   const [policy, setPolicy] = useState(routerQuery.policy);
   const [params, setParams] = useState(routerQuery);
   const [apiQuery, setApiQuery] = useState({});
-  const [downloadingCSV, setDownloadingCSV] = useState(false)
-  const [dlProgress, setDlProgress] = useState(0);
+  const [comparison, setComparison] = useState(filters.comparison);
+  const [loading, setLoading] = useState(true);
+  const [reloading, setReloading] = useState(false);
 
   useEffect(async () => {
     let query = getQuery();
     dispatch(loadFilters({ ...query }));
     dispatch(loadScenarios({ ...routerQuery }));
   }, []);
+
+  useEffect(() => {
+    setLoading(false);
+    setReloading(false);
+  }, [scenarios]);
+
+  useEffect(() => {
+    setReloading(comparison == filters.comparison);
+    setComparison(filters.comparison);
+  }, [filters]);
 
   const getQuery = () => {
     let query = {};
@@ -75,47 +86,17 @@ const ExploreLoader = () => {
       .catch(handleError);
   }
 
-  const downloadFullCSV = (sheetArr, headers) => {
-    let csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...sheetArr].join('\n');
+  const downloadCSV = () => {
+    let converted = convertToCSV(scenarios);
+    let csvContent = 'data:text/csv;charset=utf-8,' + [converted.headers.join(','), ...converted.csvArr].join('\n');
     var encodedUri = encodeURI(csvContent);
     var link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", `repeat-data-${moment().format()}.csv`);
     document.body.appendChild(link); // Required for FF
     link.click();
-    setTimeout(() => {
-      setDownloadingCSV(false);
-      setDlProgress(0);
-    }, 3000);
   }
-
-  const downloadBatch = i => {
-    setDownloadingCSV(true);
-    let downloadCount = Math.ceil(count / pageLimit);
-    let queryObject = { ...assembleQuery(filters.url), skip: i * pageLimit, limit: pageLimit, sort: '_alt_l1,_alt_l2,_alt_l3,_alt_v,_variabl_name,_year' }
-    getScenarios(queryObject).then(dl => {
-      let data = dl.data.map((row, i) => {
-        Object.keys(row).filter(key => key.charAt(0) === "_").forEach(key => delete row[key]);
-        let varRows = [];
-        row.values.filter(valObj => {
-          let varRow = { ...row };
-          Object.keys(valObj).forEach((key1) => {
-            if(key1 === "variable") varRow[key1] = valObj[key1];
-            else Object.keys(valObj[key1]).forEach(key2 => key2 !== "deltas" ? varRow[`${key1}_pol_${key2}`] = valObj[key1][key2] : null);
-          });
-          varRows.push(varRow);
-        });
-        return varRows;
-      }).flat().map(({ variables, values, ...row }) => row);
-      let converted = convertToCSV(data);
-      i++;
-      setDlProgress(Math.round((i / downloadCount) * 100))
-      sheetArr = [...sheetArr, ...converted.csvArr]
-      if (downloadCount > i) return downloadBatch(i);
-      if (downloadCount === i) return downloadFullCSV(sheetArr, converted.headers);
-    })
-  }
-
+  
   return (
     <div className="">
       <h2 className="text-repeat-teal text-3xl font-bold mb-3">Examine the Data</h2>
@@ -124,31 +105,30 @@ const ExploreLoader = () => {
 
       <ExploreFilters filters={filters} setFilterClasses={setFilterClasses} policy={policy} />
 
-      {[...scenarios].map((e) => e.values).flat().length ? (
-        <div id="tableContainer" className="overflow-auto">
-          {filters.comparison === "benchmark" ? <ExploreBenchmark tableData={scenarios} /> : <ExploreTimeSeries tableData={scenarios} />}
-        </div>
-      ) : (
-        <div className="w-full text-center py-10 px-20">
-          <div className="px-10 py-24 w-2/3 bg-repeat-light-blue m-auto rounded-xl">
-            <h2 className="text-2xl text-repeat">Sorry! No matching data found.</h2>
-            <h4 className="text-xl text-repeat-dark">Adjust the filters and try again.</h4>
-          </div>
-        </div>
-      )}
+      <div className="max-h-explorer min-h-explorer relative overflow-hidden">
+        {loading ? <div className="repeat-spinner">LOADING...</div> :
+          [...scenarios].map((e) => e.values).flat().length ? (
+            <div id="tableContainer" className="min-h-explorer overflow-auto">
+              {comparison === "benchmark" ?
+                <ExploreBenchmark tableData={scenarios} reloading={reloading} /> :
+                <ExploreTimeSeries tableData={scenarios} reloading={reloading} />}
+            </div>
+          ) : (
+            <div className="w-full text-center py-10 px-20">
+              <div className="px-10 py-24 w-2/3 bg-repeat-light-blue m-auto rounded-xl">
+                <h2 className="text-2xl text-repeat">Sorry! No matching data found.</h2>
+                <h4 className="text-xl text-repeat-dark">Adjust the filters and try again.</h4>
+              </div>
+            </div>
+          )
+        }
+      </div>
 
       <div className="flex gap-10 pt-6">
         <div className="w-4/12">
-          <button className="border border-black pt-2 pb-2 pr-3 pl-3 rounded flex items-center" onClick={() => { downloadBatch(0) }}>
-            {downloadingCSV
-              ? <React.Fragment>
-                  {dlProgress === 100 ? <span className="pr-2">Done</span> : <span className="pr-2">Downloading...</span>}
-                  <Progress strokeColor={{ from: '#108ee9', to: '#ed6d08' }} type="circle" percent={dlProgress} width={30} />
-                </React.Fragment>
-              : <React.Fragment>
-                  <span className="pr-2">Download this table as a csv </span>
-                  <Download className="" />
-                </React.Fragment>}
+          <button className="border border-black pt-2 pb-2 pr-3 pl-3 rounded flex items-center" onClick={() => { downloadCSV() }}>
+            <span className="pr-2">Download this table as a CSV </span>
+            <Download className="" />
           </button>
         </div>
         <div className="w-8/12 flex justify-end">

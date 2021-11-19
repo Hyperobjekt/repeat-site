@@ -5,27 +5,14 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChartBarIcon, CursorClickIcon, MenuIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
 
 const pages = [
-  /* {
-    name: "Policies",
-    icon: CursorClickIcon,
-    href: "/policy",
-  }, */
   {
     name: "About",
-    icon: ChartBarIcon,
     href: "/about",
   },
   {
     name: "Media",
-    icon: ViewGridIcon,
     href: "/media",
   },
-  /*{
-    name: "NZAP",
-    icon: RefreshIcon,
-    target: "blank",
-    href: "https://netzeroamerica.princeton.edu",
-  },*/
 ];
 
 const policies = [
@@ -95,7 +82,7 @@ export default function RepeatHeader() {
                 <div className="relative group">
                   <button className={classNames(open ? "text-white" : "font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat", "group inline-flex items-center text-base font-medium hover:text-white focus:outline-none")}>
                     <Link href="/policies">
-                      <a href="/policies" className="text-base font-medium text-white">
+                      <a className="text-base font-medium text-white">
                         <p>Policies</p>
                       </a>
                     </Link>
@@ -104,7 +91,7 @@ export default function RepeatHeader() {
                     <div className="mt-6 shadow-lg">
                       {policies.map((item) => (
                         <Link key={item.name} href={item.href}>
-                          <a href={item.href} className="p-3 bg-white flex items-start hover:bg-repeat-light">
+                          <a className="p-3 bg-white flex items-start hover:bg-repeat-light">
                             <div className="px-2">
                               <p className="text-base font-medium text-black">{item.name}</p>
                             </div>
@@ -165,7 +152,7 @@ export default function RepeatHeader() {
                   <div className="flex items-center justify-between">
                     <div>
                       <Link href="/">
-                        <a href="/">
+                        <a>
                           <span className="text-repeat text-xl font-bold">REPEAT</span>
                         </a>
                       </Link>
@@ -181,8 +168,7 @@ export default function RepeatHeader() {
                     <nav className="grid gap-y-8">
                       {pages.map((item) => (
                         <Link key={item.name} href={item.href}>
-                          <a href={item.href} target={item.target} className="-m-3 px-3 py-2 flex items-center hover:bg-gray-50">
-                            {/* <item.icon className="flex-shrink-0 h-6 w-6 text-indigo-600" aria-hidden="true" /> */}
+                          <a className="-m-3 px-3 py-2 flex items-center hover:bg-gray-50">
                             <span className="text-base font-medium text-gray-900">{item.name}</span>
                           </a>
                         </Link>
@@ -190,15 +176,15 @@ export default function RepeatHeader() {
                     </nav>
                   </div>
                 </div>
-
-                {/* ..... */}
                 <div className="py-6 px-5">
                   <div className="font-bold text-repeat pb-2">Policies</div>
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                     {policies.map((item) => (
-                      <a key={item.name} href={item.href} className="text-base font-medium text-gray-900 hover:text-gray-700">
-                        {item.name}
-                      </a>
+                      <Link key={item.name} href={item.href}>
+                        <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                          {item.name}
+                        </a>
+                      </Link>
                     ))}
                   </div>
                 </div>

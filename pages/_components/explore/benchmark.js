@@ -2,11 +2,12 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
+import { ChevronRight, ChevronLeft } from 'react-bootstrap-icons'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export const BenchmarkTable = ({ tableData, filters }) => {
+export const BenchmarkTable = ({ tableData, filters, reloading }) => {
   const [vsWith, setVsWith] = useState("NZAP"); // CURRENT | NZAP
   const [diffType, setDiffType] = useState("ABSOLUTE");
   const [fromPos, setFromPos] = useState("left");
@@ -55,15 +56,15 @@ export const BenchmarkTable = ({ tableData, filters }) => {
       <div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
 
       <div className="absolute z-10 vs--left text-center">
-        <button className="w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn"
+        <button className="w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn"
                 disabled={vsWith === "CURRENT"}
-                onClick={() => toggleVs()}>← VS.</button>
+                onClick={() => toggleVs()}><ChevronLeft className="mr-2" /> VS.</button>
       </div>
 
       <div className="absolute z-10 vs--right text-center">
-        <button className="w-15 border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn"
+        <button className="w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn"
                 disabled={vsWith === "NZAP"}
-                onClick={() => toggleVs()}>VS. →</button>
+                onClick={() => toggleVs()}>VS. <ChevronRight className="ml-2" /></button>
       </div>
 
       <div className={`absolute z-10 pt-7 vs--${toPos} text-center`}>
@@ -98,7 +99,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
               Frozen Policy
             </th>
             <th className="p-2" colSpan="3">
-              {tableData ? tableData[0].policy : "Repeat"} Policy
+              {tableData ? tableData[0].policy : "REPEAT"} Policy
             </th>
             <th className={`p-2 ${getColColor("NZAP")}`} colSpan="2">
               Net Zero
@@ -114,7 +115,7 @@ export const BenchmarkTable = ({ tableData, filters }) => {
             <th className={`px-2 pt-8 pb-3 ${getColColor("NZAP")}`}>2050</th>
           </tr>
         </thead>
-        <tbody className="w-full max-h-96 overflow-auto block text-sm">
+        <tbody className={`w-full max-h-96 overflow-auto block text-sm transition-opacity duration-300 delay-100 ${reloading ? "opacity-25" : ""}`}>
           {tableData
             ? tableData.map((row, i) => {
                 return row.values.length ? (
@@ -122,11 +123,11 @@ export const BenchmarkTable = ({ tableData, filters }) => {
                     <tr className={`bg-repeat-${getCatColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="10">
                         <span>
-                          <b>
+                          <strong>
                             {row.category} - {row.subcategory}
-                          </b>
+                          </strong>
                         </span>
-                        {" "}
+                        &nbsp;&nbsp;
                         <span>( {row.units} )</span>
                       </td>
                     </tr>
@@ -185,19 +186,18 @@ export const BenchmarkTable = ({ tableData, filters }) => {
   );
 };
 
-const ExploreBenchmark = ({ tableData }) => {
+const ExploreBenchmark = ({ tableData, reloading }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
   const scenarios = useSelector((state) => state.scenarios);
   useEffect(() => {
     router.push(filters.url, undefined, { shallow: true });
-    // dispatch(loadScenarios({ url: filters.url }));
   }, [filters]);
 
   return (
     <div className="relative text-xs">
-      <BenchmarkTable tableData={tableData} filters={filters} />
+      <BenchmarkTable tableData={tableData} filters={filters} reloading={reloading} />
     </div>
   );
 };
