@@ -17,6 +17,10 @@ const RepeatHero = ({ bgClasses, headerText, subheaderText, mode }) => {
     updateBg();
     window.addEventListener("scroll", updateBg);
     window.addEventListener("resize", updateBg);
+    return( () => {
+      window.removeEventListener("scroll", updateBg);
+      window.removeEventListener("resize", updateBg);
+    } );
   }, []);
 
   let coverClass = mode === "dark" ? `h-screen/1.3 ${bgClasses}` : `bg-fixed h-screen/1.5 md:h-screen/1.3 text-repeat-teal ${bgClasses}`;

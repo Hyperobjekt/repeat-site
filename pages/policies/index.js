@@ -86,7 +86,7 @@ let policies = [
   },
 ];
 
-export default function HomePage() {
+export default function PoliciesPage() {
   return (
     <React.Fragment>
       <RepeatHead />
@@ -139,7 +139,7 @@ export default function HomePage() {
           <div className="md:w-1/2 pb-5 text-lg pt-8 text-repeat-black">
             <p>{policy.description}</p>
             <Link href={policy.href}>
-              <a className="text-black hover:text-repeat" href={policy.href}>
+              <a className="text-black hover:text-repeat">
                 <span className="inline-block align-middle leading-5 border-b-2 border-black hover:border-repeat">Read more</span>
                 <span className="inline-block align-middle">
                   <ChevronRightIcon className="h-4 w-4" />

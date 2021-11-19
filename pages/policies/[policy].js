@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import RepeatHead from "../_components/global/head";
 import RepeatHeader from "../_components/global/header";
@@ -30,7 +30,7 @@ let stats = {
   ],
 };
 
-export default function HomePage() {
+export default function PolicyPage() {
   const router = useRouter();
   const { policy } = router.query;
   return (
