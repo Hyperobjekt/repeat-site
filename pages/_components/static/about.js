@@ -3,6 +3,8 @@ import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
 import InTheMedia from "../global/in-the-media";
 import Stats from "../global/stats";
+import policies from '../../../_data/policies.json';
+
 const team = [
   {
     name: "Jesse D. Jenkins (PI)",
@@ -209,8 +211,9 @@ const RepeatAbout = () => {
       </div>
 
       <SectionHeader headerText="evaluate the policies" subheaderText="Our data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
-
-      <Stats stats={stats} />
+      
+      <Stats policy={policies[Object.keys(policies)[0]]} />
+      
       <div className="py-8"></div>
       <InTheMedia />
     </React.Fragment>

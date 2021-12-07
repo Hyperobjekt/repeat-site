@@ -7,84 +7,9 @@ import Stats from "../_components/global/stats";
 import InTheMedia from "../_components/global/in-the-media";
 import RepeatFooter from "../_components/global/footer";
 import RepeatHero from "../_components/global/hero";
+import policies from '../../_data/policies.json';
+policies = Object.keys(policies).map(p => ({ ...policies[p], href: "/policies/" + p }));
 
-let policies = [
-  {
-    href: "/policies/biden-administration-plan",
-    stats: {
-      header: "The Biden Administration Climate Program",
-      background: "",
-      stats: [
-        {
-          value: "78%",
-          label: "Increase in Renewables",
-          supportingText: "By 2050",
-        },
-        {
-          value: "13.5%",
-          label: "Average Annual Reduction in Fossil Fuels",
-          supportingText: "Starting in 2023",
-        },
-        {
-          value: "16 Million",
-          label: "New Roles Created",
-          supportingText: "In Energy Industries",
-        },
-      ],
-    },
-    description: "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-  },
-  {
-    href: "/policies/cres-climate-agenda",
-    stats: {
-      header: "U.S. Climate Action Partnership 2050 Carbon Plan",
-      background: "",
-      stats: [
-        {
-          value: "15.2%",
-          label: "Average Reduction in Fossil Fuels",
-          supportingText: "Every year",
-        },
-        {
-          value: "75%",
-          label: "Increase in Renewable Energy",
-          supportingText: "By 2050",
-        },
-        {
-          value: "1.2 Trillion",
-          label: "Private Sector Investment",
-          supportingText: "In Clean Energy",
-        },
-      ],
-    },
-    description: "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-  },
-  {
-    href: "/policies/sba-green-recovery-fund",
-    stats: {
-      header: "Small Business Alliance Clean Jobs Proposal",
-      background: "",
-      stats: [
-        {
-          value: "37%",
-          label: "Increase in Renewables",
-          supportingText: "By 2050",
-        },
-        {
-          value: "13.5%",
-          label: "Average Annual Reduction in Fossil Fuels",
-          supportingText: "Starting in 2023",
-        },
-        {
-          value: "1.4 Million",
-          label: "New Roles Created",
-          supportingText: "In Energy Industries",
-        },
-      ],
-    },
-    description: "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-  },
-];
 
 export default function PoliciesPage() {
   return (
@@ -108,47 +33,31 @@ export default function PoliciesPage() {
               <p className="font-utopia pt-6 md:w-4/5 text-lg text-repeat-burnt">Proin a vestibulum dui. Cras vitae erat felis. Mauris ullamcorper est sit amet velit ultrices egestas. Duis sit amet fringilla risus, non auctor eros. Nulla id tellus ac lectus ornare convallis. Pellentesque efficitur risus ligula, a ullamcorper ipsum porttitor quis.</p>
             </div>
           </div>
-          {/* <RepeatHero headerText="Climate Policies Evaluated in the Repeat Project" subheaderText="Proin a vestibulum dui. Cras vitae erat felis. Mauris ullamcorper est sit amet velit ultrices egestas. Duis sit amet fringilla risus, non auctor eros. Nulla id tellus ac lectus ornare convallis. Pellentesque efficitur risus ligula, a ullamcorper ipsum porttitor quis." bg="" />
-          <div className="container max-w-screen-lg pb-8 m-auto">
-            <div className="md:w-1/2 pb-5 text-lg text-repeat-black">
-              <ul className="list-disc">
-                <li className="text-3xl py-2 text-repeat-teal">
-                  <Link href="/policies/biden-administration-plan">
-                    <a className="text-repeat-teal" href="/policies/biden-administration-plan">
-                      The GREEN Act (from the House)
-                    </a>
-                  </Link>
-                </li>
-                <li className="text-3xl py-2 text-repeat-teal">
-                  <Link href="/policies/biden-administration-plan">
-                    <a className="text-repeat-teal" href="/policies/biden-administration-plan">
-                      The Clean Energy for America Act (from the Senate)
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-         */}
         </div>
       </>
 
-      {policies.map((policy, i) => (
-        <div key={i} className="container max-w-screen-lg pb-8 m-auto">
-          <Stats stats={policy.stats} />
-          <div className="md:w-1/2 pb-5 text-lg pt-8 text-repeat-black">
-            <p>{policy.description}</p>
-            <Link href={policy.href}>
-              <a className="text-black hover:text-repeat">
-                <span className="inline-block align-middle leading-5 border-b-2 border-black hover:border-repeat">Read more</span>
-                <span className="inline-block align-middle">
-                  <ChevronRightIcon className="h-4 w-4" />
-                </span>
-              </a>
-            </Link>
+      {Object.keys(policies).map((slug, i) => {
+        const policy = policies[slug];
+        return(
+          <div key={i} className="container max-w-screen-lg pb-8 m-auto">
+            <h3 className="text-2xl md:text-4xl pt-8 text-repeat-black font-extrabold font-obliqua">
+              {policy.longTitle}
+            </h3>
+            <Stats policy={policy} />
+            <div className="md:w-1/2 pb-5 text-lg pt-8 text-repeat-black">
+              <p>{policy.description}</p>
+              <Link href={policy.href}>
+                <a className="text-black hover:text-repeat">
+                  <span className="inline-block align-middle leading-5 border-b-2 border-black hover:border-repeat">Read more</span>
+                  <span className="inline-block align-middle">
+                    <ChevronRightIcon className="h-4 w-4" />
+                  </span>
+                </a>
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
 
       <InTheMedia />
       <RepeatFooter />
