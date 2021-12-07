@@ -9,7 +9,7 @@ export default function RepeatFooter() {
 	        <h3 className="font-bold text-md uppercase border-b-4 border-repeat-black text-repeat-black">Sign up for regular updates on REPEAT analysis</h3>
 					{/*<!-- Begin Mailchimp Signup Form -->*/}
 					<div id="mc_embed_signup" className="pt-6">
-						<form action="https://princeton.us5.list-manage.com/subscribe/post?u=a7d8e16f396e2562aa11c43a5&amp;id=11745a1e60" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate flex gap-4" target="_blank" noValidate>
+						<form action="https://princeton.us20.list-manage.com/subscribe/post?u=61a823b44b243329f985d1204&amp;id=dba24f2e49" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate flex gap-4" target="_blank" noValidate>
 							<div className="w-9/12">
 								<div className="mc-field-group">
 									<label htmlFor="mce-EMAIL" className="sr-only">Enter your email address</label>
@@ -21,7 +21,7 @@ export default function RepeatFooter() {
 								</div>
 								{/*<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->*/}
 								<div className="sr-only" aria-hidden="true">
-									<input type="text" name="b_a7d8e16f396e2562aa11c43a5_11745a1e60" tabIndex="-1" />
+									<input type="text" name="b_61a823b44b243329f985d1204_dba24f2e49" tabIndex="-1" />
 								</div>
 							</div>
 							<div className="w-3/12">
