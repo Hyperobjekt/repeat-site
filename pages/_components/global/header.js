@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
 import { ChartBarIcon, CursorClickIcon, MenuIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
+import policies from '../../../_data/policies.json';
 
 const pages = [
   {
@@ -15,16 +16,7 @@ const pages = [
   },
 ];
 
-const policies = [
-  {
-    name: "Infrastructure Investment and Jobs Act",
-    slug: "bif"
-  },
-  {
-    name: "Build Back Better Act",
-    slug: "bbb-and-bif"
-  },
-].map((e) => ({ ...e, href: "/policies/" + e.slug }));
+policies = Object.keys(policies).map(p => ({ ...policies[p], href: "/policies/" + p }));
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -89,11 +81,11 @@ export default function RepeatHeader() {
                   </button>
                   <div className="absolute -m-2 z-10 hidden -right-40 bg-grey-200 group-hover:block">
                     <div className="mt-6 shadow-lg">
-                      {policies.map((item) => (
-                        <Link key={item.name} href={item.href}>
+                      {policies.map((policy, key) => (
+                        <Link key={key} href={policy.href}>
                           <a className="p-3 bg-white flex items-start hover:bg-repeat-light">
                             <div className="px-2">
-                              <p className="text-base font-medium text-black">{item.name}</p>
+                              <p className="text-base font-medium text-black">{policy.title}</p>
                             </div>
                           </a>
                         </Link>
@@ -179,10 +171,10 @@ export default function RepeatHeader() {
                 <div className="py-6 px-5">
                   <div className="font-bold text-repeat pb-2">Policies</div>
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                    {policies.map((item) => (
-                      <Link key={item.name} href={item.href}>
+                    {policies.map((policy, key) => (
+                      <Link key={key} href={policy.href}>
                         <a className="text-base font-medium text-gray-900 hover:text-gray-700">
-                          {item.name}
+                          {policy.title}
                         </a>
                       </Link>
                     ))}

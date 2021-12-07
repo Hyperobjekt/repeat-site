@@ -3,28 +3,7 @@ import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
 import Stats from "../global/stats";
 import InTheMedia from "../global/in-the-media";
-
-const stats = {
-  header: "The Biden Administration Climate Program",
-  background: "",
-  stats: [
-    {
-      value: "78%",
-      label: "Increase in Renewables",
-      supportingText: "By 2050",
-    },
-    {
-      value: "13.5%",
-      label: "Average Annual Reduction in Fossil Fuels",
-      supportingText: "Starting in 2023",
-    },
-    {
-      value: "16 Million",
-      label: "New Roles Created",
-      supportingText: "In Energy Industries",
-    },
-  ],
-};
+import policies from '../../../_data/policies.json';
 
 const media = [
   { date: "Oct. 28, 2021 – The Washington Post", title: "New budget deal marks the biggest climate investment in U.S. history", link: "https://www.washingtonpost.com/climate-environment/2021/10/28/climate-biden-build-back-better/" },
@@ -32,7 +11,6 @@ const media = [
   { date: "Oct. 28, 2021 – The Week", title: "Why climate advocates are happy with Biden's spending framework", link: "https://theweek.com/climate-change/1006549/climate-change-measures-in-biden-framework" },
   { date: "Oct. 28, 2021 – Roll Call", title: "Framework’s climate elements may keep emissions goals in reach", link: "https://www.rollcall.com/2021/10/28/frameworks-climate-elements-may-keep-emissions-goals-in-reach/" },
   { date: "Oct. 28, 2021 – Slate", title: "There Are at Least Two Extremely Good Things to Celebrate in Biden’s New Build Back Better Plan", link: "https://slate.com/business/2021/10/biden-build-back-better-climate-child-poverty-tax-credit.html" },
-
 ];
 const RepeatMedia = () => {
   return (
@@ -71,8 +49,9 @@ const RepeatMedia = () => {
       </div>
 
       <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
+      
+      <Stats policy={policies[Object.keys(policies)[0]]} />
 
-      <Stats stats={stats} />
       <div className="py-8"></div>
     </React.Fragment>
   );

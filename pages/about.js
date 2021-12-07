@@ -4,7 +4,7 @@ import RepeatHeader from "./_components/global/header";
 import RepeatFooter from "./_components/global/footer";
 import RepeatAbout from "./_components/static/about";
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <React.Fragment>
       <RepeatHead />

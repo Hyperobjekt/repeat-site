@@ -5,217 +5,7 @@ import ExploreLoader from "./explore/loader";
 import ImageCarousel from "./global/image-carousel";
 import Stats from "./global/stats";
 import Pillars from "./global/pillars";
-
-const graphic1 = {
-  header: "Policy Scorecard",
-  background: "",
-  stats: [
-    {
-      value: "3,265",
-      label: "Million metric tons reduction in CO2",
-      supportingText: "In GHG emissions",
-    },
-    {
-      value: "152,378",
-      label: "Net jobs of employment impact",
-      supportingText: "In the energy sector",
-    },
-    {
-      value: "154,022",
-      label: "Thousand avoided deaths",
-      supportingText: "From reduced air pollution",
-    },
-  ],
-};
-const graphic2 = {
-  header: "Policy Score Card",
-  background: "",
-  stats: [
-    {
-      value: "78%",
-      label: "Increase in Renewables",
-      supportingText: "By 2050",
-    },
-    {
-      value: "13.5%",
-      label: "Average Annual Reduction in Fossil Fuels",
-      supportingText: "Starting in 2023",
-    },
-    {
-      value: "16 Million",
-      label: "New Roles Created",
-      supportingText: "In Energy Industries",
-    },
-  ],
-};
-const graphic3 = {
-  header: "Policy Score Card",
-  background: "",
-  stats: [
-    {
-      value: "78%",
-      label: "Increase in Renewables",
-      supportingText: "By 2050",
-    },
-    {
-      value: "13.5%",
-      label: "Average Annual Reduction in Fossil Fuels",
-      supportingText: "Starting in 2023",
-    },
-    {
-      value: "16 Million",
-      label: "New Roles Created",
-      supportingText: "In Energy Industries",
-    },
-  ],
-};
-
-const slides = [
-  {
-    image: "/images/carousel-image-1.svg",
-    caption: "2030 E+ Cumulative",
-    subcaption: "Solar, Wind and Population Density",
-  },
-  {
-    image: "/images/carousel-image-2.svg",
-    caption: "2030 E+ Cumulative",
-    subcaption: "Solar, Wind and Population Density",
-  },
-  {
-    image: "/images/carousel-image-3.svg",
-    caption: "2030 E+ Cumulative",
-    subcaption: "Solar, Wind and Population Density",
-  },
-  {
-    image: "/images/carousel-image-2.svg",
-    caption: "2030 E+ Cumulative",
-    subcaption: "Solar, Wind and Population Density",
-  },
-  {
-    image: "/images/carousel-image-3.svg",
-    caption: "2030 E+ Cumulative",
-    subcaption: "Solar, Wind and Population Density",
-  },
-  {
-    image: "/images/carousel-image-2.svg",
-    caption: "2030 E+ Cumulative",
-    subcaption: "Solar, Wind and Population Density",
-  },
-  {
-    image: "/images/carousel-image-3.svg",
-    caption: "2030 E+ Cumulative",
-    subcaption: "Solar, Wind and Population Density",
-  },
-];
-
-let bifPlan = {
-  header: "Infrastructure Investment and Jobs Act as passed Nov 6, 2021",
-  subHeader: "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-  contentBlocks: [
-    {
-      type: "paragraph",
-      content: (
-        <span>
-          Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae{" "}
-          <a className="primary-link" href="#">
-            augue pharetra consequat
-          </a>
-          . Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.
-        </span>
-      ),
-    },
-    {
-      type: "component",
-      content: <Stats stats={graphic1} />,
-    },
-    {
-      type: "heading",
-      content: "Details & Resources",
-    },
-    {
-      type: "slider",
-      content: (
-        <div className="py-6 text-repeat-black rounded-xl">
-          <ImageCarousel slides={slides} />
-        </div>
-      ),
-    },
-    {
-      type: "paragraph",
-      content:
-        "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.",
-    },
-    {
-      type: "heading",
-      content: "Policy REPEAT Pillars",
-    },
-    {
-      type: "paragraph",
-      content: "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-    },
-    {
-      type: "pillars",
-      content: <Pillars />,
-    },
-  ],
-};
-
-let bbbAndBifPlan = {
-  header: "Build Back Better Act (v1.0) as reported by the Budget Committee on Sept 25, 2021 (H. Rept. 117-30)",
-  subHeader: "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-  contentBlocks: [
-    {
-      type: "paragraph",
-      content: (
-        <span>
-          Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae{" "}
-          <a className="primary-link" href="#">
-            augue pharetra consequat
-          </a>
-          . Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.
-        </span>
-      ),
-    },
-    {
-      type: "component",
-      content: <Stats stats={graphic1} />,
-    },
-    {
-      type: "heading",
-      content: "Details & Resources",
-    },
-    {
-      type: "slider",
-      content: (
-        <div className="py-6 text-repeat-black rounded-xl">
-          <ImageCarousel slides={slides} />
-        </div>
-      ),
-    },
-    {
-      type: "paragraph",
-      content:
-        "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.",
-    },
-    {
-      type: "heading",
-      content: "Policy REPEAT Pillars",
-    },
-    {
-      type: "paragraph",
-      content: "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-    },
-    {
-      type: "pillars",
-      content: <Pillars />,
-    },
-  ],
-};
-
-const policies = {
-  "bif": bifPlan,
-  "bbb-and-bif": bbbAndBifPlan,
-};
+import policies from '../../_data/policies.json';
 
 const RepeatPolicy = () => {
   const router = useRouter();
@@ -227,9 +17,9 @@ const RepeatPolicy = () => {
 
   return activePolicy ? (
     <div className="bg-policy-background bg-repeat-mobile md:bg-repeat-right-top bg-no-repeat">
-      <RepeatHero headerText={activePolicy.header} subheaderText={activePolicy.subHeader} bg="" />
+      <RepeatHero headerText={activePolicy.longTitle} subheaderText={activePolicy.subTitle} bg="" />
       <div className="container max-w-screen-lg pb-8 m-auto">
-        {activePolicy.contentBlocks.map((block, i) => {
+        {activePolicy.blocks.map((block, i) => {
           if (block.type === "paragraph")
             return (
               <div key={i} className="md:w-1/2 pb-5 text-lg text-repeat-black">
@@ -239,19 +29,21 @@ const RepeatPolicy = () => {
           if (block.type === "component")
             return (
               <div key={i} className="md:w-full py-10">
-                {block.content}
+                <Stats policy={activePolicy} />
               </div>
             );
           if (block.type === "slider")
             return (
               <div key={i} className="md:w-full pt-5 pb-10">
-                {block.content}
+                <div className="py-6 text-repeat-black rounded-xl">
+                  <ImageCarousel slides={activePolicy.slides} />
+                </div>
               </div>
             );
           if (block.type === "pillars")
             return (
               <div key={i} className="md:w-full py-0">
-                {block.content}
+                <Pillars />
               </div>
             );
           if (block.type === "heading")

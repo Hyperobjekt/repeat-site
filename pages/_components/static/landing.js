@@ -4,28 +4,7 @@ import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
 import Stats from "../global/stats";
 import InTheMedia from "../global/in-the-media";
-
-let stats = {
-  header: "The Biden Administration Climate Program",
-  background: "",
-  stats: [
-    {
-      value: "78%",
-      label: "Increase in Renewables",
-      supportingText: "By 2050",
-    },
-    {
-      value: "13.5%",
-      label: "Average Annual Reduction in Fossil Fuels",
-      supportingText: "Starting in 2023",
-    },
-    {
-      value: "16 Million",
-      label: "New Roles Created",
-      supportingText: "In Energy Industries",
-    },
-  ],
-};
+import policies from '../../../_data/policies.json';
 
 const RepeatLanding = () => {
   return (
@@ -82,7 +61,7 @@ const RepeatLanding = () => {
 
       <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
 
-      <Stats stats={stats} />
+      <Stats policy={policies[Object.keys(policies)[0]]} />
 
       <div className="container max-w-screen-lg pt-7 pb-20 m-auto">
         <div className="md:w-1/2">
