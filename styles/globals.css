@@ -18,6 +18,13 @@ nav p {
   margin-bottom: 0;
 }
 
+p a,
+p a:hover,
+p a:focus {
+  color: inherit;
+  text-decoration: underline;
+}
+
 @media (min-width: 768px) {
   h2.md\:text-5xl {
     line-height: 1.2;
@@ -294,4 +301,5 @@ nav p {
 }
 a.primary-link {
   @apply text-repeat-burnt border-b border-repeat-burnt;
+  text-decoration: none;
 }

@@ -23,7 +23,7 @@ const RepeatPolicy = () => {
           if (block.type === "paragraph")
             return (
               <div key={i} className="md:w-1/2 pb-5 text-lg text-repeat-black">
-                <p>{block.content}</p>
+                <p dangerouslySetInnerHTML={{ __html: block.content }} />
               </div>
             );
           if (block.type === "component")

@@ -61,14 +61,14 @@ const RepeatLanding = () => {
 
       <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
 
-      <Stats policy={policies[Object.keys(policies)[0]]} />
+      <Stats policy={policies["bif"]} />
 
       <div className="container max-w-screen-lg pt-7 pb-20 m-auto">
         <div className="md:w-1/2">
           <p>Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.</p>
         </div>
-        <Link href="/policies/biden-administration-plan">
-          <a href="/policies/biden-administration-plan" className="text-sm font-bold inline-block pt-5 border-b-2 border-black">
+        <Link href="/policies/bif">
+          <a href="/policies/bif" className="text-sm font-bold inline-block pt-5 border-b-2 border-black">
             Read More &gt;
           </a>
         </Link>
