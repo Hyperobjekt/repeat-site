@@ -40,15 +40,20 @@ const ExploreLoader = () => {
     setApiQuery(query);
   }, []);
 
-  useEffect(() => {
-    setLoading(false);
-    setReloading(false);
-  }, [scenarios]);
+  useEffect(async () => {
+    setPolicy(routerQuery.policy);
+    dispatch(loadScenarios({ ...routerQuery }));
+  }, [routerQuery.policy]);
 
   useEffect(() => {
     setReloading(comparison == filters.comparison);
     setComparison(filters.comparison);
   }, [filters]);
+
+  useEffect(() => {
+    setLoading(false);
+    setReloading(false);
+  }, [scenarios]);
 
   const getQuery = () => {
     let query = {};

@@ -47,7 +47,6 @@ export const loadScenarios = (query) => async (dispatch) => {
     if (e === "page") return (q["skip"] = (Number(query[e]) - 1) * (Number(query.limit) || 25));
     return (q[`_${e}`] = query[e]);
   });
-  // console.log(query, q);
   let scenarios = await getScenarios(q);
   await dispatch(setCountAction(scenarios.count));
   await dispatch(loadScenariosActionSuccess(scenarios.data || scenarios));

@@ -31,6 +31,14 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     setApiQuery(query);
   }, []);
 
+  useEffect(async () => {
+    let query = getQuery();
+    let newFilters = await dispatch(loadFilters({ ...query }));
+    let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
+    setActiveState(newActiveState[0].label);
+    dispatch(loadScenarios({ ...query, policy, page: 1, limit: 25, state: "national" }));
+  }, [policy]);
+
   const getQuery = () => {
     let query = {};
     query.page = router.query.page;
