@@ -35,7 +35,6 @@ const getScenarios = async (query) => {
   };
   const results = await fetch(`/api/scenarios?${queryString}`, requestOptions);
   if (results.status === 200) return await results.json();
-
   return [];
 };
 
@@ -45,12 +44,10 @@ export const loadScenarios = (query) => async (dispatch) => {
     if (e === "categories") return (q["_category"] = query[e].split(","));
     if (e === "subcategories") return (q["_subcategory"] = query[e].split(","));
     if (e === "limit") return (q["limit"] = Number(query[e]));
-    if (e === "page") {
-      q["skip"] = (Number(query[e]) - 1) * (Number(query.limit) || window.PAGE_LIMIT);
-      return;
-    };
+    if (e === "page") return (q["skip"] = (Number(query[e]) - 1) * (Number(query.limit) || 25));
     return (q[`_${e}`] = query[e]);
   });
+  // console.log(query, q);
   let scenarios = await getScenarios(q);
   await dispatch(setCountAction(scenarios.count));
   await dispatch(loadScenariosActionSuccess(scenarios.data || scenarios));

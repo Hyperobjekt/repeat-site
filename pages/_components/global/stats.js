@@ -4,7 +4,7 @@ const Stats = ({ policy }) => {
   const stats = policy ? policy.stats : [];
   return (
     <div className="container max-w-screen-lg m-auto">
-      {<h3 className="font-bold text-2xl">{policy.longTitle}</h3>}
+      {<h3 className="font-bold text-2xl">{policy ? policy.longTitle: ""}</h3>}
       <div className="flex flex-wrap pt-6">
         {stats.map((stat, i) => (
           <div key={i} className="flex-1 pb-5 sm:pb-0">

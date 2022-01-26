@@ -28,6 +28,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     let newFilters = await dispatch(loadFilters({ ...query }));
     let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
     setActiveState(newActiveState[0].label);
+    setApiQuery(query);
   }, []);
 
   const getQuery = () => {

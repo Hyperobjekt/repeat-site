@@ -37,6 +37,7 @@ const ExploreLoader = () => {
     let query = getQuery();
     dispatch(loadFilters({ ...query }));
     dispatch(loadScenarios({ ...routerQuery }));
+    setApiQuery(query);
   }, []);
 
   useEffect(() => {
