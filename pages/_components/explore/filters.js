@@ -36,7 +36,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     let newFilters = await dispatch(loadFilters({ ...query }));
     let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
     setActiveState(newActiveState[0].label);
-    dispatch(loadScenarios({ ...query, policy, page: 1, limit: 25, state: "national" }));
+    dispatch(loadScenarios({ ...query, policy, state: "national", page: 1, limit: 25 }));
   }, [policy]);
 
   const getQuery = () => {
@@ -55,8 +55,8 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
 
   const changeUsState = (state) => {
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
-    let newFilters = { ...filters, usStates };
-    let query = { ...apiQuery, policy, state: state.slug };
+    let newFilters = { ...filters, page: 1, usStates};
+    let query = { ...apiQuery, policy, page: 1, state: state.slug };
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
     setActiveState(state.label);
@@ -73,8 +73,8 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     let categories = [...filters.levelOneFilters].map((cat) => ({ ...cat, active: cat.slug === category.slug && cat.active ? false : cat.active || cat.slug === category.slug }));
     let categorySlugs = categories.filter((c) => c.active).map((c) => c.slug);
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: categorySlugs.includes(sub.slug) }));
-    let newFilters = { ...filters, levelOneFilters: categories, levelTwoFilters: subcategories };
-    let query = { ...apiQuery, policy, category: categorySlugs };
+    let newFilters = { ...filters, page: 1, levelOneFilters: categories, levelTwoFilters: subcategories };
+    let query = { ...apiQuery, policy, page: 1, category: categorySlugs };
     if (!categories.filter((c) => c.active).length) delete query.category;
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
@@ -84,8 +84,8 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
   const toggleSubCategory = (subcategory) => {
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: sub.slug === subcategory.slug && sub.active ? false : sub.active || sub.slug === subcategory.slug }));
     let subcategorySlugs = subcategories.filter((s) => s.active).map((s) => s.slug);
-    let newFilters = { ...filters, levelTwoFilters: subcategories };
-    let query = { ...apiQuery, policy, subcategory: subcategorySlugs };
+    let newFilters = { ...filters, page: 1, levelTwoFilters: subcategories };
+    let query = { ...apiQuery, policy, page: 1, subcategory: subcategorySlugs };
     if (!subcategories.filter((s) => s.active).length) delete query.subcategory;
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
