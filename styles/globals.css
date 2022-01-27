@@ -264,8 +264,6 @@ nav p {
 }
 
 
-/*! purgecss end ignore */
-
 @tailwind utilities;
 
 @layer utilities {
@@ -295,3 +293,6 @@ nav p {
 a.primary-link {
   @apply text-repeat-burnt border-b border-repeat-burnt;
 }
+
+
+/*! purgecss end ignore */

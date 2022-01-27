@@ -5,7 +5,7 @@ if (process.env.NODE_ENV != "development") {
     "@fullhuman/postcss-purgecss",
     {
       content: [
-        "./pages/**/*.{js,jsx,ts,tsx,html}",
+        "./pages/**/*.{js,jsx,ts,tsx}",
       ],
       safelist: [
         "text-gray-500",
@@ -20,11 +20,9 @@ if (process.env.NODE_ENV != "development") {
         "group-hover:text-gray-800",
         "bg-repeat-table-1",
         "opacity-25",
-        "md:w-2/5",
-        "md:pl-10",
         /^ant-/
       ],
-      defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
+      defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || []
     },
   ]);
 }

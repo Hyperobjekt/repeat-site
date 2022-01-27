@@ -1,7 +1,7 @@
-{
-  "bbb-and-bif": {
-    "title": "Build Back Better Act",
-    "longTitle": "Build Back Better Act (v1.0) as reported by the Budget Committee on Sept 25, 2021 (H. Rept. 117-30)",
+{ 
+  "bif": {
+    "title": "The Infrastructure Investment and American Jobs Act of 2021",
+    "longTitle": "The Infrastructure Investment and American Jobs Act of 2021 ('IIJA')",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
     "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
     "stats": [
@@ -93,9 +93,9 @@
       }
     ]
   },
-  "bif": {
-    "title": "Infrastructure Investment and Jobs Act",
-    "longTitle": "Infrastructure Investment and Jobs Act as passed Nov 6, 2021",
+  "bbb-and-bif": {
+    "title": "Build Back Better Act, Sept 2021",
+    "longTitle": "The Build Back Better Act, September 2021 version ('BBB 1.0')",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
     "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
     "stats": [
@@ -186,5 +186,32 @@
         "content": ""
       }
     ]
+  },
+  "bbb-2": {
+    "title": "The Build Back Better Act, Nov 2021",
+    "longTitle": "The Build Back Better Act, November 2021 version ('BBB 2.0')",
+    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+    "stats": [],
+    "slides": [],
+    "blocks": []
+  },
+  "current": {
+    "title": "Current Policies Benchmark Scenario",
+    "longTitle": "Current Policies Benchmark Scenario",
+    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+    "stats": [],
+    "slides": [],
+    "blocks": []
+  },
+  "nzap": {
+    "title": "Net-Zero Pathway Benchmark Scenario",
+    "longTitle": "Net-Zero Pathway Benchmark Scenario",
+    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+    "stats": [],
+    "slides": [],
+    "blocks": []
   }
 }
