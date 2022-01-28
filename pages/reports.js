@@ -2,9 +2,9 @@ import React from "react";
 import RepeatHead from "./_components/global/head";
 import RepeatHeader from "./_components/global/header";
 import RepeatFooter from "./_components/global/footer";
-import RepeatAbout from "./_components/static/about";
+import RepeatReports from "./_components/static/reports";
 
-export default function AboutPage() {
+export default function ReportPage() {
   return (
     <React.Fragment>
       <RepeatHead />
@@ -12,7 +12,7 @@ export default function AboutPage() {
         Skip to main
       </a>
       <RepeatHeader />
-      <RepeatAbout />
+      <RepeatReports />
       <RepeatFooter />
     </React.Fragment>
   );
