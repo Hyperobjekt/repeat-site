@@ -46,11 +46,14 @@ export default function RepeatFooter() {
         <a href="/" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
 						Home
 					</a>
+					<a href="/policies" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
+						Policies
+					</a>
 					<a href="/about" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
 						About
 					</a>
-					<a href="/policies" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
-						Policies
+					<a href="/reports" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
+						Reports
 					</a>
 					<a href="/media" className="inline-block pl-4 text-sm text-repeat-black font-semibold">
 						Media

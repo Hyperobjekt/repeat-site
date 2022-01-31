@@ -11,6 +11,10 @@ const pages = [
     href: "/about",
   },
   {
+    name: "Reports",
+    href: "/reports",
+  },
+  {
     name: "Media",
     href: "/media",
   },
@@ -95,6 +99,11 @@ export default function RepeatHeader() {
                 <Link href="/about">
                   <a href="/about" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
                     About
+                  </a>
+                </Link>
+                 <Link href="/reports">
+                  <a href="/reports" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
+                    Reports
                   </a>
                 </Link>
                 {/* <Popover className="relative">
