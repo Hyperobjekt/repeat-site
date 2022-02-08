@@ -1,5 +1,5 @@
 // const axios = require("axios");
-const data = require("../../_data/nzap_filters.json");
+const data = require("../../_data/repeat_filters.json");
 import { setCors } from "../../_helpers/cors";
 
 export default async (req, res) => {
