@@ -8,13 +8,13 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export const BenchmarkTable = ({ tableData, filters, reloading }) => {
-  const [vsWith, setVsWith] = useState("NZAP"); // CURRENT | NZAP
+  const [vsWith, setVsWith] = useState("NZAP"); // FROZEN | NZAP
   const [diffType, setDiffType] = useState("ABSOLUTE");
   const [fromPos, setFromPos] = useState("left");
   const [toPos, setToPos] = useState("right");
 
   const toggleVs = () => {
-    setVsWith(vsWith === "NZAP" ? "CURRENT" : "NZAP");
+    setVsWith(vsWith === "NZAP" ? "FROZEN" : "NZAP");
     setFromPos(fromPos === "left" ? "right" : "left");
     setToPos(toPos === "right" ? "left" : "right");
   };
@@ -51,18 +51,21 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
     return delta;
   };
 
+  const vsEnClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black";
+  const vsDisClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-black text-white pointer-events-none";
+
   return (
     <div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra transition-colors duration-300 ease-in-out">
       <div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
 
       <div className="absolute z-10 vs--left text-center">
-        <button className="w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn"
-                disabled={vsWith === "CURRENT"}
+        <button className={vsWith === "FROZEN" ? vsDisClasses : vsEnClasses}
+                disabled={vsWith === "FROZEN"}
                 onClick={() => toggleVs()}><ChevronLeft className="mr-2" /> VS.</button>
       </div>
 
       <div className="absolute z-10 vs--right text-center">
-        <button className="w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn"
+        <button className={vsWith === "NZAP" ? vsDisClasses : vsEnClasses}
                 disabled={vsWith === "NZAP"}
                 onClick={() => toggleVs()}>VS. <ChevronRight className="ml-2" /></button>
       </div>
@@ -95,11 +98,11 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
             <th className="p-2" colSpan="2">
               Category
             </th>
-            <th className={`p-2 ${getColColor("CURRENT")}`} colSpan="3">
+            <th className={`p-2 ${getColColor("FROZEN")}`} colSpan="3">
               Frozen Policy
             </th>
             <th className="p-2" colSpan="3">
-              {tableData ? tableData[0].policy : "REPEAT"} Policy
+              {tableData ? tableData[0].policy.replace("-", " ").toUpperCase() : "REPEAT"} Policy
             </th>
             <th className={`p-2 ${getColColor("NZAP")}`} colSpan="2">
               Net Zero
@@ -107,8 +110,8 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
           </tr>
           <tr className="table w-full table-fixed text-base tracking-wide	">
             <th className="px-2 pt-8 pb-3" colSpan="2"></th>
-            <th className={`px-2 pt-8 pb-3 ${getColColor("CURRENT")}`}>2030</th>
-            <th className={`px-2 pt-8 pb-3 ${getColColor("CURRENT")}`} colSpan="2">2050</th>
+            <th className={`px-2 pt-8 pb-3 ${getColColor("FROZEN")}`}>2030</th>
+            <th className={`px-2 pt-8 pb-3 ${getColColor("FROZEN")}`} colSpan="2">2050</th>
             <th className="px-2 pt-8 pb-3">2030</th>
             <th className="px-2 pt-8 pb-3" colSpan="2">2050</th>
             <th className={`px-2 pt-8 pb-3 ${getColColor("NZAP")}`}>2030</th>
@@ -133,9 +136,9 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
                     </tr>
                     {row.values
                       .map((valueRow) => {
-                        if (vsWith === "CURRENT") {
-                          valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow.current, 2030);
-                          valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow.current, 2050);
+                        if (vsWith === "FROZEN") {
+                          valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow.frozen, 2030);
+                          valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow.frozen, 2050);
                         }
                         if (vsWith === "NZAP") {
                           valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow.core, 2030);
@@ -149,8 +152,8 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
                           <tr className="table w-full table-fixed hover:bg-repeat hover:bg-opacity-5" key={vi}>
                             <td className="p-2" colSpan="2">{valueRow.variable}</td>
 
-                            <td className={`p-2 ${getColColor("CURRENT")}`}>{valueRow.current ? valueRow.current[2030] : 0}</td>
-                            <td className={`p-2 ${getColColor("CURRENT")}`} colSpan="2">{valueRow.current ? valueRow.current[2050] : 0}</td>
+                            <td className={`p-2 ${getColColor("FROZEN")}`}>{valueRow.frozen ? valueRow.frozen[2030] : 0}</td>
+                            <td className={`p-2 ${getColColor("FROZEN")}`} colSpan="2">{valueRow.frozen ? valueRow.frozen[2050] : 0}</td>
 
                             <td className="p-2">
                               <div className="flex">

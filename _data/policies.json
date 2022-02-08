@@ -1,5 +1,5 @@
 { 
-  "bif": {
+  "iija": {
     "title": "The Infrastructure Investment and American Jobs Act of 2021",
     "longTitle": "The Infrastructure Investment and American Jobs Act of 2021 ('IIJA')",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
@@ -93,7 +93,7 @@
       }
     ]
   },
-  "bbb-and-bif": {
+  "bbb-1": {
     "title": "Build Back Better Act, Sept 2021",
     "longTitle": "The Build Back Better Act, September 2021 version ('BBB 1.0')",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
@@ -196,7 +196,7 @@
     "slides": [],
     "blocks": []
   },
-  "current": {
+  "frozen": {
     "title": "Current Policies Benchmark Scenario",
     "longTitle": "Current Policies Benchmark Scenario",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
