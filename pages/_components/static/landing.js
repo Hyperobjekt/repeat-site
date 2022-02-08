@@ -58,7 +58,7 @@ const RepeatLanding = () => {
             </a>
             <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
               <div className="block font-utopia pt-3">
-                <em>Latest policies reviewed include <a href="/policies/bif" target="_blank" rel="noreferrer noopener" className="primary-link">The Infrastructure Investment and American Jobs Act of 2021 ('IIJA')</a>, The Build Back Better Act, <a href="/policies/bbb-and-bif" target="_blank" rel="noreferrer noopener" className="primary-link">September 2021 version ('BBB 1.0')</a> and <a href="/policies/bbb-2" target="_blank" rel="noreferrer noopener" className="primary-link">November 2021 version ('BBB 2.0')</a>.</em>
+                <em>Latest policies reviewed include <a href="/policies/iija" target="_blank" rel="noreferrer noopener" className="primary-link">The Infrastructure Investment and American Jobs Act of 2021 ('IIJA')</a>, The Build Back Better Act, <a href="/policies/bbb-1" target="_blank" rel="noreferrer noopener" className="primary-link">September 2021 version ('BBB 1.0')</a> and <a href="/policies/bbb-2" target="_blank" rel="noreferrer noopener" className="primary-link">November 2021 version ('BBB 2.0')</a>.</em>
               </div>
               <Link href="/policies">
 								<a href="/policies" className="text-sm font-bold inline-block pt-5 border-b-2 border-black">
