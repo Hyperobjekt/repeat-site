@@ -150,7 +150,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
                       .map((valueRow, vi) => {
                         return (
                           <tr className="table w-full table-fixed hover:bg-repeat hover:bg-opacity-5" key={vi}>
-                            <td className="p-2" colSpan="2">{valueRow.variable}</td>
+                            <td className="p-2 pr-4" colSpan="2">{valueRow.variable}</td>
 
                             <td className={`p-2 ${getColColor("FROZEN")}`}>{valueRow.frozen ? valueRow.frozen[2030] : 0}</td>
                             <td className={`p-2 ${getColColor("FROZEN")}`} colSpan="2">{valueRow.frozen ? valueRow.frozen[2050] : 0}</td>

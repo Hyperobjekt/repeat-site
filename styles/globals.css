@@ -147,12 +147,12 @@ nav p {
   min-width: 1024px;
 }
 .highlight--right {
-  right: 0;
-  width: 57%
+  left: calc(45% - 1rem);
+  width: calc(55% + 1rem);
 }
 .highlight--left {
-  right: 27.5%;
-  width: 55.5%;
+  left: calc(20% - 1rem);
+  width: calc(50% + 2.5rem);
 }
 .vs--left {
   right: 57%;
