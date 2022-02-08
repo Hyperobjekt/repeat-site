@@ -1,6 +1,6 @@
 { 
   "bif": {
-    "title": "The Infrastructure Investment and American Jobs Act of 2021",
+    "title": "Infrastructure Investment and American Jobs Act of 2021",
     "longTitle": "The Infrastructure Investment and American Jobs Act of 2021 ('IIJA')",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
     "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
@@ -94,7 +94,7 @@
     ]
   },
   "bbb-and-bif": {
-    "title": "Build Back Better Act, Sept 2021",
+    "title": "Build Back Better Act (Sept 2021)",
     "longTitle": "The Build Back Better Act, September 2021 version ('BBB 1.0')",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
     "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
@@ -188,7 +188,7 @@
     ]
   },
   "bbb-2": {
-    "title": "The Build Back Better Act, Nov 2021",
+    "title": "Build Back Better Act (Nov 2021)",
     "longTitle": "The Build Back Better Act, November 2021 version ('BBB 2.0')",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
     "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
@@ -197,7 +197,7 @@
     "blocks": []
   },
   "current": {
-    "title": "Current Policies Benchmark Scenario",
+    "title": "Current Policies",
     "longTitle": "Current Policies Benchmark Scenario",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
     "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
@@ -205,8 +205,8 @@
     "slides": [],
     "blocks": []
   },
-  "nzap": {
-    "title": "Net-Zero Pathway Benchmark Scenario",
+  "core": {
+    "title": "Net-Zero",
     "longTitle": "Net-Zero Pathway Benchmark Scenario",
     "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
     "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
