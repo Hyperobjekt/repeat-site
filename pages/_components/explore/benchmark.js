@@ -107,7 +107,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 															<button
 																onClick={() => onClick(policy.slug)}
 																className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
-																{policy.title}
+																{policy.navTitle}
 															</button>
 														)}
 													</Menu.Item>

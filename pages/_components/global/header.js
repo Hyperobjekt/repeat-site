@@ -88,7 +88,7 @@ export default function RepeatHeader() {
                         <Link key={key} href={policy.href}>
                           <a className="p-3 bg-white flex items-start hover:bg-repeat-light">
                             <div className="px-2">
-                              <p className="text-base font-medium text-black">{policy.title}</p>
+                              <p className="text-base font-medium text-black">{policy.navTitle}</p>
                             </div>
                           </a>
                         </Link>
@@ -182,7 +182,7 @@ export default function RepeatHeader() {
                     {policies.map((policy, key) => (
                       <Link key={key} href={policy.href}>
                         <a className="text-base font-medium text-gray-900 hover:text-gray-700">
-                          {policy.title}
+                          {policy.navTitle}
                         </a>
                       </Link>
                     ))}

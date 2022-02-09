@@ -111,29 +111,6 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
     dispatch(loadFilters({ ...query }));
   };
 
-  const ComparisonMenu = ({ filters }) => {
-    return (
-      <>
-        <p className="pt-8 pb-4">Compare by</p>
-        <div className="flex px-2 border-b-4 border-repeat">
-          <div
-            className={filters.comparison === "benchmark" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
-            onClick={() => {
-              setComparison("benchmark");
-            }}>
-            Benchmark
-          </div>
-          <div
-            className={filters.comparison === "timeseries" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
-            onClick={() => {
-              setComparison("timeseries");
-            }}>
-            Time Series
-          </div>
-        </div>
-      </>
-    )
-  }
 
   const PolicyMenu = () => {
 
@@ -184,6 +161,30 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
       </div>
     );
   };
+
+  const ComparisonMenu = ({ filters }) => {
+    return (
+      <>
+        <p className="pt-8 pb-4">Compare by</p>
+        <div className="flex px-2 border-b-4 border-repeat">
+          <div
+            className={filters.comparison === "benchmark" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
+            onClick={() => {
+              setComparison("benchmark");
+            }}>
+            Benchmark
+          </div>
+          <div
+            className={filters.comparison === "timeseries" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
+            onClick={() => {
+              setComparison("timeseries");
+            }}>
+            Time Series
+          </div>
+        </div>
+      </>
+    )
+  }
 
   const StateMenu = () => {
 
@@ -243,7 +244,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
     );
   };
 
-  const AssembleCategories = ({ filters }) => {
+  const CategoriesMenu = ({ filters }) => {
     let categories = [...filters.levelOneFilters]
       .map((cat, i) => {
         return { ...cat, class: setFilterClasses(cat.color, cat.active) };
@@ -327,7 +328,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
       </div>
 
       <div className="py-8">
-        {filters ? <AssembleCategories filters={filters} /> : null}
+        {filters ? <CategoriesMenu filters={filters} /> : null}
       </div>
     </>
   );

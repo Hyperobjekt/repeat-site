@@ -97,10 +97,10 @@
       ]
     },
     {
-      "slug": "bbb-1",
-      "title": "The Build Back Better Act, September 2021 version ('BBB 1.0')",
-      "navTitle": "Build Back Better Act (Sept 2021)",
-      "colTitle": "BBB 1.0 (Sept 2021)",
+      "slug": "bbb-nov",
+      "title": "The Build Back Better Act, November 2021 version ('BBBA, Nov ‘21')",
+      "navTitle": "Build Back Better Act, November 2021",
+      "colTitle": "BBBA, Nov ‘21",
       "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
       "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
       "stats": [
@@ -193,10 +193,10 @@
       ]
     },
     {
-      "slug": "bbb-2",
-      "title": "The Build Back Better Act, November 2021 version ('BBB 2.0')",
-      "navTitle": "Build Back Better Act (Nov 2021)",
-      "colTitle": "BBB 2.0 (Nov 2021)",
+      "slug": "bbb-sept",
+      "title": "The Build Back Better Act, September 2021 version ('BBBA, Sept ‘21')",
+      "navTitle": "Build Back Better Act, September 2021",
+      "colTitle": "BBBA, Sept ‘21",
       "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
       "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
       "stats": [],
@@ -205,8 +205,8 @@
     },
     {
       "slug": "frozen",
-      "title": "Frozen Policies Benchmark Scenario",
-      "navTitle": "Frozen Policies",
+      "title": "Frozen Policies Benchmark",
+      "navTitle": "Frozen Policies Benchmark",
       "colTitle": "Frozen Policies",
       "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
       "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
@@ -216,9 +216,9 @@
     },
     { 
       "slug": "core",
-      "title": "Net Zero Pathway Benchmark Scenario",
-      "navTitle": "Net Zero Pathway",
-      "colTitle": "Net Zero Pathway",
+      "title": "Net-Zero Pathway Benchmark",
+      "navTitle": "Net-Zero Pathway Benchmark",
+      "colTitle": "Net-Zero Pathway",
       "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
       "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
       "stats": [],
