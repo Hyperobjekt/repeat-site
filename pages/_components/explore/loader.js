@@ -50,7 +50,7 @@ const ExploreLoader = ({ canChangeCols }) => {
   }, [routerQuery.policy]);
 
   useEffect(() => {
-    setReloading(comparison == filters.comparison);
+    setReloading(comparison === filters.comparison);
     setComparison(filters.comparison);
   }, [filters]);
 
@@ -123,10 +123,10 @@ const ExploreLoader = ({ canChangeCols }) => {
         updatePolicy={setActivePolicy}
         canChangeCols={canChangeCols} />
 
-      <div className="max-h-explorer min-h-explorer relative overflow-hidden">
+      <div className="w-full table relative overflow-hidden">
         {loading ? <div className="repeat-spinner">LOADING...</div> :
           [...scenarios].map((e) => e.values).flat().length ? (
-            <div id="tableContainer" className="min-h-explorer overflow-auto">
+            <div id="tableContainer" className="max-h-explorer min-h-explorer overflow-hidden pt-10">
               {comparison === "benchmark" ?
                 <ExploreBenchmark
                   policy={activePolicy}

@@ -16,9 +16,14 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 	const [diffType, setDiffType] = useState("ABSOLUTE"); // ABSOLUTE || PERCENT
 	const [fromPos, setFromPos] = useState("left");
 	const [toPos, setToPos] = useState("right");
-	const [leftPol, setLeftPol] = useState("frozen"); //frozen = Frozen
-	const [rightPol, setRightPol] = useState("core"); //core = Net Zero
+	const [leftPol, setLeftPol] = useState(null);
+	const [rightPol, setRightPol] = useState(null);
 	const activePolicy = policy || {};
+
+	useEffect(() => {
+		setLeftPol(activePolicy.slug !== "frozen" ? "frozen" : policies.find(p => p.slug !== "frozen" && p.slug !== activePolicy.slug).slug); //frozen = Frozen
+		setRightPol(activePolicy.slug !== "core" ? "core" : policies.find(p => p.slug !== "core" && p.slug !== activePolicy.slug).slug); //core = Net Zero
+	}, [policy]);
 
 	const toggleVs = () => {
 		setVsWith(vsWith === "RIGHT" ? "LEFT" : "RIGHT");
@@ -63,24 +68,23 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 	}
 
 	const PolicySelect = ({ position }) => {
-		let policySlug, onClick, menuItemsClasses;
-		let excludePolicies = [activePolicy.slug];
+		let policySlug, otherPolicySlug, onClick, menuItemsClasses;
 
 		if(position === "left") {
 			policySlug = leftPol;
+			otherPolicySlug = rightPol;
 			onClick = setLeftPol;
 			menuItemsClasses = "origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none";
-			excludePolicies.push(rightPol);
 		}
 
 		if(position === "right") {
 			policySlug = rightPol;
+			otherPolicySlug = leftPol;
 			onClick = setRightPol;
 			menuItemsClasses = "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none";
-			excludePolicies.push(leftPol);
 		}
 
-		const policy = policies ? policies.find(p => p.slug === policySlug) : {};
+		const policy = policies && policySlug ? policies.find(p => p.slug === policySlug) : {};
 
 		return(
 			<Menu as="div" className="w-40 relative inline-block text-left z-10">
@@ -101,16 +105,26 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 							<Menu.Items static className={menuItemsClasses}>
 								<div className="py-1 max-h-60 overflow-auto">
 									{policies
-										? policies.filter(p => !excludePolicies.includes(p.slug)).map((policy) => {
+										? policies.filter(p => p.slug !== activePolicy.slug).map((policy) => {
 												return(
 													<Menu.Item key={policy.slug}>
-														{({ active }) => (
-															<button
-																onClick={() => onClick(policy.slug)}
-																className={classNames(policy.slug === policySlug || active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
-																{policy.navTitle}
-															</button>
-														)}
+														{({ active, disabed }) => {
+															let className = "w-full text-left block px-4 py-2 text-sm ";
+															if(policy.slug === policySlug || active) {
+																className += "bg-gray-100 text-gray-900";
+															} else if(otherPolicySlug === policy.slug) {
+																className += "text-gray-400 pointer-events-none";
+															} else {
+																className += "text-gray-700";
+															}
+															return(
+																<button
+																	onClick={() => onClick(policy.slug)}
+																	className={className}>
+																	{policy.navTitle}
+																</button>
+															);
+														}}
 													</Menu.Item>
 												 );
 											})
@@ -128,16 +142,16 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
   const vsDisClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-black text-white pointer-events-none";
 
 	return (
-		<div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra transition-colors duration-300 ease-in-out">
+		<div id="tableContainer__shell" className="container m-auto w-full font-effra transition-colors duration-300 ease-in-out">
 			<div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
 
-			<div className="absolute z-10 top-12 vs--left text-center">
+			<div className="absolute z-10 top-14 vs--left text-center">
 				<button className={vsWith === "LEFT" ? vsDisClasses : vsEnClasses}
 								disabled={vsWith === "LEFT"}
 								onClick={() => toggleVs()}><ChevronLeft className="mr-2" /> VS.</button>
 			</div>
 
-			<div className="absolute z-10 top-12 vs--right text-center">
+			<div className="absolute z-10 top-14 vs--right text-center">
 				<button className={vsWith === "RIGHT" ? vsDisClasses : vsEnClasses}
 								disabled={vsWith === "RIGHT"}
 								onClick={() => toggleVs()}>VS. <ChevronRight className="ml-2" /></button>
@@ -163,7 +177,7 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 				</div>
 			</div>
 
-			<table className="table-fixed w-full relative border-collapse">
+			<table className="table-fixed w-full relative border-collapse pt-8">
 				<thead className="text-left">
 					<tr className="table w-full table-fixed text-base tracking-wide	mb-10">
 						<th className="p-2" colSpan="2">
@@ -172,9 +186,10 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 						<th className={`p-2 ${getColColor("LEFT")}`} colSpan="3">
 							<PolicySelect position="left" />
 						</th>
-						<th className="p-2" colSpan="3">
+						<th className="p-2" colSpan="2">
 							{activePolicy.colTitle}
 						</th>
+						<th className="p-2" colSpan="1"></th>
 						<th className={`p-2 ${getColColor("RIGHT")}`} colSpan="2">
 							<PolicySelect position="right" />
 						</th>
@@ -192,7 +207,6 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 				<tbody className={`w-full max-h-96 overflow-auto block text-sm transition-opacity duration-300 delay-100 ${reloading ? "opacity-25" : ""}`}>
 					{tableData
 						? tableData.map((row, i) => {
-								const policySlug = activePolicy.slug;
 								return row.values.length ? (
 									<Fragment key={i}>
 										<tr className={`bg-repeat-${getCatColor(row.category)} text-white rounded-md table w-full table-fixed`}>
@@ -209,44 +223,62 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 										{row.values
 											.map((valueRow) => {
 												if (vsWith === "LEFT") {
-													valueRow[policySlug].deltas[2030] = calculateDelta(valueRow[policySlug], valueRow[leftPol], 2030);
-													valueRow[policySlug].deltas[2050] = calculateDelta(valueRow[policySlug], valueRow[leftPol], 2050);
+													valueRow[activePolicy.slug].deltas[2030] = calculateDelta(valueRow[activePolicy.slug], valueRow[leftPol], 2030);
+													valueRow[activePolicy.slug].deltas[2050] = calculateDelta(valueRow[activePolicy.slug], valueRow[leftPol], 2050);
 												}
 												if (vsWith === "RIGHT") {
-													valueRow[policySlug].deltas[2030] = calculateDelta(valueRow[policySlug], valueRow[rightPol], 2030);
-													valueRow[policySlug].deltas[2050] = calculateDelta(valueRow[policySlug], valueRow[rightPol], 2050);
+													valueRow[activePolicy.slug].deltas[2030] = calculateDelta(valueRow[activePolicy.slug], valueRow[rightPol], 2030);
+													valueRow[activePolicy.slug].deltas[2050] = calculateDelta(valueRow[activePolicy.slug], valueRow[rightPol], 2050);
 												}
 												return valueRow;
 											})
 											.map((valueRow, vi) => {
 												return (
 													<tr className="table w-full table-fixed hover:bg-repeat hover:bg-opacity-5" key={vi}>
-														<td className="p-2" colSpan="2">{valueRow.variable}</td>
+														<td className="p-2" colSpan="2">
+															{valueRow.variable}
+														</td>
 
-														<td className={`p-2 ${getColColor("LEFT")}`}>{valueRow[leftPol] ? valueRow[leftPol][2030] : 0}</td>
-														<td className={`p-2 ${getColColor("LEFT")}`} colSpan="2">{valueRow[leftPol] ? valueRow[leftPol][2050] : 0}</td>
+														<td className={`p-2 ${getColColor("LEFT")}`}>
+															{valueRow[leftPol] ? valueRow[leftPol][2030] : 0}
+														</td>
+														<td className={`p-2 ${getColColor("LEFT")}`} colSpan="2">
+															{valueRow[leftPol] ? valueRow[leftPol][2050] : 0}
+														</td>
 
 														<td className="p-2">
 															<div className="flex">
-																<div className="w-10">{valueRow[policySlug][2030]}</div>
+																<div className="w-10">
+																	{valueRow[activePolicy.slug][2030]}
+																</div>
 																<div className="pl-2 flex text-xs text-repeat-dark">
-																	<div className="my-auto ml-auto">{valueRow[policySlug].deltas[2030]}</div>
+																	<div className="my-auto ml-auto">
+																		{valueRow[activePolicy.slug].deltas[2030]}
+																	</div>
 																</div>
 															</div>
 														</td>
 														<td className="p-2">
 															<div className="flex">
-																<div className="w-10">{valueRow[policySlug][2050]}</div>
+																<div className="w-10">
+																	{valueRow[activePolicy.slug][2050]}
+																</div>
 																<div className="pl-2 flex text-xs text-repeat-dark">
-																	<div className="my-auto ml-auto">{valueRow[policySlug].deltas[2050]}</div>
+																	<div className="my-auto ml-auto">
+																		{valueRow[activePolicy.slug].deltas[2050]}
+																	</div>
 																</div>
 															</div>
 														</td>
 														<td className="p-2">
 														</td>
 
-														<td className={`p-2 ${getColColor("RIGHT")}`}>{valueRow[rightPol] ? valueRow[rightPol][2030] : 0}</td>
-														<td className={`p-2 ${getColColor("RIGHT")}`}>{valueRow[rightPol] ? valueRow[rightPol][2050] : 0}</td>
+														<td className={`p-2 ${getColColor("RIGHT")}`}>
+															{valueRow[rightPol] ? valueRow[rightPol][2030] : 0}
+														</td>
+														<td className={`p-2 ${getColColor("RIGHT")}`}>
+															{valueRow[rightPol] ? valueRow[rightPol][2050] : 0}
+														</td>
 													</tr>
 												);
 											})}
@@ -270,7 +302,7 @@ const ExploreBenchmark = ({ policy, tableData, reloading }) => {
 	}, [filters]);
 
 	return (
-		<div className="relative text-xs">
+		<div className="text-xs">
 			<BenchmarkTable policy={policy} tableData={tableData} filters={filters} reloading={reloading} />
 		</div>
 	);

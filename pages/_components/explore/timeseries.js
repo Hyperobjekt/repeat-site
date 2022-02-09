@@ -16,7 +16,8 @@ export const TimeSeriesTable = ({ policy, tableData, filters, reloading }) => {
     return filteredCategory.length ? filteredCategory[0].color : "";
   };
 
-  let years = tableData ? [...new Set(tableData.map((row) => row.values.map((valueRow) => Object.keys(valueRow.core)).flat()).flat())] : [];
+  let years = tableData ? [...new Set(tableData.map((row) => row.values.map((valueRow) => Object.keys(valueRow[activePolicy.slug])).flat()).flat())] : [];
+  years.pop();
 
   return (
     <div className="relative m-auto w-full pb-4 font-effra">
@@ -46,7 +47,7 @@ export const TimeSeriesTable = ({ policy, tableData, filters, reloading }) => {
                             {valueRow.variable}
                           </td>
                           {years.map((year, yi) => {
-                            return <td className="p-2" key={yi}>{valueRow.core ? valueRow.core[year] : 0}</td>
+                            return <td className="p-2" key={yi}>{valueRow[activePolicy.slug] ? valueRow[activePolicy.slug][year] : 0}</td>;
                           })}
                         </tr>
                       );

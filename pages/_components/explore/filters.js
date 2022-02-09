@@ -264,13 +264,11 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
           bordered={false}
           defaultActiveKey={isFilterDrawerOpen ? ["1"] : []}
           onChange={updateFilterDrawer}
-          className="site-collapse-custom-collapse clickable"
-        >
+          className="site-collapse-custom-collapse clickable">
           <Panel
             header={<FilterHeader />}
             showArrow={false}
-            key="1"
-          >
+            key="1">
             <div className="py-2">Category</div>
             <div className="block pt-3 px-3">
               {categories.map((category) => (
