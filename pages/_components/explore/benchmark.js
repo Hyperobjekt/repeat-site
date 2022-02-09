@@ -142,7 +142,7 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
   const vsDisClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-black text-white pointer-events-none";
 
 	return (
-		<div id="tableContainer__shell" className="container m-auto w-full font-effra transition-colors duration-300 ease-in-out">
+		<div id="tableContainer__shell" className="container m-auto h-full w-full font-effra transition-colors duration-300 ease-in-out">
 			<div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
 
 			<div className="absolute z-10 top-14 vs--left text-center">

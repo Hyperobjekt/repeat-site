@@ -126,7 +126,7 @@ const ExploreLoader = ({ canChangeCols }) => {
       <div className="w-full table relative overflow-hidden">
         {loading ? <div className="repeat-spinner">LOADING...</div> :
           [...scenarios].map((e) => e.values).flat().length ? (
-            <div id="tableContainer" className="max-h-explorer min-h-explorer overflow-hidden pt-10">
+            <div id="tableContainer" className="max-h-explorer min-h-explorer overflow-hidden table pt-10">
               {comparison === "benchmark" ?
                 <ExploreBenchmark
                   policy={activePolicy}
