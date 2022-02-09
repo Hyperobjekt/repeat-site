@@ -7,11 +7,13 @@ import Stats from "../_components/global/stats";
 import InTheMedia from "../_components/global/in-the-media";
 import RepeatFooter from "../_components/global/footer";
 import RepeatPolicy from "../_components/policy";
-import policies from '../../_data/policies.json';
+const { policies } = require("../../_data/policies.json");
 
 export default function PolicyPage() {
   const router = useRouter();
-  const { policy } = router.query;
+  // let { policy } = router.query;
+  // policy = policies.filter(p => p.slug === policy)[0];
+
   return (
     <React.Fragment>
       <RepeatHead />
@@ -19,9 +21,9 @@ export default function PolicyPage() {
         Skip to main
       </a>
       <RepeatHeader />
-      <RepeatPolicy policy={policy ? policy : null} />
+      <RepeatPolicy />
       <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
-      <Stats policy={policies[policy]} />
+      {/*<Stats policy={policy} />*/}
       <div className="py-8"></div>
       <InTheMedia />
       <RepeatFooter />

@@ -3,7 +3,7 @@ import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
 import Stats from "../global/stats";
 import InTheMedia from "../global/in-the-media";
-import policies from '../../../_data/policies.json';
+const { policies } = require("../../../_data/policies.json");
 
 const media = [
   { date: "Oct. 28, 2021 – The Washington Post", title: "New budget deal marks the biggest climate investment in U.S. history", link: "https://www.washingtonpost.com/climate-environment/2021/10/28/climate-biden-build-back-better/" },
@@ -50,7 +50,7 @@ const RepeatMedia = () => {
 
       <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
       
-      <Stats policy={policies[Object.keys(policies)[0]]} />
+      <Stats policy={policies[0]} />
 
       <div className="py-8"></div>
     </React.Fragment>

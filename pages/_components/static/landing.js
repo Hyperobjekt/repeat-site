@@ -4,7 +4,7 @@ import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
 import Stats from "../global/stats";
 import InTheMedia from "../global/in-the-media";
-import policies from '../../../_data/policies.json';
+const { policies } = require("../../../_data/policies.json");
 
 const RepeatLanding = () => {
 	return (

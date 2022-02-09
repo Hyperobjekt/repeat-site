@@ -1,217 +1,229 @@
 { 
-  "iija": {
-    "title": "The Infrastructure Investment and American Jobs Act of 2021",
-    "longTitle": "The Infrastructure Investment and American Jobs Act of 2021 ('IIJA')",
-    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-    "stats": [
-      {
-        "value": "78%",
-        "label": "Increase in Renewables",
-        "supportingText": "By 2050"
-      },
-      {
-        "value": "13.5%",
-        "label": "Average Annual Reduction in Fossil Fuels",
-        "supportingText": "Starting in 2023"
-      },
-      {
-        "value": "16 Million",
-        "label": "New Roles Created",
-        "supportingText": "In Energy Industries"
-      }
-    ],
-    "slides": [
-      {
-        "image": "/images/carousel-image-1.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "paragraph",
-        "content": "<span>Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae <a className=\"primary-link\" href=\"#\">augue pharetra consequat</a>. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.</span>)"
-      },
-      {
-        "type": "component",
-        "content": ""
-      },
-      {
-        "type": "heading",
-        "content": "Details & Resources"
-      },
-      {
-        "type": "slider",
-        "content": ""
-      },
-      {
-        "type": "paragraph",
-        "content": "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis."
-      },
-      {
-        "type": "heading",
-        "content": "Policy REPEAT Pillars"
-      },
-      {
-        "type": "paragraph",
-        "content": "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-      },
-      {
-        "type": "pillars",
-        "content": ""
-      }
-    ]
-  },
-  "bbb-1": {
-    "title": "Build Back Better Act, Sept 2021",
-    "longTitle": "The Build Back Better Act, September 2021 version ('BBB 1.0')",
-    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-    "stats": [
-      {
-        "value": "78%",
-        "label": "Increase in Renewables",
-        "supportingText": "By 2050"
-      },
-      {
-        "value": "13.5%",
-        "label": "Average Annual Reduction in Fossil Fuels",
-        "supportingText": "Starting in 2023"
-      },
-      {
-        "value": "16 Million",
-        "label": "New Roles Created",
-        "supportingText": "In Energy Industries"
-      }
-    ],
-    "slides": [
-      {
-        "image": "/images/carousel-image-1.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "paragraph",
-        "content": "<span>Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae <a className=\"primary-link\" href=\"#\">augue pharetra consequat</a>. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.</span>)"
-      },
-      {
-        "type": "component",
-        "content": ""
-      },
-      {
-        "type": "heading",
-        "content": "Details & Resources"
-      },
-      {
-        "type": "slider",
-        "content": ""
-      },
-      {
-        "type": "paragraph",
-        "content": "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis."
-      },
-      {
-        "type": "heading",
-        "content": "Policy REPEAT Pillars"
-      },
-      {
-        "type": "paragraph",
-        "content": "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-      },
-      {
-        "type": "pillars",
-        "content": ""
-      }
-    ]
-  },
-  "bbb-2": {
-    "title": "The Build Back Better Act, Nov 2021",
-    "longTitle": "The Build Back Better Act, November 2021 version ('BBB 2.0')",
-    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-    "stats": [],
-    "slides": [],
-    "blocks": []
-  },
-  "frozen": {
-    "title": "Current Policies Benchmark Scenario",
-    "longTitle": "Current Policies Benchmark Scenario",
-    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-    "stats": [],
-    "slides": [],
-    "blocks": []
-  },
-  "nzap": {
-    "title": "Net-Zero Pathway Benchmark Scenario",
-    "longTitle": "Net-Zero Pathway Benchmark Scenario",
-    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-    "stats": [],
-    "slides": [],
-    "blocks": []
-  }
+  "policies": [
+    {
+      "slug": "iija",
+      "title": "The Infrastructure Investment and American Jobs Act of 2021 ('IIJA')",
+      "navTitle": "Infrastructure Investment and American Jobs Act of 2021",
+      "colTitle": "IIJA",
+      "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+      "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+      "stats": [
+        {
+          "value": "78%",
+          "label": "Increase in Renewables",
+          "supportingText": "By 2050"
+        },
+        {
+          "value": "13.5%",
+          "label": "Average Annual Reduction in Fossil Fuels",
+          "supportingText": "Starting in 2023"
+        },
+        {
+          "value": "16 Million",
+          "label": "New Roles Created",
+          "supportingText": "In Energy Industries"
+        }
+      ],
+      "slides": [
+        {
+          "image": "/images/carousel-image-1.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-2.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-3.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-2.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-3.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-2.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-3.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "<span>Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae <a className=\"primary-link\" href=\"#\">augue pharetra consequat</a>. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.</span>)"
+        },
+        {
+          "type": "component",
+          "content": ""
+        },
+        {
+          "type": "heading",
+          "content": "Details & Resources"
+        },
+        {
+          "type": "slider",
+          "content": ""
+        },
+        {
+          "type": "paragraph",
+          "content": "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis."
+        },
+        {
+          "type": "heading",
+          "content": "Policy REPEAT Pillars"
+        },
+        {
+          "type": "paragraph",
+          "content": "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+        },
+        {
+          "type": "pillars",
+          "content": ""
+        }
+      ]
+    },
+    {
+      "slug": "bbb-nov",
+      "title": "The Build Back Better Act, November 2021 version ('BBBA, Nov ‘21')",
+      "navTitle": "Build Back Better Act, November 2021",
+      "colTitle": "BBBA, Nov ‘21",
+      "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+      "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+      "stats": [
+        {
+          "value": "78%",
+          "label": "Increase in Renewables",
+          "supportingText": "By 2050"
+        },
+        {
+          "value": "13.5%",
+          "label": "Average Annual Reduction in Fossil Fuels",
+          "supportingText": "Starting in 2023"
+        },
+        {
+          "value": "16 Million",
+          "label": "New Roles Created",
+          "supportingText": "In Energy Industries"
+        }
+      ],
+      "slides": [
+        {
+          "image": "/images/carousel-image-1.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-2.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-3.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-2.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-3.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-2.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        },
+        {
+          "image": "/images/carousel-image-3.svg",
+          "caption": "2030 E+ Cumulative",
+          "subcaption": "Solar, Wind and Population Density"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "paragraph",
+          "content": "<span>Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae <a className=\"primary-link\" href=\"#\">augue pharetra consequat</a>. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.</span>)"
+        },
+        {
+          "type": "component",
+          "content": ""
+        },
+        {
+          "type": "heading",
+          "content": "Details & Resources"
+        },
+        {
+          "type": "slider",
+          "content": ""
+        },
+        {
+          "type": "paragraph",
+          "content": "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis."
+        },
+        {
+          "type": "heading",
+          "content": "Policy REPEAT Pillars"
+        },
+        {
+          "type": "paragraph",
+          "content": "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+        },
+        {
+          "type": "pillars",
+          "content": ""
+        }
+      ]
+    },
+    {
+      "slug": "bbb-sept",
+      "title": "The Build Back Better Act, September 2021 version ('BBBA, Sept ‘21')",
+      "navTitle": "Build Back Better Act, September 2021",
+      "colTitle": "BBBA, Sept ‘21",
+      "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+      "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+      "stats": [],
+      "slides": [],
+      "blocks": []
+    },
+    {
+      "slug": "frozen",
+      "title": "Frozen Policies Benchmark",
+      "navTitle": "Frozen Policies Benchmark",
+      "colTitle": "Frozen Policies",
+      "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+      "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+      "stats": [],
+      "slides": [],
+      "blocks": []
+    },
+    { 
+      "slug": "core",
+      "title": "Net-Zero Pathway Benchmark",
+      "navTitle": "Net-Zero Pathway Benchmark",
+      "colTitle": "Net-Zero Pathway",
+      "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
+      "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+      "stats": [],
+      "slides": [],
+      "blocks": []
+    }
+  ]
 }
