@@ -10,13 +10,15 @@ import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import "antd/lib/style/index.css";
 import "antd/lib/select/style/index.css";
 import "antd/lib/collapse/style/index.css";
+let { policies } = require("../../../_data/policies.json");
 
 const { Panel } = Collapse;
 
-const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
+const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [activeState, setActiveState] = useState("National");
+  const [activePolicy, setActivePolicy] = useState(policy ? policy : policies[0].slug);
+  const [activeState, setActiveState] = useState("national");
   const [apiQuery, setApiQuery] = useState({});
 
   const [isFilterDrawerOpen, toggleFilterDrawer] = useState(
@@ -27,17 +29,18 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     let query = getQuery();
     let newFilters = await dispatch(loadFilters({ ...query }));
     let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
-    setActiveState(newActiveState[0].label);
+    setActiveState(newActiveState[0].slug);
     setApiQuery(query);
+    policies = [...policies].map(p => ({ ...p, active: p.slug === activePolicy }));
   }, []);
 
   useEffect(async () => {
     let query = getQuery();
     let newFilters = await dispatch(loadFilters({ ...query }));
     let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
-    setActiveState(newActiveState[0].label);
-    dispatch(loadScenarios({ ...query, policy, state: "national", page: 1, limit: 25 }));
-  }, [policy]);
+    setActiveState(newActiveState[0].slug);
+    dispatch(loadScenarios({ ...query, policy: activePolicy, state: "national", page: 1, limit: 25 }));
+  }, [activePolicy]);
 
   const getQuery = () => {
     let query = {};
@@ -53,13 +56,21 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     return classes.filter(Boolean).join(" ");
   }
 
+  const changePolicy = (policy) => {
+    policies = [...policies].map(p => ({ ...p, active: p.slug === policy.slug }));
+    let newApiQuery = { ...apiQuery, policy: policy.slug, page: 1, state: activeState };
+    dispatch(loadScenarios(newApiQuery));
+    setActivePolicy(policy.slug);
+    setApiQuery(newApiQuery);
+  };
+
   const changeUsState = (state) => {
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
     let newFilters = { ...filters, page: 1, usStates};
-    let newApiQuery = { ...apiQuery, policy, page: 1, state: state.slug };
+    let newApiQuery = { ...apiQuery, policy: activePolicy, page: 1, state: state.slug };
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(newApiQuery));
-    setActiveState(state.label);
+    setActiveState(state.slug);
     setApiQuery(newApiQuery);
   };
 
@@ -74,8 +85,8 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     let categorySlugs = categories.filter((c) => c.active).map((c) => c.slug);
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: categorySlugs.includes(sub.slug)}));
     let subcategorySlugs = subcategories.filter((s) => s.active).map((s) => s.slug);
-    let newFilters = { ...filters, page: 1, levelOneFilters: categories, levelTwoFilters: subcategories }; 
-    let newApiQuery = { ...apiQuery, policy, page: 1, category: categorySlugs, subcategory: subcategorySlugs };
+    let newFilters = { ...filters, page: 1, levelOneFilters: categories, levelTwoFilters: subcategories };
+    let newApiQuery = { ...apiQuery, policy: activePolicy, page: 1, category: categorySlugs, subcategory: subcategorySlugs };
     if (!categories.filter((c) => c.active).length) delete newApiQuery.category;
     if (!subcategories.filter((c) => c.active).length) delete newApiQuery.subcategory;
     dispatch(loadFilterAction(newFilters));
@@ -87,7 +98,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: sub.slug === subcategory.slug && sub.active ? false : sub.active || sub.slug === subcategory.slug }));
     let subcategorySlugs = subcategories.filter((s) => s.active).map((s) => s.slug);
     let newFilters = { ...filters, page: 1, levelTwoFilters: subcategories };
-    let newApiQuery = { ...apiQuery, policy, page: 1, subcategory: subcategorySlugs };
+    let newApiQuery = { ...apiQuery, policy: activePolicy, page: 1, subcategory: subcategorySlugs };
     if (!subcategories.filter((s) => s.active).length) delete newApiQuery.subcategory;
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(newApiQuery));
@@ -100,42 +111,97 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     dispatch(loadFilters({ ...query }));
   };
 
-  const loadComparisonMenu = (filters) => {
+  const ComparisonMenu = ({ filters }) => {
     return (
-      <div className="flex px-2 border-b-4 border-repeat">
-        <div
-          className={filters.comparison === "benchmark" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
-          onClick={() => {
-            setComparison("benchmark");
-          }}
-        >
-          Benchmark
+      <>
+        <p className="pt-8 pb-4">Compare by</p>
+        <div className="flex px-2 border-b-4 border-repeat">
+          <div
+            className={filters.comparison === "benchmark" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
+            onClick={() => {
+              setComparison("benchmark");
+            }}>
+            Benchmark
+          </div>
+          <div
+            className={filters.comparison === "timeseries" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
+            onClick={() => {
+              setComparison("timeseries");
+            }}>
+            Time Series
+          </div>
         </div>
-        <div
-          className={filters.comparison === "timeseries" ? "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 bg-repeat text-white font-bold rounded-t-md" : "flex-item px-3 text-sm pt-2 pb-1 cursor-pointer mx-2 border-repeat-neutral border-l-2 border-t-2 border-r-2 rounded-t-md"}
-          onClick={() => {
-            setComparison("timeseries");
-          }}
-        >
-          Time Series
-        </div>
-      </div>
+      </>
     )
   }
 
-  const loadStateMenu = () => {
+  const PolicyMenu = () => {
+
+    const activePolicyObj = policies ? policies.filter(p => p.slug === activePolicy)[0] : null;
+    const activePolicyLabel = activePolicyObj ? activePolicyObj.navTitle : null;
+
+    return (
+      <div className="flex">
+        <div className="flex-item flex">
+          <span className="my-auto">Policy</span>
+        </div>
+        <div className="flex-item pl-4">
+          <Menu as="div" className="relative inline-block text-left">
+            {({ open }) => (
+              <>
+                <div>
+                  <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
+                    {activePolicyLabel}
+                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+                  </Menu.Button>
+                </div>
+
+                <Transition show={open} as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
+                  <Menu.Items static className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1 h-60 overflow-auto">
+                      {policies
+                        ? policies.map((policy) => (
+                            <Menu.Item key={policy.slug}>
+                              {({ active }) => (
+                                <>
+                                  <button
+                                    onClick={() => changePolicy(policy)}
+                                    className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
+                                    {policy.navTitle}
+                                  </button>
+                                </>
+                              )}
+                            </Menu.Item>
+                          ))
+                        : null}
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </>
+            )}
+          </Menu>
+        </div>
+      </div>
+    );
+  };
+
+  const StateMenu = () => {
+
+    const activeStateObj = filters && filters.usStates ? filters.usStates.filter(s => s.slug === activeState)[0] : null;
+    const activeStateLabel = activeStateObj ? activeStateObj.label : null;
+
     return (
       <div className="flex">
         <div className="flex-item flex">
           <span className="my-auto">Scope</span>
         </div>
         <div className="flex-item pl-4">
-          <Menu as="div" className="relative inline-block text-left z-10">
+          <Menu as="div" className="relative inline-block text-left">
             {({ open }) => (
               <>
                 <div>
                   <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
-                    {activeState}
+                    {activeStateLabel}
                     <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                   </Menu.Button>
                 </div>
@@ -165,17 +231,19 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
     );
   };
 
-  const filterHeader = (
-    <>
-      <span className="pl-0 py-2">Filter by</span>
-      <DownOutlined
-        rotate={isFilterDrawerOpen ? 180 : 0}
-        className="align-baseline pl-4"
-      />
-    </>
-  );
+  const FilterHeader = () => {
+    return(
+      <>
+        <span className="pl-0 py-2">Filter by</span>
+        <DownOutlined
+          rotate={isFilterDrawerOpen ? 180 : 0}
+          className="align-baseline pl-4"
+        />
+      </>
+    );
+  };
 
-  const assembleCategories = (filters) => {
+  const AssembleCategories = ({ filters }) => {
     let categories = [...filters.levelOneFilters]
       .map((cat, i) => {
         return { ...cat, class: setFilterClasses(cat.color, cat.active) };
@@ -198,7 +266,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
           className="site-collapse-custom-collapse clickable"
         >
           <Panel
-            header={filterHeader}
+            header={<FilterHeader />}
             showArrow={false}
             key="1"
           >
@@ -210,8 +278,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
                   className={classNames(category.class, "cursor-pointer")}
                   onClick={() => {
                     toggleCategory(category);
-                  }}
-                >
+                  }}>
                   {category.label}
                 </div>
               ))}
@@ -245,14 +312,22 @@ const ExploreFilters = ({ filters, setFilterClasses, policy }) => {
 
   return (
     <>
-      {filters ? loadComparisonMenu(filters) : null}
+      {changable ?
+        <div className="pt-12 relative z-40">
+          <PolicyMenu />
+        </div>
+      : null}
 
-      <div className="pt-12">
-        {loadStateMenu()}
+      <div>
+        {filters ? <ComparisonMenu filters={filters} /> : null}
+      </div>
+
+      <div className="pt-12 relative z-30">
+        <StateMenu />
       </div>
 
       <div className="py-8">
-        {filters ? assembleCategories(filters) : null}
+        {filters ? <AssembleCategories filters={filters} /> : null}
       </div>
     </>
   );

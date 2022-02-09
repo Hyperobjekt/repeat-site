@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
+const { policies } = require("../../../_data/policies.json");
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -33,7 +34,7 @@ export const TimeSeriesTable = ({ tableData, filters, reloading }) => {
                   <Fragment key={i}>
                     <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="8">
-                        {row.category} - {row.subcategory} ({row.state} | {row.policy})
+                        {row.category} - {row.subcategory} ({row.state})
                       </td>
                     </tr>
                     {row.values.map((valueRow, vi) => {

@@ -3,7 +3,9 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
 import { ChartBarIcon, CursorClickIcon, MenuIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
-import policies from '../../../_data/policies.json';
+// import policies from '../../../_data/policies.json';
+let { policies } = require("../../../_data/policies.json");
+policies = policies.map(p => ({ ...p, href: "/policies/" + p.slug }));
 
 const pages = [
   {
@@ -19,8 +21,6 @@ const pages = [
     href: "/media",
   },
 ];
-
-policies = Object.keys(policies).map(p => ({ ...policies[p], href: "/policies/" + p }));
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

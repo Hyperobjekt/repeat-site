@@ -5,13 +5,12 @@ import { loadScenarios } from "../../../redux/actions/scenarios.actions";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { ChevronRight, ChevronLeft } from 'react-bootstrap-icons'
-import policies from '../../../_data/policies.json';
-
-// console.log(policies);
+const { policies } = require("../../../_data/policies.json");
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
+
 export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 	const [vsWith, setVsWith] = useState("RIGHT"); // LEFT || RIGHT
 	const [diffType, setDiffType] = useState("ABSOLUTE"); // ABSOLUTE || PERCENT
@@ -19,7 +18,6 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 	const [toPos, setToPos] = useState("right");
 	const [leftPol, setLeftPol] = useState("frozen"); //frozen = Frozen
 	const [rightPol, setRightPol] = useState("core"); //core = Net Zero
-	//repeat = Selected
 
 	const toggleVs = () => {
 		setVsWith(vsWith === "RIGHT" ? "LEFT" : "RIGHT");
@@ -66,12 +64,14 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 	const PolicySelect = ({ position }) => {
 		let policySlug;
 		let onClick;
-		let menuItemsClasses
+		let menuItemsClasses;
+
 		if(position === "left") {
 			policySlug = leftPol;
 			onClick = setLeftPol;
 			menuItemsClasses = "origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
 		}
+
 		if(position === "right") {
 			policySlug = rightPol;
 			onClick = setRightPol;
@@ -85,7 +85,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 						<div>
 							<Menu.Button className={`overflow-hidden relative flex w-full bg-white rounded-md px-2 py-2 border-2 border-inherit border-repeat-neutral hover:border-black`}>
 								<div className="whitespace-nowrap">
-									{policies[Object.keys(policies).filter(p => p === policySlug)].title}
+									{policies.filter(p => p.slug === policySlug)[0].colTitle}
 								</div>
 								<ChevronDownIcon
 									style={{boxShadow: "0 0 10px 10px white"}}
@@ -97,13 +97,12 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 							<Menu.Items static className={menuItemsClasses}>
 								<div className="py-1 h-60 overflow-auto">
 									{policies
-										? Object.keys(policies).map((slug) => {
-												const policy = policies[slug];
+										? policies.map((policy) => {
 												return(
-													<Menu.Item key={slug}>
+													<Menu.Item key={policy.slug}>
 														{({ active }) => (
 															<button
-																onClick={() => onClick(slug)}
+																onClick={() => onClick(policy.slug)}
 																className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
 																{policy.title}
 															</button>
@@ -124,6 +123,8 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 	const vsEnClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black";
   const vsDisClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-black text-white pointer-events-none";
 
+  const activePolicyObj = policies ? policies.filter(p => p.slug === tableData[0].policy)[0] : null;
+  const activePolicyLabel = activePolicyObj ? activePolicyObj.colTitle : null;
 
 	return (
 		<div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra transition-colors duration-300 ease-in-out">
@@ -173,7 +174,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 							<PolicySelect position="left" />
 						</th>
 						<th className="p-2" colSpan="3">
-							{tableData ? tableData[0].policy.replace("-", " ").toUpperCase() : "REPEAT"} Policy
+							{activePolicyLabel}
 						</th>
 						<th className={`p-2 ${getColColor("RIGHT")}`} colSpan="2">
 							<PolicySelect position="right" />

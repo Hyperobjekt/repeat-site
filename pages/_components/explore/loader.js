@@ -14,8 +14,9 @@ import ExploreTimeSeries from "./timeseries";
 import "antd/lib/style/index.css";
 import "antd/lib/select/style/index.css";
 import "antd/lib/pagination/style/index.css";
+const { policies } = require("../../../_data/policies.json");
 
-const ExploreLoader = () => {
+const ExploreLoader = ({ changable }) => {
   let sheetArr = [];
   let pageLimit = 25;
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const ExploreLoader = () => {
   let routerQuery = { ...router.query };
   delete routerQuery.comparison;
   routerQuery.state = routerQuery.state || "national";
+  // routerQuery.policy = routerQuery.policy || policies[0].slug;
   let filters = useSelector((state) => state.filters);
   let scenarios = useSelector((state) => state.scenarios);
   let count = useSelector((state) => state.count);
@@ -107,9 +109,12 @@ const ExploreLoader = () => {
     <div className="">
       <h2 className="text-repeat-teal text-3xl font-bold mb-3">Examine the Data</h2>
       <p className="text-repeat-dark">Maecenas efficitur dolor. Donec gravida dolor quis dignissim elementum.</p>
-      <p className="pt-8 pb-4">Compare by</p>
 
-      <ExploreFilters filters={filters} setFilterClasses={setFilterClasses} policy={policy} />
+      <ExploreFilters
+        filters={filters}
+        setFilterClasses={setFilterClasses}
+        policy={policy}
+        changable={changable} />
 
       <div className="max-h-explorer min-h-explorer relative overflow-hidden">
         {loading ? <div className="repeat-spinner">LOADING...</div> :
