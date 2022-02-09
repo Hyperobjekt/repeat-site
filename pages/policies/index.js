@@ -34,7 +34,7 @@ export default function PoliciesPage() {
       </div>
 
       <div className="container max-w-screen-lg pb-10 m-auto">
-        <ExploreLoader changable={true} />
+        <ExploreLoader canChangeCols={true} />
       </div>
 
       {policies.map((policy, i) => {

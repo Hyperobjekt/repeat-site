@@ -14,7 +14,7 @@ let { policies } = require("../../../_data/policies.json");
 
 const { Panel } = Collapse;
 
-const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
+const ExploreFilters = ({ filters, setFilterClasses, policy, canChangeCols }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [activePolicy, setActivePolicy] = useState(policy ? policy : policies[0].slug);
@@ -31,7 +31,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
     let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
     setActiveState(newActiveState[0].slug);
     setApiQuery(query);
-    policies = [...policies].map(p => ({ ...p, active: p.slug === activePolicy }));
+    policies = [...policies].map(p => ({ ...p, active: p.slug === activePolicy.slug }));
   }, []);
 
   useEffect(async () => {
@@ -39,7 +39,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
     let newFilters = await dispatch(loadFilters({ ...query }));
     let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
     setActiveState(newActiveState[0].slug);
-    dispatch(loadScenarios({ ...query, policy: activePolicy, state: "national", page: 1, limit: 25 }));
+    dispatch(loadScenarios({ ...query, state: "national", page: 1, limit: 25 }));
   }, [activePolicy]);
 
   const getQuery = () => {
@@ -58,7 +58,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
 
   const changePolicy = (policy) => {
     policies = [...policies].map(p => ({ ...p, active: p.slug === policy.slug }));
-    let newApiQuery = { ...apiQuery, policy: policy.slug, page: 1, state: activeState };
+    let newApiQuery = { ...apiQuery, page: 1, state: activeState };
     dispatch(loadScenarios(newApiQuery));
     setActivePolicy(policy.slug);
     setApiQuery(newApiQuery);
@@ -67,7 +67,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
   const changeUsState = (state) => {
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
     let newFilters = { ...filters, page: 1, usStates};
-    let newApiQuery = { ...apiQuery, policy: activePolicy, page: 1, state: state.slug };
+    let newApiQuery = { ...apiQuery, page: 1, state: state.slug };
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(newApiQuery));
     setActiveState(state.slug);
@@ -86,7 +86,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: categorySlugs.includes(sub.slug)}));
     let subcategorySlugs = subcategories.filter((s) => s.active).map((s) => s.slug);
     let newFilters = { ...filters, page: 1, levelOneFilters: categories, levelTwoFilters: subcategories };
-    let newApiQuery = { ...apiQuery, policy: activePolicy, page: 1, category: categorySlugs, subcategory: subcategorySlugs };
+    let newApiQuery = { ...apiQuery, page: 1, category: categorySlugs, subcategory: subcategorySlugs };
     if (!categories.filter((c) => c.active).length) delete newApiQuery.category;
     if (!subcategories.filter((c) => c.active).length) delete newApiQuery.subcategory;
     dispatch(loadFilterAction(newFilters));
@@ -98,7 +98,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
     let subcategories = [...filters.levelTwoFilters].map((sub) => ({ ...sub, active: sub.slug === subcategory.slug && sub.active ? false : sub.active || sub.slug === subcategory.slug }));
     let subcategorySlugs = subcategories.filter((s) => s.active).map((s) => s.slug);
     let newFilters = { ...filters, page: 1, levelTwoFilters: subcategories };
-    let newApiQuery = { ...apiQuery, policy: activePolicy, page: 1, subcategory: subcategorySlugs };
+    let newApiQuery = { ...apiQuery, page: 1, subcategory: subcategorySlugs };
     if (!subcategories.filter((s) => s.active).length) delete newApiQuery.subcategory;
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(newApiQuery));
@@ -113,10 +113,6 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
 
 
   const PolicyMenu = () => {
-
-    const activePolicyObj = policies ? policies.filter(p => p.slug === activePolicy)[0] : null;
-    const activePolicyLabel = activePolicyObj ? activePolicyObj.navTitle : null;
-
     return (
       <div className="flex">
         <div className="flex-item flex">
@@ -128,7 +124,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
               <>
                 <div>
                   <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
-                    {activePolicyLabel}
+                    {activePolicy.navTitle}
                     <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                   </Menu.Button>
                 </div>
@@ -188,8 +184,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
 
   const StateMenu = () => {
 
-    const activeStateObj = filters && filters.usStates ? filters.usStates.filter(s => s.slug === activeState)[0] : null;
-    const activeStateLabel = activeStateObj ? activeStateObj.label : null;
+    const activeStateObj = filters && filters.usStates ? filters.usStates.find(s => s.slug === activeState) || {} : {};
 
     return (
       <div className="flex">
@@ -202,7 +197,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
               <>
                 <div>
                   <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
-                    {activeStateLabel}
+                    {activeStateObj.label}
                     <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                   </Menu.Button>
                 </div>
@@ -313,7 +308,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, changable }) => {
 
   return (
     <>
-      {changable ?
+      {canChangeCols ?
         <div className="pt-12 relative z-40">
           <PolicyMenu />
         </div>

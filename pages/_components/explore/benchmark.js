@@ -11,13 +11,14 @@ function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
 }
 
-export const BenchmarkTable = ({ tableData, filters, reloading }) => {
+export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 	const [vsWith, setVsWith] = useState("RIGHT"); // LEFT || RIGHT
 	const [diffType, setDiffType] = useState("ABSOLUTE"); // ABSOLUTE || PERCENT
 	const [fromPos, setFromPos] = useState("left");
 	const [toPos, setToPos] = useState("right");
 	const [leftPol, setLeftPol] = useState("frozen"); //frozen = Frozen
 	const [rightPol, setRightPol] = useState("core"); //core = Net Zero
+	const activePolicy = policy || {};
 
 	const toggleVs = () => {
 		setVsWith(vsWith === "RIGHT" ? "LEFT" : "RIGHT");
@@ -78,8 +79,8 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 			menuItemsClasses = "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
 		}
 
-		const activePolicyArr = policies ? policies.filter(p => p.slug === policySlug) : [];
-    const activePolicyLabel = activePolicyArr.length ? activePolicyArr[0].colTitle : null;
+		const policyArr = policies ? policies.filter(p => p.slug === policySlug) : [];
+    const policy = policyArr.length ? policyArr[0] : {};
 
 		return(
 			<Menu as="div" className="w-40 relative inline-block text-left z-10">
@@ -88,7 +89,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 						<div>
 							<Menu.Button className={`overflow-hidden relative flex w-full bg-white rounded-md px-2 py-2 border-2 border-inherit border-repeat-neutral hover:border-black`}>
 								<div className="whitespace-nowrap">
-									{activePolicyLabel}
+									{policy.colTitle}
 								</div>
 								<ChevronDownIcon
 									style={{boxShadow: "0 0 10px 10px white"}}
@@ -125,9 +126,6 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 
 	const vsEnClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black";
   const vsDisClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-black text-white pointer-events-none";
-
-  const activePolicyArr = tableData && policies ? policies.filter(p => p.slug === tableData[0].policy) : [];
-  const activePolicyLabel = activePolicyArr.length ? activePolicyArr[0].colTitle : null;
 
 	return (
 		<div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra transition-colors duration-300 ease-in-out">
@@ -177,7 +175,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 							<PolicySelect position="left" />
 						</th>
 						<th className="p-2" colSpan="3">
-							{activePolicyLabel}
+							{activePolicy.colTitle}
 						</th>
 						<th className={`p-2 ${getColColor("RIGHT")}`} colSpan="2">
 							<PolicySelect position="right" />
@@ -196,6 +194,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 				<tbody className={`w-full max-h-96 overflow-auto block text-sm transition-opacity duration-300 delay-100 ${reloading ? "opacity-25" : ""}`}>
 					{tableData
 						? tableData.map((row, i) => {
+								const policySlug = activePolicy.slug;
 								return row.values.length ? (
 									<Fragment key={i}>
 										<tr className={`bg-repeat-${getCatColor(row.category)} text-white rounded-md table w-full table-fixed`}>
@@ -212,12 +211,12 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 										{row.values
 											.map((valueRow) => {
 												if (vsWith === "LEFT") {
-													valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow[leftPol], 2030);
-													valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow[leftPol], 2050);
+													valueRow[policySlug].deltas[2030] = calculateDelta(valueRow[policySlug], valueRow[leftPol], 2030);
+													valueRow[policySlug].deltas[2050] = calculateDelta(valueRow[policySlug], valueRow[leftPol], 2050);
 												}
 												if (vsWith === "RIGHT") {
-													valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow[rightPol], 2030);
-													valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow[rightPol], 2050);
+													valueRow[policySlug].deltas[2030] = calculateDelta(valueRow[policySlug], valueRow[rightPol], 2030);
+													valueRow[policySlug].deltas[2050] = calculateDelta(valueRow[policySlug], valueRow[rightPol], 2050);
 												}
 												return valueRow;
 											})
@@ -231,17 +230,17 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 
 														<td className="p-2">
 															<div className="flex">
-																<div className="w-10">{valueRow.repeat[2030]}</div>
+																<div className="w-10">{valueRow[policySlug][2030]}</div>
 																<div className="pl-2 flex text-xs text-repeat-dark">
-																	<div className="my-auto ml-auto">{valueRow.repeat.deltas[2030]}</div>
+																	<div className="my-auto ml-auto">{valueRow[policySlug].deltas[2030]}</div>
 																</div>
 															</div>
 														</td>
 														<td className="p-2">
 															<div className="flex">
-																<div className="w-10">{valueRow.repeat[2050]}</div>
+																<div className="w-10">{valueRow[policySlug][2050]}</div>
 																<div className="pl-2 flex text-xs text-repeat-dark">
-																	<div className="my-auto ml-auto">{valueRow.repeat.deltas[2050]}</div>
+																	<div className="my-auto ml-auto">{valueRow[policySlug].deltas[2050]}</div>
 																</div>
 															</div>
 														</td>
@@ -263,7 +262,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 	);
 };
 
-const ExploreBenchmark = ({ tableData, reloading }) => {
+const ExploreBenchmark = ({ policy, tableData, reloading }) => {
 	const router = useRouter();
 	const dispatch = useDispatch();
 	const filters = useSelector((state) => state.filters);
@@ -274,7 +273,7 @@ const ExploreBenchmark = ({ tableData, reloading }) => {
 
 	return (
 		<div className="relative text-xs">
-			<BenchmarkTable tableData={tableData} filters={filters} reloading={reloading} />
+			<BenchmarkTable policy={policy} tableData={tableData} filters={filters} reloading={reloading} />
 		</div>
 	);
 };

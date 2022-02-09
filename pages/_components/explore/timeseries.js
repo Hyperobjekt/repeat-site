@@ -7,7 +7,9 @@ const { policies } = require("../../../_data/policies.json");
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export const TimeSeriesTable = ({ tableData, filters, reloading }) => {
+export const TimeSeriesTable = ({ policy, tableData, filters, reloading }) => {
+
+  const activePolicy = policy || {};
 
   const getColor = (category) => {
     let filteredCategory = filters.levelOneFilters.filter((cat) => cat.label === category);
@@ -59,7 +61,7 @@ export const TimeSeriesTable = ({ tableData, filters, reloading }) => {
   );
 };
 
-const ExploreTimeSeries = ({ tableData, reloading }) => {
+const ExploreTimeSeries = ({ policy, tableData, reloading }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
@@ -70,7 +72,7 @@ const ExploreTimeSeries = ({ tableData, reloading }) => {
 
   return (
     <div className="relative text-xs">
-      <TimeSeriesTable tableData={tableData} filters={filters} reloading={reloading} />
+      <TimeSeriesTable policy={policy} tableData={tableData} filters={filters} reloading={reloading} />
     </div>
   );
 };

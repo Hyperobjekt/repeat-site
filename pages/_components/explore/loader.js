@@ -16,7 +16,7 @@ import "antd/lib/select/style/index.css";
 import "antd/lib/pagination/style/index.css";
 const { policies } = require("../../../_data/policies.json");
 
-const ExploreLoader = ({ changable }) => {
+const ExploreLoader = ({ canChangeCols }) => {
   let sheetArr = [];
   let pageLimit = 25;
   const dispatch = useDispatch();
@@ -24,11 +24,11 @@ const ExploreLoader = ({ changable }) => {
   let routerQuery = { ...router.query };
   delete routerQuery.comparison;
   routerQuery.state = routerQuery.state || "national";
-  // routerQuery.policy = routerQuery.policy || policies[0].slug;
+  routerQuery.policy = routerQuery.policy || policies[0].slug;
   let filters = useSelector((state) => state.filters);
   let scenarios = useSelector((state) => state.scenarios);
   let count = useSelector((state) => state.count);
-  const [policy, setPolicy] = useState(routerQuery.policy);
+  const [activePolicy, setActivePolicy] = useState({});
   const [params, setParams] = useState(routerQuery);
   const [apiQuery, setApiQuery] = useState({});
   const [comparison, setComparison] = useState(filters.comparison);
@@ -43,8 +43,8 @@ const ExploreLoader = ({ changable }) => {
   }, []);
 
   useEffect(async () => {
-    setPolicy(routerQuery.policy);
-    dispatch(loadScenarios({ ...routerQuery }));
+    const newPolicy = policies.find(p => p.slug === routerQuery.policy);
+    setActivePolicy(newPolicy);
   }, [routerQuery.policy]);
 
   useEffect(() => {
@@ -74,7 +74,8 @@ const ExploreLoader = ({ changable }) => {
   const changePage = (page, pageSize) => {
     let limit = pageSize ? pageSize : pageLimit;
     let newFilters = { ...filters, page, limit };
-    let query = { ...apiQuery, policy, page, limit };
+    // let query = { ...apiQuery, policy, page, limit };
+    let query = { ...apiQuery, page, limit };
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(query));
     setApiQuery(query);
@@ -104,6 +105,8 @@ const ExploreLoader = ({ changable }) => {
     document.body.appendChild(link); // Required for FF
     link.click();
   }
+
+  console.log(scenarios);
   
   return (
     <div className="">
@@ -112,17 +115,17 @@ const ExploreLoader = ({ changable }) => {
 
       <ExploreFilters
         filters={filters}
+        policy={activePolicy}
         setFilterClasses={setFilterClasses}
-        policy={policy}
-        changable={changable} />
+        canChangeCols={canChangeCols} />
 
       <div className="max-h-explorer min-h-explorer relative overflow-hidden">
         {loading ? <div className="repeat-spinner">LOADING...</div> :
           [...scenarios].map((e) => e.values).flat().length ? (
             <div id="tableContainer" className="min-h-explorer overflow-auto">
               {comparison === "benchmark" ?
-                <ExploreBenchmark tableData={scenarios} reloading={reloading} /> :
-                <ExploreTimeSeries tableData={scenarios} reloading={reloading} />}
+                <ExploreBenchmark policy={activePolicy} tableData={scenarios} reloading={reloading} /> :
+                <ExploreTimeSeries policy={activePolicy} tableData={scenarios} reloading={reloading} />}
             </div>
           ) : (
             <div className="w-full text-center py-10 px-20">
