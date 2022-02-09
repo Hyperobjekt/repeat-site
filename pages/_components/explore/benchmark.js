@@ -63,24 +63,24 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 	}
 
 	const PolicySelect = ({ position }) => {
-		let policySlug;
-		let onClick;
-		let menuItemsClasses;
+		let policySlug, onClick, menuItemsClasses;
+		let excludePolicies = [activePolicy.slug];
 
 		if(position === "left") {
 			policySlug = leftPol;
 			onClick = setLeftPol;
-			menuItemsClasses = "origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+			menuItemsClasses = "origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none";
+			excludePolicies.push(rightPol);
 		}
 
 		if(position === "right") {
 			policySlug = rightPol;
 			onClick = setRightPol;
-			menuItemsClasses = "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+			menuItemsClasses = "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none";
+			excludePolicies.push(leftPol);
 		}
 
-		const policyArr = policies ? policies.filter(p => p.slug === policySlug) : [];
-    const policy = policyArr.length ? policyArr[0] : {};
+		const policy = policies ? policies.find(p => p.slug === policySlug) : {};
 
 		return(
 			<Menu as="div" className="w-40 relative inline-block text-left z-10">
@@ -99,15 +99,15 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 
 						<Transition show={open} as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
 							<Menu.Items static className={menuItemsClasses}>
-								<div className="py-1 h-60 overflow-auto">
+								<div className="py-1 max-h-60 overflow-auto">
 									{policies
-										? policies.map((policy) => {
+										? policies.filter(p => !excludePolicies.includes(p.slug)).map((policy) => {
 												return(
 													<Menu.Item key={policy.slug}>
 														{({ active }) => (
 															<button
 																onClick={() => onClick(policy.slug)}
-																className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
+																className={classNames(policy.slug === policySlug || active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
 																{policy.navTitle}
 															</button>
 														)}
@@ -150,16 +150,14 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 						onClick={() => {
 							updateDiff("ABSOLUTE");
 						}}
-						className={`${diffType === "ABSOLUTE" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md`}
-					>
+						className={`${diffType === "ABSOLUTE" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md`}>
 						Absolute
 					</button>
 					<button
 						onClick={() => {
 							updateDiff("PERCENT");
 						}}
-						className={`${diffType === "PERCENT" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md`}
-					>
+						className={`${diffType === "PERCENT" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md`}>
 						Percent
 					</button>
 				</div>

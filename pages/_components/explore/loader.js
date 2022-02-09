@@ -40,6 +40,8 @@ const ExploreLoader = ({ canChangeCols }) => {
     dispatch(loadFilters({ ...query }));
     dispatch(loadScenarios({ ...routerQuery }));
     setApiQuery(query);
+    const newPolicy = policies.find(p => p.slug === routerQuery.policy);
+    setActivePolicy(newPolicy);
   }, []);
 
   useEffect(async () => {
@@ -59,9 +61,9 @@ const ExploreLoader = ({ canChangeCols }) => {
 
   const getQuery = () => {
     let query = {};
-    query.page = router.query.page;
-    query.limit = router.query.limit;
-    query.state = router.query.state;
+    query.page = router.query.page || 1;
+    query.limit = router.query.limit || 25;
+    query.state = router.query.state || "national";
     query.category = router.query.categories ? router.query.categories.split(",") : [];
     query.subcategory = router.query.subcategories ? router.query.subcategories.split(",") : [];
     return query;
@@ -74,11 +76,10 @@ const ExploreLoader = ({ canChangeCols }) => {
   const changePage = (page, pageSize) => {
     let limit = pageSize ? pageSize : pageLimit;
     let newFilters = { ...filters, page, limit };
-    // let query = { ...apiQuery, policy, page, limit };
-    let query = { ...apiQuery, page, limit };
+    let newApiQuery = { ...apiQuery, page, limit };
     dispatch(loadFilterAction(newFilters));
-    dispatch(loadScenarios(query));
-    setApiQuery(query);
+    dispatch(loadScenarios(newApiQuery));
+    setApiQuery(newApiQuery);
   }
 
   const getScenarios = (query = null) => {
@@ -106,7 +107,9 @@ const ExploreLoader = ({ canChangeCols }) => {
     link.click();
   }
 
-  console.log(scenarios);
+  // const updatePolicy = (policy) => {
+  //   setActivePolicy(policy);
+  // }
   
   return (
     <div className="">
@@ -117,6 +120,7 @@ const ExploreLoader = ({ canChangeCols }) => {
         filters={filters}
         policy={activePolicy}
         setFilterClasses={setFilterClasses}
+        updatePolicy={setActivePolicy}
         canChangeCols={canChangeCols} />
 
       <div className="max-h-explorer min-h-explorer relative overflow-hidden">
@@ -124,8 +128,15 @@ const ExploreLoader = ({ canChangeCols }) => {
           [...scenarios].map((e) => e.values).flat().length ? (
             <div id="tableContainer" className="min-h-explorer overflow-auto">
               {comparison === "benchmark" ?
-                <ExploreBenchmark policy={activePolicy} tableData={scenarios} reloading={reloading} /> :
-                <ExploreTimeSeries policy={activePolicy} tableData={scenarios} reloading={reloading} />}
+                <ExploreBenchmark
+                  policy={activePolicy}
+                  tableData={scenarios}
+                  reloading={reloading} />
+                : <ExploreTimeSeries
+                    policy={activePolicy}
+                    tableData={scenarios}
+                    reloading={reloading} />
+              }
             </div>
           ) : (
             <div className="w-full text-center py-10 px-20">

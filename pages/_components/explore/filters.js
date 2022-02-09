@@ -14,10 +14,9 @@ let { policies } = require("../../../_data/policies.json");
 
 const { Panel } = Collapse;
 
-const ExploreFilters = ({ filters, setFilterClasses, policy, canChangeCols }) => {
+const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canChangeCols }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const [activePolicy, setActivePolicy] = useState(policy ? policy : policies[0].slug);
   const [activeState, setActiveState] = useState("national");
   const [apiQuery, setApiQuery] = useState({});
 
@@ -30,17 +29,21 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, canChangeCols }) =>
     let newFilters = await dispatch(loadFilters({ ...query }));
     let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
     setActiveState(newActiveState[0].slug);
+    // setActivePolicy(policy);
     setApiQuery(query);
-    policies = [...policies].map(p => ({ ...p, active: p.slug === activePolicy.slug }));
+    dispatch(loadScenarios(query));
+    // policies = [...policies].map(p => ({ ...p, active: p.slug === policy.slug }));
   }, []);
 
-  useEffect(async () => {
-    let query = getQuery();
-    let newFilters = await dispatch(loadFilters({ ...query }));
-    let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
-    setActiveState(newActiveState[0].slug);
-    dispatch(loadScenarios({ ...query, state: "national", page: 1, limit: 25 }));
-  }, [activePolicy]);
+  //useEffect(async () => {
+    // setActivePolicy(policy);
+  //   console.log(policy);
+  //   let query = getQuery();
+  //   let newFilters = await dispatch(loadFilters({ ...query }));
+  //   let newActiveState = newFilters.filters.usStates.filter((state) => state.active);
+  //   setActiveState(newActiveState[0].slug);
+  //   dispatch(loadScenarios({ ...query, state: "national", page: 1, limit: 25 }));
+  //}, [policy]);
 
   const getQuery = () => {
     let query = {};
@@ -57,11 +60,11 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, canChangeCols }) =>
   }
 
   const changePolicy = (policy) => {
-    policies = [...policies].map(p => ({ ...p, active: p.slug === policy.slug }));
-    let newApiQuery = { ...apiQuery, page: 1, state: activeState };
-    dispatch(loadScenarios(newApiQuery));
-    setActivePolicy(policy.slug);
-    setApiQuery(newApiQuery);
+    // policies = [...policies].map(p => ({ ...p, active: p.slug === policy.slug }));
+    // let newApiQuery = { ...apiQuery, page: 1, state: activeState };
+    // dispatch(loadScenarios(newApiQuery));
+    updatePolicy(policies.find((p => p.slug === policy.slug )));
+    // setApiQuery(newApiQuery);
   };
 
   const changeUsState = (state) => {
@@ -124,7 +127,7 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, canChangeCols }) =>
               <>
                 <div>
                   <Menu.Button className="inline-flex justify-center w-full rounded-md px-4 py-2 bg-repeat-black text-sm font-medium text-white hover:bg-repeat-neutral hover:text-repeat-dark">
-                    {activePolicy.navTitle}
+                    {policy.navTitle}
                     <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
                   </Menu.Button>
                 </div>
@@ -133,14 +136,14 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, canChangeCols }) =>
                   <Menu.Items static className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1 h-60 overflow-auto">
                       {policies
-                        ? policies.map((policy) => (
-                            <Menu.Item key={policy.slug}>
+                        ? policies.map((p) => (
+                            <Menu.Item key={p.slug}>
                               {({ active }) => (
                                 <>
                                   <button
-                                    onClick={() => changePolicy(policy)}
-                                    className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
-                                    {policy.navTitle}
+                                    onClick={() => changePolicy(p)}
+                                    className={classNames(p.slug === policy.slug || active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
+                                    {p.navTitle}
                                   </button>
                                 </>
                               )}
@@ -209,7 +212,9 @@ const ExploreFilters = ({ filters, setFilterClasses, policy, canChangeCols }) =>
                         ? filters.usStates.map((state) => (
                             <Menu.Item key={state.slug}>
                               {({ active }) => (
-                                <button onClick={() => changeUsState(state)} className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
+                                <button
+                                  onClick={() => changeUsState(state)}
+                                  className={classNames(state.slug === activeState || active ? "bg-gray-100 text-gray-900" : "text-gray-700", "w-full text-left block px-4 py-2 text-sm")}>
                                   {state.label}
                                 </button>
                               )}
