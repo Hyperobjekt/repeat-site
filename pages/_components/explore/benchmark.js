@@ -78,6 +78,9 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 			menuItemsClasses = "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
 		}
 
+		const activePolicyArr = policies ? policies.filter(p => p.slug === policySlug) : [];
+    const activePolicyLabel = activePolicyArr.length ? activePolicyArr[0].colTitle : null;
+
 		return(
 			<Menu as="div" className="w-40 relative inline-block text-left z-10">
 				{({ open }) => (
@@ -85,7 +88,7 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 						<div>
 							<Menu.Button className={`overflow-hidden relative flex w-full bg-white rounded-md px-2 py-2 border-2 border-inherit border-repeat-neutral hover:border-black`}>
 								<div className="whitespace-nowrap">
-									{policies.filter(p => p.slug === policySlug)[0].colTitle}
+									{activePolicyLabel}
 								</div>
 								<ChevronDownIcon
 									style={{boxShadow: "0 0 10px 10px white"}}
@@ -123,8 +126,8 @@ export const BenchmarkTable = ({ tableData, filters, reloading }) => {
 	const vsEnClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black";
   const vsDisClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-black text-white pointer-events-none";
 
-  const activePolicyObj = policies ? policies.filter(p => p.slug === tableData[0].policy)[0] : null;
-  const activePolicyLabel = activePolicyObj ? activePolicyObj.colTitle : null;
+  const activePolicyArr = tableData && policies ? policies.filter(p => p.slug === tableData[0].policy) : [];
+  const activePolicyLabel = activePolicyArr.length ? activePolicyArr[0].colTitle : null;
 
 	return (
 		<div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra transition-colors duration-300 ease-in-out">
