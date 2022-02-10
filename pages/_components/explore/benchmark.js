@@ -186,7 +186,7 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 						<th className={`p-2 ${getColColor("LEFT")}`} colSpan="3">
 							<PolicySelect position="left" />
 						</th>
-						<th className="p-2" colSpan="2">
+						<th className="p-2 text-lg" colSpan="2">
 							{activePolicy.colTitle}
 						</th>
 						<th className="p-2" colSpan="1"></th>

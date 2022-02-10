@@ -31,7 +31,6 @@ const ExploreLoader = ({ canChangeCols }) => {
   const [activePolicy, setActivePolicy] = useState({});
   const [params, setParams] = useState(routerQuery);
   const [apiQuery, setApiQuery] = useState({});
-  const [comparison, setComparison] = useState(filters.comparison);
   const [loading, setLoading] = useState(true);
   const [reloading, setReloading] = useState(false);
 
@@ -48,11 +47,6 @@ const ExploreLoader = ({ canChangeCols }) => {
     const newPolicy = policies.find(p => p.slug === routerQuery.policy);
     setActivePolicy(newPolicy);
   }, [routerQuery.policy]);
-
-  useEffect(() => {
-    setReloading(comparison === filters.comparison);
-    setComparison(filters.comparison);
-  }, [filters]);
 
   useEffect(() => {
     setLoading(false);
@@ -127,7 +121,7 @@ const ExploreLoader = ({ canChangeCols }) => {
         {loading ? <div className="repeat-spinner">LOADING...</div> :
           [...scenarios].map((e) => e.values).flat().length ? (
             <div id="tableContainer" className="max-h-explorer min-h-explorer overflow-hidden table pt-10">
-              {comparison === "benchmark" ?
+              {filters.comparison === "benchmark" ?
                 <ExploreBenchmark
                   policy={activePolicy}
                   tableData={scenarios}

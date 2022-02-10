@@ -34,10 +34,10 @@ export const assembleFilters = (stateFilters, actionFilters) => {
   - q=
   */
 
-  let comparison = localStorage.getItem("comparison") || actionFilters.comparison || "benchmark";
+  // let comparison = localStorage.getItem("comparison") || actionFilters.comparison || "benchmark";
   let filter = {
     ...stateFilters,
-    comparison: comparison,
+    comparison: actionFilters.comparison || "benchmark",
     usStates: getUsStates(actionFilters),
     levelOneFilters: getCategories(actionFilters),
     levelTwoFilters: getSubcategories(actionFilters),

@@ -20,9 +20,11 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
   const [activeState, setActiveState] = useState("national");
   const [apiQuery, setApiQuery] = useState({});
 
-  const [isFilterDrawerOpen, toggleFilterDrawer] = useState(
-    typeof localStorage !== "undefined" && localStorage.isFilterDrawerOpen === "true"
-  );
+  // const [isFilterDrawerOpen, toggleFilterDrawer] = useState(
+  //   typeof localStorage !== "undefined" && localStorage.isFilterDrawerOpen === "true"
+  // );
+
+  const [isFilterDrawerOpen, toggleFilterDrawer] = useState(true);
 
   useEffect(async () => {
     let query = getQuery();
@@ -50,6 +52,7 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
     query.page = router.query.page || 1;
     query.limit = router.query.limit || 25;
     query.state = router.query.state || "national";
+    // query.comparison = router.query.comparison || "benchmark";
     query.category = router.query.categories ? router.query.categories.split(",") : [];
     query.subcategory = router.query.subcategories ? router.query.subcategories.split(",") : [];
     return query;
@@ -79,7 +82,7 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
 
   const updateFilterDrawer = (e) => {
     let isActive = e.length ? true : false;
-    localStorage.setItem("isFilterDrawerOpen", isActive);
+    // localStorage.setItem("isFilterDrawerOpen", isActive);
     toggleFilterDrawer(isActive);
   };
 
@@ -109,9 +112,12 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
   };
 
   const setComparison = (comparison) => {
-    let query = getQuery();
-    localStorage.setItem("comparison", comparison);
-    dispatch(loadFilters({ ...query }));
+    let newFilters = { ...filters, comparison };
+    let newApiQuery = { ...apiQuery, comparison };
+    dispatch(loadFilterAction(newFilters));
+    dispatch(loadFilters(newApiQuery));
+    // setApiQuery(newApiQuery);
+    // localStorage.setItem("comparison", comparison);
   };
 
 
@@ -311,15 +317,16 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
 
   return (
     <>
+
+      <div>
+        {filters ? <ComparisonMenu filters={filters} /> : null}
+      </div>
+
       {canChangeCols ?
         <div className="pt-12 relative z-40">
           <PolicyMenu />
         </div>
       : null}
-
-      <div>
-        {filters ? <ComparisonMenu filters={filters} /> : null}
-      </div>
 
       <div className="pt-12 relative z-30">
         <StateMenu />
