@@ -37,7 +37,13 @@ export const TimeSeriesTable = ({ policy, tableData, filters, reloading }) => {
                   <Fragment key={i}>
                     <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="8">
-                        {row.category} - {row.subcategory} ({row.state})
+                        <span>
+                          <strong>
+                            {row.category} - {row.subcategory}
+                          </strong>
+                        </span>
+                        &nbsp;&nbsp;
+                        <span>( {row.units} )</span>
                       </td>
                     </tr>
                     {row.values.map((valueRow, vi) => {
