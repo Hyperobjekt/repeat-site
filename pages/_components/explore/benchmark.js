@@ -22,7 +22,7 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 
 	useEffect(() => {
 		setLeftPol(activePolicy.slug !== "frozen" ? "frozen" : policies.find(p => p.slug !== "frozen" && p.slug !== activePolicy.slug).slug); //frozen = Frozen
-		setRightPol(activePolicy.slug !== "core" ? "core" : policies.find(p => p.slug !== "core" && p.slug !== activePolicy.slug).slug); //core = Net Zero
+		setRightPol(activePolicy.slug !== "net-zero" ? "net-zero" : policies.find(p => p.slug !== "net-zero" && p.slug !== activePolicy.slug).slug); //net-zero = Net Zero
 	}, [policy]);
 
 	const toggleVs = () => {
