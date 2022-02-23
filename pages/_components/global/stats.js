@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 
 const Stats = ({ policy }) => {
   const stats = policy ? policy.stats : [];
-
+  
   return (
-    <div className="container max-w-screen-lg m-auto">
+    <div className="">
       {<h3 className="font-bold text-2xl">{policy ? policy.title : ""}</h3>}
       <div className="flex flex-wrap pt-6">
         {stats.map((stat, i) => (

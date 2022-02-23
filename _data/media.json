@@ -1,0 +1,67 @@
+{ 
+  "media": [
+    {
+      "title": "Biden’s Plan B for the climate crisis, explained",
+      "desc": "It’s not too late for Democrats to go big on climate change. But it won’t be easy, and there’s no margin for error.",
+      "url": "https://www.vox.com/22738414/democrats-manchin-climate-reconciliation-plan-b",
+      "date": "Oct 27, 2021",
+      "source": "Vox Media",
+      "image": "vox-media.png",
+      "logo": "vox-logo.svg"
+    },
+    {
+      "title": "New budget deal marks the biggest climate investment in U.S. history",
+      "desc": "",
+      "url": "https://www.washingtonpost.com/climate-environment/2021/10/28/climate-biden-build-back-better/",
+      "date": "October 28, 2021",
+      "source": "Washington Post",
+      "image": "washington-post.png",
+      "logo": "washpo-logo.svg"
+    },
+    {
+      "title": "A Climate Opportunity",
+      "desc": "",
+      "url": "https://www.nytimes.com/2022/02/06/briefing/biden-democrats-climate-bill.html",
+      "date": "February 6, 2022",
+      "source": "New York Times",
+      "image": "new-york-times.jpeg",
+      "logo": "nyt-logo.svg"
+    },
+	  {
+	  	"title": "What’s Left in the Democrats’ Shrunken Spending Bill?",
+	  	"desc": "",
+	  	"url": "https://www.newyorker.com/news/our-columnists/whats-left-in-the-democrats-shrunken-spending-bill",
+	  	"date": "October 25, 2021",
+	  	"source": "The New Yorker",
+	  	"image": "",
+	  	"logo": ""
+	  },
+	  {
+	  	"title": "Why climate advocates are happy with Biden's spending framework",
+	  	"desc": "",
+	  	"url": "https://theweek.com/climate-change/1006549/climate-change-measures-in-biden-framework",
+	  	"date": "October 28, 2021",
+	  	"source": "The Week",
+	  	"image": "",
+	  	"logo": ""
+	  },
+	  {
+	  	"title": "Framework’s climate elements may keep emissions goals in reach",
+	  	"desc": "",
+	  	"url": "https://www.rollcall.com/2021/10/28/frameworks-climate-elements-may-keep-emissions-goals-in-reach/",
+	  	"date": "October 28, 2021",
+	  	"source": "Roll Call",
+	  	"image": "",
+	  	"logo": ""
+	  },
+	  {
+	  	"title": "There Are at Least Two Extremely Good Things to Celebrate in Biden’s New Build Back Better Plan",
+	  	"desc": "",
+	  	"url": "https://slate.com/business/2021/10/biden-build-back-better-climate-child-poverty-tax-credit.html",
+	  	"date": "October 28, 2021",
+	  	"source": "Slate",
+	  	"image": "",
+	  	"logo": ""
+	  }
+  ]
+}

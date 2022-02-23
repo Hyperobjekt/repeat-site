@@ -23,7 +23,7 @@ const team = [
     title: "Princeton University Zero Lab",
   },
   {
-    name: "Annie Jacobson",
+    name: "Anna Jacobson",
     title: "Princeton University Zero Lab",
   },
   {
@@ -211,8 +211,10 @@ const RepeatAbout = () => {
       </div>
 
       <SectionHeader headerText="evaluate the policies" subheaderText="Our data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
-      
-      <Stats policy={policies[Object.keys(policies)[0]]} />
+
+      <div className="container max-w-screen-lg m-auto">
+        <Stats policy={policies[0]} />
+      </div>
       
       <div className="py-8"></div>
       <InTheMedia />

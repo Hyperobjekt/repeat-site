@@ -4,6 +4,8 @@ import SectionHeader from "../global/section-header";
 import Stats from "../global/stats";
 import InTheMedia from "../global/in-the-media";
 
+const { policies } = require("../../../_data/policies.json");
+
 const RepeatReports = () => {
   return (
     <React.Fragment>
@@ -31,7 +33,7 @@ const RepeatReports = () => {
                 </a>
                 <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
                   <div className="block font-utopia pt-3">
-                    <em><a href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener" className="primary-link">Download the REPEAT Project Summary Report</a> for details on the impact of recently enacted and pending policies on carbon dioxide emissions, clean energy and electric vehicle deployment, fossil energy use, and more. (This version, January XX, 2021.)</em>
+                    <em><a href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener" className="primary-link">Download the REPEAT Project Summary Report</a> for details on the impact of recently enacted and pending policies on carbon dioxide emissions, clean energy and electric vehicle deployment, fossil energy use, and more. (This version, January 24, 2022.)</em>
                   </div>
                 </div>
               </div>
@@ -87,7 +89,9 @@ const RepeatReports = () => {
 
       <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
       
-      {/*<Stats policy={policies[Object.keys(policies)[0]]} />*/}
+      <div className="container max-w-screen-lg m-auto">
+        <Stats policy={policies[0]} />
+      </div>
 
       <div className="py-8"></div>
     </React.Fragment>

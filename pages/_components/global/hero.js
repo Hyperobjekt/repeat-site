@@ -31,8 +31,8 @@ const RepeatHero = ({ bgClasses, headerText, subheaderText, mode }) => {
       <div className="container max-w-screen-lg h-full m-auto">
         <div className="flex h-full items-end">
           <div className="md:px-0 px-2 py-8 w-full md:w-3/4">
-            <h1 className={headerClass}>{headerText}</h1>
-            <h2 className={subHeaderClass}>{subheaderText}</h2>
+            {headerText ? <h1 className={headerClass}>{headerText}</h1> : null}
+            {subheaderText ? <h2 className={subHeaderClass}>{subheaderText}</h2> : null}
           </div>
         </div>
       </div>
