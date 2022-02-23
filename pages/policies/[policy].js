@@ -22,9 +22,7 @@ export default function PolicyPage() {
       </a>
       <RepeatHeader />
       <RepeatPolicy />
-      <SectionHeader headerText="evaluate the policies" subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
-      {/*<Stats policy={policy} />*/}
-      <div className="py-8"></div>
+      <div className="h-16"></div>
       <InTheMedia />
       <RepeatFooter />
     </React.Fragment>

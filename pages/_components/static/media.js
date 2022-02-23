@@ -49,7 +49,7 @@ const RepeatMedia = () => {
 									<div className="block text-sm pt-2">
 										{m.date} &ndash; {m.source}
 									</div>
-									<a href={m.url} className="block font-semibold text-lg pt-2 text-repeat-black hover:text-repeat-burnt" target="_blank" rel="noreferrer noopener">
+									<a href={m.url} className="font-semibold text-lg pt-2 text-repeat-black hover:text-repeat-burnt" target="_blank" rel="noreferrer noopener">
 										{m.title}
 									</a>
 								</div>

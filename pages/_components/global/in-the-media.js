@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 
-import { media } from "../../../_data/media.json";
-console.log(media);
+import media from "../../../_data/media.json";
 
 const InTheMedia = () => {
+
   return (
     <div className="py-12 bg-repeat-light">
       <div className="container max-w-screen-lg  m-auto">
@@ -13,7 +13,7 @@ const InTheMedia = () => {
         </div>  
         <div className="grid pt-6 grid-cols-1 md:grid-cols-3 gap-4 place-content-center">
 
-          {media.slice(0, 3).map((m,i) => {
+          {media.media.filter(m => m.featured).map((m,i) => {
             return(
               <div className="block" key={i}>
                 <a href={m.url} target="_blank" rel="noopener noreferrer" className="text-repeat-black hover:text-repeat-burnt">
