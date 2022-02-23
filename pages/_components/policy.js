@@ -19,7 +19,7 @@ const RepeatPolicy = () => {
   return activePolicy ? (
     <div className="bg-policy-background bg-repeat-mobile md:bg-repeat-right-top bg-no-repeat">
       <RepeatHero headerText={activePolicy.title} subheaderText={activePolicy.subTitle} bg="" />
-      {/*<div className="container max-w-screen-lg pb-8 m-auto">
+      <div className="container max-w-screen-lg pb-8 m-auto">
         {activePolicy.blocks ?
           activePolicy.blocks.map((block, i) => {
             if (block.type === "paragraph") {
@@ -61,7 +61,7 @@ const RepeatPolicy = () => {
             }
           })
         : null}
-      </div>*/}
+      </div>
       <div className="container max-w-screen-lg pb-10 m-auto">
         <ExploreLoader canChangeCols={false} />
       </div>
