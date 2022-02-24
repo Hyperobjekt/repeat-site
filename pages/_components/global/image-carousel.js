@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { SRLWrapper } from "simple-react-lightbox";
 
-const ImageCarousel = ({ policy }) => {
+const ImageCarousel = ({ policy = {} }) => {
   const [position, setPosition] = useState(0);
   const [tileWidth, setTileWidth] = useState(null);
   useEffect(() => {
@@ -18,7 +18,7 @@ const ImageCarousel = ({ policy }) => {
     setPosition(newPosition);
   };
 
-  const { slides } = policy;
+  const slides = policy.slides ? policy.slides : [];
 
   if (!slides?.length) return null;
   return (

@@ -8,7 +8,7 @@ const PolicyPreview = ({ policy = {} }) => {
 		<div className="container max-w-screen-lg pb-8 mb-24 mx-auto bg-right bg-contain bg-no-repeat"
 			style={{
 				bckgroundPositionX: "right 10%",
-				backgroundImage: `url(/images/backgrounds/${policy.slug.includes("bbb") ? "policy" : policy.slug}.jpg)`
+				backgroundImage: policy.slugs ? `url(/images/backgrounds/${policy.slug.includes("bbb") ? "policy" : policy.slug}.jpg)` : ""
 			}}>
 			{/* <h2 className="text-2xl md:text-4xl pt-8 text-repeat-black font-extrabold font-obliqua">
 				{policy.title}
