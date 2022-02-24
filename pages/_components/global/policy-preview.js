@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/outline";
 import Stats from "./stats";
 
-const PolicyPreview = ({ policy }) => {
+const PolicyPreview = ({ policy = {} }) => {
 	return (
 		<div className="container max-w-screen-lg pb-8 mb-24 mx-auto bg-right bg-contain bg-no-repeat"
 			style={{

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-const Pillars = ({ policy }) => {
-	const { pillars } = policy;
+const Pillars = ({ policy = [] }) => {
+	const pillars = policy.pillars ? policy.pillars : [];
 	let color_index = 0;
 	return (
 		<div className="pt-0 pb-10">

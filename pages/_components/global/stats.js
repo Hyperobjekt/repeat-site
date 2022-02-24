@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
-const Stats = ({ policy }) => {
-  const stats = policy ? policy.stats : [];
+const Stats = ({ policy = {} }) => {
+  const stats = policy.stats ? policy.stats : [];
   
   return (
     <div className="">
