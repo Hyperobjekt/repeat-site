@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
 import Stats from "../global/stats";
@@ -15,13 +16,9 @@ const RepeatMedia = () => {
 			<div className="max-w-screen-lg m-auto relative z-10 -mt-40 text-repeat-black pb-24">
 				<div className="container subpages lg:w-3/4 bg-white rounded-tr-2xl border-t-4 border-repeat">
 					<h2 className="text-2xl md:text-5xl pt-8 font-extrabold font-obliqua">
-						Zero Lab + The Repeat <br />
-						Project in the Media
+						The Repeat Project <br />
+						in the Media
 					</h2>
-					<p className="font-utopia pt-6 md:w-4/5 text-lg text-repeat-burnt">
-						Proin a vestibulum dui. Cras vitae erat felis. Mauris ullamcorper est sit amet velit ultrices egestas. Duis sit amet fringilla risus, non auctor eros. Nulla id tellus ac lectus ornare convallis. Pellentesque efficitur risus ligula, a ullamcorper ipsum porttitor quis.
-					</p>
-					
 					
 					<div className="pt-8">
 						<a href={firstMedia.url} target="_blank" rel="noopener noreferrer" className="block text-repeat-black hover:text-repeat-burnt">
@@ -60,12 +57,14 @@ const RepeatMedia = () => {
 				</div>
 			</div>
 
-			<SectionHeader
-				headerText="evaluate the policies"
-				subheaderText="Out data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
-			
+			<SectionHeader headerText="Evaluate the policies" subheaderText="The REPEAT Project provides regular, timely, and independent environmental and economic evaluation of federal energy and climate policies as they’re proposed and enacted. Dive into the details for each of the policies analyzed by the project to date..." />
 			<div className="container max-w-screen-lg m-auto">
 				<Stats policy={policies[0]} />
+				<Link href="/policies">
+					<a className="font-utopia text-lg primary-link">
+						Dive into the details for each of the policies analyzed by the project to date...
+					</a>
+				</Link>
 			</div>
 
 			<div className="py-8"></div>

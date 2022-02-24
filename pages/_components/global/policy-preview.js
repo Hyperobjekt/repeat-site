@@ -5,18 +5,21 @@ import Stats from "./stats";
 
 const PolicyPreview = ({ policy = {} }) => {
 	return (
-		<div className="container max-w-screen-lg pb-8 mb-24 mx-auto bg-right bg-contain bg-no-repeat"
+		<div className="container max-w-screen-lg pb-8 mb-24 mx-auto bg-right bg-no-repeat"
 			style={{
+				minHeight: "300px",
+				backgroundSize: "300px",
 				bckgroundPositionX: "right 10%",
-				backgroundImage: policy.slugs ? `url(/images/backgrounds/${policy.slug.includes("bbb") ? "policy" : policy.slug}.jpg)` : ""
+				backgroundImage: policy.slug ? `url(/images/backgrounds/${policy.slug.includes("bbb") ? "policy" : policy.slug}.jpg)` : ""
 			}}>
 			{/* <h2 className="text-2xl md:text-4xl pt-8 text-repeat-black font-extrabold font-obliqua">
 				{policy.title}
 			</h2>*/}
 			<Stats policy={policy} />
-			<div className="md:w-1/2 pb-5 text-lg pt-8 text-repeat-black">
+
+			<div className="md:w-1/2 pb-5 text-lg text-repeat-black">
 				<p>{policy.subTitle}</p>
-				<Link href={`/policies/ + ${policy.slug}`}>
+				<Link href={`/policies/${policy.slug}`}>
 					<a className="text-black hover:text-repeat">
 						<span className="inline-block align-middle leading-5 border-b-2 border-black hover:border-repeat">Read more</span>
 						<span className="inline-block align-middle">

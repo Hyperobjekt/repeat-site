@@ -30,7 +30,7 @@ const RepeatPolicy = () => {
 								</div>
 							);
 						}
-						if (block.type === "component") {
+						if (block.type === "stats") {
 							return (
 								<div key={i} className="md:w-full py-10">
 									<Stats policy={activePolicy} />

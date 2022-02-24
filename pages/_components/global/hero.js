@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 
 
-const RepeatHero = ({ bgClasses, headerText, subheaderText, mode }) => {
+const RepeatHero = ({ bgClasses = "", headerText, subheaderText, mode }) => {
 
   const [bgTop, setBgStyle] = useState({});
 

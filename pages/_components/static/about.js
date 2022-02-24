@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
 import InTheMedia from "../global/in-the-media";
@@ -47,19 +48,19 @@ const team = [{
 		},
 		{
 				name: "Claire Wayner",
-				title: "",
+				title: "Princeton University Zero Lab",
 		},
 		{
 				name: "Aneesha Manocha",
-				title: "",
+				title: "Princeton University Zero Lab",
 		},
 		{
 				name: "Riti Bhandarkar",
-				title: "",
+				title: "Princeton University Zero Lab",
 		},
 		{
 				name: "Cady Feng",
-				title: "",
+				title: "Princeton University Zero Lab",
 		},
 ];
 
@@ -160,7 +161,7 @@ const RepeatAbout = () => {
 						</div>
 						<div className="md:w-4/5 leading-7 pt-10 text-lg">
 							<h3 className="font-bold text-2xl mt-4 mb-3">Carbon Impact Consulting</h3>
-							<p className="pt-3"><a className="primary-link" href="https://www.linkedin.com/in/gregschivley/" target="_blank" rel="noreferrer noopener">Carbon Impact Consulting</a> leads development of the PowerGenome open-source software project and works with clients to produce data and analysis for energy system models.</p>
+							<p className="pt-3"><a className="primary-link" href="https://www.linkedin.com/in/gregschivley/" target="_blank" rel="noreferrer noopener">Carbon Impact Consulting</a> leads development of the <a href="https://github.com/PowerGenome/PowerGenome" target="_blank" rel="noreferrer noopener">PowerGenome</a> open-source software project and works with clients to produce data and analysis for energy system models.</p>
 						</div>
 						<div className="md:w-4/5 leading-7 pt-10 text-lg">
 							<h3 className="font-bold text-2xl mt-4 mb-3">Montara Mountain Energy</h3>
@@ -185,10 +186,17 @@ const RepeatAbout = () => {
 					</div>
 					{/* NZA report image */}
 				</div>
-				<SectionHeader headerText="evaluate the policies" subheaderText="Our data set currently features the Biden administration’s climate program. More policies will become available as their data are integrated with the REPEAT Project." />
+				
+				<SectionHeader headerText="Evaluate the policies" subheaderText="The REPEAT Project provides regular, timely, and independent environmental and economic evaluation of federal energy and climate policies as they’re proposed and enacted." />
 				<div className="container max-w-screen-lg m-auto">
 					<Stats policy={policies[0]} />
+					<Link href="/policies">
+						<a className="font-utopia text-lg primary-link">
+							Dive into the details for each of the policies analyzed by the project to date...
+						</a>
+					</Link>
 				</div>
+				
 				<div className="py-8"></div>
 				<InTheMedia />
 			</React.Fragment>

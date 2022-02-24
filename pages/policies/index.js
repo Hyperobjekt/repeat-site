@@ -28,6 +28,11 @@ export default function PoliciesPage() {
 							in the Repeat Project
 						</h1>
 						<div className="pt-6 md:w-4/5 text-repeat-burnt">
+
+							<p className="font-utopia text-lg">
+								The REPEAT Project provides regular, timely, and independent environmental and economic evaluation of federal energy and climate policies as they’re proposed and enacted. Dive into the details for each of the policies analyzed by the project to date below.
+							</p>
+
 							<p className="font-utopia text-lg">
 								Use our Data Explorer tool to compare energy usage by category for each policy we evaluate, relative to benchmarks or other policies.
 								{" "}
@@ -60,7 +65,7 @@ export default function PoliciesPage() {
 			</div>
 
 			<div id="policies">
-				{policies.filter(p => !p.benchmark).map((policy, i) => (
+				{policies.map((policy, i) => (
 					<PolicyPreview key={i} policy={policy} />
 				))}
 			</div>

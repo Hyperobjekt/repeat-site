@@ -12,10 +12,10 @@ function classNames(...classes) {
 }
 
 export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
-	const [vsWith, setVsWith] = useState("RIGHT"); // LEFT || RIGHT
+	const [vsWith, setVsWith] = useState("LEFT"); // LEFT || RIGHT
 	const [diffType, setDiffType] = useState("ABSOLUTE"); // ABSOLUTE || PERCENT
-	const [fromPos, setFromPos] = useState("left");
-	const [toPos, setToPos] = useState("right");
+	const [fromPos, setFromPos] = useState("right");
+	const [toPos, setToPos] = useState("left");
 	const [leftPol, setLeftPol] = useState(null);
 	const [rightPol, setRightPol] = useState(null);
 	const activePolicy = policy || {};
@@ -240,7 +240,6 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 														</td>
 
 														<td className={`p-2 ${getColColor("LEFT")}`}>
-															{/*{console.log(valueRow[leftPol])}*/}
 															{valueRow[leftPol] && !isNaN(valueRow[leftPol][2030]) ? valueRow[leftPol][2030] : "N/A"}
 														</td>
 														<td className={`p-2 ${getColColor("LEFT")}`} colSpan="2">
