@@ -8,7 +8,11 @@ body {
   margin: 0;
   scroll-behavior: smooth;
 }
-@supports (-webkit-overflow-scrolling: touch) { 	.bg-fixed {	background-attachment: scroll !important; 	} }
+@supports (-webkit-overflow-scrolling: touch) {
+  .bg-fixed {
+    background-attachment: scroll !important;
+  }
+}
 
 nav {
   align-items: baseline;
@@ -30,7 +34,7 @@ nav p {
   font-weight: 400;
   font-display: swap;
   src: local("Forum-Regular"), local("Forum-Regular"),
-    url("/font-files/Forum-Regular.woff") format("woff2");
+       url("/font-files/Forum-Regular.woff") format("woff2");
 }
 
 .bg-policy-background {

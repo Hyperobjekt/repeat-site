@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import RepeatHero from "../global/hero";
 import SectionHeader from "../global/section-header";
-import Stats from "../global/stats";
+import PolicyPreview from "../global/policy-preview";
 import InTheMedia from "../global/in-the-media";
 
 const { policies } = require("../../../_data/policies.json");
@@ -90,15 +90,8 @@ const RepeatReports = () => {
 				</div>
 			</div>
 
-			<SectionHeader headerText="Evaluate the policies" subheaderText="The REPEAT Project provides regular, timely, and independent environmental and economic evaluation of federal energy and climate policies as they’re proposed and enacted." />
-			<div className="container max-w-screen-lg m-auto">
-				<Stats policy={policies[0]} />
-				<Link href="/policies">
-					<a className="font-utopia text-lg primary-link">
-						Dive into the details for each of the policies analyzed by the project to date...
-					</a>
-				</Link>
-			</div>
+			<SectionHeader headerText="Evaluate the policies" subheaderText={"The REPEAT Project provides regular, timely, and independent environmental and economic evaluation of federal energy and climate policies as they’re proposed and enacted. <a href=\"/policies\" class=\"primary-link\">Dive into the details for each of the policies analyzed by the project to date...</a>"} />
+			<PolicyPreview policy={policies[0]} />
 
 			<div className="py-8"></div>
 		</React.Fragment>
