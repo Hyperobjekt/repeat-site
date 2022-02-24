@@ -161,7 +161,7 @@ const RepeatAbout = () => {
 						</div>
 						<div className="md:w-4/5 leading-7 pt-10 text-lg">
 							<h3 className="font-bold text-2xl mt-4 mb-3">Carbon Impact Consulting</h3>
-							<p className="pt-3"><a className="primary-link" href="https://www.linkedin.com/in/gregschivley/" target="_blank" rel="noreferrer noopener">Carbon Impact Consulting</a> leads development of the <a href="https://github.com/PowerGenome/PowerGenome" target="_blank" rel="noreferrer noopener">PowerGenome</a> open-source software project and works with clients to produce data and analysis for energy system models.</p>
+							<p className="pt-3"><a className="primary-link" href="https://www.linkedin.com/in/gregschivley/" target="_blank" rel="noreferrer noopener">Carbon Impact Consulting</a> leads development of the <a className="primary-link" href="https://github.com/PowerGenome/PowerGenome" target="_blank" rel="noreferrer noopener">PowerGenome</a> open-source software project and works with clients to produce data and analysis for energy system models.</p>
 						</div>
 						<div className="md:w-4/5 leading-7 pt-10 text-lg">
 							<h3 className="font-bold text-2xl mt-4 mb-3">Montara Mountain Energy</h3>

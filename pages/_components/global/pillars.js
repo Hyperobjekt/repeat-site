@@ -9,9 +9,7 @@ const Pillars = ({ policy = [] }) => {
 
 				<div className="md:w-1/2 pt-2">
 					<h3 className="font-bold text-repeat-teal text-3xl mb-5">Pillars of Decarbonization</h3>
-					<p>The <a href="https://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener">Princeton Net-Zero America</a> study highlights six key “Pillars of Decarbonization,” essential building blocks of a net-zero emissions U.S. economy. Here’s how the Build Back Better Act (November 2021 version) impacts each of these six pillars.</p>
-
-					{policy.navTitle}
+					<p>The Princeton <a href="https://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener">Net-Zero America</a> study highlights six key “Pillars of Decarbonization,” essential building blocks of a net-zero emissions U.S. economy. Here’s how the {policy.navTitle} impacts each of these six pillars.</p>
 				</div>
 
 				<div className="grid pt-6 grid-cols-1 md:grid-cols-3 gap-10 place-content-center">

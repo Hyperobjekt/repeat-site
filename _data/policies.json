@@ -193,10 +193,18 @@
 			"blocks": [
 				{
 					"type": "paragraph",
-					"content": "The original version of the Build Back Better Act, introduced in September 2021 (<a href=\"https://www.govinfo.gov/content/pkg/BILLS-117hr5376rh/pdf/BILLS-117hr5376rh.pdf\" target=\"_blank\">H.R. 5376, H. Rept. 117-130</a>), contained a broader range of policies to deploy clean energy and energy efficiency than the final bill passed the House in November 2021. This scenario helps track how the bill evolved from initial introduction to final passage in the House and the impact of legislative changes made during negotiations over the bill. For details on what changed from the September to November versions of BBBA, see the <em>\"Change from 9/27/21 House version\" column in the <a href=\"https://bit.ly/REPEAT-Policies\" target=\"blank\">\"House Budget Reconciliation v2.0 (11/3/21)\" worksheet here</a>, and <a href=\"https://bit.ly/REPEAT-Policies\" target=\"blank\">click here</a> for a complete list of policies and description of how they were modeled in REPEAT Project analysis.</em>"
+					"content": "The original version of the Build Back Better Act, introduced in September 2021 (<a href=\"https://www.govinfo.gov/content/pkg/BILLS-117hr5376rh/pdf/BILLS-117hr5376rh.pdf\" target=\"_blank\">H.R. 5376, H. Rept. 117-130</a>), contained a broader range of policies to deploy clean energy and energy efficiency than the final bill passed the House in November 2021. This scenario helps track how the bill evolved from initial introduction to final passage in the House and the impact of legislative changes made during negotiations over the bill."
+				},
+				{
+					"type": "paragraph",
+					"content": "<em>For details on what changed from the September to November versions of BBBA, see the \"Change from 9/27/21 House version\" column in the <a href=\"https://bit.ly/REPEAT-Policies\" target=\"blank\">\"House Budget Reconciliation v2.0 (11/3/21)\" worksheet here</a>, and <a href=\"https://bit.ly/REPEAT-Policies\" target=\"blank\">click here</a> for a complete list of policies and description of how they were modeled in REPEAT Project analysis.</em>"
 				},
 				{
 					"type": "stats",
+					"content": ""
+				},
+				{
+					"type": "pillars",
 					"content": ""
 				}
 			]
