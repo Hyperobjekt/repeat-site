@@ -6,7 +6,6 @@
 			"navTitle": "Infrastructure Investment and American Jobs Act of 2021",
 			"colTitle": "IIJA",
 			"subTitle": "The bipartisan infrastructure investment bill enacted November 2021",
-			"description": "",
 			"stats": [
 				{
 					"value": "1.3 Billion",
@@ -99,7 +98,6 @@
 			"navTitle": "Build Back Better Act, November 2021",
 			"colTitle": "BBBA, Nov ‘21",
 			"subTitle": "The $2.2 trillion House-passed budget reconciliation bill",
-			"description": "",
 			"stats": [
 				{
 					"value": "78%",
@@ -197,7 +195,6 @@
 			"navTitle": "Build Back Better Act, September 2021",
 			"colTitle": "BBBA, Sept ‘21",
 			"subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-			"description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
 			"stats": [
 				{
 					"value": "78%",
@@ -220,71 +217,10 @@
 					"image": "/images/carousel-image-1.svg",
 					"caption": "2030 E+ Cumulative",
 					"subcaption": "Solar, Wind and Population Density"
-				},
-				{
-					"image": "/images/carousel-image-2.svg",
-					"caption": "2030 E+ Cumulative",
-					"subcaption": "Solar, Wind and Population Density"
-				},
-				{
-					"image": "/images/carousel-image-3.svg",
-					"caption": "2030 E+ Cumulative",
-					"subcaption": "Solar, Wind and Population Density"
-				},
-				{
-					"image": "/images/carousel-image-2.svg",
-					"caption": "2030 E+ Cumulative",
-					"subcaption": "Solar, Wind and Population Density"
-				},
-				{
-					"image": "/images/carousel-image-3.svg",
-					"caption": "2030 E+ Cumulative",
-					"subcaption": "Solar, Wind and Population Density"
-				},
-				{
-					"image": "/images/carousel-image-2.svg",
-					"caption": "2030 E+ Cumulative",
-					"subcaption": "Solar, Wind and Population Density"
-				},
-				{
-					"image": "/images/carousel-image-3.svg",
-					"caption": "2030 E+ Cumulative",
-					"subcaption": "Solar, Wind and Population Density"
 				}
 			],
 			"blocks": [
-				{
-					"type": "paragraph",
-					"content": "<span>Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae <a className=\"primary-link\" href=\"#\">augue pharetra consequat</a>. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.</span>)"
-				},
-				{
-					"type": "component",
-					"content": ""
-				},
-				{
-					"type": "heading",
-					"content": "Details & Resources"
-				},
-				{
-					"type": "slider",
-					"content": ""
-				},
-				{
-					"type": "paragraph",
-					"content": "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis."
-				},
-				{
-					"type": "heading",
-					"content": "Policy REPEAT Pillars"
-				},
-				{
-					"type": "paragraph",
-					"content": "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-				},
-				{
-					"type": "pillars",
-					"content": ""
-				}
+				
 			]
 		},
 		{
@@ -292,8 +228,7 @@
 			"title": "Frozen Policies Benchmark",
 			"navTitle": "Frozen Policies Benchmark",
 			"colTitle": "Frozen Policies",
-			"subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-			"description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+			"subTitle": "",
 			"stats": [],
 			"slides": [],
 			"blocks": [],
@@ -304,8 +239,7 @@
 			"title": "Net-Zero Pathway Benchmark",
 			"navTitle": "Net-Zero Pathway Benchmark",
 			"colTitle": "Net-Zero Pathway",
-			"subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-			"description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
+			"subTitle": "",
 			"stats": [],
 			"slides": [],
 			"blocks": [],

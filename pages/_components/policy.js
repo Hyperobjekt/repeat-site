@@ -17,7 +17,8 @@ const RepeatPolicy = () => {
 
 
 	return activePolicy ? (
-		<div className="bg-policy-background bg-repeat-mobile md:bg-repeat-right-top bg-no-repeat">
+		<div className="bg-policy-background bg-repeat-mobile md:bg-repeat-right-top bg-no-repeat"
+			style={{ backgroundImage: `url(/images/backgrounds/${activePolicy.slug.includes("bbb") ? "policy" : activePolicy.slug}.jpg)` }}>
 			<RepeatHero headerText={activePolicy.title} subheaderText={activePolicy.subTitle} bg="" />
 			<div className="container max-w-screen-lg pb-8 m-auto">
 				{activePolicy.blocks ?

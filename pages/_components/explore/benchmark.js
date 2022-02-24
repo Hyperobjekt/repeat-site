@@ -45,15 +45,15 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 	};
 
 	const calculateDelta = (repeatValue, vsValue, year) => {
-		let r = Number(repeatValue[year]),
-				v = Number(vsValue ? vsValue[year] : 0);
-		if (diffType === "ABSOLUTE") return formatDelta((r - v));
-		if (diffType === "PERCENT") return formatDelta((((r - v) / v) * 100))+"%";
+		let r = repeatValue && !isNaN(repeatValue[year]) ? Number(repeatValue[year]) : "",
+				v = vsValue && !isNaN(vsValue[year]) ? Number(vsValue[year]) : "";
+		if (diffType === "ABSOLUTE") return r !== "" && v !== "" ? formatDelta((r - v)) : "";
+		if (diffType === "PERCENT") return r !== "" && v !== "" ? formatDelta((((r - v) / v) * 100))+"%" : "";
 	};
 
 	const formatDelta = (delta) => {
 		delta = Number(delta);
-		if(isNaN(delta) || !isFinite(delta)) delta = (0).toFixed(2);
+		if(!isFinite(delta)) delta = 0;
 		else if(Math.abs(delta) >= 100) delta = delta.toFixed(0);
 		else if(Math.abs(delta) >= 10) delta = delta.toFixed(1);
 		else if(Math.abs(delta) >= 1) delta = delta.toFixed(2);
@@ -240,16 +240,17 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 														</td>
 
 														<td className={`p-2 ${getColColor("LEFT")}`}>
-															{valueRow[leftPol] ? valueRow[leftPol][2030] : 0}
+															{/*{console.log(valueRow[leftPol])}*/}
+															{valueRow[leftPol] && !isNaN(valueRow[leftPol][2030]) ? valueRow[leftPol][2030] : "N/A"}
 														</td>
 														<td className={`p-2 ${getColColor("LEFT")}`} colSpan="2">
-															{valueRow[leftPol] ? valueRow[leftPol][2050] : 0}
+															{valueRow[leftPol] && !isNaN(valueRow[leftPol][2050]) ? valueRow[leftPol][2050] : "N/A"}
 														</td>
 
 														<td className="p-2">
 															<div className="flex">
 																<div className="w-10">
-																	{valueRow[activePolicy.slug][2030]}
+																	{valueRow[activePolicy.slug] && !isNaN(valueRow[activePolicy.slug][2030]) ? valueRow[activePolicy.slug][2030] : "N/A"}
 																</div>
 																<div className="pl-2 flex text-xs text-repeat-dark">
 																	<div className="my-auto ml-auto">
@@ -261,7 +262,7 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 														<td className="p-2">
 															<div className="flex">
 																<div className="w-10">
-																	{valueRow[activePolicy.slug][2050]}
+																	{valueRow[activePolicy.slug] && !isNaN(valueRow[activePolicy.slug][2050]) ? valueRow[activePolicy.slug][2050] : "N/A"}
 																</div>
 																<div className="pl-2 flex text-xs text-repeat-dark">
 																	<div className="my-auto ml-auto">
@@ -274,10 +275,10 @@ export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
 														</td>
 
 														<td className={`p-2 ${getColColor("RIGHT")}`}>
-															{valueRow[rightPol] ? valueRow[rightPol][2030] : 0}
+															{valueRow[rightPol] && !isNaN(valueRow[rightPol][2030]) ? valueRow[rightPol][2030] : "N/A"}
 														</td>
 														<td className={`p-2 ${getColColor("RIGHT")}`}>
-															{valueRow[rightPol] ? valueRow[rightPol][2050] : 0}
+															{valueRow[rightPol] && !isNaN(valueRow[rightPol][2050]) ? valueRow[rightPol][2050] : "N/A"}
 														</td>
 													</tr>
 												);
