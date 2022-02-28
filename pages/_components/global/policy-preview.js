@@ -12,13 +12,22 @@ const PolicyPreview = ({ policy = {} }) => {
 				bckgroundPositionX: "right 10%",
 				backgroundImage: policy.slug ? `url(/images/backgrounds/${policy.slug.includes("bbb") ? "policy" : policy.slug}.jpg)` : ""
 			}}>
-			{/* <h2 className="text-2xl md:text-4xl pt-8 text-repeat-black font-extrabold font-obliqua">
-				{policy.title}
-			</h2>*/}
-			<Stats policy={policy} />
+			<h3 className="text-2xl md:text-4xl font-extrabold font-obliqua">
+				<Link href={`/policies/${policy.slug}`}>
+					<a className="text-repeat-black hover:text-repeat">
+						{policy.title}
+					</a>
+				</Link>
+			</h3>
 
-			<div className="md:w-1/2 pb-5 text-lg text-repeat-black">
-				<p>{policy.subTitle}</p>
+			{policy.stats ?
+				<div className="pt-4 pb-8">
+					<Stats policy={policy} />
+				</div>
+			: null}
+
+			<div className="md:w-1/2 text-lg text-repeat-black">
+				<p className="pb-4" dangerouslySetInnerHTML={{ __html: policy.desc }} />
 				<Link href={`/policies/${policy.slug}`}>
 					<a className="text-black hover:text-repeat">
 						<span className="inline-block align-middle leading-5 border-b-2 border-black hover:border-repeat">Read more</span>

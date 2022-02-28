@@ -22,6 +22,9 @@ module.exports = {
       "blur-20": "blur(20px)",
     },
     extend: {
+      fontSize: {
+        md: "15px"
+      },
       fontFamily: {
         sans: ["effra", ...defaultTheme.fontFamily.sans],
         effra: ["effra", "sans-serif"], // body Text
