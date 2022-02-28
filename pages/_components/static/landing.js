@@ -30,16 +30,16 @@ const RepeatLanding = () => {
 
 			<div className="container max-w-screen-lg pb-20 m-auto text-lg text-repeat-black">
         <h3 className="font-bold text-4xl mt-4 mb-4">
-        	Latest report: The Climate Impact of Congressional Infrastructure and Budget Bills
+        	Latest report: Summary Report: The Climate Impact of Congressional Infrastructure and Budget Bills
         </h3>
         <div className="md:w-full py-6">
           <div className="flex flex-col md:flex-row h-full items-center">
-            <a href="/docs/REPEAT_Prelim_Report_Addendum_111221.pdf" target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
+            <a href="/docs/REPEAT_Summary_Report_022822.pdf" target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
               <img src="/images/summary-report.jpg" alt="" />
             </a>
             <div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
               <div className="block font-utopia pt-3">
-                <em><a href="/docs/REPEAT_Preliminary_Report_102021.pdf" target="_blank" rel="noreferrer noopener" className="primary-link">Download the REPEAT Project Summary Report</a> for details on the impact of recently enacted and pending policies on carbon dioxide emissions, clean energy and electric vehicle deployment, household energy costs, energy related jobs, air pollution and more. (This version, February 24, 2022.)</em>
+                <em><a href="/docs/REPEAT_Summary_Report_022822.pdf" target="_blank" rel="noreferrer noopener" className="primary-link">Download the REPEAT Project Summary Report</a> for details on the impact of recently enacted and pending policies on carbon dioxide emissions, clean energy and electric vehicle deployment, household energy costs, energy related jobs, air pollution and more. (This version, February 28, 2022.)</em>
               </div>
               <Link href="/reports">
 								<a href="/reports" className="text-sm font-bold inline-block pt-5 border-b-2 border-black">
