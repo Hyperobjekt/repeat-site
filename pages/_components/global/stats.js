@@ -1,19 +1,11 @@
 import React, { useEffect } from "react";
-import Link from "next/link";
 
 const Stats = ({ policy = {} }) => {
 	const stats = policy.stats ? policy.stats : [];
 	return (
 		<div>
-			<h3 className="font-bold text-2xl">
-				<Link href={`/policies/${policy.slug}`}>
-					<a className="text-black hover:text-repeat">
-						{policy ? policy.title : ""}
-					</a>
-				</Link>
-			</h3>
 			{stats.length ?
-				<div className="flex flex-wrap pt-6 pb-8">
+				<div className="flex flex-wrap">
 					{stats.map((stat, i) => (
 						<div key={i} className="flex-1 pb-5 sm:pb-0">
 							<div className="text-6xl font-bold font-utopia text-repeat-burnt">{stat.value}</div>

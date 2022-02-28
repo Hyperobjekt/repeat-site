@@ -25,7 +25,7 @@ const RepeatHero = ({ bgClasses = "", headerText, subheaderText, mode }) => {
 
   let coverClass = mode === "dark" ? `h-screen/1.3 ${bgClasses}` : `bg-fixed h-screen/1.5 md:h-screen/1.3 text-repeat-teal ${bgClasses}`;
   let headerClass = mode === "dark" ? "text-4xl md:text-6xl pb-8 font-extrabold font-obliqua text-white" : "text-4xl md:text-6xl pb-8 font-extrabold font-obliqua text-repeat-teal";
-  let subHeaderClass = mode === "dark" ? "text-md w-4/5 pb-3 text-xl font-utopia text-white" : "text-md w-4/5 pb-4 text-xl font-utopia text-repeat-burnt";
+  let subHeaderClass = mode === "dark" ? "w-4/5 pb-3 text-xl font-utopia text-white" : "w-4/5 pb-4 text-xl font-utopia text-repeat-burnt";
   return (
     <div className={coverClass} style={{ backgroundPositionY: `${bgTop}%` }}>
       <div className="container max-w-screen-lg h-full m-auto">

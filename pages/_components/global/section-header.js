@@ -12,7 +12,6 @@ const SectionHeader = ({ headerText, subheaderText }) => {
         </div>
       </div>
       <div className="flex pt-5 pr-4 font-medium font-utopia text-lg text-repeat-dark">
-        {/*<p>{subheaderText}</p>*/}
         <p dangerouslySetInnerHTML={{ __html: subheaderText }} />
       </div>
     </div>

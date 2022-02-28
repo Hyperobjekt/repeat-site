@@ -21,51 +21,36 @@ const RepeatPolicy = () => {
 			style={{ backgroundImage: `url(/images/backgrounds/${activePolicy.slug.includes("bbb") ? "policy" : activePolicy.slug}.jpg)` }}>
 			<RepeatHero headerText={activePolicy.title} subheaderText={activePolicy.subTitle} bg="" />
 			<div className="container max-w-screen-lg pb-8 m-auto">
-				{activePolicy.blocks ?
-					activePolicy.blocks.map((block, i) => {
-						if (block.type === "paragraph") {
-							return (
-								<div key={i} className="md:w-1/2 pb-5 text-lg text-repeat-black">
-									<p dangerouslySetInnerHTML={{ __html: block.content }}></p>
-								</div>
-							);
-						}
-						if (block.type === "stats") {
-							return (
-								<div key={i} className="md:w-full py-10">
-									<Stats policy={activePolicy} />
-								</div>
-							);
-						}
-						if (block.type === "slider") {
-							return (
-								activePolicy.slider ?
-									<div key={i} className="md:w-full pt-5 pb-10">
-										<div className="py-6 text-repeat-black rounded-xl">
-											<ImageCarousel policy={activePolicy} />
-										</div>
-									</div>
-								: null
-							);
-						}
-						if (block.type === "pillars") {
-							return (
-								activePolicy.pillars ?
-									<div key={i} className="md:w-full py-0">
-										<Pillars policy={activePolicy} />
-									</div>
-								: null
-							);
-						}
-						if (block.type === "heading") {
-							return (
-								<div key={i} className="md:w-1/2 pt-2">
-									<h3 className="font-bold text-repeat-teal text-3xl mb-5">{block.content}</h3>
-								</div>
-							);
-						}
-					})
+
+				{activePolicy.desc ?
+					<div className="md:w-1/2 pb-5 text-lg text-repeat-black">
+						<p dangerouslySetInnerHTML={{ __html: activePolicy.desc }} />
+					</div>
 				: null}
+
+				{activePolicy.footnote ?
+					<div className="md:w-1/2 pb-20 text-lg text-repeat-black italic">
+						<p dangerouslySetInnerHTML={{ __html: activePolicy.footnote }} />
+					</div>
+				: null}
+
+				{activePolicy.stats ?
+					<div className="pb-20">
+						<div className="md:w-1/2">
+							<h3 className="font-bold text-repeat-teal text-3xl mb-5">Policy Scorecard</h3>
+						</div>
+						<div className="md:w-full">
+							<Stats policy={activePolicy} />
+						</div>
+					</div>
+				: null}
+
+				{activePolicy.pillars ?
+					<div className="md:w-full py-0">
+						<Pillars policy={activePolicy} />
+					</div>
+				: null}
+
 			</div>
 			<div className="container max-w-screen-lg pb-10 m-auto">
 				<ExploreLoader canChangeCols={false} />
