@@ -13,7 +13,7 @@ const InTheMedia = () => {
         </div>  
         <div className="grid pt-6 grid-cols-1 md:grid-cols-3 gap-4 place-content-center">
 
-          {media.media.filter(m => m.featured).map((m,i) => {
+          {media.media.filter(m => m.featured).slice(0, 3).map((m,i) => {
             return(
               <div className="block" key={i}>
                 <a href={m.url} target="_blank" rel="noopener noreferrer" className="text-repeat-black hover:text-repeat-burnt">

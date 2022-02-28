@@ -37,7 +37,7 @@ const RepeatReports = () => {
 							<div className="md:w-full py-6">
 								<div className="flex flex-col md:flex-row h-full items-center">
 									<a href={`/docs/${report.pdf}`} target="_blank" rel="noreferrer noopener" className="block w-full md:w-3/5">
-										<img src={`/images/${report.image}`} alt="" />
+										<img src={`/images/reports/${report.image}`} alt="" />
 									</a>
 									<div className="w-full md:w-2/5 pl-0 md:pl-10 d-none">
 										<div className="block font-utopia pt-3 italic" dangerouslySetInnerHTML={{ __html: report.prompt }} />
