@@ -328,9 +328,9 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
         </div>
       : null}
 
-      {/*<div className="pt-12 relative z-30">
+      <div className="pt-12 relative z-30">
         <StateMenu />
-      </div>*/}
+      </div>
 
       <div className="py-8">
         {filters ? <CategoriesMenu filters={filters} /> : null}

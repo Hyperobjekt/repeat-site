@@ -24,8 +24,8 @@ const RepeatReports = () => {
 				</div>
 				<div className="container max-w-screen-lg pb-8 m-auto text-lg">
 
-					{reports.map(report => (
-						<div className="mt-24">
+					{reports.map((report, index) => (
+						<div key={index} className="mt-24">
 							<div className="md:w-3/5">
 								<h3 className="font-bold text-2xl mt-4 mb-6">
 									{report.title}
