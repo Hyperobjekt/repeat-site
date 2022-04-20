@@ -139,7 +139,8 @@ const ExploreLoader = ({ canChangeCols }) => {
 					) : (
 						<div className="w-full text-center py-10 px-20">
 							<div className="px-10 py-24 w-2/3 bg-repeat-light-blue m-auto rounded-xl">
-								<h2 className="text-2xl text-repeat">Sorry! This result is only available at the national level.</h2>
+								<h2 className="text-2xl text-repeat">Sorry! No matching data found.</h2>
+								{/*<h2 className="text-2xl text-repeat">Sorry! This result is only available at the national level.</h2>*/}
 								<h4 className="text-xl text-repeat-dark">Adjust the filters and try again.</h4>
 							</div>
 						</div>
