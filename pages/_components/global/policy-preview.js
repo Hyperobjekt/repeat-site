@@ -27,7 +27,7 @@ const PolicyPreview = ({ policy = {} }) => {
 			: null}
 
 			<div className="md:w-1/2 text-lg text-repeat-black">
-				<p className="pb-4" dangerouslySetInnerHTML={{ __html: policy.desc }} />
+				<p className="pb-4 policy-desc font-effra" dangerouslySetInnerHTML={{ __html: policy.desc }} />
 				<Link href={`/policies/${policy.slug}`}>
 					<a className="text-black hover:text-repeat">
 						<span className="inline-block align-middle leading-5 border-b-2 border-black hover:border-repeat">Read more</span>

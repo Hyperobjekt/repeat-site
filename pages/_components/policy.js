@@ -23,13 +23,13 @@ const RepeatPolicy = () => {
 			<div className="container max-w-screen-lg pb-8 m-auto">
 
 				{activePolicy.desc ?
-					<div className="md:w-1/2 pb-5 text-lg text-repeat-black">
+					<div className="md:w-1/2 pb-5 text-lg text-repeat-black font-effra">
 						<p dangerouslySetInnerHTML={{ __html: activePolicy.desc }} />
 					</div>
 				: null}
 
 				{activePolicy.footnote ?
-					<div className="md:w-1/2 pb-20 text-lg text-repeat-black italic">
+					<div className="md:w-1/2 pb-20 text-lg text-repeat-black italic font-effra">
 						<p dangerouslySetInnerHTML={{ __html: activePolicy.footnote }} />
 					</div>
 				: null}
@@ -37,7 +37,7 @@ const RepeatPolicy = () => {
 				{activePolicy.stats ?
 					<div className="pb-20">
 						<div className="md:w-1/2">
-							<h3 className="font-bold text-repeat-teal text-3xl mb-5">Policy Scorecard</h3>
+							<h3 className="font-bold font-obliqua text-repeat-teal text-3xl mb-5">Policy Scorecard</h3>
 						</div>
 						<div className="md:w-full">
 							<Stats policy={activePolicy} />

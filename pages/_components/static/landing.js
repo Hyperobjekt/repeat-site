@@ -14,7 +14,7 @@ const RepeatLanding = () => {
 		<React.Fragment>
 			<RepeatHero mode="dark" bgClasses="bg-home-cover bg-parallax bg-center-top bg-no-repeat" headerText="Data Driven Energy & Climate Policy Evaluation" subheaderText="Compiled by the Princeton ZERO Lab to put granular analysis in the hands of policy makers, media and the general public." />
 
-			<div className="container max-w-screen-lg pt-10 pb-20 m-auto text-lg text-repeat-black">
+			<div className="container max-w-screen-lg pt-10 pb-20 m-auto text-lg text-repeat-black font-effra">
 				<div className="md:w-3/5">
 					<p>
 						The REPEAT Project provides regular, timely, and independent environmental and economic evaluation of federal energy and climate policies as they’re proposed and enacted. From Congressional legislation to proposed regulations and executive actions, the REPEAT Project provides a detailed look at the United States’ evolving energy and climate policy environment and the country’s progress on the road to net-zero greenhouse gas emissions.
