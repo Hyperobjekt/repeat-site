@@ -107,7 +107,7 @@ const ExploreLoader = ({ canChangeCols }) => {
 	
 	return (
 		<div className="">
-			<h2 className="text-repeat-teal text-3xl font-bold mb-3">
+			<h2 className="text-repeat-teal font-obliqua text-3xl font-bold mb-3">
 				Examine the Data
 			</h2>
 			<p className="text-repeat-dark">
