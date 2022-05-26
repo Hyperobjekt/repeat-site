@@ -6,7 +6,9 @@
 			"url": "https://www.nytimes.com/2022/05/19/opinion/environment/build-back-better-joe-manchin.html",
 			"date": "May 21, 2022",
 			"source": "The New York Times",
-			"image": "nyt-5-21.jpg"
+			"image": "nyt-5-21.jpg",
+			"featured": true,
+			"logo": "nyt-logo.svg"
 		},
 		{
 			"title": "We Can’t Drill Our Way to Energy Security",
@@ -14,7 +16,9 @@
 			"url": "https://www.nytimes.com/2022/05/14/opinion/gas-prices-oil-renewable-energy-drilling.html",
 			"date": "May 14, 2022",
 			"source": "The New York Times",
-			"image": "nj-2-23-22.jpg"
+			"image": "nj-2-23-22.jpg",
+			"featured": true,
+			"logo": "nyt-logo.svg"
 		},
 		{
 			"title": "How Dems could transform electricity bills",
@@ -31,8 +35,7 @@
 			"date": "February 6, 2022",
 			"source": "The New York Times",
 			"image": "new-york-times.jpeg",
-			"logo": "nyt-logo.svg",
-			"featured": true
+			"logo": "nyt-logo.svg"
 		},
 		{
 			"title": "As spending bill stalls, Biden climate goals remain elusive",
