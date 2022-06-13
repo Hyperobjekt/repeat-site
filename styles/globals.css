@@ -37,6 +37,11 @@ nav p {
        url("/font-files/Forum-Regular.woff") format("woff2");
 }
 
+button[disabled] {
+  opacity: .5; 
+  cursor: default !important;
+}
+
 .bg-policy-background {
   background-size: 38%;
 }
