@@ -32,7 +32,7 @@ const RepeatMedia = () => {
 							</div>
 						</a>
 						{firstMedia.desc ?
-							<p className="md:text-lg text-repeat-black">
+							<p className="md:text-lg text-repeat-dark">
 								{firstMedia.desc}
 							</p>
 						: null}

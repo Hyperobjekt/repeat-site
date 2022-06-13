@@ -45,6 +45,10 @@ button[disabled] {
 .bg-policy-background {
   background-size: 38%;
 }
+.bg-policy-background a, .policy-desc a {
+  text-decoration: underline;
+  color: rgba(210,128,30,1);
+}
 .bg-home-cover {
   background-position: 67% bottom;
 }

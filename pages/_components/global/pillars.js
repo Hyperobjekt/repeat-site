@@ -8,7 +8,7 @@ const Pillars = ({ policy = [] }) => {
 			<div className="container max-w-screen-lg m-auto px-0 sm:px-0">
 
 				<div className="md:w-1/2 pt-2">
-					<h3 className="font-bold text-repeat-teal text-3xl mb-5">Pillars of Decarbonization</h3>
+					<h3 className="font-bold font-obliqua text-repeat-teal text-3xl mb-5">Pillars of Decarbonization</h3>
 					<p className="text-md">
 						The Princeton <a href="https://netzeroamerica.princeton.edu/" target="_blank" rel="noreferrer noopener">Net-Zero America</a> study highlights six key “Pillars of Decarbonization,” essential building blocks of a net-zero emissions U.S. economy. Here’s how the {policy.navTitle} impacts each of these six pillars.
 					</p>

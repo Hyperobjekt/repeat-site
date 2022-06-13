@@ -1,6 +1,22 @@
 { 
 	"media": [
 		{
+			"title": "The True Cost of the Climate Stalemate in Congress",
+			"desc": "How bad is the climate stalemate? In the United States, we have gotten used to legislative inaction, on climate as with much else. But even by those debased standards a failure to pass a major emissions-cutting bill this Congress would be, potentially, a generational setback — pushing hopes for paradigm-shifting legislation so far over the time horizon they effectively disappear.",
+			"url": "https://www.nytimes.com/2022/05/19/opinion/environment/build-back-better-joe-manchin.html",
+			"date": "May 21, 2022",
+			"source": "The New York Times",
+			"image": "nyt-5-21.jpg"
+		},
+		{
+			"title": "We Can’t Drill Our Way to Energy Security",
+			"desc": "",
+			"url": "https://www.nytimes.com/2022/05/14/opinion/gas-prices-oil-renewable-energy-drilling.html",
+			"date": "May 14, 2022",
+			"source": "The New York Times",
+			"image": "nj-2-23-22.jpg"
+		},
+		{
 			"title": "How Dems could transform electricity bills",
 			"desc": "",
 			"url": "https://www.nationaljournal.com/s/715898/how-dems-could-transform-electricity-bills/",
