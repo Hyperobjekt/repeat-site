@@ -36,6 +36,18 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
     "primary-energy",
   ];
 
+  const nationalSubCats = [
+    "wages-by-resource-sector",
+    "use-by-carrier",
+    "use-by-sector",
+    "wages-by-resource-sector",
+    "equipment-stocks-heavy-duty-trucks",
+    "generation-by-type",
+    "annual-capacity-additions",
+    "share-of-clean-generation",
+    "demand-by-use",
+  ];
+
   useEffect(async () => {
     let query = getQuery();
     let newFilters = await dispatch(loadFilters({ ...query }));
@@ -85,8 +97,6 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
     let newFilters = { ...filters, page: 1, usStates};
     let newApiQuery = { ...apiQuery, page: 1, state: state.slug };
 
-    let nationalSubCats = [];
-
     if(state !== "national") {
       newFilters.levelOneFilters.map(cat => {
         if(nationalCats.includes(cat.slug) && cat.active) {
@@ -97,7 +107,7 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
       });
 
       newFilters.levelTwoFilters.map(subCat => {
-        if(nationalCats.includes(subCat.levelOneSlug) && subCat.active) {
+        if((nationalCats.includes(subCat.levelOneSlug) || nationalSubCats.includes(subCat.slug)) && subCat.active) {
           toggleSubCategory({...subCat});
           subCat.active = false;
           nationalSubCats.push(subCat.slug);
@@ -304,7 +314,7 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
       });
 
     const isDisabled = (slug) => {
-      return activeState !== "national" && nationalCats.includes(slug);
+      return activeState !== "national" && (nationalCats.includes(slug) || nationalSubCats.includes(slug));
     };
 
     return (
@@ -344,6 +354,7 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
                       <button
                         key={i}
                         className={classNames(subcategory.class, "cursor-pointer")}
+                        disabled={isDisabled(subcategory.slug)}
                         onClick={() => {
                           toggleSubCategory(subcategory);
                         }}
