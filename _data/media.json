@@ -86,7 +86,9 @@
 			"url": "https://www.nytimes.com/2022/02/06/briefing/biden-democrats-climate-bill.html",
 			"date": "February 6, 2022",
 			"source": "The New York Times",
-			"image": "new-york-times.jpeg"
+			"image": "new-york-times.jpeg",
+			"logo": "nyt-logo.svg",
+			"featured": true
 		},
 		{
 			"title": "As spending bill stalls, Biden climate goals remain elusive",
@@ -207,7 +209,8 @@
 			"date": "October 28, 2021",
 			"source": "Washington Post",
 			"image": "washington-post.png",
-			"logo": "washpo-logo.svg"
+			"logo": "washpo-logo.svg",
+			"featured": true
 		},
 		{
 			"title": "Why climate advocates are happy with Biden's spending framework",
@@ -240,7 +243,8 @@
 			"date": "Oct 27, 2021",
 			"source": "Vox Media",
 			"image": "vox-media.png",
-			"logo": "vox-logo.svg"
+			"logo": "vox-logo.svg",
+			"featured": true
 		},
 		{
 			"title": "What's Left in the Democrats' Shrunken Spending Bill?",

@@ -22,9 +22,11 @@ const RepeatMedia = () => {
 					
 					<div className="pt-8">
 						<a href={firstMedia.url} target="_blank" rel="noopener noreferrer" className="block text-repeat-black hover:text-repeat-burnt">
-							<img src={`images/press/${firstMedia.image}`} className="w-2/3" alt="" />
+							{firstMedia.image ?
+								<img src={`images/press/${firstMedia.image}`} className="w-2/3" alt="" />
+							: null}
 
-							<div className="block text-xs pt-2 text-repeat-black">
+							<div className="block text-sm pt-2 text-repeat-black">
 								{firstMedia.date} &ndash; {firstMedia.source}
 							</div>
 							<div className="md:text-2xl py-2 font-black">
