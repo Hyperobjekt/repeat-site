@@ -43,7 +43,6 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
     "wages-by-resource-sector",
     "equipment-stocks-heavy-duty-trucks",
     "generation-by-type",
-    "annual-capacity-additions",
     "share-of-clean-generation",
     "demand-by-use",
   ];
