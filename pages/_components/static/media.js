@@ -16,7 +16,7 @@ const RepeatMedia = () => {
 			<div className="max-w-screen-lg m-auto relative z-10 -mt-40 text-repeat-black pb-24">
 				<div className="container subpages lg:w-3/4 bg-white rounded-tr-2xl border-t-4 border-repeat">
 					<h2 className="text-2xl md:text-5xl pt-8 font-extrabold font-obliqua">
-						The Repeat Project <br />
+						The REPEAT Project <br />
 						in the Media
 					</h2>
 					
