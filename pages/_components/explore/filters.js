@@ -26,6 +26,27 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
 
   const [isFilterDrawerOpen, toggleFilterDrawer] = useState(true);
 
+  // disable these if state is selected
+  const nationalCats = [
+    "capital-investments",
+    "co2",
+    "energy-expenditures",
+    "ghg-emissions",
+    "hydrogen",
+    "primary-energy",
+  ];
+
+  const nationalSubCats = [
+    "wages-by-resource-sector",
+    "use-by-carrier",
+    "use-by-sector",
+    "wages-by-resource-sector",
+    "equipment-stocks-heavy-duty-trucks",
+    "generation-by-type",
+    "share-of-clean-generation",
+    "demand-by-use",
+  ];
+
   useEffect(async () => {
     let query = getQuery();
     let newFilters = await dispatch(loadFilters({ ...query }));
@@ -74,6 +95,33 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
     let usStates = [...filters.usStates].map((usstate) => ({ ...usstate, active: usstate.slug === state.slug }));
     let newFilters = { ...filters, page: 1, usStates};
     let newApiQuery = { ...apiQuery, page: 1, state: state.slug };
+
+    if(state !== "national") {
+      newFilters.levelOneFilters.map(cat => {
+        if(nationalCats.includes(cat.slug) && cat.active) {
+          toggleCategory({...cat});
+          cat.active = false;
+        }
+        return cat;
+      });
+
+      newFilters.levelTwoFilters.map(subCat => {
+        if((nationalCats.includes(subCat.levelOneSlug) || nationalSubCats.includes(subCat.slug)) && subCat.active) {
+          toggleSubCategory({...subCat});
+          subCat.active = false;
+          nationalSubCats.push(subCat.slug);
+        }
+        return subCat;
+      });
+
+      newApiQuery.category = newApiQuery.category ?
+        newApiQuery.category.filter(cat => !nationalCats.includes(cat))
+      : [];
+
+      newApiQuery.subcategory = newApiQuery.subcategory ?
+        newApiQuery.subcategory.filter(cat => !nationalSubCats.includes(cat))
+      : [];
+    }
     dispatch(loadFilterAction(newFilters));
     dispatch(loadScenarios(newApiQuery));
     setActiveState(state.slug);
@@ -263,6 +311,11 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
         sub.visible = !!categories.filter((e) => e.slug === sub.levelOneSlug).filter((e) => e.active).length;
         return sub;
       });
+
+    const isDisabled = (slug) => {
+      return activeState !== "national" && (nationalCats.includes(slug) || nationalSubCats.includes(slug));
+    };
+
     return (
       <>
         <Collapse
@@ -277,16 +330,17 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
             key="1">
             <div className="py-2">Category</div>
             <div className="block pt-3 px-3">
-              {categories.map((category) => (
-                <div
+              {categories.map((category) => {
+                return <button
                   key={category.slug}
                   className={classNames(category.class, "cursor-pointer")}
+                  disabled={isDisabled(category.slug)}
                   onClick={() => {
                     toggleCategory(category);
                   }}>
                   {category.label}
-                </div>
-              ))}
+                </button>
+              })}
             </div>
 
             {subcategories.filter(sub => sub.visible).length ?
@@ -296,15 +350,16 @@ const ExploreFilters = ({ filters, policy, setFilterClasses, updatePolicy, canCh
                   {subcategories
                     .filter((sub) => sub.visible)
                     .map((subcategory, i) => (
-                      <div
+                      <button
                         key={i}
                         className={classNames(subcategory.class, "cursor-pointer")}
+                        disabled={isDisabled(subcategory.slug)}
                         onClick={() => {
                           toggleSubCategory(subcategory);
                         }}
                       >
                         {subcategory.label}
-                      </div>
+                      </button>
                     ))}
                 </div>
               </>

@@ -16,15 +16,17 @@ const RepeatMedia = () => {
 			<div className="max-w-screen-lg m-auto relative z-10 -mt-40 text-repeat-black pb-24">
 				<div className="container subpages lg:w-3/4 bg-white rounded-tr-2xl border-t-4 border-repeat">
 					<h2 className="text-2xl md:text-5xl pt-8 font-extrabold font-obliqua">
-						The Repeat Project <br />
+						The REPEAT Project <br />
 						in the Media
 					</h2>
 					
 					<div className="pt-8">
 						<a href={firstMedia.url} target="_blank" rel="noopener noreferrer" className="block text-repeat-black hover:text-repeat-burnt">
-							<img src={`images/press/${firstMedia.image}`} className="w-2/3" alt="" />
+							{firstMedia.image ?
+								<img src={`images/press/${firstMedia.image}`} className="w-2/3" alt="" />
+							: null}
 
-							<div className="block text-xs pt-2 text-repeat-black">
+							<div className="block text-sm pt-2 text-repeat-black">
 								{firstMedia.date} &ndash; {firstMedia.source}
 							</div>
 							<div className="md:text-2xl py-2 font-black">
