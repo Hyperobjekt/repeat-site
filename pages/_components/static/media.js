@@ -8,7 +8,8 @@ const { policies } = require("../../../_data/policies.json");
 const { media } = require("../../../_data/media.json");
 
 const RepeatMedia = () => {
-	const firstMedia = media[0];
+	const top = media.slice(0,3);
+	const rest = media.slice(3);
 	return (
 		<React.Fragment>
 			<RepeatHero bgClasses="bg-media-cover bg-parallax bg-center-top bg-no-repeat" />
@@ -21,38 +22,39 @@ const RepeatMedia = () => {
 					</h2>
 					
 					<div className="pt-8">
-						<a href={firstMedia.url} target="_blank" rel="noopener noreferrer" className="block text-repeat-black hover:text-repeat-burnt">
-							{firstMedia.image ?
-								<img src={`images/press/${firstMedia.image}`} className="w-2/3" alt="" />
-							: null}
-
-							<div className="block text-sm pt-2 text-repeat-black">
-								{firstMedia.date} &ndash; {firstMedia.source}
+						{top.map((m, i) => (
+							<div className="mb-8" key={i}>
+								<div className="block text-sm pt-2 text-repeat-black">
+									{m.date} &ndash; {m.source}
+								</div>
+								<a href={m.url} target="_blank" rel="noopener noreferrer" className="block text-repeat-black hover:text-repeat-burnt">
+									{/*{firstMedia.image ?
+										<img src={`images/press/${firstMedia.image}`} className="w-2/3" alt="" />
+									: null}*/}
+									<div className="md:text-2xl py-2 font-black">
+										{m.title}
+									</div>
+								</a>
+								{m.desc ?
+									<p className="md:text-lg text-repeat-dark">
+										{m.desc}
+									</p>
+								: null}
 							</div>
-							<div className="md:text-2xl py-2 font-black">
-								{firstMedia.title}
-							</div>
-						</a>
-						{firstMedia.desc ?
-							<p className="md:text-lg text-repeat-dark">
-								{firstMedia.desc}
-							</p>
-						: null}
+						))}
 					</div>
 
 
-					{media.map((m, i) => {
+					{rest.map((m, i) => {
 						return (
-							i > 0 ?
-								<div className="pt-6" key={i}>
-									<div className="block text-sm pt-2">
-										{m.date} &ndash; {m.source}
-									</div>
-									<a href={m.url} className="font-semibold text-lg pt-2 text-repeat-black hover:text-repeat-burnt" target="_blank" rel="noreferrer noopener">
-										{m.title}
-									</a>
+							<div className="mt-6" key={i}>
+								<div className="block text-sm pt-2">
+									{m.date} &ndash; {m.source}
 								</div>
-							: null
+								<a href={m.url} className="font-semibold text-lg pt-2 text-repeat-black hover:text-repeat-burnt" target="_blank" rel="noreferrer noopener">
+									{m.title}
+								</a>
+							</div>
 						);
 					})}
 			 
