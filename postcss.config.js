@@ -6,7 +6,6 @@ if (process.env.NODE_ENV != "development") {
     {
       content: [
         "./pages/**/*.{js,jsx,ts,tsx}",
-        "./components/**/*.{js,jsx,ts,tsx}",
       ],
       safelist: [
         "text-gray-500",
@@ -23,7 +22,7 @@ if (process.env.NODE_ENV != "development") {
         "opacity-25",
         /^ant-/
       ],
-      defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || [],
+      defaultExtractor: (content) => content.match(/[\w-/.:]+(?<!:)/g) || []
     },
   ]);
 }

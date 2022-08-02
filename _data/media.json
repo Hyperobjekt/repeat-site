@@ -1,0 +1,415 @@
+{ 
+	"media": [
+		{
+			"title": "How the New Climate Bill Would Reduce Emissions",
+			"desc": "The bill’s big tax incentives for low-carbon technologies could allow the country to cut its greenhouse gas emissions by about 40 percent below 2005 levels by the end of this decade.",
+			"url": "https://www.nytimes.com/interactive/2022/08/02/climate/manchin-deal-emissions-cuts.html",
+			"date": "August 2, 2022",
+			"source": "New York Times",
+			"image": "nyt-8-2-22.jpg",
+			"logo": "nyt-logo.svg",
+			"featured": true
+		},
+		{
+			"title": "Congress Democrats appear ready to pass new legislation with focus on climate change",
+			"desc": "Democrats in Congress look ready to pass new legislation with significant climate change elements that push the country closer to President Biden's goals.",
+			"url": "https://www.npr.org/2022/07/28/1114375568/congress-democrats-appear-ready-to-pass-new-legislation-with-focus-on-climate-ch",
+			"date": "July 28, 2022",
+			"source": "NPR All Things Considered",
+			"image": "npr-7-28-22.jpg",
+			"logo": "npr-logo.svg",
+			"featured": true
+		},
+		{
+			"title": "Manchin and Schumer’s Astonishing Climate Deal",
+			"desc": "If passed, the energy provisions of the senators’ new bill would represent the most significant climate action in a generation.",
+			"url": "https://www.theatlantic.com/science/archive/2022/07/manchin-schumer-inflation-reduction-climate/670981/",
+			"date": "July 28, 2022",
+			"source": "The Atlantic",
+			"image": "atlantic-7-28-22.jpg",
+			"logo": "atlantic-logo.svg",
+			"featured": true
+		},
+		{
+			"title": "Surprise climate bill will meet ambitious goal of 40% cut in U.S. emissions, energy models predict",
+			"desc": "",
+			"url": "https://www.science.org/content/article/surprise-climate-bill-will-meet-ambitious-goal-40-cut-us-emissions-energy-models",
+			"date": "August 1, 2022",
+			"source": "Science",
+			"image": ""
+		},
+
+		{
+			"title": "The climate bill won’t stop global warming. But it will clean the air.",
+			"desc": "",
+			"url": "https://www.washingtonpost.com/climate-environment/2022/08/01/climate-bill-wont-stop-global-warming-it-will-clean-air/",
+			"date": "August 1, 2022",
+			"source": "Washington Post",
+			"image": ""
+		},
+		
+		{
+			"title": "Surprise Deal Would Be Most Ambitious Climate Action Undertaken by U.S",
+			"desc": "",
+			"url": "https://www.nytimes.com/2022/07/28/climate/climate-change-deal-manchin.html",
+			"date": "July 28, 2022",
+			"source": "New York Times",
+			"image": ""
+		},
+		{
+			"title": "Climate experts experience an odd sensation after the Manchin budget deal: optimism",
+			"desc": "",
+			"url": "https://www.npr.org/2022/07/29/1114216967/climate-experts-experience-an-odd-sensation-after-the-manchin-budget-deal-optimi",
+			"date": "July 29, 2022",
+			"source": "NPR All Things Considered",
+			"image": ""
+		},
+		{
+			"title": "How Manchin-Schumer would change energy, from oil to solar",
+			"desc": "",
+			"url": "https://www.eenews.net/articles/how-manchin-schumer-would-change-energy-from-oil-to-solar/",
+			"date": "July 29, 2022",
+			"source": "E&E News",
+			"image": ""
+		},
+		{
+			"title": "'Inflation Reduction Act': What you need to know about major effort to fight climate change",
+			"desc": "",
+			"url": "https://www.usatoday.com/story/news/2022/07/28/whats-inflation-bill-manchins-reversed-attempt-fight-climate-change/10175099002/",
+			"date": "July 28, 2022",
+			"source": "USA Today",
+			"image": ""
+		},
+		{
+			"title": "What to Know About the New Climate Deal",
+			"desc": "",
+			"url": "https://www.thecut.com/2022/07/what-to-know-about-the-new-climate-deal.html",
+			"date": "July 28, 2022",
+			"source": "The Cut",
+			"image": ""
+		},
+		{
+			"title": "Joe Manchin surprises everyone",
+			"desc": "",
+			"url": "https://www.protocol.com/newsletters/climate/europe-climate-vc-startups?rebelltitem=1#rebelltitem1",
+			"date": "July 28, 2022",
+			"source": "Protocol",
+			"image": ""
+		},
+		{
+			"title": "Senate Deal’s ‘Huge’ Carbon Cuts Would Keep US Climate Goals Alive",
+			"desc": "",
+			"url": "https://www.bloomberg.com/news/articles/2022-07-28/senate-deal-puts-us-back-in-climate-fight-with-huge-emissions-cuts",
+			"date": "July 28, 2022",
+			"source": "Bloomberg",
+			"image": ""
+		},
+		{
+			"title": "Opinion: The huge, hidden bonanza in getting Joe Manchin to yes",
+			"desc": "",
+			"url": "https://www.washingtonpost.com/opinions/2022/07/28/how-joe-manchin-got-yes-why-that-holds-hidden-promise/",
+			"date": "July 28, 2022",
+			"source": "Washington Post",
+			"image": ""
+		},
+		{
+			"title": "Here are the biggest technology wins in the breakthrough climate bill",
+			"desc": "",
+			"url": "https://www.technologyreview.com/2022/07/28/1056531/technology-wins-breakthrough-climate-bill/",
+			"date": "July 28, 2022",
+			"source": "MIT Technology Review",
+			"image": ""
+		},
+		{
+			"title": "Senate deal could be most significant climate bill yet",
+			"desc": "",
+			"url": "https://www.washingtonpost.com/climate-environment/2022/07/28/senate-manchin-climate-deal/",
+			"date": "July 28, 2022",
+			"source": "Washington Post",
+			"image": ""
+		},
+		{
+			"title": "New life for climate legislation",
+			"desc": "",
+			"url": "https://www.axios.com/2022/07/28/new-life-for-climate-legislation",
+			"date": "July 28, 2022",
+			"source": "Axios",
+			"image": ""
+		},
+		{
+			"title": "Nuclear option? What’s next for ‘clean’ hydrogen",
+			"desc": "",
+			"url": "https://www.eenews.net/articles/nuclear-option-whats-next-for-clean-hydrogen/",
+			"date": "July 27, 2022",
+			"source": "E&E News",
+			"image": ""
+		},
+		{
+			"title": "Budget hawks, energy experts challenge Manchin's claims that climate spending would worsen inflation",
+			"desc": "",
+			"url": "https://www.wvgazettemail.com/news/energy_and_environment/budget-hawks-energy-experts-challenge-manchins-claims-that-climate-spending-would-worsen-inflation/article_45724a44-efef-5eed-8034-d3d294d07518.html",
+			"date": "July 23, 2022",
+			"source": "Charleston Gazette-Mail",
+			"image": ""
+		},
+		{
+			"title": "Sen. Joe Manchin pulled the plug on major spending to address climate change",
+			"desc": "",
+			"url": "https://www.npr.org/2022/07/15/1111771318/sen-joe-manchin-pulled-the-plug-on-major-spending-to-address-climate-change",
+			"date": "July 15, 2022",
+			"source": "NPR",
+			"image": ""
+		},
+		{
+			"title": "Energy & Environment —A Wrench Is Thrown Into the Climate Deal By Manchin",
+			"desc": "",
+			"url": "https://www.enviro360.com/daily-news/energy-environment-a-wrench-is-thrown-into-the-climate-deal-by-manchin/731/",
+			"date": "July 16, 2022",
+			"source": "Enviro360",
+			"image": ""
+		},
+		{
+			"title": "Joe Manchin Plays the Role of Wrecker, Again",
+			"desc": "",
+			"url": "https://www.newyorker.com/news/our-columnists/joe-manchin-plays-the-role-of-wrecker-again",
+			"date": "July 15, 2022",
+			"source": "The New Yorker",
+			"image": ""
+		},
+		{
+			"title": "President Biden’s Climate Ambitions Are All But Dead",
+			"desc": "",
+			"url": "https://finance.yahoo.com/news/president-biden-climate-ambitions-dead-141443715.html",
+			"date": "July 15, 2022",
+			"source": "Yahoo Finance",
+			"image": ""
+		},
+		{
+			"title": "Manchin’s decision provokes fury over potential for warmer world",
+			"desc": "",
+			"url": "https://thehill.com/policy/energy-environment/3561864-manchins-decision-provokes-fury-over-potential-for-warmer-world/",
+			"date": "July 15, 2022",
+			"source": "The Hill",
+			"image": ""
+		},
+		{
+			"title": "The U.S. plan to avoid extreme climate change is running out of time",
+			"desc": "",
+			"url": "https://www.washingtonpost.com/climate-environment/2022/07/18/climate-change-manchin-math/",
+			"date": "uly 18, 2022",
+			"source": "Washington Post",
+			"image": ""
+		},
+		{
+			"title": "Whatever This Is, It Won’t Be Build Back Better",
+			"desc": "",
+			"url": "https://www.theatlantic.com/science/archive/2022/07/climate-bill-manchin-last-chance/670503/",
+			"date": "July 13, 2022",
+			"source": "The Atlantic",
+			"image": ""
+		},
+		{
+			"title": "The True Cost of the Climate Stalemate in Congress",
+			"desc": "How bad is the climate stalemate? In the United States, we have gotten used to legislative inaction, on climate as with much else. But even by those debased standards a failure to pass a major emissions-cutting bill this Congress would be, potentially, a generational setback — pushing hopes for paradigm-shifting legislation so far over the time horizon they effectively disappear.",
+			"url": "https://www.nytimes.com/2022/05/19/opinion/environment/build-back-better-joe-manchin.html",
+			"date": "May 21, 2022",
+			"source": "The New York Times",
+			"image": "nyt-5-21.jpg",
+			"featured": true,
+			"logo": "nyt-logo.svg"
+		},
+		{
+			"title": "We Can’t Drill Our Way to Energy Security",
+			"desc": "",
+			"url": "https://www.nytimes.com/2022/05/14/opinion/gas-prices-oil-renewable-energy-drilling.html",
+			"date": "May 14, 2022",
+			"source": "The New York Times",
+			"image": "nj-2-23-22.jpg",
+			"featured": true,
+			"logo": "nyt-logo.svg"
+		},
+		{
+			"title": "How Dems could transform electricity bills",
+			"desc": "",
+			"url": "https://www.nationaljournal.com/s/715898/how-dems-could-transform-electricity-bills/",
+			"date": "February 23, 2022",
+			"source": "National Journal",
+			"image": "nj-2-23-22.jpg"
+		},
+		{
+			"title": "A Climate Opportunity",
+			"desc": "",
+			"url": "https://www.nytimes.com/2022/02/06/briefing/biden-democrats-climate-bill.html",
+			"date": "February 6, 2022",
+			"source": "The New York Times",
+		},
+		{
+			"title": "As spending bill stalls, Biden climate goals remain elusive",
+			"desc": "",
+			"url": "https://apnews.com/article/climate-joe-biden-science-technology-business-b3bc2a5930b28dfcf1134879f86c131e",
+			"date": "January 8, 2022",
+			"source": "AP News",
+			"image": "ap-2-8-22.jpg"
+		},
+		{
+			"title": "Even coal miners want Build Back Better to pass",
+			"desc": "",
+			"url": "https://www.popsci.com/environment/coal-miners-build-back-better/",
+			"date": "December 23, 2021",
+			"source": "Popular Science",
+			"image": "pop-sci-12-23-21.jpg"
+		},
+		{
+			"title": "Why the collapse of Biden's Build Back Better would be a major blow to the climate fight",
+			"desc": "",
+			"url": "https://www.theguardian.com/us-news/2021/dec/22/joe-biden-build-back-better-climate-crisis-consequences",
+			"date": "December 22, 2021",
+			"source": "The Guardian",
+			"image": "guardian-12-22-21.jpg"
+		},
+		{
+			"title": "We're Heading Toward a Very American Climate Tragedy",
+			"desc": "",
+			"url": "https://www.theatlantic.com/science/archive/2021/12/joe-biden-joe-manchin-climate-deal/621092/",
+			"date": "December 22, 2021",
+			"source": "The Atlantic",
+			"image": "atlantic-12-22-21.jpg"
+		},
+		{
+			"title": "After Build Back Better, here's how the US can still clean up its power grid",
+			"desc": "",
+			"url": "https://www.theverge.com/2021/12/21/22848603/democrats-build-back-better-bill-clean-energy-power-grid-manchin",
+			"date": "December 21, 2021",
+			"source": "The Verge",
+			"image": ""
+		},
+		{
+			"title": "'We really don't have a plan': Biden's climate promises are sunk without Build Back Better, experts say",
+			"desc": "",
+			"url": "https://www.cnn.com/2021/12/21/politics/biden-climate-goals-build-back-better/index.html",
+			"date": "December 21, 2021",
+			"source": "CNN",
+			"image": ""
+		},
+		{
+			"title": "What the Stalled Build Back Better Bill Means for Climate, in One Chart",
+			"desc": "",
+			"url": "https://www.nytimes.com/interactive/2021/12/21/climate/manchin-climate-change-build-back-better.html",
+			"date": "December 21, 2021",
+			"source": "The New York Times",
+			"image": ""
+		},
+		{
+			"title": "Visualizing the climate stakes of Build Back Better's downfall",
+			"desc": "",
+			"url": "https://www.axios.com/visualizing-stakes-build-back-better-20eb1880-1c94-498b-8b0c-0a47a269e56a.html",
+			"date": "December 21, 2021",
+			"source": "Axios",
+			"image": ""
+		},
+		{
+			"title": "Can innovation save Biden's push for 100% clean grid?",
+			"desc": "",
+			"url": "https://www.eenews.net/articles/can-innovation-save-bidens-push-for-100-clean-grid/",
+			"date": "December 21, 2021",
+			"source": "E&E News",
+			"image": ""
+		},
+		{
+			"title": "How the Biden climate agenda could be rescued after Manchin stunner",
+			"desc": "",
+			"url": "https://www.axios.com/biden-climate-policy-manchin-build-back-better-27ee45c1-1171-47f5-9b2a-7d05eb6bf6fc.html",
+			"date": "December 20, 2021",
+			"source": "Axios",
+			"image": ""
+		},
+		{
+			"title": "The stalled presidenc: Why Joe Biden’s woes threaten calamity for the Democrats and the US republic.",
+			"desc": "",
+			"url": "https://www.newstatesman.com/world/americas/north-america/us/2021/12/the-stalled-presidency",
+			"date": "December 17, 2021",
+			"source": "The New Statesman",
+			"image": ""
+		},
+		{
+			"title": "What Biden's $2-trillion spending bill could mean for climate change",
+			"desc": "",
+			"url": "https://www.nature.com/articles/d41586-021-03787-7",
+			"date": "December 17, 2021",
+			"source": "Nature",
+			"image": ""
+		},
+		{
+			"title": "Climate Actions in New Law Are Merely a Down Payment",
+			"desc": "",
+			"url": "https://www.bloomberg.com/news/articles/2021-11-16/climate-actions-in-new-law-are-merely-a-down-payment",
+			"date": "November 16, 2021",
+			"source": "Bloomberg",
+			"image": ""
+		},
+		{
+			"title": "What the $1.2 trillion infrastructure bill means for climate change",
+			"desc": "",
+			"url": "https://www.axios.com/infrastructure-bill-climate-change-clean-energy-8b4403e4-b25c-4128-99ea-b2a5069883f3.html",
+			"date": "November 8, 2021",
+			"source": "Axios",
+			"image": ""
+		},
+		{
+			"title": "Biden's Economic Plan Cuts U.S. Emissions By More Than a Gigaton",
+			"desc": "",
+			"url": "https://www.bloomberg.com/news/articles/2021-10-28/biden-s-build-back-better-plan-compromises-on-much-but-not-carbon-emissions",
+			"date": "October 28, 2021",
+			"source": "Bloomberg",
+			"image": ""
+		},
+		{
+			"title": "New budget deal marks the biggest climate investment in U.S. history",
+			"desc": "",
+			"url": "https://www.washingtonpost.com/climate-environment/2021/10/28/climate-biden-build-back-better/",
+			"date": "October 28, 2021",
+			"source": "Washington Post",
+			"image": "washington-post.png"
+		},
+		{
+			"title": "Why climate advocates are happy with Biden's spending framework",
+			"desc": "",
+			"url": "https://theweek.com/climate-change/1006549/climate-change-measures-in-biden-framework",
+			"date": "October 28, 2021",
+			"source": "The Week",
+			"image": ""
+		},
+		{
+			"title": "Framework's climate elements may keep emissions goals in reach",
+			"desc": "",
+			"url": "https://www.rollcall.com/2021/10/28/frameworks-climate-elements-may-keep-emissions-goals-in-reach/",
+			"date": "October 28, 2021",
+			"source": "Roll Call",
+			"image": ""
+		},
+		{
+			"title": "There Are at Least Two Extremely Good Things to Celebrate in Biden's New Build Back Better Plan",
+			"desc": "",
+			"url": "https://slate.com/business/2021/10/biden-build-back-better-climate-child-poverty-tax-credit.html",
+			"date": "October 28, 2021",
+			"source": "Slate",
+			"image": ""
+		},
+		{
+			"title": "Biden's Plan B for the climate crisis, explained",
+			"desc": "It's not too late for Democrats to go big on climate change. But it won't be easy, and there's no margin for error.",
+			"url": "https://www.vox.com/22738414/democrats-manchin-climate-reconciliation-plan-b",
+			"date": "Oct 27, 2021",
+			"source": "Vox Media",
+			"image": "vox-media.png"
+		},
+		{
+			"title": "What's Left in the Democrats' Shrunken Spending Bill?",
+			"desc": "",
+			"url": "https://www.newyorker.com/news/our-columnists/whats-left-in-the-democrats-shrunken-spending-bill",
+			"date": "October 25, 2021",
+			"source": "The New Yorker",
+			"image": ""
+		}
+	]
+}

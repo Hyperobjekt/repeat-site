@@ -1,7 +1,7 @@
 const ObjectId = require("mongodb").ObjectId;
 const pluralize = require("pluralize");
 
-module.exports = (db, schema, collection, query = {}, skip = 0, limit = 20, sort, populate) => {
+module.exports = (db, schema, collection, query = {}, skip = 0, limit = 25, sort, populate) => {
   Object.keys(query).forEach((key) => {
     if (key.includes("_ids")) console.trace("TODO...");
     if (key.includes("_id") && !key.includes("_ids")) query[key] = ObjectId(query[key]);

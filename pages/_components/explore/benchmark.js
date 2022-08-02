@@ -2,204 +2,310 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import { ChevronRight, ChevronLeft } from 'react-bootstrap-icons'
+const { policies } = require("../../../_data/policies.json");
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
+	return classes.filter(Boolean).join(" ");
 }
-export const BenchmarkTable = ({ tableData, filters, reloading }) => {
-  const [vsWith, setVsWith] = useState("NZAP"); // CURRENT | NZAP
-  const [diffType, setDiffType] = useState("ABSOLUTE");
-  const [fromPos, setFromPos] = useState("left");
-  const [toPos, setToPos] = useState("right");
 
-  const toggleVs = () => {
-    setVsWith(vsWith === "NZAP" ? "CURRENT" : "NZAP");
-    setFromPos(fromPos === "left" ? "right" : "left");
-    setToPos(toPos === "right" ? "left" : "right");
-  };
+export const BenchmarkTable = ({ policy, tableData, filters, reloading }) => {
+	const [vsWith, setVsWith] = useState("LEFT"); // LEFT || RIGHT
+	const [diffType, setDiffType] = useState("ABSOLUTE"); // ABSOLUTE || PERCENT
+	const [fromPos, setFromPos] = useState("right");
+	const [toPos, setToPos] = useState("left");
+	const [leftPol, setLeftPol] = useState(null);
+	const [rightPol, setRightPol] = useState(null);
+	const activePolicy = policy || {};
 
-  const getCatColor = (category) => {
-    let filteredCategory = filters.levelOneFilters.filter((cat) => cat.label === category);
-    return filteredCategory.length ? filteredCategory[0].color : "";
-  };
+	useEffect(() => {
+		setLeftPol(activePolicy.slug !== "frozen" ? "frozen" : policies.find(p => p.slug !== "frozen" && p.slug !== activePolicy.slug).slug); //frozen = Frozen
+		setRightPol(activePolicy.slug !== "net-zero" ? "net-zero" : policies.find(p => p.slug !== "net-zero" && p.slug !== activePolicy.slug).slug); //net-zero = Net Zero
+	}, [policy]);
 
-  const getColColor = (position) => {
-    return position === vsWith ? "" : "text-repeat-gray";
-  };
+	const toggleVs = () => {
+		setVsWith(vsWith === "RIGHT" ? "LEFT" : "RIGHT");
+		setFromPos(fromPos === "left" ? "right" : "left");
+		setToPos(toPos === "right" ? "left" : "right");
+	};
 
-  const updateDiff = (diff) => {
-    setDiffType(diff);
-  };
+	const getCatColor = (category) => {
+		let filteredCategory = filters.levelOneFilters.filter((cat) => cat.label === category);
+		return filteredCategory.length ? filteredCategory[0].color : "";
+	};
 
-  const calculateDelta = (repeatValue, vsValue, year) => {
-    let r = Number(repeatValue[year]),
-        v = Number(vsValue ? vsValue[year] : 0);
-    if (diffType === "ABSOLUTE") return formatDelta((r - v));
-    if (diffType === "PERCENT") return formatDelta((((r - v) / v) * 100))+"%";
-  };
+	const getColColor = (position) => {
+		return position === vsWith ? "" : "text-repeat-gray";
+	};
 
-  const formatDelta = (delta) => {
-    delta = Number(delta);
-    if(isNaN(delta) || !isFinite(delta)) delta = (0).toFixed(2);
-    else if(Math.abs(delta) >= 100) delta = delta.toFixed(0);
-    else if(Math.abs(delta) >= 10) delta = delta.toFixed(1);
-    else if(Math.abs(delta) >= 1) delta = delta.toFixed(2);
-    else delta = delta.toFixed(2);
-    if(Number(delta) === 0) delta = (0).toFixed(2);
-    if(Number(delta) >= 0) delta = `+${delta}`;
-    return delta;
-  };
+	const updateDiff = (diff) => {
+		setDiffType(diff);
+	};
 
-  return (
-    <div id="tableContainer__shell" className="container mt-4 relative m-auto w-full pt-8 pb-4 font-effra transition-colors duration-300 ease-in-out">
-      <div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
+	const calculateDelta = (repeatValue, vsValue, year) => {
+		let r = repeatValue && !isNaN(repeatValue[year]) ? Number(repeatValue[year]) : "",
+				v = vsValue && !isNaN(vsValue[year]) ? Number(vsValue[year]) : "";
+		if (diffType === "ABSOLUTE") return r !== "" && v !== "" ? formatDelta((r - v)) : "";
+		if (diffType === "PERCENT") return r !== "" && v !== "" ? formatDelta((((r - v) / v) * 100))+"%" : "";
+	};
 
-      <div className="absolute z-10 vs--left text-center">
-        <button className="w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-right-btn"
-                disabled={vsWith === "CURRENT"}
-                onClick={() => toggleVs()}><ChevronLeft className="mr-2" /> VS.</button>
-      </div>
+	const formatDelta = (delta) => {
+		delta = Number(delta);
+		if(!isFinite(delta)) delta = 0;
+		else if(Math.abs(delta) >= 100) delta = delta.toFixed(0);
+		else if(Math.abs(delta) >= 10) delta = delta.toFixed(1);
+		else if(Math.abs(delta) >= 1) delta = delta.toFixed(2);
+		else delta = delta.toFixed(2);
+		if(Number(delta) === 0) delta = (0).toFixed(2);
+		if(Number(delta) >= 0) delta = `+${delta}`;
+		return delta;
+	};
 
-      <div className="absolute z-10 vs--right text-center">
-        <button className="w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black vs-left-btn"
-                disabled={vsWith === "NZAP"}
-                onClick={() => toggleVs()}>VS. <ChevronRight className="ml-2" /></button>
-      </div>
+	function classNames(...classes) {
+		return classes.filter(Boolean).join(" ");
+	}
 
-      <div className={`absolute z-10 pt-7 vs--${toPos} text-center`}>
-        <div className="block pt-3 pb-2">Show difference as</div>
-        <div className="block text-center">
-          <button
-            onClick={() => {
-              updateDiff("ABSOLUTE");
-            }}
-            className={`${diffType === "ABSOLUTE" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md`}
-          >
-            Absolute
-          </button>
-          <button
-            onClick={() => {
-              updateDiff("PERCENT");
-            }}
-            className={`${diffType === "PERCENT" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md`}
-          >
-            Percent
-          </button>
-        </div>
-      </div>
+	const PolicySelect = ({ position }) => {
+		let policySlug, otherPolicySlug, onClick, menuItemsClasses;
 
-      <table className="table-fixed w-full relative border-collapse">
-        <thead className="text-left">
-          <tr className="table w-full table-fixed text-base tracking-wide	">
-            <th className="p-2" colSpan="2">
-              Category
-            </th>
-            <th className={`p-2 ${getColColor("CURRENT")}`} colSpan="3">
-              Frozen Policy
-            </th>
-            <th className="p-2" colSpan="3">
-              {tableData ? tableData[0].policy : "REPEAT"} Policy
-            </th>
-            <th className={`p-2 ${getColColor("NZAP")}`} colSpan="2">
-              Net Zero
-            </th>
-          </tr>
-          <tr className="table w-full table-fixed text-base tracking-wide	">
-            <th className="px-2 pt-8 pb-3" colSpan="2"></th>
-            <th className={`px-2 pt-8 pb-3 ${getColColor("CURRENT")}`}>2030</th>
-            <th className={`px-2 pt-8 pb-3 ${getColColor("CURRENT")}`} colSpan="2">2050</th>
-            <th className="px-2 pt-8 pb-3">2030</th>
-            <th className="px-2 pt-8 pb-3" colSpan="2">2050</th>
-            <th className={`px-2 pt-8 pb-3 ${getColColor("NZAP")}`}>2030</th>
-            <th className={`px-2 pt-8 pb-3 ${getColColor("NZAP")}`}>2050</th>
-          </tr>
-        </thead>
-        <tbody className={`w-full max-h-96 overflow-auto block text-sm transition-opacity duration-300 delay-100 ${reloading ? "opacity-25" : ""}`}>
-          {tableData
-            ? tableData.map((row, i) => {
-                return row.values.length ? (
-                  <Fragment key={i}>
-                    <tr className={`bg-repeat-${getCatColor(row.category)} text-white rounded-md table w-full table-fixed`}>
-                      <td className="p-2" colSpan="10">
-                        <span>
-                          <strong>
-                            {row.category} - {row.subcategory}
-                          </strong>
-                        </span>
-                        &nbsp;&nbsp;
-                        <span>( {row.units} )</span>
-                      </td>
-                    </tr>
-                    {row.values
-                      .map((valueRow) => {
-                        if (vsWith === "CURRENT") {
-                          valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow.current, 2030);
-                          valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow.current, 2050);
-                        }
-                        if (vsWith === "NZAP") {
-                          valueRow.repeat.deltas[2030] = calculateDelta(valueRow.repeat, valueRow.core, 2030);
-                          valueRow.repeat.deltas[2050] = calculateDelta(valueRow.repeat, valueRow.core, 2050);
-                        }
+		if(position === "left") {
+			policySlug = leftPol;
+			otherPolicySlug = rightPol;
+			onClick = setLeftPol;
+			menuItemsClasses = "origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none";
+		}
 
-                        return valueRow;
-                      })
-                      .map((valueRow, vi) => {
-                        return (
-                          <tr className="table w-full table-fixed hover:bg-repeat hover:bg-opacity-5" key={vi}>
-                            <td className="p-2" colSpan="2">{valueRow.variable}</td>
+		if(position === "right") {
+			policySlug = rightPol;
+			otherPolicySlug = leftPol;
+			onClick = setRightPol;
+			menuItemsClasses = "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none";
+		}
 
-                            <td className={`p-2 ${getColColor("CURRENT")}`}>{valueRow.current ? valueRow.current[2030] : 0}</td>
-                            <td className={`p-2 ${getColColor("CURRENT")}`} colSpan="2">{valueRow.current ? valueRow.current[2050] : 0}</td>
+		const policy = policies && policySlug ? policies.find(p => p.slug === policySlug) : {};
 
-                            <td className="p-2">
-                              <div className="flex">
-                                <div className="w-10">{valueRow.repeat[2030]}</div>
-                                <div className="pl-2 flex text-xs text-repeat-dark">
-                                  <div className="my-auto ml-auto">{valueRow.repeat.deltas[2030]}</div>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="p-2">
-                              <div className="flex">
-                                <div className="w-10">{valueRow.repeat[2050]}</div>
-                                <div className="pl-2 flex text-xs text-repeat-dark">
-                                  <div className="my-auto ml-auto">{valueRow.repeat.deltas[2050]}</div>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="p-2">
-                            </td>
+		return(
+			<Menu as="div" className="w-40 relative inline-block text-left z-10">
+				{({ open }) => (
+					<>
+						<div>
+							<Menu.Button className={`overflow-hidden relative flex w-full bg-white rounded-md px-2 py-2 border-2 border-inherit border-repeat-neutral hover:border-black`}>
+								<div className="whitespace-nowrap">
+									{policy.colTitle}
+								</div>
+								<ChevronDownIcon
+									style={{boxShadow: "0 0 10px 10px white"}}
+									className="absolute right-0 top-0 h-full w-5 bg-white" aria-hidden="true" />
+							</Menu.Button>
+						</div>
 
-                            <td className={`p-2 ${getColColor("NZAP")}`}>{valueRow.core ? valueRow.core[2030] : 0}</td>
-                            <td className={`p-2 ${getColColor("NZAP")}`}>{valueRow.core ? valueRow.core[2050] : 0}</td>
-                          </tr>
-                        );
-                      })}
-                  </Fragment>
-                ) : null;
-              })
-            : null}
-        </tbody>
-      </table>
-    </div>
-  );
+						<Transition show={open} as={Fragment} enter="transition ease-out duration-100" enterFrom="transform opacity-0 scale-95" enterTo="transform opacity-100 scale-100" leave="transition ease-in duration-75" leaveFrom="transform opacity-100 scale-100" leaveTo="transform opacity-0 scale-95">
+							<Menu.Items static className={menuItemsClasses}>
+								<div className="py-1 max-h-60 overflow-auto">
+									{policies
+										? policies.filter(p => p.slug !== activePolicy.slug).map((policy) => {
+												return(
+													<Menu.Item key={policy.slug}>
+														{({ active, disabed }) => {
+															let className = "w-full text-left block px-4 py-2 text-sm ";
+															if(policy.slug === policySlug || active) {
+																className += "bg-gray-100 text-gray-900";
+															} else if(otherPolicySlug === policy.slug) {
+																className += "text-gray-400 pointer-events-none";
+															} else {
+																className += "text-gray-700";
+															}
+															return(
+																<button
+																	onClick={() => onClick(policy.slug)}
+																	className={className}>
+																	{policy.navTitle}
+																</button>
+															);
+														}}
+													</Menu.Item>
+												 );
+											})
+										: null}
+								</div>
+							</Menu.Items>
+						</Transition>
+					</>
+				)}
+			</Menu>
+		)
+	};
+
+	const vsEnClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-white text-black";
+  const vsDisClasses = "w-15 flex items-center border border-gray-500 px-2 py-1 text-xs rounded-md bg-black text-white pointer-events-none";
+
+	return (
+		<div id="tableContainer__shell" className="container m-auto h-full w-full font-effra transition-colors duration-300 ease-in-out">
+			<div id="highlight" className={`absolute top-0 h-full bg-gray-200 rounded-lg transition-all duration-300 ease-in-out highlight--${toPos}`}></div>
+
+			<div className="absolute z-10 top-14 vs--left text-center">
+				<button className={vsWith === "LEFT" ? vsDisClasses : vsEnClasses}
+								disabled={vsWith === "LEFT"}
+								onClick={() => toggleVs()}><ChevronLeft className="mr-2" /> VS.</button>
+			</div>
+
+			<div className="absolute z-10 top-14 vs--right text-center">
+				<button className={vsWith === "RIGHT" ? vsDisClasses : vsEnClasses}
+								disabled={vsWith === "RIGHT"}
+								onClick={() => toggleVs()}>VS. <ChevronRight className="ml-2" /></button>
+			</div>
+
+			<div className={`absolute z-10 pt-10 vs--${toPos} text-center`}>
+				<div className="block pt-3 pb-2">Show difference as</div>
+				<div className="block text-center">
+					<button
+						onClick={() => {
+							updateDiff("ABSOLUTE");
+						}}
+						className={`${diffType === "ABSOLUTE" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-bl-md rounded-tl-md`}>
+						Absolute
+					</button>
+					<button
+						onClick={() => {
+							updateDiff("PERCENT");
+						}}
+						className={`${diffType === "PERCENT" ? "bg-black text-white" : "bg-white text-black"} inline-block border border-black focus:outline-none px-2 py-1 text-xs rounded-br-md rounded-tr-md`}>
+						Percent
+					</button>
+				</div>
+			</div>
+
+			<table className="table-fixed w-full relative border-collapse pt-8">
+				<thead className="text-left">
+					<tr className="table w-full table-fixed text-base tracking-wide	mb-10">
+						<th className="p-2" colSpan="2">
+							Category
+						</th>
+						<th className={`p-2 ${getColColor("LEFT")}`} colSpan="3">
+							<PolicySelect position="left" />
+						</th>
+						<th className="p-2 text-lg" colSpan="2">
+							{activePolicy.colTitle}
+						</th>
+						<th className="p-2" colSpan="1"></th>
+						<th className={`p-2 ${getColColor("RIGHT")}`} colSpan="2">
+							<PolicySelect position="right" />
+						</th>
+					</tr>
+					<tr className="table w-full table-fixed text-base tracking-wide	">
+						<th className="px-2 pt-8 pb-3" colSpan="2"></th>
+						<th className={`px-2 pt-8 pb-3 ${getColColor("LEFT")}`}>2030</th>
+						<th className={`px-2 pt-8 pb-3 ${getColColor("LEFT")}`} colSpan="2">2050</th>
+						<th className="px-2 pt-8 pb-3">2030</th>
+						<th className="px-2 pt-8 pb-3" colSpan="2">2050</th>
+						<th className={`px-2 pt-8 pb-3 ${getColColor("RIGHT")}`}>2030</th>
+						<th className={`px-2 pt-8 pb-3 ${getColColor("RIGHT")}`}>2050</th>
+					</tr>
+				</thead>
+				<tbody className={`w-full max-h-96 overflow-auto block text-sm transition-opacity duration-300 delay-100 ${reloading ? "opacity-25" : ""}`}>
+					{tableData
+						? tableData.map((row, i) => {
+								return row.values.length ? (
+									<Fragment key={i}>
+										<tr className={`bg-repeat-${getCatColor(row.category)} text-white rounded-md table w-full table-fixed`}>
+											<td className="p-2" colSpan="10">
+												<span>
+													<strong>
+														{row.category} - {row.subcategory}
+													</strong>
+												</span>
+												&nbsp;&nbsp;
+												<span>( {row.units} )</span>
+											</td>
+										</tr>
+										{row.values
+											.map((valueRow) => {
+												if (vsWith === "LEFT") {
+													valueRow[activePolicy.slug].deltas[2030] = calculateDelta(valueRow[activePolicy.slug], valueRow[leftPol], 2030);
+													valueRow[activePolicy.slug].deltas[2050] = calculateDelta(valueRow[activePolicy.slug], valueRow[leftPol], 2050);
+												}
+												if (vsWith === "RIGHT") {
+													valueRow[activePolicy.slug].deltas[2030] = calculateDelta(valueRow[activePolicy.slug], valueRow[rightPol], 2030);
+													valueRow[activePolicy.slug].deltas[2050] = calculateDelta(valueRow[activePolicy.slug], valueRow[rightPol], 2050);
+												}
+												return valueRow;
+											})
+											.map((valueRow, vi) => {
+												return (
+													<tr className="table w-full table-fixed hover:bg-repeat hover:bg-opacity-5" key={vi}>
+														<td className="p-2" colSpan="2">
+															{valueRow.variable}
+														</td>
+
+														<td className={`p-2 ${getColColor("LEFT")}`}>
+															{valueRow[leftPol] && !isNaN(valueRow[leftPol][2030]) ? valueRow[leftPol][2030] : "N/A"}
+														</td>
+														<td className={`p-2 ${getColColor("LEFT")}`} colSpan="2">
+															{valueRow[leftPol] && !isNaN(valueRow[leftPol][2050]) ? valueRow[leftPol][2050] : "N/A"}
+														</td>
+
+														<td className="p-2">
+															<div className="flex">
+																<div className="w-10">
+																	{valueRow[activePolicy.slug] && !isNaN(valueRow[activePolicy.slug][2030]) ? valueRow[activePolicy.slug][2030] : "N/A"}
+																</div>
+																<div className="pl-2 flex text-xs text-repeat-dark">
+																	<div className="my-auto ml-auto">
+																		{valueRow[activePolicy.slug].deltas[2030]}
+																	</div>
+																</div>
+															</div>
+														</td>
+														<td className="p-2">
+															<div className="flex">
+																<div className="w-10">
+																	{valueRow[activePolicy.slug] && !isNaN(valueRow[activePolicy.slug][2050]) ? valueRow[activePolicy.slug][2050] : "N/A"}
+																</div>
+																<div className="pl-2 flex text-xs text-repeat-dark">
+																	<div className="my-auto ml-auto">
+																		{valueRow[activePolicy.slug].deltas[2050]}
+																	</div>
+																</div>
+															</div>
+														</td>
+														<td className="p-2">
+														</td>
+
+														<td className={`p-2 ${getColColor("RIGHT")}`}>
+															{valueRow[rightPol] && !isNaN(valueRow[rightPol][2030]) ? valueRow[rightPol][2030] : "N/A"}
+														</td>
+														<td className={`p-2 ${getColColor("RIGHT")}`}>
+															{valueRow[rightPol] && !isNaN(valueRow[rightPol][2050]) ? valueRow[rightPol][2050] : "N/A"}
+														</td>
+													</tr>
+												);
+											})}
+									</Fragment>
+								) : null;
+							})
+						: null}
+				</tbody>
+			</table>
+		</div>
+	);
 };
 
-const ExploreBenchmark = ({ tableData, reloading }) => {
-  const router = useRouter();
-  const dispatch = useDispatch();
-  const filters = useSelector((state) => state.filters);
-  const scenarios = useSelector((state) => state.scenarios);
-  useEffect(() => {
-    router.push(filters.url, undefined, { shallow: true });
-  }, [filters]);
+const ExploreBenchmark = ({ policy, tableData, reloading }) => {
+	const router = useRouter();
+	const dispatch = useDispatch();
+	const filters = useSelector((state) => state.filters);
+	const scenarios = useSelector((state) => state.scenarios);
+	useEffect(() => {
+		router.push(filters.url, undefined, { shallow: true });
+	}, [filters]);
 
-  return (
-    <div className="relative text-xs">
-      <BenchmarkTable tableData={tableData} filters={filters} reloading={reloading} />
-    </div>
-  );
+	return (
+		<div className="text-xs">
+			<BenchmarkTable policy={policy} tableData={tableData} filters={filters} reloading={reloading} />
+		</div>
+	);
 };
 
 export default ExploreBenchmark;

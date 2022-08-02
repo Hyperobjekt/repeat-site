@@ -50,7 +50,6 @@ export default async (req, res) => {
   Object.keys(query).forEach((key) => {
     if (query[key] === "!!") return (query[key] = { $exists: true, $ne: "", $ne: null });
     if (query[key] === "!") return (query[key] = null);
-    // ---
     if (!schema.schema[key]) return;
     if (key === "_id") return (query[key] = new ObjectID(query[key]));
     if (query[key] === null) return;

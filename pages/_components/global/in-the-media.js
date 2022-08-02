@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 
+import media from "../../../_data/media.json";
+
 const InTheMedia = () => {
+
   return (
     <div className="py-12 bg-repeat-light">
       <div className="container max-w-screen-lg  m-auto">
@@ -9,34 +12,26 @@ const InTheMedia = () => {
           <a href="/media" className="text-md uppercase font-medium text-repeat-black float-right hover:text-repeat-burnt">See all</a>
         </div>  
         <div className="grid pt-6 grid-cols-1 md:grid-cols-3 gap-4 place-content-center">
-          <div className="block">
-            <a href="https://www.vox.com/22738414/democrats-manchin-climate-reconciliation-plan-b" target="_blank" rel="noopener noreferrer" className="h-44 bg-media-vox bg-center bg-cover flex items-center">
-              <div className="w-full h-full text-center flex bg-black bg-opacity-30">
-                <img className="m-auto max-h-20 max-w-5/7" src="../images/vox-logo.svg" alt="" />
-              </div>
-            </a>
-            <a href="https://www.vox.com/22738414/democrats-manchin-climate-reconciliation-plan-b" target="_blank" rel="noopener noreferrer" className="pt-2 text-sm font-semibold text-repeat-black hover:text-repeat-burnt">
-            Biden’s Plan B for the climate crisis, explained
-            </a>
-          </div>
 
-          <div className="block">
-            <a href="https://www.washingtonpost.com/climate-environment/2021/10/28/climate-biden-build-back-better/" target="_blank" rel="noopener noreferrer"  className="h-44 bg-media-washington-post bg-center bg-cover flex items-center">
-              <div className="w-full h-full text-center flex bg-black bg-opacity-30">
-                <img className="m-auto max-h-20 max-w-5/7" src="../images/washpo-logo.svg" alt="" />
+          {media.media.filter(m => m.featured).slice(0, 3).map((m,i) => {
+            return(
+              <div className="block" key={i}>
+                <a href={m.url} target="_blank" rel="noopener noreferrer" className="text-repeat-black hover:text-repeat-burnt">
+                  <div
+                    className="h-44 flex items-center bg-center bg-cover"
+                    style={{ backgroundImage: `url(../images/press/${m.image})` }}>
+                    <div className="w-full h-full text-center flex bg-black bg-opacity-30">
+                      <img className="m-auto max-h-20 max-w-5/7" src={`../images/press/logos/${m.logo}`} alt="" />
+                    </div>
+                  </div>
+                  <div className="pt-2 text-sm font-semibold">
+                    {m.title}
+                  </div>
+                </a>
               </div>
-            </a>
-            <a href="https://www.washingtonpost.com/climate-environment/2021/10/28/climate-biden-build-back-better/" target="_blank" rel="noopener noreferrer" className="pt-2 text-sm font-semibold text-repeat-black hover:text-repeat-burnt">New budget deal marks the biggest climate investment in U.S. history</a>
-          </div>
-
-          <div className="block">
-            <div className="h-44 bg-media-new-york-times bg-center bg-cover flex items-center">
-              <div className="w-full h-full text-center flex bg-black bg-opacity-30">
-                <img className="m-auto max-h-20 max-w-5/7" src="../images/nyt-logo.svg" alt="" />
-              </div>
-            </div>
-            <a href="https://www.washingtonpost.com/climate-environment/2021/10/28/climate-biden-build-back-better/" target="_blank" rel="noopener noreferrer"  className="pt-2 text-sm font-semibold text-repeat-black hover:text-repeat-burnt">Tracking Biden’s Environmental Actions</a>
-          </div>
+            )
+          })}
+          
         </div>
       </div>
     </div>

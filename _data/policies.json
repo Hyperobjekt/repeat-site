@@ -1,190 +1,274 @@
-{
-  "bbb-and-bif": {
-    "title": "Build Back Better Act",
-    "longTitle": "Build Back Better Act (v1.0) as reported by the Budget Committee on Sept 25, 2021 (H. Rept. 117-30)",
-    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-    "stats": [
-      {
-        "value": "78%",
-        "label": "Increase in Renewables",
-        "supportingText": "By 2050"
-      },
-      {
-        "value": "13.5%",
-        "label": "Average Annual Reduction in Fossil Fuels",
-        "supportingText": "Starting in 2023"
-      },
-      {
-        "value": "16 Million",
-        "label": "New Roles Created",
-        "supportingText": "In Energy Industries"
-      }
-    ],
-    "slides": [
-      {
-        "image": "/images/carousel-image-1.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "paragraph",
-        "content": "<span>Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae <a className=\"primary-link\" href=\"#\">augue pharetra consequat</a>. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.</span>)"
-      },
-      {
-        "type": "component",
-        "content": ""
-      },
-      {
-        "type": "heading",
-        "content": "Details & Resources"
-      },
-      {
-        "type": "slider",
-        "content": ""
-      },
-      {
-        "type": "paragraph",
-        "content": "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis."
-      },
-      {
-        "type": "heading",
-        "content": "Policy REPEAT Pillars"
-      },
-      {
-        "type": "paragraph",
-        "content": "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-      },
-      {
-        "type": "pillars",
-        "content": ""
-      }
-    ]
-  },
-  "bif": {
-    "title": "Infrastructure Investment and Jobs Act",
-    "longTitle": "Infrastructure Investment and Jobs Act as passed Nov 6, 2021",
-    "subTitle": "Quisque ullamcorper massa augue, sodales a elit congue, ut tempus ex tincidunt. Nulla eu magna neque.",
-    "description": "Vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla.",
-    "stats": [
-      {
-        "value": "78%",
-        "label": "Increase in Renewables",
-        "supportingText": "By 2050"
-      },
-      {
-        "value": "13.5%",
-        "label": "Average Annual Reduction in Fossil Fuels",
-        "supportingText": "Starting in 2023"
-      },
-      {
-        "value": "16 Million",
-        "label": "New Roles Created",
-        "supportingText": "In Energy Industries"
-      }
-    ],
-    "slides": [
-      {
-        "image": "/images/carousel-image-1.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-2.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      },
-      {
-        "image": "/images/carousel-image-3.svg",
-        "caption": "2030 E+ Cumulative",
-        "subcaption": "Solar, Wind and Population Density"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "paragraph",
-        "content": "<span>Nunc ac velit mollis, consectetur nisi non, tempor odio. Morbi id purus tellus. Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. At eleifend mi porttitor non. In lacinia lacus vitae <a className=\"primary-link\" href=\"#\">augue pharetra consequat</a>. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis.</span>)"
-      },
-      {
-        "type": "component",
-        "content": ""
-      },
-      {
-        "type": "heading",
-        "content": "Details & Resources"
-      },
-      {
-        "type": "slider",
-        "content": ""
-      },
-      {
-        "type": "paragraph",
-        "content": "Donec in urna eu sapien ultricies volutpat. Etiam feugiat in nisi vel semper. Donec gravida cursus justo, at eleifend mi porttitor non. In lacinia lacus vitae augue pharetra consequat. Vivamus porttitor nisi in enim sagittis ultrices. Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. In aliquet porttitor nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis ante sed turpis porttitor, vehicula tincidunt ex facilisis."
-      },
-      {
-        "type": "heading",
-        "content": "Policy REPEAT Pillars"
-      },
-      {
-        "type": "paragraph",
-        "content": "Nulla luctus magna aliquam lectus eleifend tincidunt. Fusce mauris nisl, blandit eget porttitor in, ultricies vitae neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-      },
-      {
-        "type": "pillars",
-        "content": ""
-      }
-    ]
-  }
+{ 
+	"policies": [
+		{
+			"slug": "bbb-nov",
+			"title": "The Build Back Better Act, November 2021 version ('BBBA, Nov ‘21')",
+			"navTitle": "Build Back Better Act, November 2021",
+			"colTitle": "BBBA, Nov ‘21",
+			"subTitle": "The $2.2 trillion House-passed budget reconciliation bill",
+			"desc": "Passed by the U.S. House of Representatives on November 19, 2021, the Build Back Better Act (<a href=\"https://www.congress.gov/bill/117th-congress/house-bill/5376\" target=\"_blank\">H.R. 5376</a>) contains over $500 billion in tax credits, grants, rebates, and other policies to deploy clean electricity, electric vehicles, building electrification and efficiency, hydrogen, carbon capture and storage, and low-carbon transportation fuels. The bill also funds agricultural practices that could sequester carbon in soils, provides funding to fight wildfires and protect forests, and imposes a fee on upstream emissions of methane in oil and gas sectors. It remains stalled in the U.S. Senate at this time.",
+			"footnote": "<a href=\"https://docs.google.com/spreadsheets/d/1X2PORZp5JzP2yWbdUSbXphElIGPEOlJNI-T12gz7n1s/edit\" target=\"_blank\">Click here</a> for a complete list of policies and description of how they were modeled in REPEAT Project analysis.",
+			"stats": [
+				{
+					"value": "$301",
+					"label": "Savings for Avg US Household",
+					"supportingText": "On 2030 Annual Energy Costs"
+				},
+				{
+					"value": "2.2 Million",
+					"label": "Net Jobs Created",
+					"supportingText": "In Energy Supply Related Industries"
+				},
+				{
+					"value": "25,000",
+					"label": "Deaths Avoided From Pollution",
+					"supportingText": "Through 2030"
+				}
+			],
+			"pillars": [
+				{
+					"label": "Efficiency/Electrification",
+					"bullets": [
+						"$7,500+ EV tax credits for personal vehicles",
+						"30% tax credit for business EV purchases",
+						"26% of light duty fleet electric in 2030",
+						"33% reduction in motor gasoline & diesel use in 2030",
+						"Tax credits & rebates for heat pumps & efficiency",
+						"23% reduction in residential building fossil fuel use in 2030"
+					]
+				},
+				{
+					"label": "Clean Energy",
+					"bullets": [
+						"Expands & extends tax credits for clean electricity & CCS",
+						"New tax credits for transmission & energy storage",
+						">80% clean electricity share by 2030",
+						"Wind & solar deployment grow to 34 GW & 106 GW/year in 2030"
+					]
+				},
+				{
+					"label": "Clean Fuels",
+					"bullets": [
+						"Extends and reforms tax credits for low-carbon fuels",
+						"New tax credit for low-carbon hydrogen",
+						"$4B/year investment in clean hydrogen in 2030",
+						"Spurs boom in clean hydrogen production from 2030 onwards"
+					]
+				},
+				{
+					"label": "CCUS",
+					"bullets": [
+						"Expanded 45Q tax credit for carbon capture, use & storage (CCUS)",
+						"$24B/year investment in carbon capture, transport & storage by 2030",
+						"200 million metric tons CO2 captured in 2030",
+						"25 GW of CCS power plants deployed through 2030"
+					]
+				},
+				{
+					"label": "Non-CO2 Emissions",
+					"bullets": [
+						"Methane fee cuts emissions by ~130 MMT CO2-e in 2030",
+						"Lower fossil fuel extraction reduces upstream methane by 27 MMT CO2-e in 2030",
+						"Implementation of a 2020 law spurs HFC phase-out"
+					]
+				},
+				{
+					"label": "Land Sinks",
+					"bullets": [
+						"Provides $10s of billions for wildfire reduction & forest preservation",
+						"Pays farmers $25/acre to establish cover crops for soil health & carbon storage",
+						"$23B for existing agricultural conservation programs prioritizing carbon storage"
+					]
+				}
+			],
+			"slides": false,
+			"benchmark": false
+		},
+		{
+			"slug": "bbb-sept",
+			"title": "The Build Back Better Act, September 2021 version ('BBBA, Sept ‘21')",
+			"navTitle": "Build Back Better Act, September 2021",
+			"colTitle": "BBBA, Sept ‘21",
+			"subTitle": "The original $3.5 trillion budget reconciliation bill",
+			"desc": "The original version of the Build Back Better Act, introduced in September 2021 (<a href=\"https://www.govinfo.gov/content/pkg/BILLS-117hr5376rh/pdf/BILLS-117hr5376rh.pdf\" target=\"_blank\">H.R. 5376, H. Rept. 117-130</a>), contained a broader range of policies to deploy clean energy and energy efficiency than the final bill passed the House in November 2021. This scenario helps track how the bill evolved from initial introduction to final passage in the House and the impact of legislative changes made during negotiations over the bill.",
+			"footnote": "For details on what changed from the September to November versions of BBBA, see the \"Change from 9/27/21 House version\" column in the <a href=\"https://bit.ly/REPEAT-Policies\" target=\"blank\">\"House Budget Reconciliation v2.0 (11/3/21)\" worksheet here</a>, and <a href=\"https://bit.ly/REPEAT-Policies\" target=\"blank\">click here</a> for a complete list of policies and description of how they were modeled in REPEAT Project analysis.",
+			"stats": [
+				{
+					"value": "1.4 Billion",
+					"label": "Tons Reduction",
+					"supportingText": "In 2030 GHG Emissions"
+				},
+				{
+					"value": "2.5 Million",
+					"label": "Net Jobs Created",
+					"supportingText": "In Energy Supply Related Industries"
+				},
+				{
+					"value": "30,000",
+					"label": "Deaths Avoided From Pollution",
+					"supportingText": "Through 2030"
+				}
+			],
+			"pillars": [
+				{
+					"label": "Efficiency/Electrification",
+					"bullets": [
+						"$7,500+ EV tax credits for personal vehicles",
+						"30% tax credit for business EV purchases",
+						"27% of light duty fleet electric in 2030",
+						"33% reduction in motor gasoline & diesel use in 2030",
+						"Tax credits & rebates for heat pumps & efficiency",
+						"24% reduction in residential building fossil fuel use in 2030"
+					]
+				},
+				{
+					"label": "Clean Energy",
+					"bullets": [
+						"Clean Electricity Performance Program incentivizes utilities to add clean electricity",
+						"Expands & extends tax credits for clean electricity ",
+						"New tax credits for transmission & energy storage",
+						"90% clean electricity share by 2030"
+					]
+				},
+				{
+					"label": "Clean Fuels",
+					"bullets": [
+						"Extends tax credits for low-carbon fuels",
+						"New tax credit for low-carbon hydrogen",
+						"Spurs boom in clean hydrogen production from 2030 onwards"
+					]
+				},
+				{
+					"label": "CCUS",
+					"bullets": [
+						"Increases 45Q tax credit for direct air capture",
+						"200 million metric tons CO2 captured in 2030",
+						"42 GW of gas power plants w/CCS deployed through 2030",
+						"No CCS in industry with $50/ton 45Q credit"
+					]
+				},
+				{
+					"label": "Non-CO2 Emissions",
+					"bullets": [
+						"Methane fee cuts emissions by ~130 MMT CO2-e in 2030",
+						"Lower fossil fuel extraction reduces upstream methane by 36 MMT CO2-e in 2030",
+						"Implementation of a 2020 law spurs HFC phase-out"
+					]
+				},
+				{
+					"label": "Land Sinks",
+					"bullets": [
+						"Provides $10s of billions for wildfire reduction & forest preservation",
+						"$0.25b for agricultural research on soil carbon",
+						"Lacks further support for soil carbon sequestration"
+					]
+				}
+			],
+			"slides": false,
+			"benchmark": false
+		},
+		{
+			"slug": "iija",
+			"title": "The Infrastructure Investment and American Jobs Act of 2021 ('IIJA')",
+			"navTitle": "Infrastructure Investment and American Jobs Act of 2021",
+			"colTitle": "IIJA",
+			"subTitle": "The bipartisan infrastructure investment bill enacted November 2021",
+			"desc": "This bipartisan infrastructure investment bill (<a href=\"https://www.congress.gov/bill/117th-congress/house-bill/3684\" target=\"_blank\">H.R. 3684</a>) passed the House and Senate and was signed into law in November 2021. The law makes major investments in surface transportation, including rail and public transit, and climate resilient infrastructure. It also supports expansion of electricity transmission and CO2 pipeline networks, funds building weatherization and EV charger stations, and invests in demonstration and early deployment of a range of advanced energy technologies.",
+			"footnote": "<a href=\"https://docs.google.com/spreadsheets/d/1X2PORZp5JzP2yWbdUSbXphElIGPEOlJNI-T12gz7n1s/edit\" target=\"_blank\">Click here</a> for a complete list of policies and description of how they were modeled in REPEAT Project analysis.",
+			"stats": [
+				{
+					"value": "1.3 Billion",
+					"label": "Tons Short",
+					"supportingText": "Of 2030 Climate Goals"
+				},
+				{
+					"value": "0.2 Million",
+					"label": "Net Jobs Created",
+					"supportingText": "In Energy Supply Related Industries"
+				},
+				{
+					"value": "2%",
+					"label": "Reduction in Energy Use",
+					"supportingText": "By 2030"
+				}
+			],
+			"pillars": [
+				{
+					"label": "Efficiency/Electrification",
+					"bullets": [
+						"$20B for charger networks, bus electrification & more",
+						"5% of light duty vehicles are electric by 2030",
+						"$6.4B for efficiency & weatherization",
+						"2% reduction in final energy demand in 2030"
+					]
+				},
+				{
+					"label": "Clean Energy",
+					"bullets": [
+						"Little impact on renewable energy deployment",
+						"$20B for clean energy demonstration projects",
+						"$6B to prevent closure of existing nuclear"
+					]
+				},
+				{
+					"label": "Clean Fuels",
+					"bullets": [
+						"$9.5B for clean hydrogen R&D & 4 regional ‘hubs’",
+						"6% increase in hydrogen supply in 2030",
+						"Little impact on deployment of other clean fuels."
+					]
+				},
+				{
+					"label": "CCUS",
+					"bullets": [
+						"$4.6B for CO2 transport & geologic storage",
+						"$3.5B to establish 4 regional direct air capture ‘hubs’",
+						"16 million metric tons CO2 captured in 2030"
+					]
+				},
+				{
+					"label": "Non-CO2 Emissions",
+					"bullets": [
+						"$4.7B to plug abandoned oil & gas wells",
+						"$11.3B to reclaim abandoned coal mines",
+						"IIJA has very small impact on total non-CO2 GHGs",
+						"Implementation of a 2020 law spurs HFC phase-out"
+					]
+				},
+				{
+					"label": "Land Sinks",
+					"bullets": [
+						"$5.4B for wildfire risk reduction & ecosystem restoration",
+						"No other programs to protect/enhance land sinks"
+					]
+				}
+			],
+			"slides": false,
+			"benchmark": false
+		},
+		{
+			"slug": "frozen",
+			"title": "Frozen Policies Benchmark",
+			"navTitle": "Frozen Policies Benchmark",
+			"colTitle": "Frozen Policies",
+			"subTitle": "U.S. climate and energy policy as it existed in January 2021",
+			"desc": "This scenario captures the range of existing policies as of the start of the 117th Congress and inauguration of President Biden in January 2021 and helps set a benchmark against which progress towards net-zero made during the current Administration and Congressional term can be measured.",
+			"footnote": "",
+			"stats": false,
+			"slides": false,
+			"benchmark": true
+		},
+		{ 
+			"slug": "net-zero",
+			"title": "Net-Zero Pathway Benchmark",
+			"navTitle": "Net-Zero Pathway Benchmark",
+			"colTitle": "Net-Zero Pathway",
+			"subTitle": "A cost-optimized path to net-zero greenhouse gas emissions",
+			"desc": "This scenario reflects a cost-optimized pathway to reduce economy-wide U.S. greenhouse gas emissions 50% below 2005 levels by 2030 and to net-zero by 2050. It is one of <a href=\"https://netzeroamerica.princeton.edu/\" target=\"_blank\">several possible paths to net-zero</a> but serves as an illustrative benchmark to assess whether or not the United States is on track to reach climate mitigation goals.",
+			"footnote": "",
+			"stats": false,
+			"slides": false,
+			"benchmark": true
+		}
+	]
 }

@@ -2,18 +2,22 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { loadScenarios } from "../../../redux/actions/scenarios.actions";
+const { policies } = require("../../../_data/policies.json");
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-export const TimeSeriesTable = ({ tableData, filters, reloading }) => {
+export const TimeSeriesTable = ({ policy, tableData, filters, reloading }) => {
+
+  const activePolicy = policy || {};
 
   const getColor = (category) => {
     let filteredCategory = filters.levelOneFilters.filter((cat) => cat.label === category);
     return filteredCategory.length ? filteredCategory[0].color : "";
   };
 
-  let years = tableData ? [...new Set(tableData.map((row) => row.values.map((valueRow) => Object.keys(valueRow.core)).flat()).flat())] : [];
+  let years = tableData ? [...new Set(tableData.map((row) => row.values.map((valueRow) => Object.keys(valueRow[activePolicy.slug])).flat()).flat())].filter(key => !isNaN(Number(key))) : [];
+
 
   return (
     <div className="relative m-auto w-full pb-4 font-effra">
@@ -33,7 +37,13 @@ export const TimeSeriesTable = ({ tableData, filters, reloading }) => {
                   <Fragment key={i}>
                     <tr className={`bg-repeat-${getColor(row.category)} text-white rounded-md table w-full table-fixed`}>
                       <td className="p-2" colSpan="8">
-                        {row.category} - {row.subcategory} ({row.state} | {row.policy})
+                        <span>
+                          <strong>
+                            {row.category} - {row.subcategory}
+                          </strong>
+                        </span>
+                        &nbsp;&nbsp;
+                        <span>( {row.units} )</span>
                       </td>
                     </tr>
                     {row.values.map((valueRow, vi) => {
@@ -43,7 +53,11 @@ export const TimeSeriesTable = ({ tableData, filters, reloading }) => {
                             {valueRow.variable}
                           </td>
                           {years.map((year, yi) => {
-                            return <td className="p-2" key={yi}>{valueRow.core ? valueRow.core[year] : 0}</td>
+                            return (
+                              <td className="p-2" key={yi}>
+                                {valueRow[activePolicy.slug] ? valueRow[activePolicy.slug][year] : 0}
+                              </td>
+                            )
                           })}
                         </tr>
                       );
@@ -58,7 +72,7 @@ export const TimeSeriesTable = ({ tableData, filters, reloading }) => {
   );
 };
 
-const ExploreTimeSeries = ({ tableData, reloading }) => {
+const ExploreTimeSeries = ({ policy, tableData, reloading }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
@@ -69,7 +83,7 @@ const ExploreTimeSeries = ({ tableData, reloading }) => {
 
   return (
     <div className="relative text-xs">
-      <TimeSeriesTable tableData={tableData} filters={filters} reloading={reloading} />
+      <TimeSeriesTable policy={policy} tableData={tableData} filters={filters} reloading={reloading} />
     </div>
   );
 };

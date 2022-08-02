@@ -3,7 +3,9 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { Popover, Transition } from "@headlessui/react";
 import { ChartBarIcon, CursorClickIcon, MenuIcon, ViewGridIcon, XIcon } from "@heroicons/react/outline";
-import policies from '../../../_data/policies.json';
+// import policies from '../../../_data/policies.json';
+let { policies } = require("../../../_data/policies.json");
+policies = policies.map(p => ({ ...p, href: "/policies/" + p.slug }));
 
 const pages = [
   {
@@ -11,12 +13,14 @@ const pages = [
     href: "/about",
   },
   {
+    name: "Reports",
+    href: "/reports",
+  },
+  {
     name: "Media",
     href: "/media",
   },
 ];
-
-policies = Object.keys(policies).map(p => ({ ...policies[p], href: "/policies/" + p }));
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -34,7 +38,6 @@ const readScroll = () => {
       document.getElementById("nav-bar").classList.remove("md:pt-6");
     }
     if (document.documentElement.scrollTop < 100 && !hasPtClass) {
-      console.log("unshrinking");
       document.getElementById("nav-bar").classList.add("md:pt-6");
       document.getElementById("nav-bar").classList.remove("md:pt-0");
     }
@@ -85,7 +88,7 @@ export default function RepeatHeader() {
                         <Link key={key} href={policy.href}>
                           <a className="p-3 bg-white flex items-start hover:bg-repeat-light">
                             <div className="px-2">
-                              <p className="text-base font-medium text-black">{policy.title}</p>
+                              <p className="text-base font-medium text-black">{policy.navTitle}</p>
                             </div>
                           </a>
                         </Link>
@@ -96,6 +99,11 @@ export default function RepeatHeader() {
                 <Link href="/about">
                   <a href="/about" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
                     About
+                  </a>
+                </Link>
+                 <Link href="/reports">
+                  <a href="/reports" className="text-base font-medium border-b-4 border-transparent text-white hover:border-b-4 hover:border-repeat">
+                    Reports
                   </a>
                 </Link>
                 {/* <Popover className="relative">
@@ -174,7 +182,7 @@ export default function RepeatHeader() {
                     {policies.map((policy, key) => (
                       <Link key={key} href={policy.href}>
                         <a className="text-base font-medium text-gray-900 hover:text-gray-700">
-                          {policy.title}
+                          {policy.navTitle}
                         </a>
                       </Link>
                     ))}
